@@ -11,4 +11,25 @@ package edu.eci.arsw.cartmode.model;
  */
 public class Carta {
     
+    
+    private String dato;
+    private boolean bloqueado;
+    private Integer nivel;
+    
+    public Carta(String dato, Integer nivel){
+        this.dato=dato;
+        this.bloqueado=false;
+        this.nivel=nivel;
+    }
+    
+    public Integer getNivel(){
+        return nivel;
+    }
+    public void setNIvel(Integer nivel){
+        this.nivel=nivel;
+    
+    }
+    
+    
+    
 }
