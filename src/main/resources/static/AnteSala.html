@@ -34,14 +34,16 @@
             <section id="main" class="wrapper">
                 <div class="inner">
 
-                    <p>Ingrese su Nick Name <input type="text" id="username" name="place" value=""/>      
-                        <input type="button" id="conn" value="Iniciar" onclick="appIndex.addUser()"/>
+                    <p>Esperando por Jugadores <input type="text" id="nick" name="place" value=""/>      
+                        <input type="button" id="conn" value="Iniciar" onclick="appIndex.addUser()"/></p>
                     <p> 
                         
-                    <h1 class="major">Ingreso Ante Sala</h1>
-
-                    <p>Usted esta por ingresar a una antesala, donde esperara a que otros jugadores se conecten y empezar a jugar, o por el contrario iniciar una partida nueva y esperar por otros jugadores.</p>
-
+                    <h1 class="major">Sala</h1>
+                    <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+                    <p>Los jugadores son: </p>
+        <table width="165" align="center" onload="apiclient.getAllUser()">
+            <h3 style="text-align:center" id="pl" >LOsjugadores son </h3>
+            </table>
                 </div>
             </section>
 
@@ -64,8 +66,6 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="js/apiclient.js"></script>        
-        <script src="js/appIndex.js"></script>
 
     </body>
 </html>
