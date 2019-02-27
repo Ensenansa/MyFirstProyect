@@ -5,10 +5,19 @@
  */
 package edu.eci.arsw.cartmode.model.impl;
 
+import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.Nivel;
+import java.util.List;
+
 /**
  *
  * @author cesar
  */
-public class Nivel1 {
+public class Nivel1 extends Nivel{
+
+    public Nivel1(float tiempo, boolean hermafrodita, Tupla<Integer, Integer> tamaño, List<Carta> barajas) {
+        super(tiempo, hermafrodita, tamaño, barajas);
+    }
+
     
 }

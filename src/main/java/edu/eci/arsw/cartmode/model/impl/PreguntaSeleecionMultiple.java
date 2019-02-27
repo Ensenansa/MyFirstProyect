@@ -5,10 +5,17 @@
  */
 package edu.eci.arsw.cartmode.model.impl;
 
+import edu.eci.arsw.cartmode.model.Pregunta;
+import java.util.List;
+
 /**
  *
  * @author cesar
  */
-public class PreguntaSeleecionMultiple {
+public class PreguntaSeleecionMultiple extends Pregunta{
+    
+    public PreguntaSeleecionMultiple(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
+        super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
+    }
     
 }
