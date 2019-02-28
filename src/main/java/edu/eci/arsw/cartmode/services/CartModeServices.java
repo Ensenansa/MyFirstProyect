@@ -5,10 +5,18 @@
  */
 package edu.eci.arsw.cartmode.services;
 
+import java.util.List;
+
 /**
  *
  * @author cesar
  */
-public class CartModeServices {
+public interface CartModeServices {
+    
+    
+    
+    public List<String> namePlayer() throws CartModeException;
+    
+    public void addPlayer(String name)throws CartModeException;
     
 }

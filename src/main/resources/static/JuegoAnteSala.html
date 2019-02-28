@@ -33,10 +33,22 @@
             <!-- Main -->
             <section id="main" class="wrapper">
                 <div class="inner">
-
-                    <p>Ingrese su Nick Name <input type="text" id="username" name="place" value=""/>      
-                        <input type="button" id="conn" value="Iniciar" onclick="appIndex.addUser()"/>
-                    <p> 
+                    <h1 class="major">Conectese</h1>
+                                        <form class="form-inline">
+                        <div class="form-group">
+                            <label for="connect">WebSocket connection:</label>
+                            <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                            <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                            </button>
+                        </div>
+                    </form>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="name">Escriba su nick name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                        </div>
+                        <button id="send" class="btn btn-default" type="submit">Send</button>
+                    </form>
                         
                     <h1 class="major">Ingreso Ante Sala</h1>
 
@@ -62,10 +74,16 @@
         <script src="assets/js/jquery.scrolly.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
+            <script src="/webjars/jquery/jquery.min.js"></script>
+            <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+            <script src="/webjars/stomp-websocket/stomp.min.js"></script>          
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="js/apiclient.js"></script>        
         <script src="js/appIndex.js"></script>
+          
+            <script src="js/jujs.js"></script>
+             <script src="/app.js"></script>
 
     </body>
 </html>

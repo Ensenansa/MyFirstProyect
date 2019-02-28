@@ -1,5 +1,5 @@
 var stompClient = null;
-
+var jugadores=[];
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -33,7 +33,28 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    var numm=jugadores.length;
+    x = true;
+    var temp=$("#name").val();
+    alert(temp);
+    class Jugador {
+        constructor(nombre) {
+            this.nombre = nombre;
+        }
+    };
+    for ( var i = 0 ; i < numm ; i++ ) {
+        if(temp==jugadores[i]){
+            x=false;
+        }
+     } 
+
+    if(x){
+        stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    }else{
+        alert("Nombre de jugador ya en uso");
+    }
+
+    
 }
 
 function showGreeting(message) {
@@ -47,5 +68,6 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
+    
 });
 

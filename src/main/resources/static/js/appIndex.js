@@ -4,9 +4,6 @@ var username;
 var susers;
 var appIndex = (function () {
 
-    $.getScript("/apiclient.js", function(){
-       alert("Archivo cargado!");
-    });
 
 
      var api = apiclient;
