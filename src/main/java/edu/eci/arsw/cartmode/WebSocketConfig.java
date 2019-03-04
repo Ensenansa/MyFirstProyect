@@ -23,4 +23,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/gs-guide-websocket").withSockJS();
     }
 
+    public void registerStompEndpointsSala(StompEndpointRegistry registry) {
+        registry.addEndpoint("/gs-sala").withSockJS();
+    }
+    
+
 }

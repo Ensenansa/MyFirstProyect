@@ -31,12 +31,22 @@ public class CartModeController {
 
     /**
      *
-     * @return la pregunta de seleccion multiple como CopyOnWriteArrayList
+     * @return  CopyOnWriteArrayList
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
+    @RequestMapping(method = RequestMethod.GET, path = "/jugadores")
     public ResponseEntity<?> getJugadores() {
         try {
-            return new ResponseEntity<>(cat.namePlayer(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.nameAllPlayer(), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/datos")
+    public ResponseEntity<?> getDataJugadores() {
+        try {
+            return new ResponseEntity<>(cat.nameAlPlayer(), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);

@@ -5,6 +5,12 @@
  */
 package edu.eci.arsw.cartmode.services;
 
+import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.Jugador;
+import edu.eci.arsw.cartmode.model.Nivel;
+import edu.eci.arsw.cartmode.model.Pregunta;
+import edu.eci.arsw.cartmode.model.Tablero;
+import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.List;
 
 /**
@@ -15,8 +21,22 @@ public interface CartModeServices {
     
     
     
-    public List<String> namePlayer() throws CartModeException;
+    public List<String> nameAllPlayer() throws CartModeException;
+
+    public List<Jugador> nameAlPlayer() throws CartModeException;
     
     public void addPlayer(String name)throws CartModeException;
+    
+    public void addSala(Jugador play) throws CartModeException;
+    
+    public void generateTblero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas)throws  CartModeException;
+            
+    public List<Carta> GenerateBaraja(Integer nivel)throws  CartModeException;
+    
+    
+    public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
+    
+    
+    public void detenerPartida()throws  CartModeException;
     
 }

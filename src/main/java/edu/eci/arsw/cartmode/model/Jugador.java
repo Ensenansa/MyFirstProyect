@@ -16,6 +16,7 @@ public class Jugador {
     private Integer puntaje;
     private Integer preguntasCorrrectas;
     private Integer preguntasIncorrectas;
+    private Integer nivel;
 
     public Jugador() {
     }
@@ -26,7 +27,15 @@ public class Jugador {
         puntaje = 0;
         preguntasCorrrectas = 0;
         preguntasIncorrectas = 0;
+        nivel=1;
+    }
 
+    public Integer getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
     }
 
     public Integer getParejasAcertadas() {

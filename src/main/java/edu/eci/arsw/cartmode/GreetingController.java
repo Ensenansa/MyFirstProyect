@@ -13,7 +13,9 @@ import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class GreetingController {
-
+    
+    
+     private Integer id=0;
     
     @Autowired
     CartModeServices cart;
@@ -26,6 +28,15 @@ public class GreetingController {
         Thread.sleep(1000); // simulated delay
         cart.addPlayer(message.getName());
         return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+    }
+
+    @MessageMapping("/sal")
+    @SendTo("/topic/sala")
+    public Greeting Sala(HelloMessage message) throws Exception {
+        Thread.sleep(1000); // simulated delay
+
+        System.out.println("PUTOS");
+        return null;
     }
 
     

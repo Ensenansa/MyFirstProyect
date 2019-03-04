@@ -33,16 +33,13 @@
             <!-- Main -->
             <section id="main" class="wrapper">
                 <div class="inner">
-
-                    <p>Esperando por Jugadores <input type="text" id="nick" name="place" value=""/>      
-                        <input type="button" id="conn" value="Iniciar" onclick="appIndex.addUser()"/></p>
-                    <p> 
-                        
-                    <h1 class="major">Sala</h1>
-                    <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+                    <p>Nombre de jugador<input type="text" id="username" name="place" value=""/>      
+                    <p>Sala Conectada<input type="text" id="idsala" name="place" value=""/>          
+                    <h1 class="major">Sala Conectada es: </h1>
+                        <h1 class="major">Esperando JUgadores</h1>
                     <p>Los jugadores son: </p>
-        <table width="165" align="center" onload="apiclient.getAllUser()">
-            <h3 style="text-align:center" id="pl" >LOsjugadores son </h3>
+            <table width="165" align="center" onload="apiclient.getAllUser()">
+            <h3 style="text-align:center" id="pl" >LOsjugadores Conectados son </h3>
             </table>
                 </div>
             </section>
@@ -66,6 +63,7 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-
+        <script src="/app.js"></script>
+        
     </body>
 </html>
