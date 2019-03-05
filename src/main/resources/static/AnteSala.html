@@ -34,13 +34,18 @@
             <section id="main" class="wrapper">
                 <div class="inner">
                     <p>Nombre de jugador<input type="text" id="username" name="place" value=""/>      
+                    <div   id="respuesta" style="text-align:center" >
+                        <!-- Respuesta -->
+                    </div>            
+
+
                     <p>Sala Conectada<input type="text" id="idsala" name="place" value=""/>          
                     <h1 class="major">Sala Conectada es: </h1>
-                        <h1 class="major">Esperando JUgadores</h1>
-                    <p>Los jugadores son: </p>
-            <table width="165" align="center" onload="apiclient.getAllUser()">
-            <h3 style="text-align:center" id="pl" >LOsjugadores Conectados son </h3>
-            </table>
+                    <h1 class="major">Esperando JUgadores</h1>
+                    <p>Los Jugadores Conectados son:<input type="text" id="idsalaPlayers" name="place" value=""/>          
+                    <table width="165" align="center" onload="apiclient.getAllUser()">
+                        <h3 style="text-align:center" id="pl" >LOsjugadores Conectados son </h3>
+                    </table>
                 </div>
             </section>
 
@@ -64,6 +69,6 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="/app.js"></script>
-        
+
     </body>
 </html>

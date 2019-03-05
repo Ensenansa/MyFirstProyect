@@ -37,30 +37,18 @@ function disconnect() {
 }
 
 function sendName() {
-    var numm=jugadores.length;
-    x = true;
+        alert("hola");
+
     var temp=$("#name").val();
+        alert("hola2"+temp);
     jugador= temp;
+    
     alert("eso es?  "+temp);
-    class Jugador {
-        constructor(nombre) {
-            this.nombre = nombre;
-        }
-    };
-    for ( var i = 0 ; i < numm ; i++ ) {
-        if(temp==jugadores[i]){
-            x=false;
-        }
-     } 
 
-    if(x){
-        alert("Se activo nombre ");
-        stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    
+    alert("Se activo nombre ");
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         
-
-    }else{
-        alert("Nombre de jugador ya en uso");
-    }
 }
 
 function showGreeting(message) {
