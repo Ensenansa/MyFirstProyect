@@ -20,8 +20,8 @@
 |:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
 | Propuesta de proyecto | https://docs.google.com/document/d/1K1JDaow5Tx50JQjSpznRKCyIFm_KJOQI2qhBrM3IMqQ/edit?usp=sharing |
 | Trello | https://trello.com/b/jBTv83Tq/arsw-2018-2-historias-compscene |
-| NinjaMock | https://ninjamock.com/s/JKFVVTx |
-| Backlog de producto | https://docs.google.com/spreadsheets/d/1KDiZdkcWTnHBWtftqC7oe6yVvaTo-bsEyzWVGUkCb-4/edit?usp=sharing |
+| NinjaMock |  |
+| Backlog de producto |  |
 | Javadoc | Generado en la ruta ./target/site/apidocs |
 | Documento de Arquitectura del Sistema | https://docs.google.com/document/d/1ynF7FltaMq4Is_eI6oozmRWI5bi-lQrzWnHo84oVVRc/edit?usp=sharing |
 ---
