@@ -13,8 +13,6 @@ function setConnected(connected) {
 }
 
 function connect() {
-
-
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -25,19 +23,15 @@ function connect() {
         });
     });
 }
-            function pasarVariables() {
-
-                var temp = $("#name").val();
-
-                alert("poootos name "+temp);
-                pagina="AnteSala.html";
-                pagina += "?";
-                nomVec = temp.split(",");
-                pagina+="="+temp;
-
-
-                location.href = pagina;
-            }
+function pasarVariables() {
+    var temp = $("#name").val();
+    alert("poootos name " + temp);
+    pagina = "AnteSala.html";
+    pagina += "?";
+    nomVec = temp.split(",");
+    pagina += "=" + temp;
+    location.href = pagina;
+}
 
 function disconnect() {
     if (stompClient !== null) {
@@ -50,14 +44,7 @@ function disconnect() {
 function sendName() {
     var temp = $("#name").val();
     jugador = temp;
-    alert("eso es?  " + jugador);
-
-    alert("Se activo nombre ");
     stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
-    
-    alert("lola");
-
-    document.getElementsByName("playerr").innerHTML = jugador;
 }
 
 function showGreeting(message) {
@@ -77,6 +64,5 @@ $(function () {
     $("#send").click(function () {
         sendName();
     });
-
 });
 
