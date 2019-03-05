@@ -18,12 +18,12 @@
 ### :link: URLs
 | Elemento | Link |
 |:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
-| Propuesta de proyecto | https://docs.google.com/document/d/1K1JDaow5Tx50JQjSpznRKCyIFm_KJOQI2qhBrM3IMqQ/edit?usp=sharing |
+| Propuesta de proyecto | https://docs.google.com/document/d/1ynF7FltaMq4Is_eI6oozmRWI5bi-lQrzWnHo84oVVRc/edit?usp=sharing  |
 | Taiga |  |
 | NinjaMock |  |
 | Backlog de producto |  |
 | Javadoc | Generado en la ruta ./target/site/apidocs |
-| Documento de Arquitectura del Sistema | https://docs.google.com/document/d/1ynF7FltaMq4Is_eI6oozmRWI5bi-lQrzWnHo84oVVRc/edit?usp=sharing |
+| Documento de Arquitectura del Sistema | |
 ---
 ### :book: Instrucciones
 Proximamente
