@@ -19,7 +19,7 @@
 | Elemento | Link |
 |:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
 | Propuesta de proyecto | https://docs.google.com/document/d/1K1JDaow5Tx50JQjSpznRKCyIFm_KJOQI2qhBrM3IMqQ/edit?usp=sharing |
-| Trello | https://trello.com/b/jBTv83Tq/arsw-2018-2-historias-compscene |
+| Taiga |  |
 | NinjaMock |  |
 | Backlog de producto |  |
 | Javadoc | Generado en la ruta ./target/site/apidocs |
