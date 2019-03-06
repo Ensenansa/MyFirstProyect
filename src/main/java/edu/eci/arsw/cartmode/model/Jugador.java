@@ -17,6 +17,7 @@ public class Jugador {
     private Integer preguntasCorrrectas;
     private Integer preguntasIncorrectas;
     private Integer nivel;
+    private Integer sala;
 
     public Jugador() {
     }
@@ -28,10 +29,19 @@ public class Jugador {
         preguntasCorrrectas = 0;
         preguntasIncorrectas = 0;
         nivel=1;
+        sala=0;
     }
 
     public Integer getNivel() {
         return nivel;
+    }
+
+    public void setSala(Integer sala) {
+        this.sala = sala;
+    }
+
+    public Integer getSala() {
+        return sala;
     }
 
     public void setNivel(Integer nivel) {

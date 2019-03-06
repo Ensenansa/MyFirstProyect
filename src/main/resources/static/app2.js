@@ -4,6 +4,15 @@ var mirar = (function () {
         arrVariables = cadVariables.split("&");
         document.getElementById("playerr").innerHTML = arrVariables ;
     }
+    function AllPlayersBySala(){
+        axios.get('/res/concretas/'+respuesta+'/'+idp)
+                .then(function (response) {
+                    console.log('saved successfully')
+                });
+
+    }
+
+
     return {
         fin: fin
     };

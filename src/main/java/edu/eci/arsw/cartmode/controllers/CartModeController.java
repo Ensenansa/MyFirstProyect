@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author cesar
  */
-@Service
+//@Service
 //@CrossOrigin("*")
-@RestController(value = "/jugadores")
+@RestController
+@RequestMapping(value = "/jugadores")
 public class CartModeController {
 
     @Autowired
@@ -33,8 +36,8 @@ public class CartModeController {
      *
      * @return  CopyOnWriteArrayList
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/jugadores")
-    public ResponseEntity<?> getJugadores() {
+    @RequestMapping(method = RequestMethod.GET, path = "/all")
+    public ResponseEntity<?> getAllJugadores() {
         try {
             return new ResponseEntity<>(cat.nameAllPlayer(), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
@@ -43,6 +46,16 @@ public class CartModeController {
         }
     }
     
+    @GetMapping("/{nombre}")
+    public ResponseEntity<?> getAllJugadoresBySala(@PathVariable String nombre) {
+        try {
+            return new ResponseEntity<>(cat.getPlayersBySala(nombre), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    //DATOS DEL JUGADOR
     @RequestMapping(method = RequestMethod.GET, path = "/datos")
     public ResponseEntity<?> getDataJugadores() {
         try {
@@ -52,4 +65,15 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+    
+        @RequestMapping(method = RequestMethod.GET, path = "/sala")
+    public ResponseEntity<?> getSala() {
+        try {
+            return new ResponseEntity<>(cat.getSala(), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
 }

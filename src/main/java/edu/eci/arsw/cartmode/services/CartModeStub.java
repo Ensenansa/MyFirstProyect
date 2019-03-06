@@ -54,45 +54,48 @@ public class CartModeStub implements CartModeServices{
     
     @Override
     public void addPlayer(String name) throws CartModeException {
-        Jugador playerr=new Jugador(name);
+        
+        Jugador play=new Jugador(name);
         System.out.println("Agergaando"+name);
-        player.add(playerr);
-        addSala(playerr);
-    }
-    
-    
-    
-    @Override
-    public void addSala(Jugador play) throws CartModeException {
+        player.add(play);      
         
         if(salas.size()==0){
                 List<Jugador> kl=new ArrayList<Jugador>();
+                play.setSala(salas.size());
                 kl.add(play);             
-                Sala temp=new Sala(salas.size()+1, null,kl,play);
+                Sala temp=new Sala(salas.size(), null,kl,play);
                 salas.add(temp);
                 
         }else if(salas.size()>0){
-            
             int y=0;
             boolean puesto=false;
             while(y<salas.size()&& !puesto){    
                 Sala op=salas.get(y);
                 if(op.getJugadores().size()<4){
                     List<Jugador> tr=op.getJugadores();
+                    play.setSala(salas.size()-1);
                     tr.add(play);
                     op.setJugadores(tr);
                     puesto=true;
                 }
                 y++;
             }
-            if(!puesto){
+            if(!puesto){                
                 List<Jugador> kl=new ArrayList<Jugador>();
                 kl.add(play);
-                Sala tmp2=new Sala(salas.size()+1, null,kl,play);
+                Sala tmp2=new Sala(salas.size(), null,kl,null);
+                salas.add(tmp2);                
+                //Para que tenga elid de sala correcto                          
+                play.setSala(salas.size()-1);
+                Sala temp3=salas.get(salas.size()-1);
+                temp3.setJugadorAnfrition(play);
+                salas.set(salas.size()-1, temp3);
+                //Debemos setear al jugador
             }
-        }
-    }
+        }        
 
+    }
+    
     @Override
     public List<Carta> GenerateBaraja(Integer nivel) throws CartModeException {
         List<Carta>resp= new CopyOnWriteArrayList<>();
@@ -133,6 +136,24 @@ public class CartModeStub implements CartModeServices{
         
         
     }    
+    @Override
+    public List<List<String>> getPlayersBySala(String name) throws CartModeException {
+        List<List<String>> resp=new CopyOnWriteArrayList<>();
+        //Segundo arreglo
+        List<String> refin=new CopyOnWriteArrayList<>();
+        for(Sala sal: salas){
+            List<Jugador> temp=sal.getJugadores();
+            refin.clear();
+            for(Jugador ju:temp){
+
+                refin.add(ju.getNickName());
+            }
+            resp.add(refin);
+        }
+        
+        
+        return resp;
+    }
     static{
     
     player= new CopyOnWriteArrayList<>();
@@ -143,5 +164,12 @@ public class CartModeStub implements CartModeServices{
     
     
     }
+
+    @Override
+    public List<Sala> getSala() throws CartModeException {
+        return salas;
+    }
+
+
 
 }
