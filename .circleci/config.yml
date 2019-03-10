@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    ...
+  deploy:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$694f085e-e6fd-44c8-a795-d2d7b647ca94@git.heroku.com/$ProyectoARSW20191.git master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
