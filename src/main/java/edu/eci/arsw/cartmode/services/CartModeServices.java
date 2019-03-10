@@ -32,10 +32,17 @@ public interface CartModeServices {
             
     public List<Carta> GenerateBaraja(Integer nivel)throws  CartModeException;
     
+    public Jugador getPlayerAnfiBySala(Integer idSala)throws  CartModeException;
     
-    public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
+    public Integer getSalaByPlayer(String nombre)throws  CartModeException;
+    
+    public List<String> getAllPlayersBySala(Integer idSala)throws  CartModeException;
     
     public List<List<String>> getPlayersBySala(String name)throws  CartModeException;
+    
+    public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
+        
     public void detenerPartida()throws  CartModeException;
+    
     
 }

@@ -1,19 +1,53 @@
+var grouid=0;
+var arrVariables="";
+var jugadores="";
+var juganfi="";
 var mirar = (function () {
+    
     function fin() {
         cadVariables = location.search.substring(1, location.search.length);
-        arrVariables = cadVariables.split("&");
+        arrVariables = cadVariables.split(",");
         document.getElementById("playerr").innerHTML = arrVariables ;
+        mirar.getIdSalaByPlayer();
     }
+    
     function AllPlayersBySala(){
-        axios.get('/res/concretas/'+respuesta+'/'+idp)
+        axios.get('/jugadores/players/'+grouid)
                 .then(function (response) {
-                    console.log('saved successfully')
+                    jugadores=response.data;
+                    document.getElementById("pl").innerHTML = jugadores ;
+                    console.log('saved successfully');
+                    mirar.getAnfiPlayBySala();
                 });
-
     }
-
-
+    
+    function getIdSalaByPlayer(){        
+        axios.get('jugadores/sala/'+arrVariables)
+                .then(function (response) {
+                    alert(response);    
+                    grouid=response.data;
+                    console.log('saved successfully')
+                    document.getElementById("idSala").innerHTML = grouid ;                    
+                    mirar.AllPlayersBySala();
+                });                
+    }
+    
+    function getAnfiPlayBySala(){
+        
+        axios.get('jugadores/playAnfi/'+grouid)
+                .then(function (response) {
+                    alert(response);    
+                    juganfi=response.data;
+                    console.log('saved successfully')
+                    document.getElementById("playAf").innerHTML = juganfi.nickName ;                                    
+                });                
+    }
+    
     return {
-        fin: fin
+        fin: fin,
+        getIdSalaByPlayer:getIdSalaByPlayer,
+        AllPlayersBySala:AllPlayersBySala,
+        getAnfiPlayBySala:getAnfiPlayBySala
+
     };
 })();

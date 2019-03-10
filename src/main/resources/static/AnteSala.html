@@ -31,14 +31,20 @@
             <section id="main" class="wrapper">
                 <div class="inner">
                     <p>EL nombre del jugador es: </p>
-                    <h2 style="text-align:center" id="playerr" ></h3>
+                    <h2 style="text-align:left" id="playerr" ></h3>
                     <p>Sala conectada es: </p>
-                    <h2 style="text-align:center" id="idSala" ></h3>    
-                    <h1 class="major">Esperando JUgadores</h1>
-                    <p>Los jugadores son: </p>
+                    <h2 style="text-align:left" id="idSala" ></h3>    
+                    <p>EL jugador anfrition de esta sala es: </p>
+                    <h2 style="text-align:left" id="playAf" ></h3>                        
+                    <h2 class="major">Esperando Jugadores</h2>
+                    <p>Los jugadores conectados son: </p>
                     <table width="165" align="center" onload="apiclient.getAllUser()">
-                        <h3 style="text-align:center" id="pl" >Losjugadores Conectados a esta sala son : </h3>
+                        <h3 style="text-align:center" id="pl" > </h3>
                     </table>
+                    
+                    <ul class="actions">
+                        <li><a href="" id="jugar" class="button submit">jugar</a></li>
+                    </ul>
                 </div>
                 <div class="col-md-12">
                     <table id="conversation" class="table table-striped">
@@ -69,6 +75,7 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="/app2.js"></script>
     </body>
 </html>

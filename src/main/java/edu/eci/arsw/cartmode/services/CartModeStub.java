@@ -33,9 +33,6 @@ public class CartModeStub implements CartModeServices{
     
     public CartModeStub() {
     }
-
-    
-    
     
     @Override
     public List<String> nameAllPlayer() throws CartModeException {
@@ -136,6 +133,46 @@ public class CartModeStub implements CartModeServices{
         
         
     }    
+        @Override
+    public List<Sala> getSala() throws CartModeException {
+        return salas;
+    }
+
+    @Override
+    public Integer getSalaByPlayer(String nombre) throws CartModeException {
+        int resp=-1;
+        String temp=nombre.substring(1);
+        for(Jugador ht: player){
+            if(ht.getNickName().equals(temp)){
+                resp=ht.getSala();
+            }
+        }
+        return resp;
+    }
+
+    @Override
+    public List<String> getAllPlayersBySala(Integer idSala) throws CartModeException {
+        List<String>resp= new CopyOnWriteArrayList<>();
+        for(Jugador ht: player){
+            if(ht.getSala()==idSala){
+                resp.add(ht.getNickName());
+            }
+        }        
+        return resp;
+    }
+
+    @Override
+    public Jugador getPlayerAnfiBySala(Integer idSala) throws CartModeException {
+        Jugador resp=new Jugador();
+        resp.setNickName("ninguno");
+        for(Sala re:salas){
+            if(re.getId()==idSala){
+                resp=re.getJugadorAnfrition();
+            }
+        }
+        
+        return resp; 
+    }
     @Override
     public List<List<String>> getPlayersBySala(String name) throws CartModeException {
         List<List<String>> resp=new CopyOnWriteArrayList<>();
@@ -150,8 +187,7 @@ public class CartModeStub implements CartModeServices{
             }
             resp.add(refin);
         }
-        
-        
+
         return resp;
     }
     static{
@@ -164,12 +200,5 @@ public class CartModeStub implements CartModeServices{
     
     
     }
-
-    @Override
-    public List<Sala> getSala() throws CartModeException {
-        return salas;
-    }
-
-
-
+    
 }

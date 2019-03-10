@@ -67,9 +67,38 @@ public class CartModeController {
     }
     
         @RequestMapping(method = RequestMethod.GET, path = "/sala")
-    public ResponseEntity<?> getSala() {
+    public ResponseEntity<?> getSalas() {
         try {
             return new ResponseEntity<>(cat.getSala(), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+
+        @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
+    public ResponseEntity<?> getSalasByPlayer(@PathVariable String nombre) {
+        try {
+            return new ResponseEntity<>(cat.getSalaByPlayer(nombre) , HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+        @RequestMapping(method = RequestMethod.GET, path = "/players/{sala}")
+    public ResponseEntity<?> getPlayersBySala(@PathVariable Integer sala) {
+        try {
+            return new ResponseEntity<>(cat.getAllPlayersBySala(sala) , HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}")
+    public ResponseEntity<?> getAnfritionPlayerBySala(@PathVariable Integer sala) {
+        try {
+            return new ResponseEntity<>(cat.getPlayerAnfiBySala(sala) , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
