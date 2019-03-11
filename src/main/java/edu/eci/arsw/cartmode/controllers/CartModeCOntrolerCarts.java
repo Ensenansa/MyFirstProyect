@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author cesar
  */
 @RestController
-@RequestMapping(value = "/jugadores")
+@RequestMapping(value = "/cartas")
 public class CartModeCOntrolerCarts {
     
     @Autowired
