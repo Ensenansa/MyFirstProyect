@@ -29,11 +29,11 @@ public class CartModeCOntrolerCarts {
     private CartModeServices cat;
     
     
-    @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
+    @RequestMapping(method = RequestMethod.GET, path = "/bara/{nivel}")
     public ResponseEntity<?> getAllPlayerByLevel(@PathVariable Integer nivel) {
         try {
             //cambiar
-            return new ResponseEntity<>(cat.getPlayerAnfiBySala(nivel) , HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.GenerateBaraja(nivel) , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
