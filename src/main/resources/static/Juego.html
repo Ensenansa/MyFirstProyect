@@ -45,6 +45,7 @@
     </head>
     <body>
 
+
         <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
             enabled. Please enable
             Javascript and reload this page!</h2></noscript>
@@ -88,7 +89,7 @@
             <h3 style="text-align:center" id="pl" >LOsjugadores son </h3>
         </table>
         <p>El nivel es: </p>
-        <h2 style="text-align:left" id="levelGame" ></h3>                        
+        <h2 style="text-align:left" id="levelGame" ></h3>     
         <div id="juego">
             <table>
                 <tr>
@@ -116,23 +117,12 @@
                     <td id="15" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
                 </tr>
             </table>
+        </div>
 
-            <div class="centrar">
-                <input type="button" value="Iniciar" onclick="iniciarJuego()" />    
-                <input type="button" value="Reset" onclick="resetearJuego()" /> 
-            </div>
-            <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <script src="/webjars/jquery/jquery.min.js"></script>
-            <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-            <script src="/webjars/stomp-websocket/stomp.min.js"></script>    
-            <script src="/app.js"></script>
-            <script src="js/jujs.js"></script>
-            <script src="js/apiclient.js"></script>
-            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-            <script src="js/appCart.js"></script>
-
-
-
-
-            </body>
-            </html>
+        <div class="centrar">
+            <input type="button" value="Iniciar" onclick="iniciarJuego()" />    
+            <input type="button" value="Reset" onclick="resetearJuego()" /> 
+        </div>
+        <script src="js/jujs.js"></script>
+</body>
+</html>

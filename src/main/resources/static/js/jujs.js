@@ -1,5 +1,4 @@
 
-
 var cartas = new Array( 
   {nombre: '1', seleccion: false}, {nombre: '2', seleccion: false}, 
   {nombre: '3', seleccion: false}, {nombre: '4', seleccion: false}, 
