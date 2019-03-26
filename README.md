@@ -53,7 +53,9 @@ Proximamente
 ![](img/)
 #### - Clases
 ![](img/DiagramaClase1.1.png)
+#### - Clases Detalle 1
 ![](img/DiagramaClase1.2.png)
+#### - Clases Detalle 2
 ![](img/DiagramaClase1.3.png)
 #### - Componente Conector
 ![](img/DiaComponenteConector.png)
