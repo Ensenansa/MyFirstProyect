@@ -20,7 +20,7 @@ import java.util.List;
  */
 public interface CartModeServices {
     //javascript:pasarVariables()
-    
+
     public List<Sala> getSala()throws CartModeException;
     public List<String> nameAllPlayer() throws CartModeException;
 
@@ -43,6 +43,8 @@ public interface CartModeServices {
     public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
         
     public void detenerPartida()throws  CartModeException;
+    
+    public List<Pregunta>getListPreguntas()throws  CartModeException;
     
     
 }

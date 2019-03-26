@@ -11,6 +11,7 @@ import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
 import edu.eci.arsw.cartmode.model.Sala;
 import edu.eci.arsw.cartmode.model.Tablero;
+import edu.eci.arsw.cartmode.model.impl.PreguntaSeleecionMultiple;
 import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ import java.util.Random;
 public class CartModeStub implements CartModeServices {
 
     private static final List<Jugador> player;
+    private static final List<Pregunta> preguntas;
+    
     private static final List<Sala> salas;
     private static final Integer contador;
     private static final Jugador temporal;
@@ -153,6 +156,7 @@ public class CartModeStub implements CartModeServices {
         int resp = -1;
         String temp = nombre.substring(1);
         for (Jugador ht : player) {
+            
             if (ht.getNickName().equals(temp)) {
                 resp = ht.getSala();
             }
@@ -201,14 +205,42 @@ public class CartModeStub implements CartModeServices {
 
         return resp;
     }
-
+    @Override
+    public List<Pregunta> getListPreguntas() throws CartModeException {
+        return preguntas;
+    }
     static {
 
         player = new CopyOnWriteArrayList<>();
         salas = new CopyOnWriteArrayList<>();
+        
+        preguntas= new CopyOnWriteArrayList<>();
+        //Creando las preguntas
+        List<String>opcionesrespuesta=new ArrayList<String>();
+        opcionesrespuesta.add("2x");
+        opcionesrespuesta.add("180");
+        opcionesrespuesta.add("Imposible");
+        opcionesrespuesta.add("300000");
+        opcionesrespuesta.add("2x");
+        
+        
+        Pregunta pregunta1= new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta, 10.0f);
+        Pregunta pregunta2= new PreguntaSeleecionMultiple(1, "¿Cuanto es la suma de los angulos internos de un triangulo?", "Matematicas", opcionesrespuesta, 10.0f);
+        Pregunta pregunta3= new PreguntaSeleecionMultiple(1, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta, 10.0f);
+        Pregunta pregunta4= new PreguntaSeleecionMultiple(1, "¿Cual es la velocidad de la luz en el vacio?", "Matematicas", opcionesrespuesta, 10.0f);
+        Pregunta pregunta5= new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta, 10.0f);
+        
+        //
+        
         contador = 0;
         temporal = null;
+        
+        
+        
+        
 
     }
+
+
 
 }
