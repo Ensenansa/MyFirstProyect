@@ -52,11 +52,13 @@ Proximamente
 #### - Paquetes
 ![](img/)
 #### - Clases
-![](img/)
-#### - Despliegue
-![](img/)
-#### - Secuencia
-![](img/)
+![](img/DiagramaClase1.1.png)
+![](img/DiagramaClase1.2.png)
+![](img/DiagramaClase1.3.png)
+#### - Componente Conector
+![](img/DiaComponenteConector.png)
+#### - Interaccion Stomp
+![](img/InteracionStomp.png)
 #### - Casos de uso
 ![](img/)
 
