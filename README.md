@@ -36,48 +36,48 @@ Proximamente
 
 - El jugador inicia la aplicacion e ingresa a la pagina de bienvenida.
 
-![1](img/)
+![](img/1.png)
 
 ---
 
 - El jugador se conecta y queda registrado en una sala unica.(De ser el primero queda como anfitrion).
 
-![2](img/)
+![](img/2.png)
 
 ---
 
 - Cada jugador puede conocer tanto su anfitrion como los demas participantes de su partida.
 
-![3](img/)
+![](img/3.png)
 
 ---
 
 - El Anfitrion es el unico que puede iniciar la partida.
 
-![4](img/)
+![](img/4.png)
 
 ---
-![5](img/)
+![](img/5.png)
 
 ---
 -Como se observa maria ingreso a la sala de juego.
-![8](img/)
+![](img/8.png)
 
 -Pero no puede iniciar la partida.
 ---
-![9](img/)
+![](img/9.png)
 
 ---
 
 -Al iniciar la partida puede empezar a emparejar.
 
-![6](img/)
+![](img/6.png)
 
 ---
 
 - Los jugadores pueden empezar a escoger cartas.
 
-![7](img/)
+![](img/7.png)
 
 ---
 
