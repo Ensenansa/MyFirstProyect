@@ -23,9 +23,13 @@ function connect() {
         });
     });
 }
+
+
+
+
 function pasarVariables() {
     var temp = $("#name").val();
-    alert("poootos name " + temp);
+    //alert("poootos name " + temp);
     pagina = "AnteSala.html";
     pagina += "?";
     nomVec = temp.split(",");

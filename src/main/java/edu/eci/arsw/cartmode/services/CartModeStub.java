@@ -241,6 +241,38 @@ public class CartModeStub implements CartModeServices {
 
     }
 
+    @Override
+    public void eraseAll() throws CartModeException {
+        player.clear();
+        salas.clear();
+    }
+
+    @Override
+    public void printt(String ola) throws CartModeException {
+        System.out.println("miremos que dice ola : "+ola);
+    }
+
+    @Override
+    public Boolean isPlayerAnfitrion(String nombre, Integer sala) throws CartModeException {
+        Boolean resp1=false;
+        Jugador resp = new Jugador();
+        resp.setNickName("ninguno");
+        for (Sala re : salas) {
+            if (re.getId() == sala) {
+                resp = re.getJugadorAnfrition();
+            }
+        }
+        
+        String y="="+resp.getNickName();
+        
+        System.out.println("que comparamos :"+y+"con "+nombre);
+        if(y.equals(nombre)){
+            resp1=true;
+        }
+        return resp1;
+        
+    }
+
 
 
 }

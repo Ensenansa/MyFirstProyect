@@ -42,7 +42,7 @@ function girarCarta () {
 
   jugada2 = evento.target.dataset.valor;
   identificadorJ2 = evento.target.id;
-
+  //mandarCarta(jugada2);
 
   if ( jugada1 !== "" ) {
 

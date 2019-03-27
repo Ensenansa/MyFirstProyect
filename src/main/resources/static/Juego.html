@@ -1,8 +1,14 @@
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <title>Proyecto</title>
-        <STYLE TYPE="text/css" MEDIA="screen, print, projection">
+        <title>Juego</title>
+                <script>
+        </script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        
+       <STYLE TYPE="text/css" MEDIA="screen, print, projection">
 
             #juego {
                 opacity: 0.3;
@@ -39,44 +45,35 @@
                 margin-left: 210px;
             }
 
-        </STYLE>
-
-
+        </STYLE>        
     </head>
-    <body>
-
-
-        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    <body class="is-preload" onload="iniciarJuego()">
+        <!-- Header -->
+        <header id="header">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="JuegoAnteSala.html" class="active">Generic</a></li>
+                    <li><a href="resultados.html">Elements</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <section id="main" class="wrapper">
+                <div class="inner">
+      <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
             enabled. Please enable
             Javascript and reload this page!</h2></noscript>
         <div id="main-content" class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="connect">WebSocket connection:</label>
-                            <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                            <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="name">What is your name?</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your name here...">
-                        </div>
-                        <button id="send" class="btn btn-default" type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <table id="conversation" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Greetings</th>
+                                <th>Proximamente</th>
                             </tr>
                         </thead>
                         <tbody id="greetings">
@@ -122,7 +119,40 @@
         <div class="centrar">
             <input type="button" value="Iniciar" onclick="iniciarJuego()" />    
             <input type="button" value="Reset" onclick="resetearJuego()" /> 
+        </div>              
+                    
+                    
+                </div>
+                <div class="col-md-12">
+                    
+                </div>
+            </section>
         </div>
-        <script src="js/jujs.js"></script>
-</body>
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- Scripts -->
+                <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>          
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="js/apiclient.js"></script>        
+        <script src="js/appIndex.js"></script>
+        
+               <script src="js/jujs.js"></script>
+        <script src="/app.js"></script>
+        
+        <script src="/app3.js"></script>
+    </body>
 </html>

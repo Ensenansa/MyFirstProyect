@@ -27,5 +27,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/gs-sala").withSockJS();
     }
     
-
+    public void registroCambioCarta(StompEndpointRegistry registry) {
+        registry.addEndpoint("/gs-carta").withSockJS();
+    
+    }
 }

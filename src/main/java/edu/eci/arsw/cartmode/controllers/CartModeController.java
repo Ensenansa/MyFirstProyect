@@ -104,5 +104,16 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}/{nombre}")
+    public ResponseEntity<?> IsAnfritionPlayerOfSala(@PathVariable Integer sala, @PathVariable String nombre) {
+        try {
+            //Mejorar esto con la funcion de callback de javascript
+            return new ResponseEntity<>(cat.isPlayerAnfitrion(nombre, sala) , HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
     
 }

@@ -74,7 +74,7 @@ var mirar = (function () {
 
     return {
         getAnfiPlayBySala: getAnfiPlayBySala,
-        orCarta: orCarta
+        orCarta: orCarta,
 
     };
 })();

@@ -24,7 +24,7 @@ var mirar = (function () {
     function getIdSalaByPlayer(){        
         axios.get('jugadores/sala/'+arrVariables)
                 .then(function (response) {
-                    alert(response);    
+                    //alert(response);    
                     grouid=response.data;
                     console.log('saved successfully')
                     document.getElementById("idSala").innerHTML = grouid ;                    

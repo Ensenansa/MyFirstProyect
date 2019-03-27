@@ -30,10 +30,82 @@ Proximamente
 
 ---
 
-### :camera: Pantallas de la aplicación
+### :camera: Pantallas de la aplicación-- Pruebas Funcionales.
+
+### :book: Requisitos Funcionales
+
+- El jugador inicia la aplicacion e ingresa a la pagina de bienvenida.
+
+![1](img/)
+
+---
+
+- El jugador se conecta y queda registrado en una sala unica.(De ser el primero queda como anfitrion).
+
+![2](img/)
+
+---
+
+- Cada jugador puede conocer tanto su anfitrion como los demas participantes de su partida.
+
+![3](img/)
+
+---
+
+- El Anfitrion es el unico que puede iniciar la partida.
+
+![4](img/)
+
+---
+![5](img/)
+
+---
+-Como se observa maria ingreso a la sala de juego.
+![8](img/)
+
+-Pero no puede iniciar la partida.
+---
+![9](img/)
+
+---
+
+-Al iniciar la partida puede empezar a emparejar.
+
+![6](img/)
+
+---
+
+- Los jugadores pueden empezar a escoger cartas.
+
+![7](img/)
+
+---
+
+- Proximamente
+
 ![](img/)
 
 ---
+
+- Proximamente
+
+![](img/)
+
+---
+
+- Proximamente
+
+![](img/)
+
+---
+
+- Proximamente
+
+![](img/)
+
+---
+
+
 ![](img/)
 
 ---

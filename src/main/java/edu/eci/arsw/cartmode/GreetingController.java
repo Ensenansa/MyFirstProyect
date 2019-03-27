@@ -2,6 +2,7 @@ package edu.eci.arsw.cartmode;
 
 
 
+import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.services.CartModeServices;
@@ -34,11 +35,22 @@ public class GreetingController {
     @SendTo("/topic/sala")
     public Greeting Sala(HelloMessage message) throws Exception {
         Thread.sleep(1000); // simulated delay
-
-        System.out.println("PUTOS");
         return null;
     }
-
+    
+    
+    @MessageMapping("/cart")
+    @SendTo("/topic/carta")
+    public Carta CambioCarta(String message) throws Exception {
+        
+        Thread.sleep(1000); // simulated delay
+        cart.printt(message);
+        
+        return null;
+    }
+    
+    
+    
     
     /**
     @MessageMapping("/hello")
