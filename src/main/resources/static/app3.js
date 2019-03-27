@@ -1,30 +1,9 @@
-var stompClient = null;
-var stompClient2 = null;
-var jugador = null;
 
-var valor = 0;
-
-
-var verdad = false;
-var anfitrion = false;
-
-
-function setConnected(connected) {
-    $("#connect").prop("disabled", connected);
-    $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#conversation").show();
-    } else {
-        $("#conversation").hide();
-    }
-    $("#greetings").html("");
-}
-
-function mandarCarta(car) {
+async function mandarCarta(car) {
     alert(car);
     valor = car;
 
-    socket = new SockJS('/gs-guide-websocket');
+    socket = new SockJS('/gs-carta');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
@@ -66,17 +45,14 @@ function load() {
     }
 }
 
-function sendName() {
-    var temp = $("#name").val();
-    jugador = temp;
+async function sendName() {
     alert("si");
-    stompClient.send("/app/cart", {}, JSON.stringify({'carta': valor}));
+    stompClient.send("/app/cart/"+valor, {}, JSON.stringify({}));
 }
 
 function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
-
 
 
 

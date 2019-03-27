@@ -4,8 +4,9 @@ var jugadores="";
 var juganfi="";
 var mirar = (function () {
     
-    function fin() {
+   async function fin() {
         cadVariables = location.search.substring(1, location.search.length);
+        alert();
         arrVariables = cadVariables.split(",");
         document.getElementById("playerr").innerHTML = arrVariables ;
         mirar.getIdSalaByPlayer();
@@ -31,12 +32,12 @@ var mirar = (function () {
                     mirar.AllPlayersBySala();
                 });                
     }
-    
-    function getAnfiPlayBySala(){
+    //async
+     function getAnfiPlayBySala(){
         
         axios.get('jugadores/playAnfi/'+grouid)
                 .then(function (response) {
-                    alert(response);    
+                    //alert(response);    
                     juganfi=response.data;
                     console.log('saved successfully')
                     document.getElementById("playAf").innerHTML = juganfi.nickName ;                                    

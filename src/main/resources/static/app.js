@@ -27,9 +27,9 @@ function connect() {
 
 
 
-function pasarVariables() {
+async function pasarVariables() {
     var temp = $("#name").val();
-    //alert("poootos name " + temp);
+    alert();
     pagina = "AnteSala.html";
     pagina += "?";
     nomVec = temp.split(",");
@@ -46,9 +46,10 @@ function disconnect() {
 }
 
 function sendName() {
-    var temp = $("#name").val();
-    jugador = temp;
+
+    
     stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+
 }
 
 function showGreeting(message) {

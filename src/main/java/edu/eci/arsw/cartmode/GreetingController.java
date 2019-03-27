@@ -7,6 +7,7 @@ import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -31,22 +32,22 @@ public class GreetingController {
         return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
 
-    @MessageMapping("/sal")
-    @SendTo("/topic/sala")
-    public Greeting Sala(HelloMessage message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        return null;
-    }
+    //@MessageMapping("/sal")
+    //@SendTo("/topic/sala")
+    //public Greeting Sala(HelloMessage message) throws Exception {
+    //    Thread.sleep(1000); // simulated delay
+    //    return null;
+    //}
     
     
-    @MessageMapping("/cart")
+    @MessageMapping("/cart/{carta}")
     @SendTo("/topic/carta")
-    public Carta CambioCarta(String message) throws Exception {
+    public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
         
-        Thread.sleep(1000); // simulated delay
-        cart.printt(message);
+        Thread.sleep(2000); // simulated delay
+        cart.printt(carta);
         
-        return null;
+        return new Carta(carta, 1);
     }
     
     
