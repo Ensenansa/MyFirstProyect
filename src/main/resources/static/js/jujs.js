@@ -39,7 +39,7 @@ function resetearJuego () {
 
 function girarCarta () {
   var evento = window.event;
-
+  alert("sisisis");
   jugada2 = evento.target.dataset.valor;
   identificadorJ2 = evento.target.id;
   mandarCarta(jugada2);

@@ -29,7 +29,7 @@ function connect() {
 
 async function pasarVariables() {
     var temp = $("#name").val();
-    alert();
+    //alert();
     pagina = "AnteSala.html";
     pagina += "?";
     nomVec = temp.split(",");

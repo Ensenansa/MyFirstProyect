@@ -6,7 +6,7 @@ var mirar = (function () {
     
    async function fin() {
         cadVariables = location.search.substring(1, location.search.length);
-        alert();
+        //alert();
         arrVariables = cadVariables.split(",");
         document.getElementById("playerr").innerHTML = arrVariables ;
         mirar.getIdSalaByPlayer();
