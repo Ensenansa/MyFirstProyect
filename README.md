@@ -133,8 +133,8 @@ Proximamente
 ![](img/DiaComponenteConector.png)
 #### - Interaccion Stomp
 ![](img/InteracionStomp.png)
-#### - Casos de uso
-![](img/)
+#### - Diagrama de Despliege
+![](img/DIagramaDespliegue.png)
 
 ---
 ### :wrench: Tecnologías utilizadas
