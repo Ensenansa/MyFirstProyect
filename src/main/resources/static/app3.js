@@ -47,7 +47,8 @@ function load() {
 
 async function sendName() {
     alert("si");
-    stompClient.send("/app/cart/"+valor, {}, JSON.stringify({}));
+    alert(valor);
+    stompClient.send("/app/cart/", {}, JSON.stringify({'name': valor}));
 }
 
 function showGreeting(message) {

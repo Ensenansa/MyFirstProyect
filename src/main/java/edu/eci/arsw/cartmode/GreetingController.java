@@ -40,14 +40,15 @@ public class GreetingController {
     //}
     
     
-    @MessageMapping("/cart/{carta}")
+    @MessageMapping("/cart")
     @SendTo("/topic/carta")
-    public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
-        
+    //public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
+    public String CambioCarta(String carta) throws Exception {
+        System.out.println("miremos "+carta);
         Thread.sleep(2000); // simulated delay
         cart.printt(carta);
         
-        return new Carta(carta, 1);
+        return "sipp";
     }
     
     
