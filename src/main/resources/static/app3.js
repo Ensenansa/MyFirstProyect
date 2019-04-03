@@ -10,9 +10,10 @@ async function mandarCarta(car) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/carta', function (CambioCarta) {
             showGreeting(JSON.parse(car).content);
+            sendName();
         });
     });
-    sendName();
+    
 
 }
 

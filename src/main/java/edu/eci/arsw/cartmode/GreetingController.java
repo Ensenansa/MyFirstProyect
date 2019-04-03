@@ -43,12 +43,16 @@ public class GreetingController {
     @MessageMapping("/cart")
     @SendTo("/topic/carta")
     //public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
-    public String CambioCarta(String carta) throws Exception {
-        System.out.println("miremos "+carta);
-        Thread.sleep(2000); // simulated delay
-        cart.printt(carta);
+    public Greeting CambioCarta(HelloMessage message) throws Exception {
+        System.out.println("miremos "+message.getName());
+        cart.printt(message.getName());
         
-        return "sipp";
+        
+        
+        Thread.sleep(2000); // simulated delay
+        
+        
+        return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
     
     
