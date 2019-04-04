@@ -1,21 +1,22 @@
 
-async function mandarCarta(car) {
+function mandarCarta(car) {
     alert(car);
     valor = car;
 
-    socket = new SockJS('/gs-carta');
+    socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
-        console.log('Connected: ' + frame);
+        console.log('Connectedby    : ' + frame);
         stompClient.subscribe('/topic/carta', function (CambioCarta) {
-            showGreeting(JSON.parse(car).content);
-            sendName();
+            
         });
+        sendName();
     });
     
 
 }
+
 
 function disconnect() {
     if (stompClient !== null) {
@@ -47,7 +48,7 @@ function load() {
 }
 
 async function sendName() {
-    alert("si");
+    alert("si PU");
     alert(valor);
     stompClient.send("/app/cart/", {}, JSON.stringify({'name': valor}));
 }

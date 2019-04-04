@@ -1,6 +1,7 @@
 var stompClient = null;
 var stompClient2 = null;
 var jugador = null;
+var socket=null;
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -13,7 +14,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
@@ -25,9 +26,7 @@ function connect() {
 }
 
 
-
-
-async function pasarVariables() {
+function pasarVariables() {
     var temp = $("#name").val();
     //alert();
     pagina = "AnteSala.html";
@@ -70,4 +69,3 @@ $(function () {
         sendName();
     });
 });
-
