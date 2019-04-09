@@ -16,6 +16,10 @@ public class Sala {
     private List<Jugador> jugadores;
     private Integer id;
     private Tablero tablero;
+    private Boolean listo;
+
+    public Sala() {
+    }
     
     
     public Sala(Integer id, Tablero tablero, List<Jugador> jugadores, Jugador jugadorAnfrition){
@@ -23,8 +27,17 @@ public class Sala {
         this.jugadorAnfrition=jugadorAnfrition;
         this.jugadores=jugadores;
         this.tablero=tablero;
-    
+        this.listo=false;
     }
+
+    public void setListo(Boolean listo) {
+        this.listo = listo;
+    }
+
+    public Boolean getListo() {
+        return listo;
+    }
+    
 
     public Integer getId() {
         return id;
@@ -59,6 +72,7 @@ public class Sala {
     }
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        
+        return "Sala{"+"id="+id+", tablero="+tablero+", jugadores="+jugadores.listIterator()+",jugadorAnfrition="+jugadorAnfrition+", listo="+listo+"}";
     }
 }

@@ -20,6 +20,9 @@ import java.util.List;
  */
 public interface CartModeServices {
     //javascript:pasarVariables()
+    public Boolean getListoSala(Integer idSala)throws CartModeException;
+    public Sala getSalaById(Integer idlista)throws CartModeException;
+    public void SetStade(Integer idlista)throws CartModeException;
     public void printt( String ol)throws CartModeException;
     public void eraseAll()throws CartModeException;
     public List<Sala> getSala()throws CartModeException;

@@ -254,23 +254,43 @@ public class CartModeStub implements CartModeServices {
 
     @Override
     public Boolean isPlayerAnfitrion(String nombre, Integer sala) throws CartModeException {
+        //System.out.println("cual nombre llega"+nombre);
         Boolean resp1=false;
         Jugador resp = new Jugador();
         resp.setNickName("ninguno");
         for (Sala re : salas) {
+            
             if (re.getId() == sala) {
                 resp = re.getJugadorAnfrition();
             }
         }
         
-        String y="="+resp.getNickName();
+        String y=resp.getNickName();
         
-        System.out.println("que comparamos :"+y+"con "+nombre);
+        //System.out.println("que comparamos : "+y+" con "+nombre);
         if(y.equals(nombre)){
             resp1=true;
         }
+        //System.out.println("respuesta es: "+resp1);
         return resp1;
         
+    }
+
+    @Override
+    public void SetStade(Integer idlista) throws CartModeException {
+        System.out.println("Si legamos:"+idlista);
+        Sala o=salas.get(idlista);
+        o.setListo(true);
+    }
+
+    @Override
+    public Sala getSalaById(Integer idlista) throws CartModeException {
+        return salas.get(idlista);
+    }
+
+    @Override
+    public Boolean getListoSala(Integer idSala) throws CartModeException {
+        return salas.get(idSala).getListo();
     }
 
 

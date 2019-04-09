@@ -34,7 +34,7 @@ public class CartModeController {
 
     /**
      *
-     * @return  CopyOnWriteArrayList
+     * @return CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET, path = "/all")
     public ResponseEntity<?> getAllJugadores() {
@@ -45,7 +45,7 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @GetMapping("/{nombre}")
     public ResponseEntity<?> getAllJugadoresBySala(@PathVariable String nombre) {
         try {
@@ -55,6 +55,7 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+
     //DATOS DEL JUGADOR
     @RequestMapping(method = RequestMethod.GET, path = "/datos")
     public ResponseEntity<?> getDataJugadores() {
@@ -65,8 +66,8 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
-        @RequestMapping(method = RequestMethod.GET, path = "/sala")
+
+    @RequestMapping(method = RequestMethod.GET, path = "/sala")
     public ResponseEntity<?> getSalas() {
         try {
             return new ResponseEntity<>(cat.getSala(), HttpStatus.ACCEPTED);
@@ -76,29 +77,43 @@ public class CartModeController {
         }
     }
 
-        @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
+    @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
     public ResponseEntity<?> getSalasByPlayer(@PathVariable String nombre) {
         try {
-            return new ResponseEntity<>(cat.getSalaByPlayer(nombre) , HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.getSalaByPlayer(nombre), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-        @RequestMapping(method = RequestMethod.GET, path = "/players/{sala}")
-    public ResponseEntity<?> getPlayersBySala(@PathVariable Integer sala) {
+
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/sala/listo/{id}")
+    public ResponseEntity<?> getListoSalas(@PathVariable String id) {
         try {
-            return new ResponseEntity<>(cat.getAllPlayersBySala(sala) , HttpStatus.ACCEPTED);
+            int idsala = Integer.parseInt(id);
+            return new ResponseEntity<>(cat.getListoSala(idsala) , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
     
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/players/{sala}")
+    public ResponseEntity<?> getPlayersBySala(@PathVariable Integer sala) {
+        try {
+            return new ResponseEntity<>(cat.getAllPlayersBySala(sala), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}")
     public ResponseEntity<?> getAnfritionPlayerBySala(@PathVariable Integer sala) {
         try {
-            return new ResponseEntity<>(cat.getPlayerAnfiBySala(sala) , HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.getPlayerAnfiBySala(sala), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
@@ -109,11 +124,11 @@ public class CartModeController {
     public ResponseEntity<?> IsAnfritionPlayerOfSala(@PathVariable Integer sala, @PathVariable String nombre) {
         try {
             //Mejorar esto con la funcion de callback de javascript
-            return new ResponseEntity<>(cat.isPlayerAnfitrion(nombre, sala) , HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.isPlayerAnfitrion(nombre, sala), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
+
 }
