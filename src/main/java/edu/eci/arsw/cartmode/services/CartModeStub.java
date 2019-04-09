@@ -26,10 +26,10 @@ import java.util.Random;
  */
 @Service
 public class CartModeStub implements CartModeServices {
-
+    private static final List<Tablero> tableros;
     private static final List<Jugador> player;
     private static final List<Pregunta> preguntas;
-    
+    private static final  List<String>opcionesrespuesta;
     private static final List<Sala> salas;
     private static final Integer contador;
     private static final Jugador temporal;
@@ -132,17 +132,46 @@ public class CartModeStub implements CartModeServices {
     }
 
     @Override
-    public void iniciarPartida(Integer idSala, List<Jugador> players, Nivel level) throws CartModeException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Tablero iniciarPartida(Integer idSala, List<String> players, Integer level) throws CartModeException {
+        generateTblero();
+        return getTblero(level);
     }
 
+        @Override
+    public void iniciarPartida() throws CartModeException {
+        generateTblero();
+        setTableros();
+    }
+    
+    public void setTableros() throws CartModeException{
+        for(Sala sal:salas){
+            sal.setTablero(getTblero(1));       
+        }
+    }
+    
     @Override
     public void detenerPartida() throws CartModeException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
-    public void generateTblero(List<Carta> barajas, List<Pregunta> pregunta, List<Tripla<String, Boolean, Float>> respuestas) throws CartModeException {
+    public Tablero getTblero(Integer level)throws  CartModeException{
+        Tablero o =new Tablero();
+        for(Tablero tab: tableros){
+            if(tab.getNivel().equals(level)){
+                o=tab;
+            }
+        }
+        return o;
+    }     
+    
+    @Override
+    public void generateTblero() throws CartModeException {
+        for(int i=0;i<3;i++){
+            Tablero a=new Tablero(GenerateBaraja(i),getListPreguntas(),opcionesrespuesta,i);
+            tableros.add(a);
+        
+        }
 
     }
 
@@ -210,13 +239,13 @@ public class CartModeStub implements CartModeServices {
         return preguntas;
     }
     static {
-
+        tableros= new CopyOnWriteArrayList<>();
         player = new CopyOnWriteArrayList<>();
         salas = new CopyOnWriteArrayList<>();
         
         preguntas= new CopyOnWriteArrayList<>();
         //Creando las preguntas
-        List<String>opcionesrespuesta=new ArrayList<String>();
+        opcionesrespuesta=new ArrayList<String>();
         opcionesrespuesta.add("2x");
         opcionesrespuesta.add("180");
         opcionesrespuesta.add("Imposible");
@@ -229,6 +258,11 @@ public class CartModeStub implements CartModeServices {
         Pregunta pregunta3= new PreguntaSeleecionMultiple(1, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta, 10.0f);
         Pregunta pregunta4= new PreguntaSeleecionMultiple(1, "¿Cual es la velocidad de la luz en el vacio?", "Matematicas", opcionesrespuesta, 10.0f);
         Pregunta pregunta5= new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta, 10.0f);
+        preguntas.add(pregunta1);
+        preguntas.add(pregunta2);
+        preguntas.add(pregunta3);
+        preguntas.add(pregunta4);
+        preguntas.add(pregunta5);
         
         //
         
@@ -291,6 +325,21 @@ public class CartModeStub implements CartModeServices {
     @Override
     public Boolean getListoSala(Integer idSala) throws CartModeException {
         return salas.get(idSala).getListo();
+    }
+
+    @Override
+    public Integer LevelOfTablero(Integer idSala) throws CartModeException {
+        int resp=0;
+        for(Sala sa: salas){
+            System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
+            if(sa.getId().equals(idSala)){
+                resp=sa.getTablero().getNivel();
+            }
+        
+        
+        }
+        
+        return resp;
     }
 
 

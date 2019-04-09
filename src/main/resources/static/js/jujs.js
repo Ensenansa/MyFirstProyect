@@ -19,7 +19,8 @@ var identificadorJ2 = "";
 
 
 function iniciarJuego () {  
-    //popo.conec();
+    popo.conec();
+    tener.fin();
     
   var dato = document.getElementById("juego");
   dato.style.opacity = 1;
@@ -47,7 +48,7 @@ function girarCarta () {
   //alert("sisisisp");
   jugada2 = evento.target.dataset.valor;
   identificadorJ2 = evento.target.id;
-  mandarCarta(jugada2);
+  tener.mandarCarta(jugada2);
 
   if ( jugada1 !== "" ) {
 

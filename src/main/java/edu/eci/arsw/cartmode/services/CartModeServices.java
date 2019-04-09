@@ -32,8 +32,9 @@ public interface CartModeServices {
     
     public void addPlayer(String name)throws CartModeException;
     
-    public void generateTblero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas)throws  CartModeException;
-            
+    //public void generateTblero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas)throws  CartModeException;
+    public void generateTblero()throws  CartModeException;
+    public Tablero getTblero(Integer level)throws  CartModeException;        
     public List<Carta> GenerateBaraja(Integer nivel)throws  CartModeException;
     
     public Jugador getPlayerAnfiBySala(Integer idSala)throws  CartModeException;
@@ -44,13 +45,14 @@ public interface CartModeServices {
     
     public List<List<String>> getPlayersBySala(String name)throws  CartModeException;
     
-    public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
-        
+    //public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
+    public Tablero iniciarPartida(Integer idSala,List<String> players, Integer level)throws  CartModeException;
+    public void iniciarPartida()throws  CartModeException;
     public void detenerPartida()throws  CartModeException;
     
     public List<Pregunta>getListPreguntas()throws  CartModeException;
     
     public Boolean isPlayerAnfitrion(String nombre, Integer sala)throws  CartModeException;
     
-    
+    public Integer LevelOfTablero(Integer idSala)throws  CartModeException;
 }

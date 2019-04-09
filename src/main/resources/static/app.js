@@ -13,6 +13,7 @@ var popo = (function () {
 
     var salalis = false;
 
+    var solucion = 1;
     //function connect() {
     var connect = function (topic) {
         var socket = new SockJS('/gs-guide-websocket');
@@ -79,14 +80,10 @@ var popo = (function () {
                 .then(function (response) {
                     salalis = response.data;
                     //alert(salalis);
-
                 });
     }
-
-
-
     var reload = function () {
-        var t=0;
+        var t = 0;
         var cono = 0;
 
         while (!verdad & cono < 2) {
@@ -96,46 +93,41 @@ var popo = (function () {
         }
         //alert("enserio2" + verdad);
         //Verofocar si el jugador es anfritrion
-        if(verdad){
-            if(t<1){
-                t=1;
+        if (verdad) {
+            if (t < 1) {
+                t = 1;
                 alert("Usted es el anfritrion no tiene porque revisar");
-        }
-            
-        }else{
-        
-        
-        //EN esta parte se verifica hasta que la sala este activa
-        if (!verdad) {
-            //getLisSalaAxios();
-            //while (!salalis) {//Aqui es donde esperan 3 segundos
-            var cronometro;
-            contador_s = 0;
-            cronometro = setInterval(
-                    function () {
-                        contador_s++;
-                        //alert(""+contador_s);
-                        //if (contador_s > 3) {
-                        //contador_s = 0;
-                        getLisSalaAxios();
-                        //alert("e " + salalis);
-                        if (salalis) {
-                            alert("Empiece a jugar");
-                            clearInterval(cronometro);
-                            popo.pr(popo.conec);
+            }
 
-                        }
-                        //alert("se acabo");
-                        //}
-                    }, 3000);
-
-            //}
-
+        } else {
+            //EN esta parte se verifica hasta que la sala este activa
+            if (!verdad) {
+                //getLisSalaAxios();
+                //while (!salalis) {//Aqui es donde esperan 3 segundos
+                var cronometro;
+                contador_s = 0;
+                cronometro = setInterval(
+                        function () {
+                            contador_s++;
+                            //alert(""+contador_s);
+                            //if (contador_s > 3) {
+                            //contador_s = 0;
+                            getLisSalaAxios();
+                            //alert("e " + salalis);
+                            if (salalis) {
+                                //alert("valor ed solucion" + solucion);
+                                alert("Empiece a jugar");
+                                clearInterval(cronometro);
+                                popo.pr(popo.conec);
+                                solucion = 5;
+                            }
+                            //alert("se acabo");
+                            //}
+                        }, 3000);
+            }
 
         }
-
     }
-}
     var loadd = function () {
 
         nombreUsuario = document.getElementById("playerr").innerHTML;
@@ -148,19 +140,17 @@ var popo = (function () {
                     verdad = response.data;
                     console.log('saved successfully')
                 });
+
+        return verdad;
     }
     var load = function () {
         var salal = document.getElementById("idSala").innerHTML;
-
-
-
         //alert("sala es: " + salal);
         //alert("llegamos" + verdad);
         if (verdad) {
             //alert("paso");
             //alert(stompClient);
             stompClient.send("/app/avisar." + salal, {}, "");
-
             location.href = "/Juego.html";
         } else {
             alert("Debes ser el anfrition para iniciar la partida");
@@ -185,13 +175,27 @@ var popo = (function () {
             connect('');
         },
         pr: function () {
-            loadd();
+            var qw = loadd();
             var salal = document.getElementById("idSala").innerHTML;
-            verdad = true;
-            if (verdad) {
+            //verdad = true;
+            if (qw) {
                 stompClient.send("/app/avisar." + salal, {}, "");
                 //alert("paso");
-                location.href = "/Juego.html";
+                temp = document.getElementById("playerr").innerHTML;
+                //alert();
+                pagina = "/Juego.html";
+                pagina += "?";
+                nomVec = temp.split(",");
+                pagina += "=" + temp;
+                location.href = pagina;
+            } else if (solucion >2) {
+                temp = document.getElementById("playerr").innerHTML;
+                //alert();
+                pagina = "/Juego.html";
+                pagina += "?";
+                nomVec = temp.split(",");
+                pagina += "=" + temp;
+                location.href = pagina;
             } else {
                 alert("Debes ser el anfrition para iniciar la partida");
             }
@@ -200,7 +204,6 @@ var popo = (function () {
             reload();
 
         }
-
     };
 })();
 

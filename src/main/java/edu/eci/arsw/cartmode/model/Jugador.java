@@ -5,6 +5,10 @@
  */
 package edu.eci.arsw.cartmode.model;
 
+import edu.eci.arsw.cartmode.model.impl.Tripla;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  *
  * @author cesar
@@ -16,10 +20,19 @@ public class Jugador {
     private Integer puntaje;
     private Integer preguntasCorrrectas;
     private Integer preguntasIncorrectas;
+    private List<Tripla<String,Boolean,Float>> respuestasJugador= new CopyOnWriteArrayList<>();
     private Integer nivel;
     private Integer sala;
 
     public Jugador() {
+    }
+
+    public void setRespuestasJugador(List<Tripla<String, Boolean, Float>> respuestasJugador) {
+        this.respuestasJugador = respuestasJugador;
+    }
+
+    public List<Tripla<String, Boolean, Float>> getRespuestasJugador() {
+        return respuestasJugador;
     }
 
     public Jugador(String nickName) {

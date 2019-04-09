@@ -143,7 +143,7 @@ public class CartModeServicesTest {
     public void getListPreguntasTest() throws CartModeException {
         List<Pregunta> pre = cat.getListPreguntas();
         System.out.println("qe muestra :"+pre.size());
-        Assert.assertEquals(0, pre.size());
+        Assert.assertEquals(5, pre.size());
 
     }
 

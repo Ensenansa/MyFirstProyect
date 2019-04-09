@@ -17,18 +17,32 @@ public class Tablero {
     
     private List<Carta> barajas= new CopyOnWriteArrayList<>();
     private List<Pregunta> preguntas= new CopyOnWriteArrayList<>();
-    private List<Tripla<String,Boolean,Float>> respuestas= new CopyOnWriteArrayList<>();
+    //private List<Tripla<String,Boolean,Float>> respuestas= new CopyOnWriteArrayList<>();
+    private List<String> respuestas= new CopyOnWriteArrayList<>();
     private float tiempo;
+    private Integer Nivel;
 
-    public Tablero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas) {
+    public Tablero() {
+    }
+
+    //public Tablero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas, Integer Nivel) {
+    public Tablero(List<Carta> barajas,List<Pregunta>pregunta, List<String> respuestas, Integer Nivel) {
         this.barajas=barajas;
         this.preguntas=pregunta;
         this.respuestas=respuestas;
         this.tiempo=(float)0.0;
+        this.Nivel=Nivel;
         
     }
 
-    
+    public void setNivel(Integer Nivel) {
+        this.Nivel = Nivel;
+    }
+
+    public Integer getNivel() {
+        return Nivel;
+    }
+
     
     public List<Carta> getBarajas() {
         return barajas;
@@ -38,7 +52,8 @@ public class Tablero {
         return preguntas;
     }
 
-    public List<Tripla<String, Boolean, Float>> getRespuestas() {
+    //public List<Tripla<String, Boolean, Float>> getRespuestas() {
+    public List<String> getRespuestas() {
         return respuestas;
     }
 
@@ -54,7 +69,8 @@ public class Tablero {
         this.preguntas = preguntas;
     }
 
-    public void setRespuestas(List<Tripla<String, Boolean, Float>> respuestas) {
+    //public void setRespuestas(List<Tripla<String, Boolean, Float>> respuestas) {
+    public void setRespuestas(List<String> respuestas) {
         this.respuestas = respuestas;
     }
 
@@ -64,7 +80,7 @@ public class Tablero {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "Tablero{"+"barajas="+barajas.toString()+", preguntas="+preguntas.toString()+", tiempo="+tiempo +",erspuestas="+respuestas.toString()+", nivel="+Nivel+"}";
     }
     
     
