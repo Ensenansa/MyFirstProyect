@@ -10,16 +10,17 @@ var mirar = (function Mirar() {
 
         cadVariables = location.search.substring(1, location.search.length);
         //alert();
-        arrVariables = cadVariables.split(",");
-        document.getElementById("playerr").innerHTML = arrVariables;
+        arrVariables = cadVariables.split(',');
+        var t=String(arrVariables);
+        alert(t);
+        var u=t.replace("=", "");
+        alert(u);
+        //var tmp=arrVariables.replace("=", "");;
+        
+        document.getElementById("playerr").innerHTML = u;
         mirar.getIdSalaByPlayer();
         popo.conec();
     }
-    function carga() {
-
-
-    }
-
     function tu() {
         var cronometro;
         contador_s = 0;
@@ -41,7 +42,7 @@ var mirar = (function Mirar() {
         var nombreUsuario = document.getElementById("playerr").innerHTML;
         var sal = sala;
         alert("que putas" + sala);
-        alert(nombreUsuario);
+        //alert(nombreUsuario);
         axios.get('/jugadores/playAnfi/' + sala + '/' + nombreUsuario)
                 .then(function (response) {
                     verdad = response.data;
@@ -80,6 +81,7 @@ var mirar = (function Mirar() {
                     juganfi = response.data;
                     console.log('saved successfully')
                     document.getElementById("playAf").innerHTML = juganfi.nickName;
+                    
                 });
     }
 
@@ -88,8 +90,7 @@ var mirar = (function Mirar() {
         getIdSalaByPlayer: getIdSalaByPlayer,
         AllPlayersBySala: AllPlayersBySala,
         getAnfiPlayBySala: getAnfiPlayBySala,
-        tu: tu,
-        carga: carga
+        tu: tu
 
     };
 })();

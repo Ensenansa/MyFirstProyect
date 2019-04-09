@@ -38,7 +38,7 @@ var apiclient = (function () {
             return $.get("/Usuarios/" + user);
         },
         getAllUser: function () {
-            return $.get("/jugadores", callback);
+            return $.get("/jugadores");
         }
 
     };

@@ -15,7 +15,11 @@ var jugada2 = "";
 var identificadorJ1 = "";
 var identificadorJ2 = "";
 
+
+
+
 function iniciarJuego () {  
+    popo.conec();
     
   var dato = document.getElementById("juego");
   dato.style.opacity = 1;
