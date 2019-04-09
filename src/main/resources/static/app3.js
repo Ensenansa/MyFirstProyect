@@ -46,7 +46,7 @@
 
 
 var verdad = false;
-
+*/
 function mandarCarta(car) {
     alert(car);
     valor = car;
@@ -54,7 +54,7 @@ function mandarCarta(car) {
     socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        setConnected(true);
+        //setConnected(true);
         console.log('Connectedby    : ' + frame);
         stompClient.subscribe('/topic/carta', function (CambioCarta) {
 
@@ -63,7 +63,7 @@ function mandarCarta(car) {
     });
 }
 
-
+/*
  function sendName() {
     alert("si PU");
     alert(valor);

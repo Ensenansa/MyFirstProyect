@@ -19,7 +19,7 @@ var identificadorJ2 = "";
 
 
 function iniciarJuego () {  
-    popo.conec();
+    //popo.conec();
     
   var dato = document.getElementById("juego");
   dato.style.opacity = 1;
