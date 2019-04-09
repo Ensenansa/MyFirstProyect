@@ -29,8 +29,13 @@ var popo = (function () {
             stompClient.subscribe('/topic/avisar' + topic, function (cart) {
                 //alert("revise" + cart);
                 console.log(cart.body);
-
             });
+
+            stompClient.subscribe('/topic/tablero' + topic, function (cart) {
+                //alert("revise" + cart);
+                console.log(cart.body);
+            });
+
         });
     }
 
@@ -188,7 +193,7 @@ var popo = (function () {
                 nomVec = temp.split(",");
                 pagina += "=" + temp;
                 location.href = pagina;
-            } else if (solucion >2) {
+            } else if (solucion > 2) {
                 temp = document.getElementById("playerr").innerHTML;
                 //alert();
                 pagina = "/Juego.html";

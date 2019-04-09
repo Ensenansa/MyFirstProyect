@@ -331,7 +331,7 @@ public class CartModeStub implements CartModeServices {
     public Integer LevelOfTablero(Integer idSala) throws CartModeException {
         int resp=0;
         for(Sala sa: salas){
-            System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
+            //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
             if(sa.getId().equals(idSala)){
                 resp=sa.getTablero().getNivel();
             }
