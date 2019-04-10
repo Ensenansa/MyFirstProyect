@@ -102,7 +102,7 @@ function comprobar () {
   }
 
   if(aciertos == 16){
-    document.getElementById("juego").innerHTML = "GANASTE";
+    //document.getElementById("juego").innerHTML = "GANASTE";
   }
 }
 

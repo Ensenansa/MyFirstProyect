@@ -145,8 +145,8 @@ Proximamente
 [![](img/Spring-Logo.png)](https://spring.io/)
 [![](img/astahLogo.png)](http://astah.net/)
 [![](img/cover-heroku.png)](https://www.heroku.com/)
-[![](img/circleciLogo.png)](https://circleci.com/)
-[![](img/codacyLogo.png)](https://www.codacy.com/)
+[![]()]()
+[![]()]()
 [![](img/git-githubLogo.jpg)](https://github.com/)
 
 ---
