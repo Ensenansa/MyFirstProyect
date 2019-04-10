@@ -1,7 +1,5 @@
 # CartMode
 [![Heroku](https://wmpics.pics/di-D9YP.png)](https://arswproyect.herokuapp.com)
-[![CircleCI](https://proximamente/)](https://proximamente/)
-[![Codacy Badge](https://proximamente/)](https://proximamente/)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)](https://github.com/Arsw2019-1/ProyectoARSW20191)
 [![MIT license](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://lbesson.mit-license.org/)
 
