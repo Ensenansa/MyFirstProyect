@@ -70,16 +70,18 @@ public class GreetingController {
             return aa.toString();
     }
 
-    @MessageMapping("/cart")
-    @SendTo("/topic/carta")
+    //@MessageMapping("/cart")
+    //@SendTo("/topic/carta")
     //public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
-    public Greeting CambioCarta(HelloMessage message) throws Exception {
-        System.out.println("miremos " + message.getName());
-        cart.printt(message.getName());
+    
+    @MessageMapping("cart.{carta}")
+    public void CambioCarta(Carta ct,@DestinationVariable String carta) throws Exception {
+        System.out.println("miremos la p* carta" + ct.getDato());
+        System.out.println("miremos que sala "+carta);
+        
+        msg.convertAndSend("/topic/cart."+carta,ct);
 
-        Thread.sleep(2000); // simulated delay
-
-        return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+        
     }
 
 }

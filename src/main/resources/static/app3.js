@@ -85,8 +85,8 @@ var tener = (function Tener() {
         stompClient.connect({}, function (frame) {
             //setConnected(true);
             console.log('Connectedby    : ' + frame);
-            stompClient.subscribe('/topic/carta', function (CambioCarta) {
-
+            stompClient.subscribe('/topic/cart', function (CambioCarta) {
+                alert("dsads");
             });
             //sendName();
         });

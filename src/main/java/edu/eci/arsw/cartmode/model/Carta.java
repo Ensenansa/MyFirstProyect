@@ -12,12 +12,13 @@ package edu.eci.arsw.cartmode.model;
 public class Carta {
     private String dato;
     private boolean bloqueado;
-    private Integer nivel;
+    //private Integer nivel;
     
-    public Carta(String dato, Integer nivel){
+    //public Carta(String dato, Integer nivel){
+    public Carta(String dato){
         this.dato=dato;
         this.bloqueado=false;
-        this.nivel=nivel;
+        //this.nivel=nivel;
     }
     public String getDato() {
         return dato;
@@ -35,15 +36,12 @@ public class Carta {
         this.dato = dato;
     }
 
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
-    }
 
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    /*
     public Integer getNivel(){
         return nivel;
     }
@@ -51,7 +49,7 @@ public class Carta {
         this.nivel=nivel;
     
     }
-    
+    */
     
     
 }

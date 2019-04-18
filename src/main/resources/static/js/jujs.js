@@ -20,21 +20,25 @@ var identificadorJ2 = "";
 
 function iniciarJuego () {  
     popo.conec();
-    tener.fin();
     
+    tener.fin();
+  
   var dato = document.getElementById("juego");
+//alert(dato);
   dato.style.opacity = 1;
 
-  cartas.sort(function() {return Math.random() - 0.5});
+  //cartas.sort(function() {return Math.random() - 0.5});
+
   for ( var i = 0 ; i < 16 ; i++ ) {
     var carta = cartas[i].nombre;
     var dato = document.getElementById( i.toString() );
     dato.dataset.valor = carta;
   }
+
 };
 
 function resetearJuego () {
-  cartas.sort(function() {return Math.random() - 0.5});
+  //cartas.sort(function() {return Math.random() - 0.5});
   for ( var i = 0 ; i < 16 ; i++ ) {
     var carta = cartas[i].nombre;
     var dato = document.getElementById( i.toString() );
@@ -45,10 +49,14 @@ function resetearJuego () {
 
 function girarCarta () {
   var evento = window.event;
-  //alert("sisisisp");
+ var dato = document.getElementById("idSala").innerHTML;
+  //alert("sisisisp"+dato);
   jugada2 = evento.target.dataset.valor;
+    //alert("la carta es :"+jugada2);
+    popo.sendCart(dato,jugada2);
+//alert("se debio mandar");
   identificadorJ2 = evento.target.id;
-  tener.mandarCarta(jugada2);
+  //tener.mandarCarta(jugada2);
 
   if ( jugada1 !== "" ) {
 

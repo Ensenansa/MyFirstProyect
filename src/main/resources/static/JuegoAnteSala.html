@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
-    <body class="is-preload">
+    <body class="is-preload" onload="popo.conec()">
         <!-- Header -->
         <header id="header">
             <nav>
@@ -29,13 +29,7 @@
             <section id="main" class="wrapper">
                 <div class="inner">
                     <h1 class="major">Conectese</h1>
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="connect">Conectese:</label>
-                            <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                            <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
-                        </div>
-                    </form>
+
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="name">Escriba su nick name</label>

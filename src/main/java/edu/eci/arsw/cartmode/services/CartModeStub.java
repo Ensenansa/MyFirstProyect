@@ -101,17 +101,18 @@ public class CartModeStub implements CartModeServices {
         Random rnd = new Random();
         if (nivel == 1) {
             for (int i = 0; i < 8; i++) {
-                resp.add(new Carta(Integer.toString(i), 1));
+                //resp.add(new Carta(Integer.toString(i), 1));
+                resp.add(new Carta(Integer.toString(i)));
             }
         } else if (nivel == 2) {
             boolean t = true;
             for (int i = 0; i < 12; i++) {
                 if (t) {
-                    resp.add(new Carta(Integer.toString(i), nivel));
+                    resp.add(new Carta(Integer.toString(i)));
                     t = false;
                 } else if (!t) {
                     char u = (char) (rnd.nextInt(91) + 65);
-                    resp.add(new Carta(Character.toString(u), nivel));
+                    resp.add(new Carta(Character.toString(u)));
                     t = true;
                 }
             }
@@ -119,11 +120,12 @@ public class CartModeStub implements CartModeServices {
             boolean t = true;
             for (int i = 0; i < 10; i++) {
                 if (t) {
-                    resp.add(new Carta(Integer.toString(i), nivel));
+                    //resp.add(new Carta(Integer.toString(i), nivel));
+                    resp.add(new Carta(Integer.toString(i)));
                     t = false;
                 } else if (!t) {
                     char u = (char) (rnd.nextInt(91) + 65);
-                    resp.add(new Carta(Character.toString(u), nivel));
+                    resp.add(new Carta(Character.toString(u)));
                     t = true;
                 }
             }

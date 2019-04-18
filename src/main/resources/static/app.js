@@ -22,30 +22,39 @@ var popo = (function () {
             setConnected(true);
             console.log('Connected: ' + frame);
 
-            stompClient.subscribe('/topic/greetings' + topic, function (greeting) {
+            stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {
                 //alert(stompClient);
-                showGreeting(JSON.parse(greeting.body).content);
+                showGreeting(JSON.parse(evenbody.body).content);
             });
-            stompClient.subscribe('/topic/avisar' + topic, function (cart) {
-                //alert("revise" + cart);
-                console.log(cart.body);
+            stompClient.subscribe('/topic/cart'+topic, function (evenbody) {
+                alert("revise");
+                //console.log(evenbody.body);
             });
 
-            stompClient.subscribe('/topic/tablero' + topic, function (cart) {
-                //alert("revise" + cart);
-                console.log(cart.body);
-            });
+ 
 
         });
     }
 
     function sendName() {
+        
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         //stompClient.send("/app/avisar." + 1, {}, "");
         pasarVariables();
     }
+
+    function sendCart(ct,ctp){
+   
+    alert("llego"+ct+" y : "+ctp);
+    
+        stompClient.send("/app/cart."+ct,{},JSON.stringify(ctp));
+
+
+    }
     function pasarVariables() {
+        
         var temp = $("#name").val();
+      
         //alert();
         pagina = "AnteSala.html";
         pagina += "?";
@@ -171,13 +180,18 @@ var popo = (function () {
         showGreeting: showGreeting,
         disconnect: disconnect,
         showGreeting: showGreeting,
-
+        sendCart:sendCart,
         init: function () {
 
             connect();
         },
         conec: function () {
             connect('');
+        },
+        conecSpecifi(dat){
+            
+            
+            
         },
         pr: function () {
             var qw = loadd();
