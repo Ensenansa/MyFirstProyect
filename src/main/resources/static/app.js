@@ -47,7 +47,7 @@ var popo = (function () {
    
     alert("llego"+ct+" y : "+ctp);
     
-        stompClient.send("/app/cart."+ct,{},JSON.stringify(ctp));
+        stompClient.send("/app/cart",{},JSON.stringify(ctp));
 
 
     }

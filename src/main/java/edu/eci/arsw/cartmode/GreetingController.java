@@ -74,14 +74,19 @@ public class GreetingController {
     //@SendTo("/topic/carta")
     //public Carta CambioCarta(@DestinationVariable String carta) throws Exception {
     
-    @MessageMapping("cart.{carta}")
-    public void CambioCarta(Carta ct,@DestinationVariable String carta) throws Exception {
+    //@MessageMapping("cart.{carta}")
+    @MessageMapping("cart")
+    //public void CambioCarta(Carta ct,@DestinationVariable String carta) throws Exception {
+    public void CambioCarta(Carta ct) throws Exception {
         System.out.println("miremos la p* carta" + ct.getDato());
-        System.out.println("miremos que sala "+carta);
+        //System.out.println("miremos que sala "+carta);
         
-        msg.convertAndSend("/topic/cart."+carta,ct);
+        msg.convertAndSend("/topic/cart",ct);
+        //cart.printt(carta.getName());
 
-        
+        //Thread.sleep(2000); // simulated delay
+
+        //return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
 
 }
