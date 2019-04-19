@@ -3,7 +3,7 @@ var prue;
 var popo = (function () {
 
     var stompClient = null;
-
+    var m=null;
     var jugador = null;
 
     var verdad = false;
@@ -27,15 +27,26 @@ var popo = (function () {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
             stompClient.subscribe('/topic/cart'+topic, function (evenbody) {
-                alert("revise");
-                //console.log(evenbody.body);
+                //alert("revise");
+                var t=JSON.parse(evenbody.body);
+                //alert("que regresa :"+t);
+                m=t.dato;
+                //alert("dato es: "+m);
+                //alert("pos es: "+t.pos);
+                //girar2Carta(m);
+                //girarCarta();
+                mostrar(m,t.pos);
+                console.log(evenbody.body);
             });
 
  
 
         });
     }
-
+    function senf(){
+        return m;
+        
+    }
     function sendName() {
         
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
@@ -46,8 +57,9 @@ var popo = (function () {
     function sendCart(ct,ctp){
    
     alert("llego"+ct+" y : "+ctp);
-    
-        stompClient.send("/app/cart",{},JSON.stringify(ctp));
+        var t=JSON.stringify(ctp);
+        //alert("que manda"+t);
+        stompClient.send("/app/cart",{},t);
 
 
     }
@@ -181,6 +193,7 @@ var popo = (function () {
         disconnect: disconnect,
         showGreeting: showGreeting,
         sendCart:sendCart,
+        senf:senf,
         init: function () {
 
             connect();

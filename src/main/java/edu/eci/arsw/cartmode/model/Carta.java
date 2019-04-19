@@ -11,19 +11,39 @@ package edu.eci.arsw.cartmode.model;
  */
 public class Carta {
     private String dato;
-    private boolean bloqueado;
+    //private boolean bloqueado;
+    private Integer pos;
+
+    public Carta() {
+    }
+
+    public Integer getPos() {
+        return pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
+    }
+    
     //private Integer nivel;
     
     //public Carta(String dato, Integer nivel){
     public Carta(String dato){
         this.dato=dato;
-        this.bloqueado=false;
+        this.pos=null;
         //this.nivel=nivel;
+        //this.bloqueado=false;
+    }
+    public Carta(String dato, Integer pos){
+        this.dato=dato;
+        this.pos=pos;
+        //this.nivel=nivel;
+        //this.bloqueado=false;
     }
     public String getDato() {
         return dato;
     }
-
+/*
     public boolean isBloqueado() {
         return bloqueado;
     }
@@ -32,6 +52,7 @@ public class Carta {
         this.bloqueado = bloqueado;
     }
 
+    */
     public void setDato(String dato) {
         this.dato = dato;
     }
@@ -39,7 +60,8 @@ public class Carta {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        //return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "Carta{"+"dato="+dato+"pos="+pos+'}';
     }
     /*
     public Integer getNivel(){
