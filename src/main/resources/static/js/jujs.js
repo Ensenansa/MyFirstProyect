@@ -1,11 +1,14 @@
-class Carta{
-    constructor(x,y,z){
-        this.dato=x;
-        this.bloqueado=y;
-        this.pos=z;
+class Carta {
+    constructor(x, y, z) {
+        this.dato = x;
+        this.bloqueado = y;
+        this.pos = z;
     }
 }
 
+var cartOcupadas = new Array();
+
+var parejasHechas = new Array();
 
 var cartas = new Array(
         {nombre: '1', seleccion: false}, {nombre: '2', seleccion: false},
@@ -23,8 +26,15 @@ var jugada2 = "";
 var identificadorJ1 = "";
 var identificadorJ2 = "";
 
+Array.prototype.unique = function (a) {
+    return function () {
+        return this.filter(a)
+    }
+}(function (a, b, c) {
+    return c.indexOf(a, b + 1) < 0
+});
 
-
+Array.prototype.includes(searchElement[ fromIndex ]);
 
 function iniciarJuego() {
     popo.conec();
@@ -55,74 +65,77 @@ function resetearJuego() {
         colorCambio(i, 'black', '?');
     }
 }
-function mostrar(carta, pos){
-    var lon=cartas.length;
+function mostrar(carta, pos) {
+    var lon = cartas.length;
     var x;
-    for (x in cartas){
+    for (x in cartas) {
         console.log(cartas[x]);
-        //alert("que es : "+cartas[x].nombre+"contra que : "+yy   );
-        
-        if(cartas[x].nombre===carta){
-            alert("miremos que es pos"+pos);
+        if (cartas[x].nombre === carta) {
             cartas[parseInt(pos)].seleccion = true;
             colorCambio(pos, "blue", carta);
+            cartOcupadas.push(pos);
         }
-        
     }
-    
-    
 }
 
 
-function girar2Carta(identificador) {
-    var evento = window.event;
-    
-    identificadorJ2 = evento.target.id;
-    alert(identificadorJ2);
-    cartas[parseInt(identificadorJ1)].seleccion = true;
-    cartas[parseInt(identificadorJ2)].seleccion = true;
+function res() {
+    var cartOcupadas2 = new Array();
+    cartOcupadas2 = cartOcupadas.unique();
+    alert("son las oupadas" + cartOcupadas2);
+    var t = cartOcupadas2.length;
+    var lenhe = parejasHechas.length;
+    var g;
+    var gg;
+    for (g = 0; g < t; g++) {
 
-    colorCambio(identificadorJ2, "blue", identificador);
-    vaciar();
+        alert("Se elimnan menos las parejas");
+        cartas[parseInt(cartOcupadas2[g])].seleccion = false;
+        colorCambio(parseInt(cartOcupadas2[g]), "black", "?");
+    }
+    cartOcupadas = new Array();
+    cartOcupadas2 = new Array();
+
 }
-function res(){
+//Para trabajar al otro dia, mandar las parejas a stomp y que este lo mande
+//al mostrar parejas, obviamente adicionar esos variables a la funcion de abajo
+//para que entre ellos se abisen sobre las parejas mostradas.
+function mostrarParejas() {
+    var g;
+    var lenc = parejasHechas.length;
     
-    
-    
+    for (g = 0; g < lenc; g++) {
+        cartas[parseInt(parejasHechas[g])].seleccion = true;
+        colorCambio(parejasHechas[g], "blue", cartas[parseInt(parejasHechas[g])].nombre);
+    }
+
 }
 
 
-function prueba(dato,pos){
+function prueba(dato, pos) {
     return{
-     dato:dato,
-     pos:pos   
+        dato: dato,
+        pos: pos
     }
 }
 
 
 function girarCarta() {
+    res();
     var evento = window.event;
     var dato = document.getElementById("idSala").innerHTML;
-    //alert(evento);
     jugada2 = evento.target.dataset.valor;
-    //alert("en la primer que manda :"+jugada2);
-
     identificadorJ2 = evento.target.id;
-    var tt=prueba(jugada2,identificadorJ2);
-    alert("miremos este : "+tt);
-    //alert("esta es la carta x"+yt.x);
-    //alert("esta es la carta y"+yt.y);
-    //alert("esta es la carta z"+yt.z);
+    var tt = prueba(jugada2, identificadorJ2);
     popo.sendCart(dato, tt);
-    //alert("si es?"+tr);
-
     if (jugada1 !== "") {
 
         if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas[parseInt(identificadorJ2)].seleccion != true && cartas[parseInt(identificadorJ1)].seleccion != true) {
-
+            parejasHechas.push(identificadorJ1);
+            parejasHechas.push(identificadorJ2);
             cartas[parseInt(identificadorJ1)].seleccion = true;
             cartas[parseInt(identificadorJ2)].seleccion = true;
-
+            alert("aqui hicimos pareja");
             colorCambio(identificadorJ2, "blue", jugada2);
             vaciar();
             comprobar();
@@ -163,6 +176,7 @@ function comprobar() {
     var aciertos = 0;
     for (var i = 0; i < 16; i++) {
         if (cartas[i].seleccion == true) {
+            alert("pasamos");
             aciertos++;
         }
 
