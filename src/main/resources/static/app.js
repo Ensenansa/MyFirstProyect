@@ -25,12 +25,26 @@ var popo = (function () {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
             stompClient.subscribe('/topic/cart'+topic, function (evenbody) {                
+                limpiar();
                 var t=JSON.parse(evenbody.body);
                 m=t.dato;
                 mostrar(m,t.pos);
                 //res();
                 mostrarParejas();
+                limpiar();
                 console.log(evenbody.body);
+            });            
+            stompClient.subscribe('/topic/parejas'+topic, function (evenbody) {                
+                limpiar();
+                var t=JSON.parse(evenbody.body);
+                //alert("que vemos"+t);
+                console.log(evenbody.body);
+                //alert("parejas"+t.dato+" : y: "+t.pos);
+                //mostrar(t.dato,t.pos);
+                //addNewPar(t.pos);
+                //mostrarParejas();
+                allPar(t);
+                limpiar();
             });
 
  
