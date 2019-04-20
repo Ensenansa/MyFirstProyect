@@ -39,6 +39,9 @@ public interface CartModeServices {
     
     public Jugador getPlayerAnfiBySala(Integer idSala)throws  CartModeException;
     
+    public Jugador getPlayerByName(String name)throws  CartModeException;
+    public void setPlayerByName(Jugador play)throws  CartModeException;
+    
     public Integer getSalaByPlayer(String nombre)throws  CartModeException;
     
     public List<String> getAllPlayersBySala(Integer idSala)throws  CartModeException;

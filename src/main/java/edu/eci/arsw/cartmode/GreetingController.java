@@ -98,7 +98,6 @@ public class GreetingController {
             if (ct.getDato().equals(j.getDato())) {
                 valoresPareja.add(ct.getDato());
                 System.out.println("enviamos pareja");
-                
                 msg.convertAndSend("/topic/parejas", valoresPareja);
 
             }

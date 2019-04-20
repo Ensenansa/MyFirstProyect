@@ -3,7 +3,7 @@ var prue;
 var popo = (function () {
 
     var stompClient = null;
-    var m=null;
+    var m = null;
     var jugador = null;
 
     var verdad = false;
@@ -21,52 +21,58 @@ var popo = (function () {
             setConnected(true);
             console.log('Connected: ' + frame);
 
-            stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {                
+            stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
-            stompClient.subscribe('/topic/cart'+topic, function (evenbody) {                
+            stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
                 limpiar();
-                var t=JSON.parse(evenbody.body);
-                m=t.dato;
-                mostrar(m,t.pos);
-                //res();
+                var t = JSON.parse(evenbody.body);
+                m = t.dato;
+                mostrar(m, t.pos);
                 mostrarParejas();
                 limpiar();
                 console.log(evenbody.body);
-            });            
-            stompClient.subscribe('/topic/parejas'+topic, function (evenbody) {                
+            });
+            stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
+                
                 limpiar();
-                var t=JSON.parse(evenbody.body);
-                //alert("que vemos"+t);
+                var t = JSON.parse(evenbody.body);
                 console.log(evenbody.body);
-                //alert("parejas"+t.dato+" : y: "+t.pos);
-                //mostrar(t.dato,t.pos);
-                //addNewPar(t.pos);
-                //mostrarParejas();
                 allPar(t);
                 limpiar();
+                sendPuntaje();
+                //alert(parAcert);
             });
-
- 
-
         });
     }
-    function senf(){
-        return m;
+    function sendPuntaje() {
         
+        var jugador= document.getElementById("playerr").innerHTML;
+        axios.post('/jugadores/puntaje/'+jugador+'/'+parAcert())
+                .then(function (response) {
+                    console.log(response.data);
+                    //alert(salalis);
+                });
+
+
     }
-    
+
+    function senf() {
+        return m;
+
+    }
+
     function sendName() {
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         pasarVariables();
     }
-    
-    function sendCart(ct,ctp){
-        stompClient.send("/app/cart",{},JSON.stringify(ctp));
+
+    function sendCart(ct, ctp) {
+        stompClient.send("/app/cart", {}, JSON.stringify(ctp));
     }
-    
+
     function pasarVariables() {
-        
+
         var temp = $("#name").val();
         pagina = "AnteSala.html";
         pagina += "?";
@@ -85,7 +91,7 @@ var popo = (function () {
         setConnected(false);
         console.log("Disconnected");
     }
-    
+
     function setConnected(connected) {
         $("#connect").prop("disabled", connected);
         $("#disconnect").prop("disabled", !connected);
@@ -109,7 +115,7 @@ var popo = (function () {
                     //alert(salalis);
                 });
     }
-    
+
     var reload = function () {
         var t = 0;
         var cono = 0;
@@ -140,7 +146,7 @@ var popo = (function () {
             }
         }
     }
-    
+
     var loadd = function () {
 
         nombreUsuario = document.getElementById("playerr").innerHTML;
@@ -156,7 +162,7 @@ var popo = (function () {
 
         return verdad;
     }
-    
+
     var load = function () {
         var salal = document.getElementById("idSala").innerHTML;
         if (verdad) {
@@ -176,8 +182,8 @@ var popo = (function () {
         showGreeting: showGreeting,
         disconnect: disconnect,
         showGreeting: showGreeting,
-        sendCart:sendCart,
-        senf:senf,
+        sendCart: sendCart,
+        senf: senf,
         init: function () {
 
             connect();
@@ -185,7 +191,7 @@ var popo = (function () {
         conec: function () {
             connect('');
         },
-        conecSpecifi(dat){
+        conecSpecifi(dat) {
             //Proximamene, para conectar a una sala especifica
         },
         pr: function () {

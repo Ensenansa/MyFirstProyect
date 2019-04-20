@@ -344,6 +344,22 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
-
+    @Override
+    public Jugador getPlayerByName(String name) throws CartModeException {
+        Jugador temp=new Jugador();
+        
+        for(Jugador ja:player){
+            if(ja.getNickName().equals(name)){
+                temp=ja;            
+            }
+        }
+        return temp;
+        
+    }
+    public void setPlayerByName(Jugador play) throws CartModeException {
+        int ind=player.indexOf(play);
+        System.out.println("que improme int"+ind);
+        player.set(ind, play);
+    }
 
 }
