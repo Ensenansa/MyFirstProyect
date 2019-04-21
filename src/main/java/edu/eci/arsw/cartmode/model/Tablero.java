@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class Tablero {
     
-    private List<Carta> barajas= new CopyOnWriteArrayList<>();
+    private List<CartaJavSc> barajas= new CopyOnWriteArrayList<>();
     private List<Pregunta> preguntas= new CopyOnWriteArrayList<>();
     //private List<Tripla<String,Boolean,Float>> respuestas= new CopyOnWriteArrayList<>();
     private List<String> respuestas= new CopyOnWriteArrayList<>();
@@ -26,7 +26,7 @@ public class Tablero {
     }
 
     //public Tablero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas, Integer Nivel) {
-    public Tablero(List<Carta> barajas,List<Pregunta>pregunta, List<String> respuestas, Integer Nivel) {
+    public Tablero(List<CartaJavSc> barajas,List<Pregunta>pregunta, List<String> respuestas, Integer Nivel) {
         this.barajas=barajas;
         this.preguntas=pregunta;
         this.respuestas=respuestas;
@@ -44,7 +44,7 @@ public class Tablero {
     }
 
     
-    public List<Carta> getBarajas() {
+    public List<CartaJavSc> getBarajas() {
         return barajas;
     }
 
@@ -61,7 +61,7 @@ public class Tablero {
         return tiempo;
     }
 
-    public void setBarajas(List<Carta> barajas) {
+    public void setBarajas(List<CartaJavSc> barajas) {
         this.barajas = barajas;
     }
 

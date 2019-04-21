@@ -92,7 +92,7 @@ var mirar = (function Mirar() {
         axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
                     level = response.data;
-                    alert("nivel" + level);
+                    //alert("nivel" + level);
                     document.getElementById("levelGame").innerHTML = level;
                     console.log('saved successfully' + level)
                 });

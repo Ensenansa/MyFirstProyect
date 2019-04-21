@@ -8,6 +8,7 @@ var tener = (function Tener() {
         document.getElementById("playerr").innerHTML = u;
         mirar.getIdSalaByPlayer();
         mirar.AllPlayersBySala();
+        mirar.getLevelBy();
     }
     
     function getLevelBy() {

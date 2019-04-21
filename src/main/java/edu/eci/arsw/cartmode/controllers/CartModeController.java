@@ -86,6 +86,7 @@ public class CartModeController {
     @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
     public ResponseEntity<?> getSalasIdByPlayer(@PathVariable String nombre) {
         try {
+            
             return new ResponseEntity<>(cat.getIdSalaByPlayer(nombre), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);

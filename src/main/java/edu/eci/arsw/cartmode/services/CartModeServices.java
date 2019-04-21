@@ -6,6 +6,7 @@
 package edu.eci.arsw.cartmode.services;
 
 import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
@@ -35,7 +36,8 @@ public interface CartModeServices {
     //public void generateTblero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas)throws  CartModeException;
     public void generateTblero()throws  CartModeException;
     public Tablero getTblero(Integer level)throws  CartModeException;        
-    public List<Carta> GenerateBaraja(Integer nivel)throws  CartModeException;
+    public List<CartaJavSc> GenerateBaraja(Integer nivel)throws  CartModeException;
+    public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel)throws  CartModeException;
     
     public Jugador getPlayerAnfiBySala(Integer idSala)throws  CartModeException;
     

@@ -1,4 +1,4 @@
-/*
+/*/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,7 @@
 package edu.eci.arsw.cartmode.services;
 
 import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
@@ -34,6 +35,7 @@ public class CartModeStub implements CartModeServices {
     private static final List<Sala> salas;
     private static final Integer contador;
     private static final Jugador temporal;
+    private static final List<String> abecedario;
 
     public CartModeStub() {
     }
@@ -99,25 +101,50 @@ public class CartModeStub implements CartModeServices {
         }
 
     }
+    
+    
+    @Override
+    public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel)throws  CartModeException{
+        List<CartaJavSc> resp1 = new ArrayList<CartaJavSc>();
+        List<CartaJavSc> resp2 = new ArrayList<CartaJavSc>();        
+        resp1=GenerateBaraja(nivel);
+        resp2=GenerateBaraja(nivel);      
+        for(int i=0; i<resp2.size();i++){
+            CartaJavSc temp=resp2.get(i);
+            resp1.add(temp);
+        }
+        return resp1;
+    
+    }
 
     @Override
-    public List<Carta> GenerateBaraja(Integer nivel) throws CartModeException {
-        List<Carta> resp = new CopyOnWriteArrayList<>();
+    public List<CartaJavSc> GenerateBaraja(Integer nivel) throws CartModeException {
+        List<CartaJavSc> resp = new CopyOnWriteArrayList<>();
         Random rnd = new Random();
         if (nivel == 1) {
             for (int i = 0; i < 8; i++) {
                 //resp.add(new Carta(Integer.toString(i), 1));
-                resp.add(new Carta(Integer.toString(i)));
+                resp.add(new CartaJavSc(Integer.toString(i + 1), false));
             }
         } else if (nivel == 2) {
+            List<String> puestas = new ArrayList<String>();
             boolean t = true;
             for (int i = 0; i < 12; i++) {
+
                 if (t) {
-                    resp.add(new Carta(Integer.toString(i)));
+                    resp.add(new CartaJavSc(Integer.toString(i + 1), false));
                     t = false;
                 } else if (!t) {
-                    char u = (char) (rnd.nextInt(91) + 65);
-                    resp.add(new Carta(Character.toString(u)));
+                    int valorEntero = (int) Math.floor(Math.random() * (26));
+                    String tempg = abecedario.get(valorEntero);
+                    boolean rest = verValor(puestas, tempg);
+                    while (rest) {
+                        valorEntero = (int) Math.floor(Math.random() * (26));
+                        tempg = abecedario.get(valorEntero);
+                        rest = verValor(puestas, tempg);
+                    }
+                    resp.add(new CartaJavSc(abecedario.get(valorEntero), false));
+                    puestas.add(abecedario.get(valorEntero));
                     t = true;
                 }
             }
@@ -126,16 +153,29 @@ public class CartModeStub implements CartModeServices {
             for (int i = 0; i < 10; i++) {
                 if (t) {
                     //resp.add(new Carta(Integer.toString(i), nivel));
-                    resp.add(new Carta(Integer.toString(i)));
+                    resp.add(new CartaJavSc(Integer.toString(i + 1), false));
                     t = false;
                 } else if (!t) {
                     char u = (char) (rnd.nextInt(91) + 65);
-                    resp.add(new Carta(Character.toString(u)));
+                    resp.add(new CartaJavSc(Character.toString(u), false));
                     t = true;
                 }
             }
         }
         return resp;
+    }
+
+    public boolean verValor(List<String> puestas, String valor) {
+        Boolean respuesta = false;
+        boolean tt = false;
+        for (int jj = 0; jj < puestas.size(); jj++) {
+            String qq = puestas.get(jj);
+            if (qq.equals(valor)) {
+                tt = true;
+            }
+        }
+
+        return tt;
     }
 
     @Override
@@ -190,7 +230,6 @@ public class CartModeStub implements CartModeServices {
         int resp = -1;
         String temp = nombre.substring(1);
         for (Jugador ht : player) {
-
             if (ht.getNickName().equals(temp)) {
                 resp = ht.getSala();
             }
@@ -354,7 +393,7 @@ public class CartModeStub implements CartModeServices {
         tableros = new CopyOnWriteArrayList<>();
         player = new CopyOnWriteArrayList<>();
         salas = new CopyOnWriteArrayList<>();
-
+        abecedario = new CopyOnWriteArrayList<>();
         preguntas = new CopyOnWriteArrayList<>();
         //Creando las preguntas
         opcionesrespuesta = new ArrayList<String>();
@@ -378,6 +417,33 @@ public class CartModeStub implements CartModeServices {
         //
         contador = 0;
         temporal = null;
+
+        abecedario.add("a");
+        abecedario.add("b");
+        abecedario.add("c");
+        abecedario.add("d");
+        abecedario.add("e");
+        abecedario.add("f");
+        abecedario.add("g");
+        abecedario.add("h");
+        abecedario.add("i");
+        abecedario.add("j");
+        abecedario.add("k");
+        abecedario.add("l");
+        abecedario.add("m");
+        abecedario.add("n");
+        abecedario.add("o");
+        abecedario.add("p");
+        abecedario.add("q");
+        abecedario.add("r");
+        abecedario.add("s");
+        abecedario.add("t");
+        abecedario.add("u");
+        abecedario.add("v");
+        abecedario.add("w");
+        abecedario.add("x");
+        abecedario.add("y");
+        abecedario.add("z");
 
     }
 }

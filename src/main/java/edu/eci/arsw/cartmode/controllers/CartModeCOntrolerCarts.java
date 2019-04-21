@@ -5,8 +5,10 @@
  */
 package edu.eci.arsw.cartmode.controllers;
 
+import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.services.CartModeException;
 import edu.eci.arsw.cartmode.services.CartModeServices;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,9 @@ public class CartModeCOntrolerCarts {
     @RequestMapping(method = RequestMethod.GET, path = "/bara/{nivel}")
     public ResponseEntity<?> getAllPlayerByLevel(@PathVariable Integer nivel) {
         try {
-            //cambiar
-            return new ResponseEntity<>(cat.GenerateBaraja(nivel) , HttpStatus.ACCEPTED);
+            List<CartaJavSc> tempo=cat.GenerateDuplicadoBaraja(nivel); 
+            
+            return new ResponseEntity<>(tempo.toString() , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);

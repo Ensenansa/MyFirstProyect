@@ -6,6 +6,7 @@
 package edu.eci.arsw.cartmode.test;
 
 import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Pregunta;
 import edu.eci.arsw.cartmode.model.Sala;
@@ -62,9 +63,9 @@ public class CartModeServicesTest {
     @Test
     public void GenerateBarajaTest() throws CartModeException {
 
-        List<Carta> cartas = cat.GenerateBaraja(1);
-        List<Carta> cartas2 = cat.GenerateBaraja(2);
-        List<Carta> cartas3 = cat.GenerateBaraja(3);
+        List<CartaJavSc> cartas = cat.GenerateBaraja(1);
+        List<CartaJavSc> cartas2 = cat.GenerateBaraja(2);
+        List<CartaJavSc> cartas3 = cat.GenerateBaraja(3);
 
         Assert.assertEquals(8, cartas.size());
         Assert.assertEquals(12, cartas2.size());
