@@ -13,6 +13,7 @@ public class Carta {
     private String dato;
     //private boolean bloqueado;
     private Integer pos;
+    private String nombre;
 
     public Carta() {
     }
@@ -24,10 +25,15 @@ public class Carta {
     public void setPos(Integer pos) {
         this.pos = pos;
     }
-    
-    //private Integer nivel;
-    
-    //public Carta(String dato, Integer nivel){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+        
     public Carta(String dato){
         this.dato=dato;
         this.pos=null;
@@ -61,7 +67,7 @@ public class Carta {
     @Override
     public String toString() {
         //return super.toString(); //To change body of generated methods, choose Tools | Templates.
-        return "Carta{"+"dato="+dato+"pos="+pos+'}';
+        return "Carta{"+"dato="+dato+"pos="+pos+"nombre="+nombre+'}';
     }
     /*
     public Integer getNivel(){

@@ -18,13 +18,34 @@ public abstract class Pregunta {
     private List<String> opcionesDeRespuesta;
     private Float tiempo;
     private Integer respJUgador;
+    private String respuestaCorrecta;
 
-    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
+    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo,String respuestaCorrecta) {
         this.id = id;
         this.enunciado = enunciado;
         this.opcionesDeRespuesta = opcionesDeRespuesta;
         this.tiempo = tiempo;
         this.respJUgador=null;
+        this.respuestaCorrecta=respuestaCorrecta;
+    }
+
+    public Pregunta() {
+    }
+
+    public void setRespuestaCorrecta(String respuestaCorrecta) {
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
+
+    public String getRespuestaCorrecta() {
+        return respuestaCorrecta;
+    }
+
+    public Integer getRespJUgador() {
+        return respJUgador;
+    }
+
+    public void setRespJUgador(Integer respJUgador) {
+        this.respJUgador = respJUgador;
     }
     
     public int getId() {

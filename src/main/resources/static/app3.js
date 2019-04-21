@@ -1,69 +1,15 @@
-/*
- * 
- * @type 
- var popu = (function () {
- 
- 
- //function connect() {
- 
- 
- var revisar =function () {
- 
- 
- 
- }
- var load=function() {
- 
- 
- }
- 
- function sendAvis() {
- 
- }
- return {
- 
- sendAvis: sendAvis,
- //setConnected: setConnected,
- sendName: sendName,
- pasarVariables: pasarVariables,
- showGreeting: showGreeting,
- disconnect: disconnect,
- showGreeting: showGreeting,
- 
- init: function () {
- 
- 
- },
- conec: function () {
- 
- },
- pr: function () {           
- 
- 
- }
- };
- })();
- 
- 
- var verdad = false;
- */
 var tener = (function Tener() {
     var level = -1;
     function fin() {
         cadVariables = location.search.substring(1, location.search.length);
-        //alert();
         arrVariables = cadVariables.split(',');
         var t = String(arrVariables);
-        //alert(t);
         var u = t.replace("=", "");
-        //alert(u);
         document.getElementById("playerr").innerHTML = u;
-        //alert("se");
         mirar.getIdSalaByPlayer();
-        //alert("noo");
         mirar.AllPlayersBySala();
-        //mirar.getLevelBy();
     }
+    
     function getLevelBy() {
         sala = document.getElementById("idSala").innerHTML;
         //alert("sala es: "+sala);
@@ -76,42 +22,109 @@ var tener = (function Tener() {
                 });
     }
 
-    function mandarCarta(car) {
-        //alert(car);
-        valor = car;
-
-        socket = new SockJS('/gs-guide-websocket');
-        stompClient = Stomp.over(socket);
-        stompClient.connect({}, function (frame) {
-            //setConnected(true);
-            console.log('Connectedby    : ' + frame);
-            stompClient.subscribe('/topic/cart', function (CambioCarta) {
-                alert("dsads");
-            });
-            //sendName();
-        });
-    }
-
     return {
         fin: fin,
-        mandarCarta: mandarCarta,
         getLevelBy: getLevelBy
     };
 })();
 
+var seg=5;
+var minutos=5;
+var numero = null;
+var tiempo = (function Tiempo() {
+    var numero = null;
+
+    function hora() {
+        int = setInterval(function () {
+            seg--;
+            document.getElementById('i').innerHTML = seg;
+            document.getElementById('j').innerHTML = minutos;
+            if(seg ==1 && minutos ==0){
+                alert("Nos fuimos");
+                popo.sendUpLevel();
+            }else if (seg == 0) {
+                seg = 59;
+                //alert("Se acabo el tiempo");
+                minutos--;
+            }
+        }, 1000);
+        seg++;
+    }
+    return {
+
+        hora: hora       
+    };
+})();
+var total = 0;
+var respuestas="";
+var txt_respuestas = "";
+var pregunta="";
+var respuestaCorrecta="";
+var respuestaSeleccionada="";
+var preguntas = (function Preguntas() {
+    
+    var level = -1;
+
+    function getPreguntas() {
+
+        txt_respuestas.length = 0;
+        txt_respuestas = "";
+
+        document.getElementById("respuesta").innerHTML = "";
+        axios.get('/preguntas/one').then(function (respuesta) {
+            
+            console.log(respuesta.data);
+            pregunta=respuesta.data;
+            //alert(pregunta);
+            //alert(pregunta.enunciado);            
+            document.getElementById("enun").innerHTML = pregunta.enunciado;                
+            respuestas=pregunta.opcionesDeRespuesta;
+            var a = 0;
+            var t;
+            for (t=0; t<respuestas.length;t++) {
+                    a++;
+                    var temp = '<td> <input type="radio" class="form-check-input" name="rell" id=materialUnchecked' + a + ' ' + 'value="' + respuestas[t] + '"><label class="form-check-label" for=materialUnchecked' + a + '> </td>';
+                    txt_respuestas += temp + respuestas[t] + '</label><br>';
+                }
+                total=a;
+            var temp = '';
+            document.getElementById("respuesta").innerHTML = txt_respuestas;                
+                    })
+                .catch(function (errorr) {
+                    console.log(errorr);
+                })
+    }
+    
+    function mudanza() {
+        var f=-1;
+        respuestaCorrecta=pregunta.respuestaCorrecta;
+        respuestaSeleccionada = $("input[type=radio]:checked").val();
+        //alert(respuestaSeleccionada);
+        if(respuestaCorrecta==respuestaSeleccionada){
+            f=1;
+            
+        }else{
+            f=0;
+            
+        }
+        var jugador= document.getElementById("playerr").innerHTML;
+        alert("jugador :"+jugador);
+        axios.post('/jugadores/puntajePregunta/'+jugador+'/'+f)
+                .then(function (response) {
+                    console.log(response.data);
+                    //alert(salalis);
+                });
+        alert("urra");
+        document.getElementById("juego").innerHTML ="";
+        
+        
 
 
+    }
 
+    return {
+        getPreguntas:getPreguntas,
+        mudanza:mudanza
 
-
-
-
-/*
- function sendName() {
- alert("si PU");
- alert(valor);
- stompClient.send("/app/cart/", {}, JSON.stringify({'name': valor}));
- }
- 
- */
-
+    };
+})();

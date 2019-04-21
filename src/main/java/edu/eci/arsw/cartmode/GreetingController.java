@@ -29,20 +29,20 @@ public class GreetingController {
     SimpMessagingTemplate msg;
 
     private Integer id = 0;
-
+    private Integer jugadoress=0;
+    private Integer jugadorTemporal=0;
+    
     @Autowired
     CartModeServices cart;
 
     //valor y Posicion y  de la carta
-    private Map<String, Integer> cartas = new ConcurrentHashMap<>();
+    private Map<String, Stack<String>> cartas = new ConcurrentHashMap<>();
 
     private List<String> valoresPareja = new CopyOnWriteArrayList<>();
 
     Stack<String> pila = new Stack<String>();
-    //private List<String> pareja = new CopyOnWriteArrayList<>();
 
-    //        stompClient.subscribe('/topic/jugador', function (player) {
-    //showGreeting(JSON.parse(player.body).content);
+    List<Stack<String>> pilas=new CopyOnWriteArrayList<>();
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
@@ -81,31 +81,71 @@ public class GreetingController {
 
         return aa.toString();
     }
-
+    
+    @MessageMapping("iniciar")
+    public void start() throws Exception {
+        int players=cart.getAllPlayerInGame();
+        List<Jugador> ju=cart.nameAlPlayer();
+        System.out.println("cuantos jugadores hay : "+players);
+        for(int i=0 ; i<players;i++){
+            pilas.add(new Stack<String>());
+        }        
+        int y=0;
+        for(Jugador h: ju){
+            cartas.put(h.getNickName(),pilas.get(y));
+            y++;        
+        }              
+        jugadoress=players;        
+    }
+    
     @MessageMapping("cart")
     public void CambioCarta(Carta ct) throws Exception {
+        int players=cart.getAllPlayerInGame();
         int temporal = -1;
         String Keytemporal = "";
+        //Carta ct=mj.getCt();
         System.out.println("miremos la p* carta" + ct.getDato());
         System.out.println("miremos la posicin de carta" + ct.getPos());
+        System.out.println("EL nombre de quien mando la de carta" + ct.getNombre());
+        
 
+        if(cartas.containsKey(ct.getNombre())){
+            System.out.println("nombre de quien se extrae pila :"+ct.getNombre());
+            pila=cartas.get(ct.getNombre());
+        }else{
+            System.out.println("algo ocurrio muy feo");
+        }
         //Se implementara por Pilas
         if (pila.empty()) {
-            pila.push(ct.getDato());
+            cartas.remove(ct.getNombre());
+            System.out.println("entro porque esta limpio");
+            pila.push(ct.getDato());            
+            cartas.put(ct.getNombre(), pila);
             Thread.sleep(2000);
+            
         } else {
+            System.out.println("entro se hizo la pareja, tam de pila "+pila.size());
+            System.out.println("-------------------------");
             Carta j = new Carta(pila.pop());
+            System.out.println("Que se compara, esto viene: "+ct.getDato()+"  contra lo que esta : "+j.getDato());
             if (ct.getDato().equals(j.getDato())) {
-                valoresPareja.add(ct.getDato());
+                System.out.println("-------------------------");
+                valoresPareja.add(ct.getDato());                
+                cartas.remove(ct.getNombre());
+                pila.clear();
+                cartas.put(ct.getNombre(), pila);
                 System.out.println("enviamos pareja");
+                System.out.println("-------------------------");
                 msg.convertAndSend("/topic/parejas", valoresPareja);
-
             }
-
         }
-
         msg.convertAndSend("/topic/cart", ct);
+    }
 
+    @MessageMapping("level")
+    public void level(String id) throws Exception {
+        System.out.println("elevamos...el id : "+id);
+        msg.convertAndSend("/topic/uplevel", id);
     }
 
 }

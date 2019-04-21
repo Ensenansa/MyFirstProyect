@@ -39,10 +39,13 @@ public interface CartModeServices {
     
     public Jugador getPlayerAnfiBySala(Integer idSala)throws  CartModeException;
     
+    public Integer getAllPlayerInGame()throws  CartModeException;
+    
     public Jugador getPlayerByName(String name)throws  CartModeException;
     public void setPlayerByName(Jugador play)throws  CartModeException;
     
-    public Integer getSalaByPlayer(String nombre)throws  CartModeException;
+    public void upLevelSalaId(Integer id)throws  CartModeException;
+    public Integer getIdSalaByPlayer(String nombre)throws  CartModeException;
     
     public List<String> getAllPlayersBySala(Integer idSala)throws  CartModeException;
     
@@ -54,6 +57,7 @@ public interface CartModeServices {
     public void detenerPartida()throws  CartModeException;
     
     public List<Pregunta>getListPreguntas()throws  CartModeException;
+    public Pregunta getPregunta()throws  CartModeException;
     
     public Boolean isPlayerAnfitrion(String nombre, Integer sala)throws  CartModeException;
     

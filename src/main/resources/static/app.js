@@ -30,11 +30,11 @@ var popo = (function () {
                 m = t.dato;
                 mostrar(m, t.pos);
                 mostrarParejas();
-                limpiar();
+                //limpiar();
                 console.log(evenbody.body);
             });
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
-                
+
                 limpiar();
                 var t = JSON.parse(evenbody.body);
                 console.log(evenbody.body);
@@ -43,18 +43,22 @@ var popo = (function () {
                 sendPuntaje();
                 //alert(parAcert);
             });
+            stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
+                alert("sIOOOO");
+                preguntas.mudanza();
+
+
+            });
         });
     }
     function sendPuntaje() {
-        
-        var jugador= document.getElementById("playerr").innerHTML;
-        axios.post('/jugadores/puntaje/'+jugador+'/'+parAcert())
+
+        var jugador = document.getElementById("playerr").innerHTML;
+        axios.post('/jugadores/puntaje/' + jugador + '/' + parAcert())
                 .then(function (response) {
                     console.log(response.data);
                     //alert(salalis);
                 });
-
-
     }
 
     function senf() {
@@ -65,6 +69,12 @@ var popo = (function () {
     function sendName() {
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         pasarVariables();
+    }
+
+    function sendUpLevel() {
+        sala = document.getElementById("idSala").innerHTML;
+        alert("enviamos elevada");
+        stompClient.send("/app/level", {}, JSON.stringify(sala));
     }
 
     function sendCart(ct, ctp) {
@@ -184,12 +194,15 @@ var popo = (function () {
         showGreeting: showGreeting,
         sendCart: sendCart,
         senf: senf,
+        sendUpLevel: sendUpLevel,
         init: function () {
 
             connect();
         },
         conec: function () {
             connect('');
+            //stompClient.send("/app/iniciar", {}, "");
+
         },
         conecSpecifi(dat) {
             //Proximamene, para conectar a una sala especifica
@@ -205,6 +218,7 @@ var popo = (function () {
                 nomVec = temp.split(",");
                 pagina += "=" + temp;
                 location.href = pagina;
+                stompClient.send("/app/iniciar", {}, "");
             } else if (solucion > 2) {
                 temp = document.getElementById("playerr").innerHTML;
                 pagina = "/Juego.html";
@@ -212,6 +226,7 @@ var popo = (function () {
                 nomVec = temp.split(",");
                 pagina += "=" + temp;
                 location.href = pagina;
+                //stompClient.send("/app/iniciar", {}, "");
             } else {
                 alert("Debes ser el anfrition para iniciar la partida");
             }

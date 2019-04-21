@@ -5,7 +5,7 @@ var nivel = 0;
 
 var cartas = new Array();
 var temp = new Array();
-var mirar = (function Mirarr() {
+var carta = (function Carta() {
 
 
     function getAnfiPlayBySala() {

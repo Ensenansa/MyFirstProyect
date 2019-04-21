@@ -41,6 +41,8 @@ function removeItemFromArr(arr, item) {
 function iniciarJuego() {
     popo.conec();
     tener.fin();
+    tiempo.hora();
+    preguntas.getPreguntas();
     var dato = document.getElementById("juego");
     dato.style.opacity = 1;
     //cartas.sort(function() {return Math.random() - 0.5});
@@ -138,19 +140,21 @@ function mostrarParejas() {
     }
 }
 
-function prueba(dato, pos) {
+function prueba(dato, pos, nombre) {
     return{
         dato: dato,
-        pos: pos
+        pos: pos,
+        nombre:nombre
     }
 }
 
 function girarCarta() {
     var evento = window.event;
     var dato = document.getElementById("idSala").innerHTML;
+    var nombre= document.getElementById("playerr").innerHTML;
     jugada2 = evento.target.dataset.valor;
     identificadorJ2 = evento.target.id;
-    var tt = prueba(jugada2, identificadorJ2);    
+    var tt = prueba(jugada2, identificadorJ2,nombre);    
     if (cartas[parseInt(identificadorJ2)].seleccion != true) {
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {

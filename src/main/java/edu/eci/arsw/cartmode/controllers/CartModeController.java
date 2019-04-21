@@ -84,9 +84,9 @@ public class CartModeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
-    public ResponseEntity<?> getSalasByPlayer(@PathVariable String nombre) {
+    public ResponseEntity<?> getSalasIdByPlayer(@PathVariable String nombre) {
         try {
-            return new ResponseEntity<>(cat.getSalaByPlayer(nombre), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cat.getIdSalaByPlayer(nombre), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
@@ -139,7 +139,7 @@ public class CartModeController {
     public ResponseEntity<?> getLevelOfSala(@PathVariable Integer sala) {
         try {
             int t = cat.LevelOfTablero(sala);
-            System.out.println("que vemos : " + t);
+            System.out.println("que vemos sala : " + t);
             return new ResponseEntity<>(t, HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,9 +172,26 @@ public class CartModeController {
         }
         Jugador f = cat.getPlayerByName(nombre);
         int cont = f.getPuntaje();
-        f.setPuntaje((contador/2)*100);
+        f.setPuntaje((contador / 2) * 100);
         cat.setPlayerByName(f);
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/puntajePregunta/{nombre}/{correcto}")
+    public void addScoreByPregunta(@PathVariable String correcto, @PathVariable String nombre) throws CartModeException {
+        int contador = 0;
+        System.out.println("nombre" + nombre);
+        System.out.println("puntos" + correcto);
+        if (correcto.equals("1")) {
+            System.out.println("pregunta correcta, subido");
+            Jugador f = cat.getPlayerByName(nombre);
+            int cont = f.getPuntaje();
+            cont+=50;
+            f.setPuntaje(cont);
+            cat.setPlayerByName(f);
+
+        }
+    }
+
 
 }

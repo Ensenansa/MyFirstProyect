@@ -14,8 +14,12 @@ import java.util.List;
  */
 public class PreguntaSeleecionMultiple extends Pregunta{
     
-    public PreguntaSeleecionMultiple(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
-        super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
+    public PreguntaSeleecionMultiple(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo,String respuestaCorrecta) {
+        super(id, enunciado, tema, opcionesDeRespuesta, tiempo, respuestaCorrecta);
     }
+
+    public PreguntaSeleecionMultiple() {
+    }
+    
     
 }
