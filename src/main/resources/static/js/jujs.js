@@ -3,15 +3,9 @@ var cartOcupadas = new Array();
 var parejasHechas = new Array();
 var tempo = new Array();
 var cartOcupadas2 = new Array();
-var cartas = new Array(
-        {nombre: '1', seleccion: false}, {nombre: '2', seleccion: false},
-        {nombre: '3', seleccion: false}, {nombre: '4', seleccion: false},
-        {nombre: '5', seleccion: false}, {nombre: '6', seleccion: false},
-        {nombre: '7', seleccion: false}, {nombre: '8', seleccion: false},
-        {nombre: '1', seleccion: false}, {nombre: '2', seleccion: false},
-        {nombre: '3', seleccion: false}, {nombre: '4', seleccion: false},
-        {nombre: '5', seleccion: false}, {nombre: '6', seleccion: false},
-        {nombre: '7', seleccion: false}, {nombre: '8', seleccion: false});
+var cartas2 = new Array();
+var cartas = new Array();
+
 
 var intentos = 0;
 var jugada1 = "";
@@ -38,25 +32,177 @@ function removeItemFromArr(arr, item) {
     });
 };
 
-function iniciarJuego() {
-    popo.conec();
-    tener.fin();
-    tiempo.hora();
-    preguntas.getPreguntas();
-    var dato = document.getElementById("juego");
-    dato.style.opacity = 1;
-    //cartas.sort(function() {return Math.random() - 0.5});
-    for (var i = 0; i < 16; i++) {
-        var carta = cartas[i].nombre;
+var f=-1;
+
+
+function getIdSala(onTime,nombre){
+
+    var idsala;
+        axios.get('/jugadores/sala/=' + nombre)
+                .then(function (response) {
+                    idSala = response.data;
+                    //alert(idSala);
+                    onTime(necart,idSala);
+                    document.getElementById("idSala").innerHTML = idSala;
+                    console.log('saved successfully' + idsala)
+                        
+                });
+    }
+   //    getIdSala(getLevelId,nombre);
+function getLevelId(on,sala){
+    
+    axios.get('/jugadores/nivel/' + sala)
+                .then(function (response) {
+                    f = response.data;
+                    //alert(f);
+                    document.getElementById("levelGame").innerHTML =f;
+                    console.log('saved successfully' + f)
+                    on(pu,f);    
+                });
+}
+
+
+function necart(pp,level){
+    //alert("que es nivel"+level);
+    axios.get('/cartas/bara/' + level)
+                .then(function (response) {
+                    cartas2 = response.data;
+                    //alert("nivel"+level);
+                    //alert("ahora cartas2"+cartas2);
+                    //pp(pintar,temporal);
+                    pp(pintar,pl);
+                    console.log('saved successfully' + cartas2);
+                    
+                });
+}
+function pu(pl){
+    //alert("logituf"+cartas2.length);
+    for (var i = 0; i < cartas2.length; i++) {
+        //alert("que carta es: "+cartas2[i].dato);
+        var carta = cartas2[i].dato;
+        //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
         var dato = document.getElementById(i.toString());
         dato.dataset.valor = carta;
     }
+    //pl();
+
+}
+
+function temporal(){
+    //alert("logituf"+cartas2.length);
+    for (var i = 0; i < cartas2.length; i++) {
+        
+        alert("que  es: "+i.toString());
+        var carta = cartas2[i].dato;
+        //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
+        var dato = document.getElementById(i.toString());
+        console.log(dato) ;
+        console.log(dato.dataset.valor) ;
+        //alert("miremosq nos va mostr : "+dato.dataset.valor);
+        //dato.dataset.valor = carta;
+    }
+    
+
+}
+
+
+
+
+function pintar(){
+    alert("Dichosas cartas"+cartas2);
+    
+}
+
+
+function c1(OnTime){
+    //alert("conectandome");
+    popo.conec();    
+    OnTime(c3);
+}
+
+function c2(on){
+    //alert("fin");  
+    //tener.fin();
+    mirar.fan();
+    on(c4);
+
+}
+
+function c3(on){
+    //alert("hora");
+    tiempo.hora();
+    on(c5);
+}
+
+function c4(on){
+    //alert("preguntas");
+    preguntas.getPreguntas();
+    on();
+}
+
+function c5(){
+    //alert("nivel");
+    var nombre = document.getElementById("playerr").innerHTML;
+    //alert("cual es el nombre"+nombre);
+    getIdSala(getLevelId,nombre);
+
+}
+
+function libertad(){
+    //alert("hola");
+    var nombre = document.getElementById("playerr").innerHTML;
+    var jugador = document.getElementById("levelGame").innerHTML;
+    //alert("cual es el id"+jugador);
+    //alert("cual es el nombre"+nombre);
+    getIdSala(getLevelId,nombre);
+
+}
+
+
+
+function iniciarJuego() {
+    c1(c2);
+    //popo.conec();
+
+    //tener.fin();
+
+    //tiempo.hora();
+
+    //preguntas.getPreguntas();
+
+    var dato = document.getElementById("juego");
+
+    var nombre = document.getElementById("playerr").innerHTML;
+
+    dato.style.opacity = 1;
+
+    //alert(cartas2);
+
+    ///-------------//
+    //alert("cual es el nombre"+nombre);
+    //getIdSala(getLevelId,nombre);
+    
+    ///-------------//
+    //cartas.sort(function() {return Math.random() - 0.5});
+    
+//    for (var i = 0; i < 16; i++) {
+//        var carta = cartas[i].nombre;
+//        var dato = document.getElementById(i.toString());
+//        dato.dataset.valor = carta;
+
+//    }
 };
+
+function res(){
+    tempo = new Array();
+    parejasHechas = new Array();
+    
+}
 
 function resetearJuego() {
     //cartas.sort(function() {return Math.random() - 0.5});
     for (var i = 0; i < 16; i++) {
-        var carta = cartas[i].nombre;
+        var carta = cartas[i].dato;
         var dato = document.getElementById(i.toString());
         dato.dataset.valor = carta;
         colorCambio(i, 'black', '?');
@@ -65,10 +211,10 @@ function resetearJuego() {
 function mostrar(carta, pos) {
     var lon = cartas.length;
     var x;
-    for (x in cartas) {
-        console.log(cartas[x]);
-        if (cartas[x].nombre === carta) {
-            cartas[parseInt(pos)].seleccion = true;
+    for (x in cartas2) {
+        console.log(cartas2[x]);
+        if (cartas2[x].dato === carta) {
+            cartas2[parseInt(pos)].seleccion = true;
             colorCambio(pos, "blue", carta);
             cartOcupadas.push(pos);
         }
@@ -81,17 +227,17 @@ function limpiar() {
     var g;
     var cart;
 
-    for (g = 0; g < cartas.length; g++) {
-        if(temp>(cartas.length/2) | temp>tempo.length-1 ){
+    for (g = 0; g < cartas2.length; g++) {
+        if(temp>(cartas2.length/2) | temp>tempo.length-1 ){
                 temp=0;
         }
         cart = tempo[temp];
-        if (cartas[parseInt(g)].nombre != cart ) {
-            cartas[parseInt(g)].seleccion = false;
+        if (cartas2[parseInt(g)].dato != cart ) {
+            cartas2[parseInt(g)].seleccion = false;
             colorCambio(parseInt(g), "black", "?");            
         }else{
-            cartas[g].seleccion = true;
-            colorCambio(parseInt(g), "blue", cartas[g].nombre);
+            cartas2[g].seleccion = true;
+            colorCambio(parseInt(g), "blue", cartas2[g].dato);
             temp+=1;
         }
     }
@@ -104,8 +250,8 @@ function allPar(parejas) {
     var letem = cartas.length;
     for (g = 0; g < cartas.length; g++) {
         var rr = tempo[num];
-        if (cartas[parseInt(g)].nombre == tempo[num]) {
-            cartas[parseInt(g)].seleccion = true;
+        if (cartas2[parseInt(g)].dato == tempo[num]) {
+            cartas2[parseInt(g)].seleccion = true;
             colorCambio(g, "blue", tempo[num]);
             num = num + 1;
         }
@@ -135,8 +281,8 @@ function mostrarParejas() {
     var lenc = parejasHechas.length;
     parejasHechas=parejasHechas.sort();
     for (g = 0; g < lenc; g++) {
-        cartas[parseInt(parejasHechas[g])].seleccion = true;
-        colorCambio(parejasHechas[g], "blue", cartas[parseInt(parejasHechas[g])].nombre);
+        cartas2[parseInt(parejasHechas[g])].seleccion = true;
+        colorCambio(parejasHechas[g], "blue", cartas2[parseInt(parejasHechas[g])].dato);
     }
 }
 
@@ -149,21 +295,22 @@ function prueba(dato, pos, nombre) {
 }
 
 function girarCarta() {
+    //alert("vive");
     var evento = window.event;
     var dato = document.getElementById("idSala").innerHTML;
     var nombre= document.getElementById("playerr").innerHTML;
     jugada2 = evento.target.dataset.valor;
     identificadorJ2 = evento.target.id;
     var tt = prueba(jugada2, identificadorJ2,nombre);    
-    if (cartas[parseInt(identificadorJ2)].seleccion != true) {
+    if (cartas2[parseInt(identificadorJ2)].seleccion != true) {
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
-            cartas[parseInt(identificadorJ1)].seleccion = false;
-            if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas[parseInt(identificadorJ2)].seleccion != true && cartas[parseInt(identificadorJ1)].seleccion != true) {
+            cartas2[parseInt(identificadorJ1)].seleccion = false;
+            if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
                 parejasHechas.push(identificadorJ1);
                 parejasHechas.push(identificadorJ2);
-                cartas[parseInt(identificadorJ1)].seleccion = true;
-                cartas[parseInt(identificadorJ2)].seleccion = true;
+                cartas2[parseInt(identificadorJ1)].seleccion = true;
+                cartas2[parseInt(identificadorJ2)].seleccion = true;
                 colorCambio(identificadorJ2, "blue", jugada2);
                 vaciar();
                 comprobar();
@@ -207,7 +354,7 @@ function comprobar() {
     var aciertos = 0;
     mostrarParejas();
     for (var i = 0; i < 16; i++) {
-        if (cartas[i].seleccion == true) {
+        if (cartas2[i].seleccion == true) {
             //alert("pasamos");
             aciertos++;
         }
@@ -223,10 +370,9 @@ function resetearJuego() {
         return Math.random() - 0.5
     });
     for (var i = 0; i < 16; i++) {
-        var carta = cartas[i].nombre;
+        var carta = cartas[i].dato;
         var dato = document.getElementById(i.toString());
         dato.dataset.valor = carta;
         colorCambio(i, 'black', '?');
     }
-}
-;
+};

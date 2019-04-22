@@ -84,6 +84,7 @@ public class GreetingController {
     
     @MessageMapping("iniciar")
     public void start() throws Exception {
+        cartas.clear();
         int players=cart.getAllPlayerInGame();
         List<Jugador> ju=cart.nameAlPlayer();
         System.out.println("cuantos jugadores hay : "+players);
@@ -145,6 +146,7 @@ public class GreetingController {
     @MessageMapping("level")
     public void level(String id) throws Exception {
         System.out.println("elevamos...el id : "+id);
+        start();
         msg.convertAndSend("/topic/uplevel", id);
     }
 

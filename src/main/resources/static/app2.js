@@ -5,6 +5,26 @@ var juganfi = "";
 var verdad = "";
 var sala = -1;
 var mirar = (function Mirar() {
+    
+    function fan(){
+        cadVariables = location.search.substring(1, location.search.length);
+        arrVariables = cadVariables.split(',');
+        var t = String(arrVariables);
+        var u = t.replace("=", "");
+        document.getElementById("playerr").innerHTML = u;
+        mirar.getIdSalaByPlayer();
+        mirar.getIdSalaByPlayer1();
+
+        popo.conec();
+    }
+    function fn(){
+        alert("la otra");
+        mirar.getIdSalaByPlayer1();
+        //mirar.getAnfiPlayBySala();
+
+    }
+
+
 
     function fin() {
 
@@ -14,6 +34,7 @@ var mirar = (function Mirar() {
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
         mirar.getIdSalaByPlayer();
+        mirar.getIdSalaByPlayer1();
         popo.conec();
     }
     function tu() {
@@ -63,6 +84,8 @@ var mirar = (function Mirar() {
                     document.getElementById("idSala").innerHTML = grouid;
                     mirar.AllPlayersBySala();
                 });
+     }
+function getIdSalaByPlayer1() {
         //alert("ahora"+sala);                
         axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
@@ -99,11 +122,14 @@ var mirar = (function Mirar() {
     }
 
     return {
+        getIdSalaByPlayer1:getIdSalaByPlayer1,
         fin: fin,
         getIdSalaByPlayer: getIdSalaByPlayer,
         AllPlayersBySala: AllPlayersBySala,
         getAnfiPlayBySala: getAnfiPlayBySala,
         tu: tu,
+        fan:fan,
+        fn:fn,
         getLevelBy: getLevelBy
 
     };

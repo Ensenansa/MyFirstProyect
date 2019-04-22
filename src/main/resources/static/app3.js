@@ -29,8 +29,8 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=5;
-var minutos=5;
+var seg=15;
+var minutos=1;
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
@@ -41,7 +41,7 @@ var tiempo = (function Tiempo() {
             document.getElementById('i').innerHTML = seg;
             document.getElementById('j').innerHTML = minutos;
             if(seg ==1 && minutos ==0){
-                alert("Nos fuimos");
+                //alert("Nos fuimos");
                 popo.sendUpLevel();
             }else if (seg == 0) {
                 seg = 59;
@@ -96,6 +96,7 @@ var preguntas = (function Preguntas() {
                 })
     }
     
+    //function mudanza(colchones) {
     function mudanza() {
         var f=-1;
         respuestaCorrecta=pregunta.respuestaCorrecta;
@@ -109,23 +110,66 @@ var preguntas = (function Preguntas() {
             
         }
         var jugador= document.getElementById("playerr").innerHTML;
-        alert("jugador :"+jugador);
+        var le= document.getElementById("levelGame").innerHTML;
+        var sal=document.getElementById("idSala").innerHTML;
+        
+        //alert("le :"+le);
+        //alert("sala es: "+sal);
         axios.post('/jugadores/puntajePregunta/'+jugador+'/'+f)
                 .then(function (response) {
                     console.log(response.data);
                     //alert(salalis);
                 });
-        alert("urra");
-        document.getElementById("juego").innerHTML ="";
-        
-        
-
-
+        axios.get('/jugadores/nivel/'+sal)
+                .then(function (response) {
+                    console.log(response.data);
+                    le=response.data;
+                    le+=1;
+                    //alert("haber"+le);
+                    document.getElementById("levelGame").innerHTML =le;
+                  
+                });                
+                
+        //alert("urra");
+        var tro=parseInt(le,10);
+        //document.getElementById("levelGame").innerHTML =le;
+        //document.getElementById("juego").innerHTML ="";
     }
-
+    function colchones(nivel){
+        necart(up,nivel);
+        
+    }
+    function get2Nivel(){
+        //alert("modificando tabña");
+        txt_respuestas.length = 0;
+        txt_respuestas = "";
+        document.getElementById("juego").innerHTML ="";        
+        var a ;
+        var b ;
+        var c=0;
+        txt_respuestas+="<table width=100% align=center onload=apiclient.getAllUser()>";
+        for(a=0;a<5;a++){
+            txt_respuestas+="<tr>";
+            
+//'<input type="radio" class=+ a + ' ' + 'value="' + respuestas[i] + '"><label class="form-check-label" for=materialUnchecked' + a + '>';
+            for(b=0;b<5;b++){
+                var temp='<td id="'+c+'" class=letra onclick=girarCarta() data-valor=valor>?</td>"';
+                txt_respuestas+=temp;
+                c++;
+            }
+            txt_respuestas+="</tr>";
+        }
+        
+        txt_respuestas+="</table>";
+        
+        document.getElementById("juego").innerHTML =txt_respuestas;        
+        
+    }
     return {
+        get2Nivel:get2Nivel,
         getPreguntas:getPreguntas,
-        mudanza:mudanza
+        mudanza:mudanza,
+        colchones:colchones
 
     };
 })();

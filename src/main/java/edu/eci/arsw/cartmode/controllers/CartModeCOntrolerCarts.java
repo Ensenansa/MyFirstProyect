@@ -36,7 +36,7 @@ public class CartModeCOntrolerCarts {
         try {
             List<CartaJavSc> tempo=cat.GenerateDuplicadoBaraja(nivel); 
             
-            return new ResponseEntity<>(tempo.toString() , HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(tempo , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);

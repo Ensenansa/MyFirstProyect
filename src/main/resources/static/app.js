@@ -44,8 +44,17 @@ var popo = (function () {
                 //alert(parAcert);
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
-                alert("sIOOOO");
+                //alert("sIOOOO");
                 preguntas.mudanza();
+                var sal=document.getElementById("levelGame").innerHTML;
+                var tro=parseInt(sal,10)+1;
+                preguntas.get2Nivel();
+                //alert("en stomp"+tro);
+                res();
+                necart(pu,tro);
+                //iniciarJuego();
+                
+                
 
 
             });
@@ -73,7 +82,7 @@ var popo = (function () {
 
     function sendUpLevel() {
         sala = document.getElementById("idSala").innerHTML;
-        alert("enviamos elevada");
+        //alert("enviamos elevada");
         stompClient.send("/app/level", {}, JSON.stringify(sala));
     }
 

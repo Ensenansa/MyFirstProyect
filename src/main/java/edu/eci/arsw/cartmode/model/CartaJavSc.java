@@ -40,7 +40,8 @@ public class CartaJavSc {
     @Override
     public String toString() {
         //return super.toString(); //To change body of generated methods, choose Tools | Templates.
-        return "{" + "dato=" + dato +"seleccion="+seleccion +'}';
+        return "{" + "nombre: '" + dato +"'seleccion: "+seleccion +'}';
+        
     }
     
 }
