@@ -29,8 +29,8 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=15;
-var minutos=1;
+var seg=55;
+var minutos=0;
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;

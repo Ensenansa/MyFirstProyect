@@ -172,8 +172,18 @@ public class CartModeController {
             }
         }
         Jugador f = cat.getPlayerByName(nombre);
-        int cont = f.getPuntaje();
-        f.setPuntaje((contador / 2) * 100);
+        int cont = f.getPuntaje();        
+        int punta=((contador / 2) * 100);
+        
+        
+        int dif=punta-cont;
+        if(dif>0){
+            f.setPuntaje(cont+dif);
+        
+        }else{
+            f.setPuntaje(cont+punta);
+        }
+        f.setPuntaje(cont+dif);
         cat.setPlayerByName(f);
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }

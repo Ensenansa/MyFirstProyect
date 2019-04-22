@@ -36,6 +36,7 @@ var popo = (function () {
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
 
                 limpiar();
+                alert("Cuales sin las parejas: "+evenbody.body);
                 var t = JSON.parse(evenbody.body);
                 console.log(evenbody.body);
                 allPar(t);
@@ -50,8 +51,9 @@ var popo = (function () {
                 var tro=parseInt(sal,10)+1;
                 preguntas.get2Nivel();
                 //alert("en stomp"+tro);
-                res();
+                
                 necart(pu,tro);
+                res();
                 //iniciarJuego();
                 
                 

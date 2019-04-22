@@ -135,16 +135,17 @@ public class CartModeStub implements CartModeServices {
                     resp.add(new CartaJavSc(Integer.toString(i + 1), false));
                     t = false;
                 } else if (!t) {
-                    int valorEntero = (int) Math.floor(Math.random() * (26));
-                    String tempg = abecedario.get(valorEntero);
+                    //int valorEntero = (int) Math.floor(Math.random() * (26));
+                    String tempg = abecedario.get(i);
+                    /*
                     boolean rest = verValor(puestas, tempg);
                     while (rest) {
                         valorEntero = (int) Math.floor(Math.random() * (26));
                         tempg = abecedario.get(valorEntero);
                         rest = verValor(puestas, tempg);
-                    }
-                    resp.add(new CartaJavSc(abecedario.get(valorEntero), false));
-                    puestas.add(abecedario.get(valorEntero));
+                    }*/
+                    resp.add(new CartaJavSc(tempg, false));
+                    //puestas.add(abecedario.get(valorEntero));
                     t = true;
                 }
             }
@@ -430,6 +431,7 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("j");
         abecedario.add("k");
         abecedario.add("l");
+        /**
         abecedario.add("m");
         abecedario.add("n");
         abecedario.add("o");
@@ -443,7 +445,7 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("w");
         abecedario.add("x");
         abecedario.add("y");
-        abecedario.add("z");
+        abecedario.add("z");*/
 
     }
 }

@@ -70,7 +70,7 @@ function necart(pp,level){
                     //alert("nivel"+level);
                     //alert("ahora cartas2"+cartas2);
                     //pp(pintar,temporal);
-                    pp(pintar,pl);
+                    pp(res,pl);
                     console.log('saved successfully' + cartas2);
                     
                 });
@@ -194,6 +194,7 @@ function iniciarJuego() {
 };
 
 function res(){
+    alert("borrando");
     tempo = new Array();
     parejasHechas = new Array();
     
