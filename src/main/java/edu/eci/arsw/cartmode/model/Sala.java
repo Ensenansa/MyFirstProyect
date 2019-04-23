@@ -17,17 +17,27 @@ public class Sala {
     private Integer id;
     private Tablero tablero;
     private Boolean listo;
+    private Integer nivel;
 
     public Sala() {
     }
     
     
-    public Sala(Integer id, Tablero tablero, List<Jugador> jugadores, Jugador jugadorAnfrition){
+    public Sala(Integer id, Tablero tablero, List<Jugador> jugadores, Jugador jugadorAnfrition, Integer nivel){
         this.id=id;
         this.jugadorAnfrition=jugadorAnfrition;
         this.jugadores=jugadores;
         this.tablero=tablero;
         this.listo=false;
+        this.nivel=nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
+
+    public Integer getNivel() {
+        return nivel;
     }
 
     public void setListo(Boolean listo) {

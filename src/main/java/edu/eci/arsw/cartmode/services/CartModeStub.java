@@ -69,7 +69,7 @@ public class CartModeStub implements CartModeServices {
             List<Jugador> kl = new ArrayList<Jugador>();
             play.setSala(salas.size());
             kl.add(play);
-            Sala temp = new Sala(salas.size(), null, kl, play);
+            Sala temp = new Sala(salas.size(), null, kl, play,0);
             salas.add(temp);
 
         } else if (salas.size() > 0) {
@@ -89,7 +89,7 @@ public class CartModeStub implements CartModeServices {
             if (!puesto) {
                 List<Jugador> kl = new ArrayList<Jugador>();
                 kl.add(play);
-                Sala tmp2 = new Sala(salas.size(), null, kl, null);
+                Sala tmp2 = new Sala(salas.size(), null, kl, null,0);
                 salas.add(tmp2);
                 //Para que tenga elid de sala correcto                          
                 play.setSala(salas.size() - 1);
@@ -350,15 +350,31 @@ public class CartModeStub implements CartModeServices {
         return salas.get(idSala).getListo();
     }
 
+    
     @Override
-    public Integer LevelOfTablero(Integer idSala) throws CartModeException {
-        int resp = 0;
+    public void levelOfSalaId(Integer idSala)throws  CartModeException{
         for (Sala sa : salas) {
             //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
             if (sa.getId().equals(idSala)) {
-                resp = sa.getTablero().getNivel();
+                int tem=sa.getNivel();
+                tem++;
+                sa.setNivel(tem);
             }
         }
+        
+    
+    }
+    @Override
+    public Integer LevelOfSala(Integer idSala) throws CartModeException {
+        int resp = 0;
+        
+        for (Sala sa : salas) {
+            System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
+            if (sa.getId().equals(idSala)) {
+                resp = sa.getNivel();
+            }
+        }
+        
         return resp;
     }
 

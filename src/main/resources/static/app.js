@@ -36,7 +36,7 @@ var popo = (function () {
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
 
                 limpiar();
-                alert("Cuales sin las parejas: "+evenbody.body);
+                //alert("Cuales sin las parejas: "+evenbody.body);
                 var t = JSON.parse(evenbody.body);
                 console.log(evenbody.body);
                 allPar(t);
@@ -46,6 +46,7 @@ var popo = (function () {
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
                 //alert("sIOOOO");
+                //RECORDAR SUBIRLE EL ID A LA SALA
                 preguntas.mudanza();
                 var sal=document.getElementById("levelGame").innerHTML;
                 var tro=parseInt(sal,10)+1;
@@ -220,7 +221,7 @@ var popo = (function () {
         },
         pr: function () {
             var qw = loadd();
-            var salal = document.getElementById("idSala").innerHTML;
+            var salal = document.getElementById("idSala").innerHTML;            
             if (qw) {
                 stompClient.send("/app/avisar." + salal, {}, "");
                 temp = document.getElementById("playerr").innerHTML;

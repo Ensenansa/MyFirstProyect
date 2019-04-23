@@ -151,6 +151,7 @@ public class GreetingController {
     @MessageMapping("level")
     public void level(String id) throws Exception {
         System.out.println("elevamos...el id : " + id);
+        cart.levelOfSalaId(Integer.valueOf(id));
         start();
         System.out.println("Empezndo el borrado");
         System.out.println("--------------------");

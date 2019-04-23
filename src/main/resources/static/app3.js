@@ -14,6 +14,7 @@ var tener = (function Tener() {
     function getLevelBy() {
         sala = document.getElementById("idSala").innerHTML;
         //alert("sala es: "+sala);
+        alert("ahora2");                
         axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
                     level = response.data;

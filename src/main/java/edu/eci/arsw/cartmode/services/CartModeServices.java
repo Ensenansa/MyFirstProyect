@@ -63,5 +63,6 @@ public interface CartModeServices {
     
     public Boolean isPlayerAnfitrion(String nombre, Integer sala)throws  CartModeException;
     
-    public Integer LevelOfTablero(Integer idSala)throws  CartModeException;
+    public Integer LevelOfSala(Integer idSala)throws  CartModeException;
+    public void levelOfSalaId(Integer idSala)throws  CartModeException;
 }
