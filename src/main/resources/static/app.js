@@ -43,25 +43,25 @@ var popo = (function () {
                 allPar(t);
                 limpiar();
                 sendPuntaje();
-                //alert(parAcert);
+                //alert(parAcert);  
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
                 //alert("sIOOOO");
                 //RECORDAR SUBIRLE EL ID A LA SALA
                 preguntas.mudanza();
-                var sal=document.getElementById("levelGame").innerHTML;
-                var tro=parseInt(sal,10)+1;
+                var sal = document.getElementById("levelGame").innerHTML;
+                alert("que arrjoa: " + sal);
+                var tro = parseInt(sal, 10);
                 preguntas.get2Nivel();
-                //alert("en stomp"+tro);
-                
-                necart(pu,tro);
+                necart(pu, tro + 1);
                 res();
-                //iniciarJuego();
-                
-                
+            });
 
+            stompClient.subscribe('/topic/result' + topic, function (evenbody) {
+                goToResult();
 
             });
+
         });
     }
     function sendPuntaje() {
@@ -79,22 +79,43 @@ var popo = (function () {
 
     }
 
+    function goSendResult() {
+        sala = document.getElementById("idSala").innerHTML;
+        var t = parseInt(sala, 10);
+        //alert("enviamos sala : "+t);
+        stompClient.send("/app/result." + t, {}, JSON.stringify(t));
+    }
+
+    function goToResult() {
+        var temp = $("#playerr").val();
+        pagina = "/resultados.html";
+        pagina += "?";
+        nomVec = temp.split(",");
+        pagina += "=" + temp;
+        location.href = pagina;
+
+
+
+    }
+
     function sendName() {
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         pasarVariables();
     }
 
-    function sendUpLevel() {
+    function sendUpLevel(op) {
+        document.getElementById('levelGame').innerHTML = op;
+        alert("Actulizando nivel, ahora es : " + op);
         sala = document.getElementById("idSala").innerHTML;
-        var t=parseInt(sala, 10);
+        var t = parseInt(sala, 10);
         //alert("enviamos sala : "+t);
-        stompClient.send("/app/level", {}, JSON.stringify(t));
+        stompClient.send("/app/level." + t, {}, JSON.stringify(t));
     }
 
     function sendCart(ct, ctp) {
-    var n = document.getElementById("idSala").innerHTML;
-    //alert("carga n: "+n);
-        stompClient.send("/app/cart."+n, {}, JSON.stringify(ctp));
+        var n = document.getElementById("idSala").innerHTML;
+        //alert("carga n: "+n);
+        stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
     }
 
     function pasarVariables() {
@@ -200,6 +221,7 @@ var popo = (function () {
     }
 
     return {
+        goSendResult:goSendResult,
         reload: reload,
         loadd: loadd,
         setConnected: setConnected,
@@ -224,12 +246,12 @@ var popo = (function () {
         },
         conecS(dat) {
             //Proximamene, para conectar a una sala especifica
-            alert("que es data: "+dat);
+            //alert("que es data: "+dat);
             connect(dat);
         },
         pr: function () {
             var qw = loadd();
-            var salal = document.getElementById("idSala").innerHTML;            
+            var salal = document.getElementById("idSala").innerHTML;
             if (qw) {
                 stompClient.send("/app/avisar." + salal, {}, "");
                 temp = document.getElementById("playerr").innerHTML;

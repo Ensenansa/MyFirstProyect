@@ -78,6 +78,7 @@ public class CartModeStub implements CartModeServices {
             while (y < salas.size() && !puesto) {
                 Sala op = salas.get(y);
                 if (op.getJugadores().size() < 4) {
+                //if (op.getJugadores().size() < 2) {   //CAMBIAR... SOLO PAR APRUEBA Y CAMBIAR EN EL TEST
                     List<Jugador> tr = op.getJugadores();
                     play.setSala(salas.size() - 1);
                     tr.add(play);
@@ -137,13 +138,6 @@ public class CartModeStub implements CartModeServices {
                 } else if (!t) {
                     //int valorEntero = (int) Math.floor(Math.random() * (26));
                     String tempg = abecedario.get(i);
-                    /*
-                    boolean rest = verValor(puestas, tempg);
-                    while (rest) {
-                        valorEntero = (int) Math.floor(Math.random() * (26));
-                        tempg = abecedario.get(valorEntero);
-                        rest = verValor(puestas, tempg);
-                    }*/
                     resp.add(new CartaJavSc(tempg, false));
                     //puestas.add(abecedario.get(valorEntero));
                     t = true;
@@ -152,13 +146,14 @@ public class CartModeStub implements CartModeServices {
         } else if (nivel == 3) {
             boolean t = true;
             for (int i = 0; i < 10; i++) {
-                if (t) {
-                    //resp.add(new Carta(Integer.toString(i), nivel));
+ if (t) {
                     resp.add(new CartaJavSc(Integer.toString(i + 1), false));
                     t = false;
                 } else if (!t) {
-                    char u = (char) (rnd.nextInt(91) + 65);
-                    resp.add(new CartaJavSc(Character.toString(u), false));
+
+                    String tempg = abecedario.get(i);
+                    resp.add(new CartaJavSc(tempg, false));
+                    //puestas.add(abecedario.get(valorEntero));
                     t = true;
                 }
             }

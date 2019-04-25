@@ -30,20 +30,36 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=45;
-var minutos=5;
+var seg=7;
+var minutos=0;
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
+
+    function detener(){
+        
+        clearInterval(int);
+    }
 
     function hora() {
         int = setInterval(function () {
             seg--;
             document.getElementById('i').innerHTML = seg;
             document.getElementById('j').innerHTML = minutos;
+            
+            s = document.getElementById("levelGame").innerHTML;
+            var t=parseInt(s, 10);
+            //alert("q nivel es : "+t);
+            if(t>3){
+                alert("Se termino");
+                detener();
+                popo.goSendResult();
+                
+            }
             if(seg ==1 && minutos ==0){
-                //alert("Nos fuimos");
-                popo.sendUpLevel();
+                alert("Nos fuimos");
+                popo.sendUpLevel(t);
+                seg=7;
             }else if (seg == 0) {
                 seg = 59;
                 //alert("Se acabo el tiempo");
@@ -141,7 +157,7 @@ var preguntas = (function Preguntas() {
         
     }
     function get2Nivel(){
-        //alert("modificando tabña");
+        alert("modificando tabña");
         txt_respuestas.length = 0;
         txt_respuestas = "";
         document.getElementById("juego").innerHTML ="";        

@@ -19,7 +19,7 @@ var mirar = (function Mirar() {
         popo.conec();
     }
     function fn(){
-        alert("la otra");
+        //alert("la otra");
         mirar.getIdSalaByPlayer1();
         //mirar.getAnfiPlayBySala();
 
@@ -95,9 +95,11 @@ function getIdSalaByPlayer1() {
             axios.get('/jugadores/nivel/' + a)
                     .then(function (response) {
                         level = response.data;
-                        //alert("nivel" + level);
-                        document.getElementById("levelGame").innerHTML = level;
-                        console.log('saved successfully' + level)
+                        var t=parseInt(level, 10)+1;
+                        alert("nivel del inicio" + t);
+                        document.getElementById("levelGame").innerHTML = t;
+                        //alert("cambiando");
+                        console.log('saved successfully' + t)
                     });
 
     }
