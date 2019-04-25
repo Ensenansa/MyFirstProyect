@@ -15,6 +15,7 @@ var popo = (function () {
 
     var solucion = 1;
     var connect = function (topic) {
+        //alert("que votastomp : "+topic);
         var socket = new SockJS('/gs-guide-websocket');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
@@ -85,12 +86,15 @@ var popo = (function () {
 
     function sendUpLevel() {
         sala = document.getElementById("idSala").innerHTML;
-        //alert("enviamos elevada");
-        stompClient.send("/app/level", {}, JSON.stringify(sala));
+        var t=parseInt(sala, 10);
+        //alert("enviamos sala : "+t);
+        stompClient.send("/app/level", {}, JSON.stringify(t));
     }
 
     function sendCart(ct, ctp) {
-        stompClient.send("/app/cart", {}, JSON.stringify(ctp));
+    var n = document.getElementById("idSala").innerHTML;
+    //alert("carga n: "+n);
+        stompClient.send("/app/cart."+n, {}, JSON.stringify(ctp));
     }
 
     function pasarVariables() {
@@ -213,11 +217,15 @@ var popo = (function () {
         },
         conec: function () {
             connect('');
+            id = document.getElementById("idSala").value;
+            //alert("id que es: "+id);
             //stompClient.send("/app/iniciar", {}, "");
 
         },
-        conecSpecifi(dat) {
+        conecS(dat) {
             //Proximamene, para conectar a una sala especifica
+            alert("que es data: "+dat);
+            connect(dat);
         },
         pr: function () {
             var qw = loadd();

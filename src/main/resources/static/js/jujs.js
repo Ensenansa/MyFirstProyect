@@ -6,7 +6,7 @@ var cartOcupadas2 = new Array();
 var cartas2 = new Array();
 var cartas = new Array();
 
-
+var idSala ;
 var intentos = 0;
 var jugada1 = "";
 var jugada2 = "";
@@ -37,20 +37,19 @@ var f=-1;
 
 function getIdSala(onTime,nombre){
 
-    var idsala;
+    //var idsala;
         axios.get('/jugadores/sala/=' + nombre)
                 .then(function (response) {
                     idSala = response.data;
                     //alert(idSala);
                     onTime(necart,idSala);
                     document.getElementById("idSala").innerHTML = idSala;
-                    console.log('saved successfully' + idsala)
-                        
+                    console.log('saved successfully' + idSala);
                 });
     }
    //    getIdSala(getLevelId,nombre);
 function getLevelId(on,sala){
-    
+
     axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
                     f = response.data;
@@ -63,6 +62,11 @@ function getLevelId(on,sala){
 
 
 function necart(pp,level){
+
+    
+    if(level==0){
+        level++;
+    }
     //alert("que es nivel"+level);
     axios.get('/cartas/bara/' + level)
                 .then(function (response) {
@@ -70,7 +74,7 @@ function necart(pp,level){
                     //alert("nivel"+level);
                     //alert("ahora cartas2"+cartas2);
                     //pp(pintar,temporal);
-                    pp(res,pl);
+                    pp(ko,pl);
                     console.log('saved successfully' + cartas2);
                     
                 });
@@ -84,9 +88,18 @@ function pu(pl){
         var dato = document.getElementById(i.toString());
         dato.dataset.valor = carta;
     }
-    //pl();
+    alert("vamos");
+    pl();
+    
+}
+
+function ko(){
+    var n = document.getElementById("idSala").innerHTML;
+    //alert("carga n: "+n);
+    popo.conecS("."+n);    
 
 }
+
 
 function temporal(){
     //alert("logituf"+cartas2.length);
@@ -116,7 +129,7 @@ function pintar(){
 
 function c1(OnTime){
     //alert("conectandome");
-    popo.conec();    
+    //popo.conec();    
     OnTime(c3);
 }
 
@@ -137,14 +150,16 @@ function c3(on){
 function c4(on){
     //alert("preguntas");
     preguntas.getPreguntas();
+
     on();
 }
 
 function c5(){
-    //alert("nivel");
+    //alert("Sala : "+idSala);
     var nombre = document.getElementById("playerr").innerHTML;
     //alert("cual es el nombre"+nombre);
     getIdSala(getLevelId,nombre);
+    
 
 }
 

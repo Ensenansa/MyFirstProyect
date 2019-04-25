@@ -105,12 +105,14 @@ public class GreetingController {
         jugadoress = players;
     }
 
-    @MessageMapping("cart")
-    public void CambioCarta(Carta ct) throws Exception {
+    //@MessageMapping("cart")
+    @MessageMapping("cart.{id}")
+    public void CambioCarta(Carta ct,@DestinationVariable String id) throws Exception {
+    //public void CambioCarta(Carta ct) throws Exception {
         int players = cart.getAllPlayerInGame();
         int temporal = -1;
         String Keytemporal = "";
-        //Carta ct=mj.getCt();
+        System.out.println("que es id : "+id);
         System.out.println("miremos la p* carta" + ct.getDato());
         System.out.println("miremos la posicin de carta" + ct.getPos());
         System.out.println("EL nombre de quien mando la de carta" + ct.getNombre());
@@ -142,10 +144,10 @@ public class GreetingController {
                 cartas.put(ct.getNombre(), pila);
                 System.out.println("enviamos pareja");
                 System.out.println("-------------------------");
-                msg.convertAndSend("/topic/parejas", valoresPareja);
+                msg.convertAndSend("/topic/parejas."+id, valoresPareja);
             }
         }
-        msg.convertAndSend("/topic/cart", ct);
+        msg.convertAndSend("/topic/cart."+id, ct);
     }
 
     @MessageMapping("level")

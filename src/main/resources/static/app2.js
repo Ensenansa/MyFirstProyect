@@ -81,16 +81,16 @@ var mirar = (function Mirar() {
                     console.log('saved successfully')
 
                     sala = grouid;
-                    alert("esta"+sala);
+                    //alert("esta"+sala);
                     document.getElementById("idSala").innerHTML = grouid;
                     on();
                     mirar.AllPlayersBySala();
                 });
      }
 function getIdSalaByPlayer1() {
-        alert("ahora12 : "+sala);                
+        //alert("ahora12 : "+sala);                
        
-            alert("pasa"+sala);
+            //alert("pasa"+sala);
             var a = parseInt(sala);
             axios.get('/jugadores/nivel/' + a)
                     .then(function (response) {

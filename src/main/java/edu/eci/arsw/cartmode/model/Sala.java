@@ -83,6 +83,6 @@ public class Sala {
     @Override
     public String toString() {
         
-        return "Sala{"+"id="+id+", tablero="+tablero+", jugadores="+jugadores.listIterator()+",jugadorAnfrition="+jugadorAnfrition+", listo="+listo+"}";
+        return "Sala{"+"id="+id+", tablero="+tablero+", jugadores="+jugadores.listIterator()+",nivel="+nivel+",jugadorAnfrition="+jugadorAnfrition+", listo="+listo+"}";
     }
 }
