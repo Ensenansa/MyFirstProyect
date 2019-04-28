@@ -87,7 +87,9 @@ var popo = (function () {
     }
 
     function goToResult() {
-        var temp = $("#playerr").val();
+        
+        var temp = document.getElementById("playerr").innerHTML;
+        
         pagina = "/resultados.html";
         pagina += "?";
         nomVec = temp.split(",");
@@ -105,7 +107,7 @@ var popo = (function () {
 
     function sendUpLevel(op) {
         document.getElementById('levelGame').innerHTML = op;
-        alert("Actulizando nivel, ahora es : " + op);
+        //alert("Actulizando nivel, ahora es : " + op);
         sala = document.getElementById("idSala").innerHTML;
         var t = parseInt(sala, 10);
         //alert("enviamos sala : "+t);

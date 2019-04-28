@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <!--
+#fdfdfc
         Hyperspace by HTML5 UP
         html5up.net | @ajlkn
         Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
@@ -11,8 +12,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #fdfdfc;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #000000;
+            }
+        </style>        
     </head>
-    <body class="is-preload">
+    <body class="is-preload" onload="resultados.iniR()">
 
         <!-- Header -->
         <header id="header">
@@ -34,20 +54,37 @@
                 <div class="inner">
                     <h1 class="major">Resultados</h1>
 
-                    <!-- Text -->
-                    <section>
-                        <h2>Aqui podra visualizar los resultados propios y grupales. </h2>
-                        <p>Compartir sus resultados en redes sociales ... <em>Facebook ...</em>.
-                            Google+ ... <sup>Twitter ...</sup> Proximamente ... <sub>Proximamente ...</sub> Proximamente ...
-                            Proximamente ... <u>Proximamente ...</u>Proximamente ... <code>Proximamente ...</code>. Proximamente ..., <a href="#">Proximamente ...</a>.</p>
-                        <hr />
-                        <p>Exportar en PDF... </p>
-                        <hr />
-                      
-                    </section>
-                </div>
-            </section>
+                    <p>Nombre del Jugador: </p>
+                    <h2 style="text-align:left" id="playAf" ></h2>                        
+                    <br>
+                    <p>Puntaje del Jugador: </p>
+                    <h2 style="text-align:left" id="puntPlayer" ></h2>                                            
 
+                    <p>Sala conectada es: </p>
+                    <h2 style="text-align:left" id="idSala" ></h3> 
+
+                        <h2>Nombre de los Jugadores. </h2>
+                        <!-- Text -->
+                        <div id="jugadores"></div>
+                        <table >
+
+                        </table>
+                        </div>
+
+                        <section>
+                             <h1 class="major">Compartir Resultados</h1>
+                            <p>Compartir sus resultados en redes sociales ... <em>Facebook ...</em>                                <sup>Twitter ...</sup> Proximamente ... <sub>Proximamente ...</sub> Proximamente ...
+                                Twitter ...  <a href="#">Proximamente ...</a>.</p>
+                            <hr />
+                            <p>O si desea exportarlos en PDF... </p>
+                            <button id="carga" type="button" onclick="getPDF.pd()">Descargar PDF</button>
+                            <hr />
+
+                        </section>
+                </div>
+
+            </section>
+            
         </div>
 
         <!-- Footer -->
@@ -65,8 +102,19 @@
         <script src="assets/js/jquery.scrolly.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>   
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="js/apiclient.js"></script>        
+        <script src="js/appIndex.js"></script>
+        <script src="js/resultados.js"></script>
+        <script src="js/jujs.js"></script>
+        <script src="/app.js"></script>
+        
+        <script src="/app3.js"></script>
 
     </body>
 </html>

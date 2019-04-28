@@ -11,7 +11,6 @@ import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
 import edu.eci.arsw.cartmode.model.Sala;
-import edu.eci.arsw.cartmode.model.Tablero;
 import edu.eci.arsw.cartmode.model.impl.PreguntaSeleecionMultiple;
 import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ import java.util.Random;
 @Service
 public class CartModeStub implements CartModeServices {
 
-    private static final List<Tablero> tableros;
+    
     private static final List<Jugador> player;
     private static final List<Pregunta> preguntas;
     private static final List<String> opcionesrespuesta;
@@ -69,7 +68,7 @@ public class CartModeStub implements CartModeServices {
             List<Jugador> kl = new ArrayList<Jugador>();
             play.setSala(salas.size());
             kl.add(play);
-            Sala temp = new Sala(salas.size(), null, kl, play,0);
+            Sala temp = new Sala(salas.size(), kl, play,0);
             salas.add(temp);
 
         } else if (salas.size() > 0) {
@@ -90,7 +89,7 @@ public class CartModeStub implements CartModeServices {
             if (!puesto) {
                 List<Jugador> kl = new ArrayList<Jugador>();
                 kl.add(play);
-                Sala tmp2 = new Sala(salas.size(), null, kl, null,0);
+                Sala tmp2 = new Sala(salas.size(), kl, null,0);
                 salas.add(tmp2);
                 //Para que tenga elid de sala correcto                          
                 play.setSala(salas.size() - 1);
@@ -118,6 +117,14 @@ public class CartModeStub implements CartModeServices {
     
     }
 
+    public List<Jugador> getJugadoresByIdSala(Integer idSala)throws CartModeException{
+        Sala t=salas.get(idSala);
+        List<Jugador>tt=t.getJugadores();
+        return tt;  
+    }
+    
+    
+    
     @Override
     public List<CartaJavSc> GenerateBaraja(Integer nivel) throws CartModeException {
         List<CartaJavSc> resp = new CopyOnWriteArrayList<>();
@@ -173,22 +180,15 @@ public class CartModeStub implements CartModeServices {
 
         return tt;
     }
-
-    @Override
-    public Tablero iniciarPartida(Integer idSala, List<String> players, Integer level) throws CartModeException {
-        generateTblero();
-        return getTblero(level);
-    }
-
     @Override
     public void iniciarPartida() throws CartModeException {
-        generateTblero();
+        //generateTblero();
         setTableros();
     }
 
     public void setTableros() throws CartModeException {
         for (Sala sal : salas) {
-            sal.setTablero(getTblero(1));
+            //sal.setTablero(getTblero(1));
         }
     }
 
@@ -196,26 +196,6 @@ public class CartModeStub implements CartModeServices {
     public void detenerPartida() throws CartModeException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public Tablero getTblero(Integer level) throws CartModeException {
-        Tablero o = new Tablero();
-        for (Tablero tab : tableros) {
-            if (tab.getNivel().equals(level)) {
-                o = tab;
-            }
-        }
-        return o;
-    }
-
-    @Override
-    public void generateTblero() throws CartModeException {
-        for (int i = 0; i < 3; i++) {
-            Tablero a = new Tablero(GenerateBaraja(i), getListPreguntas(), opcionesrespuesta, i);
-            tableros.add(a);
-        }
-    }
-
     @Override
     public List<Sala> getSala() throws CartModeException {
         return salas;
@@ -320,11 +300,14 @@ public class CartModeStub implements CartModeServices {
         Sala temporal = salas.get(id);
         List<Jugador> jugado = temporal.getJugadores();
 
+        int t=temporal.getNivel();
+        temporal.setNivel(t+1);
+        /*
         for (Jugador sa : jugado) {
             int valor = sa.getNivel();
             System.out.println("CAMBIANDO" + valor);
             sa.setNivel(valor + 1);
-        }
+        }*/
 
     }
 
@@ -351,9 +334,12 @@ public class CartModeStub implements CartModeServices {
         for (Sala sa : salas) {
             //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
             if (sa.getId().equals(idSala)) {
+                System.out.println("modificando el puntaje DE LA SALA :"+idSala);
+                System.out.println("ES :"+sa.getNivel());
                 int tem=sa.getNivel();
-                tem++;
-                sa.setNivel(tem);
+                //tem++;
+                sa.setNivel(tem+1);
+                System.out.println("QUEDA EN  :"+sa.getNivel());
             }
         }
         
@@ -402,7 +388,7 @@ public class CartModeStub implements CartModeServices {
     }
 
     static {
-        tableros = new CopyOnWriteArrayList<>();
+        
         player = new CopyOnWriteArrayList<>();
         salas = new CopyOnWriteArrayList<>();
         abecedario = new CopyOnWriteArrayList<>();
@@ -415,11 +401,11 @@ public class CartModeStub implements CartModeServices {
         opcionesrespuesta.add("300000");
         opcionesrespuesta.add("1");
 
-        Pregunta pregunta1 = new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta, 10.0f, "2x");
-        Pregunta pregunta2 = new PreguntaSeleecionMultiple(2, "¿Cuanto es la suma de los angulos internos de un triangulo?", "Matematicas", opcionesrespuesta, 10.0f, "180");
-        Pregunta pregunta3 = new PreguntaSeleecionMultiple(3, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta, 10.0f, "Imposible");
-        Pregunta pregunta4 = new PreguntaSeleecionMultiple(4, "¿Cual es la velocidad de la luz en el vacio? m/s", "Matematicas", opcionesrespuesta, 10.0f, "300000");
-        Pregunta pregunta5 = new PreguntaSeleecionMultiple(5, "¿Cuanto es la dereviada de x?", "Matematicas", opcionesrespuesta, 10.0f, "1");
+        Pregunta pregunta1 = new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta,  "2x");
+        Pregunta pregunta2 = new PreguntaSeleecionMultiple(2, "¿Cuanto es la suma de los angulos internos de un triangulo?", "Matematicas", opcionesrespuesta, "180");
+        Pregunta pregunta3 = new PreguntaSeleecionMultiple(3, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta,  "Imposible");
+        Pregunta pregunta4 = new PreguntaSeleecionMultiple(4, "¿Cual es la velocidad de la luz en el vacio? m/s", "Matematicas", opcionesrespuesta, "300000");
+        Pregunta pregunta5 = new PreguntaSeleecionMultiple(5, "¿Cuanto es la dereviada de x?", "Matematicas", opcionesrespuesta,  "1");
         preguntas.add(pregunta1);
         preguntas.add(pregunta2);
         preguntas.add(pregunta3);
@@ -442,21 +428,6 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("j");
         abecedario.add("k");
         abecedario.add("l");
-        /**
-        abecedario.add("m");
-        abecedario.add("n");
-        abecedario.add("o");
-        abecedario.add("p");
-        abecedario.add("q");
-        abecedario.add("r");
-        abecedario.add("s");
-        abecedario.add("t");
-        abecedario.add("u");
-        abecedario.add("v");
-        abecedario.add("w");
-        abecedario.add("x");
-        abecedario.add("y");
-        abecedario.add("z");*/
 
     }
 }

@@ -11,7 +11,6 @@ import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
 import edu.eci.arsw.cartmode.model.Sala;
-import edu.eci.arsw.cartmode.model.Tablero;
 import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.List;
 
@@ -20,7 +19,8 @@ import java.util.List;
  * @author cesar
  */
 public interface CartModeServices {
-    //javascript:pasarVariables()
+    
+    public List<Jugador> getJugadoresByIdSala(Integer idSala)throws CartModeException;
     public Boolean getListoSala(Integer idSala)throws CartModeException;
     public Sala getSalaById(Integer idlista)throws CartModeException;
     public void SetStade(Integer idlista)throws CartModeException;
@@ -34,8 +34,8 @@ public interface CartModeServices {
     public void addPlayer(String name)throws CartModeException;
     
     //public void generateTblero(List<Carta> barajas,List<Pregunta>pregunta, List<Tripla<String,Boolean,Float>> respuestas)throws  CartModeException;
-    public void generateTblero()throws  CartModeException;
-    public Tablero getTblero(Integer level)throws  CartModeException;        
+    //public void generateTblero()throws  CartModeException;
+    //public Tablero getTblero(Integer level)throws  CartModeException;        
     public List<CartaJavSc> GenerateBaraja(Integer nivel)throws  CartModeException;
     public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel)throws  CartModeException;
     
@@ -53,8 +53,6 @@ public interface CartModeServices {
     
     public List<List<String>> getPlayersBySala(String name)throws  CartModeException;
     
-    //public void iniciarPartida(Integer idSala,List<Jugador> players, Nivel level)throws  CartModeException;
-    public Tablero iniciarPartida(Integer idSala,List<String> players, Integer level)throws  CartModeException;
     public void iniciarPartida()throws  CartModeException;
     public void detenerPartida()throws  CartModeException;
     

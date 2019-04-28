@@ -96,7 +96,7 @@ function getIdSalaByPlayer1() {
                     .then(function (response) {
                         level = response.data;
                         var t=parseInt(level, 10)+1;
-                        alert("nivel del inicio" + t);
+                        //alert("nivel del inicio" + t);
                         document.getElementById("levelGame").innerHTML = t;
                         //alert("cambiando");
                         console.log('saved successfully' + t)

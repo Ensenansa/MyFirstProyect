@@ -20,13 +20,12 @@ public class Jugador {
     private Integer puntaje;
     private Integer preguntasCorrrectas;
     private Integer preguntasIncorrectas;
-    private List<Tripla<String,Boolean,Float>> respuestasJugador= new CopyOnWriteArrayList<>();
-    private Integer nivel;
+    //private List<Tripla<String,Boolean,Float>> respuestasJugador= new CopyOnWriteArrayList<>();
     private Integer sala;
 
     public Jugador() {
     }
-
+/*
     public void setRespuestasJugador(List<Tripla<String, Boolean, Float>> respuestasJugador) {
         this.respuestasJugador = respuestasJugador;
     }
@@ -34,19 +33,15 @@ public class Jugador {
     public List<Tripla<String, Boolean, Float>> getRespuestasJugador() {
         return respuestasJugador;
     }
-
+*/
     public Jugador(String nickName) {
         this.nickName = nickName;
         parejasAcertadas = 0;
         puntaje = 0;
         preguntasCorrrectas = 0;
         preguntasIncorrectas = 0;
-        nivel=1;
+        //nivel=1;
         sala=0;
-    }
-
-    public Integer getNivel() {
-        return nivel;
     }
 
     public void setSala(Integer sala) {
@@ -55,10 +50,6 @@ public class Jugador {
 
     public Integer getSala() {
         return sala;
-    }
-
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
     }
 
     public Integer getParejasAcertadas() {
@@ -103,7 +94,9 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        //return super.toString(); //To change body of generated methods, choose Tools | Templates.        
+        return "Jugador{"+"nickName="+nickName+",parejasAcertadas="+parejasAcertadas+",puntaje="+puntaje+",preguntasCorrrectas="+preguntasCorrrectas+", preguntasIncorrectas="+preguntasIncorrectas+", sala="+sala+"}";
+        
     }
 
 }

@@ -4,7 +4,6 @@ import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
-import edu.eci.arsw.cartmode.model.Tablero;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.Iterator;
 import java.util.List;
@@ -68,22 +67,6 @@ public class GreetingController {
         return o.toString();
 
     }
-
-    @MessageMapping("tablero.{numsala}")
-    @SendTo("/topic/tablero")
-    public String tablero(@DestinationVariable String numsala) throws Exception {
-
-        System.out.println("Un nuevo tablero es entregado a la sala # : " + numsala);
-        int idsala = Integer.parseInt(numsala);
-        Sala o = new Sala();
-        cart.SetStade(idsala);
-        o = cart.getSalaById(idsala);
-        Tablero aa = new Tablero();
-        aa = cart.iniciarPartida(idsala, cart.getAllPlayersBySala(idsala), o.getTablero().getNivel());
-
-        return aa.toString();
-    }
-
     @MessageMapping("iniciar")
     public void start() throws Exception {
         cartas.clear();
@@ -168,7 +151,12 @@ public class GreetingController {
     @MessageMapping("level.{idd}")
     public void level(String id, @DestinationVariable String idd) throws Exception {
         System.out.println("elevamos...el id : " + id);
-        cart.levelOfSalaId(Integer.valueOf(id));
+        if(Integer.valueOf(id)<4){
+            cart.levelOfSalaId(Integer.valueOf(id));
+        }else{
+            System.out.println("sobre paso los limites de los niveles");
+        }
+        
         start();
         System.out.println("Empezndo el borrado");
         System.out.println("--------------------");

@@ -16,15 +16,16 @@ public abstract class Pregunta {
     private int id;
     private String enunciado;
     private List<String> opcionesDeRespuesta;
-    private Float tiempo;
+    //private Float tiempo;
     private Integer respJUgador;
     private String respuestaCorrecta;
 
-    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo,String respuestaCorrecta) {
+    //public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo,String respuestaCorrecta) {
+    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta,String respuestaCorrecta) {
         this.id = id;
         this.enunciado = enunciado;
         this.opcionesDeRespuesta = opcionesDeRespuesta;
-        this.tiempo = tiempo;
+        //this.tiempo = tiempo;
         this.respJUgador=null;
         this.respuestaCorrecta=respuestaCorrecta;
     }
@@ -71,14 +72,14 @@ public abstract class Pregunta {
     public void setOpcionesDeRespuesta(List<String> opcionesDeRespuesta) {
         this.opcionesDeRespuesta = opcionesDeRespuesta;
     }
-
+/**
     public Float getTiempo() {
         return tiempo;
     }
 
     public void setTiempo(Float tiempo) {
         this.tiempo = tiempo;
-    }
+    }*/
     
     public Integer getRespuestaJugador(){
         return respJUgador;
