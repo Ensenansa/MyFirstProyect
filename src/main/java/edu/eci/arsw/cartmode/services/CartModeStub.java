@@ -333,7 +333,7 @@ public class CartModeStub implements CartModeServices {
     public void levelOfSalaId(Integer idSala)throws  CartModeException{
         for (Sala sa : salas) {
             //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
-            if (sa.getId().equals(idSala)) {
+            if (sa.getId().equals(idSala) && sa.getNivel()<4) {
                 System.out.println("modificando el puntaje DE LA SALA :"+idSala);
                 System.out.println("ES :"+sa.getNivel());
                 int tem=sa.getNivel();

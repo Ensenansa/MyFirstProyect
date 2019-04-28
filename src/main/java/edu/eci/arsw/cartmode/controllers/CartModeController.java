@@ -151,6 +151,7 @@ public class CartModeController {
     @RequestMapping(method = RequestMethod.GET, path = "/nivel/{sala}")
     public ResponseEntity<?> getLevelOfSala(@PathVariable Integer sala) {
         try {
+            
             System.out.println("que viene de sala : "+sala);
             int t = cat.LevelOfSala(sala);
             System.out.println("que vemos sala : " + t);
