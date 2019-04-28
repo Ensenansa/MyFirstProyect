@@ -1,4 +1,42 @@
-/target
+/target/generated-sources
+/target/generated-test-sources
+/target/javadoc-bundle-options
+/target/maven-archiver
+/target/classes
+/target/maven-archiver
+/target/maven-status
+/target/surefire-reports
+/target/test-classes
+!.mvn/wrapper/maven-wrapper.jar
+
+
+### STS ###
 .classpath
+.factorypath
 .project
 .settings
+.springBeans
+
+### IntelliJ IDEA ###
+idea
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+### Others ###
+.~*
+.#*
+*.log
+.gitold
+.gradle
+.DS_Store
+/target/
