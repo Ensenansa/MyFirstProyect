@@ -1,5 +1,6 @@
 # CartMode
 [![Heroku](https://wmpics.pics/di-D9YP.png)](https://arswproyect.herokuapp.com)
+[![CircleCI](https://circleci.com/gh/Arsw2019-1/ProyectoARSW20191.svg?style=svg)](https://circleci.com/gh/Arsw2019-1/ProyectoARSW20191)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)](https://github.com/Arsw2019-1/ProyectoARSW20191)
 [![MIT license](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://lbesson.mit-license.org/)
 
@@ -143,7 +144,7 @@ Proximamente
 [![](img/Spring-Logo.png)](https://spring.io/)
 [![](img/astahLogo.png)](http://astah.net/)
 [![](img/cover-heroku.png)](https://www.heroku.com/)
-[![]()]()
+[![](img/circleciLogo.png)](https://circleci.com/)
 [![]()]()
 [![](img/git-githubLogo.jpg)](https://github.com/)
 
