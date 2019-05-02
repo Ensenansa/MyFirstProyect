@@ -12,7 +12,8 @@ var mirar = (function Mirar() {
         var t = String(arrVariables);
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
-        mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
+        mirar.getIdSalaByPlayer(AllPlayersBySala);
+        //mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
         //mirar.getIdSalaByPlayer();
         //mirar.getIdSalaByPlayer1();
 
@@ -34,7 +35,8 @@ var mirar = (function Mirar() {
         var t = String(arrVariables);
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
-        mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
+        mirar.getIdSalaByPlayer(getAnfiPlayBySala);
+        //mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
         //mirar.getIdSalaByPlayer1();
         popo.conec();
     }
@@ -69,7 +71,7 @@ var mirar = (function Mirar() {
                     jugadores = response.data;
                     document.getElementById("pl").innerHTML = jugadores;
                     console.log('saved successfully');
-                    mirar.getAnfiPlayBySala();
+                    //mirar.getAnfiPlayBySala();
                 });
     }
 

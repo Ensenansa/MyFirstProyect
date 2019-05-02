@@ -239,7 +239,7 @@ var popo = (function () {
         sendUpLevel: sendUpLevel,
         init: function () {
 
-            connect();
+            connect('');
         },
         cone: function () {
             connect('');
