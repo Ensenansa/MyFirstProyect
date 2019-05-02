@@ -161,6 +161,13 @@ var preguntas = (function Preguntas() {
         
     }
     function get2Nivel(on){
+        seg=20;
+        minutos=0;
+        document.getElementById('i').innerHTML = seg;
+        document.getElementById('j').innerHTML = minutos;     
+        
+        
+        
         var lelt= document.getElementById("levelGame").innerHTML;
         var levt=parseInt(lelt,10);
         //alert("modificando tabña");
