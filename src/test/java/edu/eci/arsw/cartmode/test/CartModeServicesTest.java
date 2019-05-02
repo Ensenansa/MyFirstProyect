@@ -68,7 +68,7 @@ public class CartModeServicesTest {
         List<CartaJavSc> cartas3 = cat.GenerateBaraja(3);
 
         Assert.assertEquals(8, cartas.size());
-        Assert.assertEquals(12, cartas2.size());
+        Assert.assertEquals(13, cartas2.size());
         Assert.assertEquals(10, cartas3.size());
 
     }

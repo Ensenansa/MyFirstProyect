@@ -30,8 +30,9 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=7;
+var seg=15;
 var minutos=0;
+//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
@@ -57,9 +58,10 @@ var tiempo = (function Tiempo() {
                 
             }
             if(seg ==1 && minutos ==0){
-                alert("Nos fuimos");
+                //alert("Nos fuimos");
                 popo.sendUpLevel(t);
-                seg=7;
+                seg=30;
+                minutos=0;
             }else if (seg == 0) {
                 seg = 59;
                 //alert("Se acabo el tiempo");
@@ -103,10 +105,12 @@ var preguntas = (function Preguntas() {
                     a++;
                     var temp = '<td> <input type="radio" class="form-check-input" name="rell" id=materialUnchecked' + a + ' ' + 'value="' + respuestas[t] + '"><label class="form-check-label" for=materialUnchecked' + a + '> </td>';
                     txt_respuestas += temp + respuestas[t] + '</label><br>';
+                    
                 }
                 total=a;
             var temp = '';
-            document.getElementById("respuesta").innerHTML = txt_respuestas;                
+            document.getElementById("respuesta").innerHTML = txt_respuestas;
+            txt_respuestas="";
                     })
                 .catch(function (errorr) {
                     console.log(errorr);
@@ -156,16 +160,24 @@ var preguntas = (function Preguntas() {
         necart(up,nivel);
         
     }
-    function get2Nivel(){
-        alert("modificando tabña");
+    function get2Nivel(on){
+        var lelt= document.getElementById("levelGame").innerHTML;
+        var levt=parseInt(lelt,10);
+        //alert("modificando tabña");
         txt_respuestas.length = 0;
         txt_respuestas = "";
-        document.getElementById("juego").innerHTML ="";        
+        document.getElementById("juego").innerHTML ="";     
+        var fn=5;
+        if(levt==2){
+            fn--;
+        }
         var a ;
         var b ;
         var c=0;
         txt_respuestas+="<table width=100% align=center onload=apiclient.getAllUser()>";
-        for(a=0;a<5;a++){
+        //alert("Que es fn : "+fn);
+        for(a=0;a<fn;a++){
+            //alert("Que es fn : "+fn);
             txt_respuestas+="<tr>";
             
 //'<input type="radio" class=+ a + ' ' + 'value="' + respuestas[i] + '"><label class="form-check-label" for=materialUnchecked' + a + '>';
@@ -180,7 +192,7 @@ var preguntas = (function Preguntas() {
         txt_respuestas+="</table>";
         
         document.getElementById("juego").innerHTML =txt_respuestas;        
-        
+        on();
     }
     return {
         get2Nivel:get2Nivel,

@@ -178,14 +178,6 @@ function libertad() {
 
 function iniciarJuego() {
     c1(c2);
-    //popo.conec();
-
-    //tener.fin();
-
-    //tiempo.hora();
-
-    //preguntas.getPreguntas();
-
     var dato = document.getElementById("juego");
 
     var nombre = document.getElementById("playerr").innerHTML;
@@ -321,9 +313,12 @@ function girarCarta() {
     identificadorJ2 = evento.target.id;
     var tt = prueba(jugada2, identificadorJ2, nombre);
     if (cartas2[parseInt(identificadorJ2)].seleccion != true) {
+        
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
             cartas2[parseInt(identificadorJ1)].seleccion = false;
+                //alert("que es identij1 : "+identificadorJ1+" y que es identij2 : "+identificadorJ2);
+                //alert("que es jugada1: "+jugada1 + " que es jugada2: "+jugada2);
             if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
                 parejasHechas.push(identificadorJ1);
                 parejasHechas.push(identificadorJ2);

@@ -50,9 +50,11 @@ var popo = (function () {
                 //RECORDAR SUBIRLE EL ID A LA SALA
                 preguntas.mudanza();
                 var sal = document.getElementById("levelGame").innerHTML;
-                alert("que arrjoa: " + sal);
+                //alert("que arrjoa: " + sal);
                 var tro = parseInt(sal, 10);
-                preguntas.get2Nivel();
+                
+                preguntas.get2Nivel(preguntas.getPreguntas);
+                
                 necart(pu, tro + 1);
                 res();
             });
@@ -238,6 +240,9 @@ var popo = (function () {
         init: function () {
 
             connect();
+        },
+        cone: function () {
+            connect('');
         },
         conec: function () {
             connect('');

@@ -111,7 +111,9 @@ public class CartModeStub implements CartModeServices {
         resp2=GenerateBaraja(nivel);      
         for(int i=0; i<resp2.size();i++){
             CartaJavSc temp=resp2.get(i);
-            resp1.add(temp);
+            if(!temp.getDato().equals("99")){
+                resp1.add(temp);
+            }
         }
         return resp1;
     
@@ -135,7 +137,6 @@ public class CartModeStub implements CartModeServices {
                 resp.add(new CartaJavSc(Integer.toString(i + 1), false));
             }
         } else if (nivel == 2) {
-            List<String> puestas = new ArrayList<String>();
             boolean t = true;
             for (int i = 0; i < 12; i++) {
 
@@ -150,6 +151,7 @@ public class CartModeStub implements CartModeServices {
                     t = true;
                 }
             }
+            resp.add(new CartaJavSc(Integer.toString(99), false));
         } else if (nivel == 3) {
             boolean t = true;
             for (int i = 0; i < 10; i++) {
