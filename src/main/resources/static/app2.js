@@ -90,8 +90,7 @@ var mirar = (function Mirar() {
                 });
      }
 function getIdSalaByPlayer1() {
-        //alert("ahora12 : "+sala);                
-       
+        //alert("ahora12 : "+sala);                       
             //alert("pasa"+sala);
             var a = parseInt(sala);
             axios.get('/jugadores/nivel/' + a)
@@ -120,7 +119,7 @@ function getIdSalaByPlayer1() {
     function getLevelBy() {
         //alert("dsadsa");
         sala = document.getElementById("idSala").innerHTML;
-        alert("sala es: " + sala);
+        //alert("sala es: " + sala);
         axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
                     level = response.data;

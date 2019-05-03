@@ -52,15 +52,16 @@ var popo = (function () {
                 var sal = document.getElementById("levelGame").innerHTML;
                 //alert("que arrjoa: " + sal);
                 var tro = parseInt(sal, 10);
-                
+
                 preguntas.get2Nivel(preguntas.getPreguntas);
-                
+
                 necart(pu, tro + 1);
                 res();
             });
 
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
                 goToResult();
+
 
             });
 
@@ -89,9 +90,9 @@ var popo = (function () {
     }
 
     function goToResult() {
-        
+
         var temp = document.getElementById("playerr").innerHTML;
-        
+
         pagina = "/resultados.html";
         pagina += "?";
         nomVec = temp.split(",");
@@ -107,13 +108,26 @@ var popo = (function () {
         pasarVariables();
     }
 
-    function sendUpLevel(op) {
+    function dt(jugador, sala) {
+        return{
+            jugador: jugador,
+            sala: sala
+        }
+    }
+
+    function sendUpLevel(op,ppl) {
         document.getElementById('levelGame').innerHTML = op;
         //alert("Actulizando nivel, ahora es : " + op);
         sala = document.getElementById("idSala").innerHTML;
+        alert("EL JUGADOR ESS:1 "+ppl);
+        var playe = ppl;
+        //alert("EL JUGADOR ESS:2 "+playe);
         var t = parseInt(sala, 10);
-        //alert("enviamos sala : "+t);
-        stompClient.send("/app/level." + t, {}, JSON.stringify(t));
+        var f=dt(ppl,t);
+        alert("enviamos sala : "+f.jugador);        
+                alert("enviamos sala : "+f.sala);   
+        //stompClient.send("/app/level." + t, {}, JSON.stringify(t));
+        stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }
 
     function sendCart(ct, ctp) {
@@ -225,7 +239,8 @@ var popo = (function () {
     }
 
     return {
-        goSendResult:goSendResult,
+        dt:dt,
+        goSendResult: goSendResult,
         reload: reload,
         loadd: loadd,
         setConnected: setConnected,

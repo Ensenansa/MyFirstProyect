@@ -4,6 +4,7 @@ import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
+import edu.eci.arsw.cartmode.model.SimpleJugador;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.Iterator;
 import java.util.List;
@@ -149,10 +150,14 @@ public class GreetingController {
     }
 
     @MessageMapping("level.{idd}")
-    public void level(String id, @DestinationVariable String idd) throws Exception {
-        System.out.println("elevamos...el id : " + id);
-        if(Integer.valueOf(id)<4){
-            cart.levelOfSalaId(Integer.valueOf(id));
+    //public void level(String id, @DestinationVariable String idd) throws Exception {
+    public void level(SimpleJugador sjug, @DestinationVariable String idd) throws Exception {
+        System.out.println("elevamos...el id : " + sjug.getSala());
+        System.out.println("ELVAMOS...al jugador : " + sjug.getNombre());
+        
+        
+        if(Integer.valueOf(sjug.getSala())<4){
+            cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
         }else{
             System.out.println("sobre paso los limites de los niveles");
         }
@@ -162,7 +167,7 @@ public class GreetingController {
         System.out.println("--------------------");
 
         System.out.println("--------------------");
-        msg.convertAndSend("/topic/uplevel."+idd, id);
+        msg.convertAndSend("/topic/uplevel."+idd, sjug.getSala());
     }    
     
     @MessageMapping("result.{idd}")

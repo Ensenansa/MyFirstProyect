@@ -17,7 +17,7 @@ var resultados = (function () {
         var u = t.replace("=", "");
         document.getElementById("playAf").innerHTML = u;
         resultados.getIdSalaByPlayer(getDatos);
-
+        //resultados.recharge();
 
     }
 
@@ -71,24 +71,23 @@ var resultados = (function () {
         }
         txt_respuestas+="</table>";
         document.getElementById("jugadores").innerHTML = txt_respuestas;        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                
     }
+    
+    function recharge(){
+        
+        location.reload();
+        
+    }   
+    
 
     return {
+
         iniR: iniR,
         getIdSalaByPlayer: getIdSalaByPlayer,
         getDatos: getDatos,
-        graficTble:graficTble
+        graficTble:graficTble,
+        recharge:recharge
 
     };
 })();

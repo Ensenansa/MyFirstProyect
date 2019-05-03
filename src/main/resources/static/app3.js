@@ -30,13 +30,13 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=25;
-var minutos=0;
+var seg=10;
+var minutos =0;
 //PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
-
+    var playe =null;
     function detener(){
         
         clearInterval(int);
@@ -49,6 +49,8 @@ var tiempo = (function Tiempo() {
             document.getElementById('j').innerHTML = minutos;
             
             s = document.getElementById("levelGame").innerHTML;
+           playe = document.getElementById("playerr").innerHTML;
+
             var t=parseInt(s, 10);
             //alert("q nivel es : "+t);
             if(t>3){
@@ -59,7 +61,9 @@ var tiempo = (function Tiempo() {
             }
             if(seg ==1 && minutos ==0){
                 //alert("Nos fuimos");
-                popo.sendUpLevel(t);
+                //alert("EL JUGADOR ESS: "+playe);
+                //var t=dt(playe,t);
+                popo.sendUpLevel(t,playe);
                 seg=30;
                 minutos=0;
             }else if (seg == 0) {
@@ -69,6 +73,12 @@ var tiempo = (function Tiempo() {
             }
         }, 1000);
         seg++;
+    }
+    function dt(jugador, sala) {
+        return{
+            jugador: jugador,
+            sala: sala
+        }
     }
     return {
 
@@ -161,7 +171,7 @@ var preguntas = (function Preguntas() {
         
     }
     function get2Nivel(on){
-        seg=20;
+        seg=10;
         minutos=0;
         document.getElementById('i').innerHTML = seg;
         document.getElementById('j').innerHTML = minutos;     
