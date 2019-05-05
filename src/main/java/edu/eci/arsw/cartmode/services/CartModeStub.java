@@ -26,7 +26,7 @@ import org.springframework.boot.CommandLineRunner;
  * @author 2098325
  */
 @Service
-public class CartModeStub implements CartModeServices,CommandLineRunner {
+public class CartModeStub implements CartModeServices {
 
     
     private static final List<Jugador> player;
@@ -434,8 +434,4 @@ public class CartModeStub implements CartModeServices,CommandLineRunner {
 
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
