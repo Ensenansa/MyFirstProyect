@@ -27,6 +27,7 @@ var popo = (function () {
             stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
+
             stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
                 limpiar();
                 var t = JSON.parse(evenbody.body);
@@ -67,8 +68,11 @@ var popo = (function () {
 
 
             });
+        }, function (error) {
+            alert(error);
 
         });
+
     }
     function sendPuntaje() {
 
@@ -89,7 +93,7 @@ var popo = (function () {
         sala = document.getElementById("idSala").innerHTML;
         var t = parseInt(sala, 10);
         //alert("enviamos sala : "+t);
-        stompClient.send("/app/result." + t, {}, JSON.stringify(t));
+        stompClient.send("/app/result." + t, {}, JSON.stringify());
     }
 
     function goToResult() {
@@ -118,7 +122,7 @@ var popo = (function () {
         }
     }
 
-    function sendUpLevel(op,ppl) {
+    function sendUpLevel(op, ppl) {
         document.getElementById('levelGame').innerHTML = op;
         //alert("Actulizando nivel, ahora es : " + op);
         sala = document.getElementById("idSala").innerHTML;
@@ -126,16 +130,16 @@ var popo = (function () {
         var playe = ppl;
         //alert("EL JUGADOR ESS:2 "+playe);
         var t = parseInt(sala, 10);
-        var f=dt(ppl,t);
+        var f = dt(ppl, t);
         //alert("enviamos sala : "+f.nickName);        
         //alert("enviamos sala : "+f.sala);   
         //stompClient.send("/app/level." + t, {}, JSON.stringify(t));
         stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }
-    
-    
-    
-    
+
+
+
+
 
     function sendCart(ct, ctp) {
         var n = document.getElementById("idSala").innerHTML;
@@ -246,7 +250,7 @@ var popo = (function () {
     }
 
     return {
-        dt:dt,
+        dt: dt,
         goSendResult: goSendResult,
         reload: reload,
         loadd: loadd,
@@ -267,7 +271,7 @@ var popo = (function () {
             connect('');
         },
         conec: function () {
-            connect('');
+            connect('');            
             id = document.getElementById("idSala").value;
             //alert("id que es: "+id);
             //stompClient.send("/app/iniciar", {}, "");

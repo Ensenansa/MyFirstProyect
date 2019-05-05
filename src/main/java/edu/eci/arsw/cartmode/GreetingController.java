@@ -178,7 +178,7 @@ public class GreetingController {
     public void level(@DestinationVariable String idd) throws Exception {
 
         System.out.println("--------------------");
-        msg.convertAndSend("/topic/result." + idd, id);
+        msg.convertAndSend("/topic/result." + idd,99);
     }
 
 }

@@ -38,7 +38,7 @@ var getPDF = (function pdf() {
         doc.text(20, 50, 'Estos son sus resultados jugador: ' + jugador);
 
         doc.setTextColor(0, 0, 255);
-        doc.text(20, 70, 'Este fue su puntaje obtenido: ' + puntJugador);
+        doc.text(20, 70, 'Su puntaje obtenido: ' + puntJugador);
         
         doc.setTextColor(239, 127, 26);
         doc.text(20, 90, 'Su sala de juego fue : ' + idSala);
