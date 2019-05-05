@@ -1,3 +1,5 @@
+/* global Stomp */
+
 var prue;
 
 var popo = (function () {
@@ -49,6 +51,7 @@ var popo = (function () {
                 //alert("sIOOOO");
                 //RECORDAR SUBIRLE EL ID A LA SALA
                 preguntas.mudanza();
+                //var temp = document.getElementById("playerr").innerHTML;                
                 var sal = document.getElementById("levelGame").innerHTML;
                 //alert("que arrjoa: " + sal);
                 var tro = parseInt(sal, 10);
@@ -108,9 +111,9 @@ var popo = (function () {
         pasarVariables();
     }
 
-    function dt(jugador, sala) {
+    function dt(nickName, sala) {
         return{
-            jugador: jugador,
+            nickName: nickName,
             sala: sala
         }
     }
@@ -124,11 +127,15 @@ var popo = (function () {
         //alert("EL JUGADOR ESS:2 "+playe);
         var t = parseInt(sala, 10);
         var f=dt(ppl,t);
-        alert("enviamos sala : "+f.jugador);        
+        alert("enviamos sala : "+f.nickName);        
                 alert("enviamos sala : "+f.sala);   
         //stompClient.send("/app/level." + t, {}, JSON.stringify(t));
         stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }
+    
+    
+    
+    
 
     function sendCart(ct, ctp) {
         var n = document.getElementById("idSala").innerHTML;

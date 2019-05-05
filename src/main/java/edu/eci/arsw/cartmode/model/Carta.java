@@ -11,7 +11,6 @@ package edu.eci.arsw.cartmode.model;
  */
 public class Carta {
     private String dato;
-    //private boolean bloqueado;
     private Integer pos;
     private String nombre;
 
@@ -37,47 +36,21 @@ public class Carta {
     public Carta(String dato){
         this.dato=dato;
         this.pos=null;
-        //this.nivel=nivel;
-        //this.bloqueado=false;
     }
     public Carta(String dato, Integer pos){
         this.dato=dato;
         this.pos=pos;
-        //this.nivel=nivel;
-        //this.bloqueado=false;
     }
     public String getDato() {
         return dato;
     }
-/*
-    public boolean isBloqueado() {
-        return bloqueado;
-    }
-
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
-
-    */
     public void setDato(String dato) {
         this.dato = dato;
     }
-
-
     @Override
     public String toString() {
         //return super.toString(); //To change body of generated methods, choose Tools | Templates.
         return "Carta{"+"dato="+dato+"pos="+pos+"nombre="+nombre+'}';
     }
-    /*
-    public Integer getNivel(){
-        return nivel;
-    }
-    public void setNIvel(Integer nivel){
-        this.nivel=nivel;
-    
-    }
-    */
-    
     
 }

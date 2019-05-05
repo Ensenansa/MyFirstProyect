@@ -21,7 +21,7 @@ Array.prototype.unique = function (a) {
     return c.indexOf(a, b + 1) < 0
 });
 
-Array.prototype.includes(searchElement[ fromIndex ]);
+//Array.prototype.includes(searchElement[ fromIndex ]);
 
 
 var arr = new Array();

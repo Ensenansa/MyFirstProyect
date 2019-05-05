@@ -4,7 +4,6 @@ import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
-import edu.eci.arsw.cartmode.model.SimpleJugador;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.Iterator;
 import java.util.List;
@@ -68,6 +67,7 @@ public class GreetingController {
         return o.toString();
 
     }
+
     @MessageMapping("iniciar")
     public void start() throws Exception {
         cartas.clear();
@@ -96,7 +96,7 @@ public class GreetingController {
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
         //public void CambioCarta(Carta ct) throws Exception {
         List<String> temp = new CopyOnWriteArrayList<>();
-        
+
         int players = cart.getAllPlayerInGame();
         int temporal = -1;
         String Keytemporal = "";
@@ -151,30 +151,35 @@ public class GreetingController {
 
     @MessageMapping("level.{idd}")
     //public void level(String id, @DestinationVariable String idd) throws Exception {
-    public void level(SimpleJugador sjug, @DestinationVariable String idd) throws Exception {
+    public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
+        Boolean sies = true;
         System.out.println("elevamos...el id : " + sjug.getSala());
-        System.out.println("ELVAMOS...al jugador : " + sjug.getNombre());
-        
-        
-        if(Integer.valueOf(sjug.getSala())<4){
-            cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
-        }else{
-            System.out.println("sobre paso los limites de los niveles");
+        System.out.println("ELVAMOS...al jugador : " + sjug.getNickName());
+        Jugador jugadortemid = cart.getPlayerAnfiBySala(sjug.getSala());
+        String tpJu = jugadortemid.getNickName();
+        if (tpJu.equals(sjug.getNickName())) {           
+            if (Integer.valueOf(sjug.getSala()) < 4) {
+                 System.out.println("ELVEANDO");
+                cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
+                start();
+                msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
+            } else {
+                System.out.println("sobre paso los limites de los niveles");
+            }
+        } else {
+            System.out.println("NO ELEVNADO");
         }
-        
-        start();
         System.out.println("Empezndo el borrado");
         System.out.println("--------------------");
-
         System.out.println("--------------------");
-        msg.convertAndSend("/topic/uplevel."+idd, sjug.getSala());
-    }    
-    
+        //msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
+    }
+
     @MessageMapping("result.{idd}")
     public void level(@DestinationVariable String idd) throws Exception {
-        
+
         System.out.println("--------------------");
-        msg.convertAndSend("/topic/result."+idd, id);
+        msg.convertAndSend("/topic/result." + idd, id);
     }
 
 }
