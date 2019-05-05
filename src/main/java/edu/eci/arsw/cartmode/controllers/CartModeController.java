@@ -38,7 +38,7 @@ public class CartModeController {
 
     @Autowired
     private CartModeServices cat;
-//    private Map<String, List<String>> puntJugador = new HashMap<String, List<String>>();
+    private Map<String, Integer> puntJugador = new HashMap<String, Integer>();
 
     /**
      *
@@ -165,7 +165,7 @@ public class CartModeController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/puntaje/{nombre}/{puntos}")
-    public ResponseEntity<?> addScore(@PathVariable List<String> puntos, @PathVariable String nombre) throws CartModeException {
+    public ResponseEntity<?> addScore(@PathVariable String[] puntos, @PathVariable String nombre) throws CartModeException {
         List<String> pnOK = new CopyOnWriteArrayList<String>();
         List<String> tempS = new CopyOnWriteArrayList<String>();
         /**
@@ -178,44 +178,27 @@ public class CartModeController {
         int contador = 0;
         System.out.println("nombre" + nombre);
         System.out.println("puntos" + puntos.toString());
-        String temp3 = puntos.toString();
-        List<String> myList = new ArrayList<String>(Arrays.asList(temp3.split(",")));
-        for (int i = 0; i < myList.size(); i++) {
-            if (i == 0) {
-                contador += 1;
-                String q = myList.get(i);
-                char c = q.charAt(1);
-                String cadena = Character.toString(c);
-                tempS.add(cadena);
-            } else if (i == myList.size() - 1) {
-                contador += 1;
-                String q = myList.get(i);
-                char c = q.charAt(1);
-                String cadena = Character.toString(c);
-                tempS.add(cadena);
-            } else {
-                contador += 1;
-                String g = myList.get(i);
-                tempS.add(g);
-            }
+        List<String>prueba=Arrays.asList(puntos);
+        System.out.println("QUE DICE LA PRUNEA : "+prueba.toString());
+        for(int y=0;y<prueba.size();y++){
+            String tem=prueba.get(y);
+            System.out.println("QUE DICE EL MALDITO PUNTO : "+tem);
+            contador+=1;
         }
+
         //System.out.println("que es temp : " + tempS.toString() + "y su longitud : " + tempS.size());
         Jugador f = cat.getPlayerByName(nombre);
         int cont = f.getPuntaje();
         int punta = ((contador / 2) * 100);
         int dif = punta - cont;
- 
-
+        
         //
         System.out.println("CUANTO TENIA EL JUGADOR : " + cont);
         System.out.println("CUANTO DIO EL PUNTAJE NUEVO JUGADOR ahora : " + punta);
         System.out.println("CUANTO DIO LADIFERENCIA NUEVO JUGADOR : " + dif);
         if (dif > 0) {
-            //System.out.println("positivo");
             f.setPuntaje(cont + dif);
-
         } else {
-            //System.out.println("negativo");
             f.setPuntaje(cont + punta);
         }
         System.out.println("COON CUANTO  pyntaje QUEDA JUGADOR : " + f.getPuntaje());
