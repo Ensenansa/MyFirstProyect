@@ -18,9 +18,8 @@
 | Elemento | Link |
 |:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
 | Propuesta de proyecto | https://docs.google.com/document/d/1ynF7FltaMq4Is_eI6oozmRWI5bi-lQrzWnHo84oVVRc/edit?usp=sharing  |
-| Taiga |  | https://tree.taiga.io/project/cefarr-cartmode/timeline
-| NinjaMock |  |
-| Backlog de producto |  |
+| Taiga | https://tree.taiga.io/project/cefarr-cartmode/timeline  |  
+| NinjaMock | https://ninjamock.com/s/V5J5CSx  | 
 | Javadoc | Generado en la ruta ./target/site/apidocs |
 | Documento de Arquitectura del Sistema | | 
 ---
