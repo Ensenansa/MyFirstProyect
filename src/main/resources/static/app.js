@@ -122,13 +122,13 @@ var popo = (function () {
         document.getElementById('levelGame').innerHTML = op;
         //alert("Actulizando nivel, ahora es : " + op);
         sala = document.getElementById("idSala").innerHTML;
-        alert("EL JUGADOR ESS:1 "+ppl);
+        //alert("EL JUGADOR ESS:1 "+ppl);
         var playe = ppl;
         //alert("EL JUGADOR ESS:2 "+playe);
         var t = parseInt(sala, 10);
         var f=dt(ppl,t);
-        alert("enviamos sala : "+f.nickName);        
-                alert("enviamos sala : "+f.sala);   
+        //alert("enviamos sala : "+f.nickName);        
+        //alert("enviamos sala : "+f.sala);   
         //stompClient.send("/app/level." + t, {}, JSON.stringify(t));
         stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }

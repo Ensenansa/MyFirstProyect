@@ -157,22 +157,21 @@ public class GreetingController {
         System.out.println("ELVAMOS...al jugador : " + sjug.getNickName());
         Jugador jugadortemid = cart.getPlayerAnfiBySala(sjug.getSala());
         String tpJu = jugadortemid.getNickName();
-        if (tpJu.equals(sjug.getNickName())) {           
-            if (Integer.valueOf(sjug.getSala()) < 4) {
-                 System.out.println("ELVEANDO");
-                cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
-                start();
-                msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
+//        if (tpJu.equals(sjug.getNickName())) {           
+        if (Integer.valueOf(sjug.getSala()) < 4) {
+            System.out.println("ELVEANDO");
+            cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));           
             } else {
-                System.out.println("sobre paso los limites de los niveles");
-            }
-        } else {
-            System.out.println("NO ELEVNADO");
+            System.out.println("sobre paso los limites de los niveles");
         }
+        //} else {
+        //System.out.println("NO ELEVNADO");
+        //}
+        start();
         System.out.println("Empezndo el borrado");
         System.out.println("--------------------");
         System.out.println("--------------------");
-        //msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
+        msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
     }
 
     @MessageMapping("result.{idd}")
