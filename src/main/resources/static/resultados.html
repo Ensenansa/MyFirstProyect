@@ -70,62 +70,87 @@
 
                         </table>
                 </div>
+            </section>
 
-                <section>
-                    <h1 class="major">Compartir Resultados</h1>
-                    <p>Compartir sus resultados en redes sociales ... <em>Facebook ...</em>                                <sup>Twitter ...</sup> Proximamente ... <sub>Proximamente ...</sub> Proximamente ...
-                        Twitter ...  <a href="#">Proximamente ...</a>.</p>
+            <section>
+                <h1 class="major"   >Compartir Resultados</h1>
+                <p>Compartir sus resultados en redes sociales :
+                    <br>
+                    <sub>Facebook : </sub> 
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//arswproyect.herokuapp.com/"><img src="images/Face.png"  weigth="30" height="30"></a>                        
+
+                    <br>
+                    <sup>Twitter : </sup>
+                    <a href="https://twitter.com/home?status=Realiza%20esta%20prueba%20de%20habilidad,%20intentalo.%0Ahttps%3A//arswproyect.herokuapp.com/"><img src="images/twiter.png"  weigth="30" height="30"></a>
+
+                </p>
 
 
-                    <hr />
-                    <div style="position: static; bottom: 100px; right: 100px;" >
-                        
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//arswproyect.herokuapp.com/"><img src="images/Face.png"  weigth="30" height="30"></a>                        
-                        <a href="https://twitter.com/home?status=Realiza%20esta%20prueba%20de%20habilidad,%20intentalo.%0Ahttps%3A//arswproyect.herokuapp.com/"><img src="images/twiter.png"  weigth="30" height="30"></a>
-                    </div>            
-                    <p>O si desea exportarlos en PDF... </p>
-                    <button id="carga" type="button" onclick="getPDF.pd()">Descargar PDF</button>
-                    <hr />
+                <hr />
+                <p>O si desea exportarlos en PDF... </p>
+                <button id="carga" type="button" onclick="getPDF.pd()">Descargar PDF</button>                    
+                <hr />
 
-                </section>
+            </section>
         </div>
 
-    </section>
 
-</div>
+    
 
-<!-- Footer -->
-<footer id="footer" class="wrapper alt">
-    <div class="inner">
-        <ul class="menu">
-            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
-</footer>
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="/webjars/jquery/jquery.min.js"></script>
-<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-<script src="/webjars/stomp-websocket/stomp.min.js"></script>   
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>   
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script src="js/Generator_PDF.js"></script>        
-<script type="text/javascript"  src="./js/jspdf.min.js"></script>
-<script type="text/javascript"  src="./js/jspdf.debug.js"></script>                
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="js/apiclient.js"></script>        
-<script src="js/appIndex.js"></script>
-<script src="js/resultados.js"></script>
-<script src="js/jujs.js"></script>
-<script src="/app.js"></script>
+    <script src="js/Generator_PDF.js"></script>        
+    <script type="text/javascript"  src="./js/jspdf.min.js"></script>
+    <script type="text/javascript"  src="./js/jspdf.debug.js"></script>                
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="js/apiclient.js"></script>        
+    <script src="js/appIndex.js"></script>
+    <script src="js/resultados.js"></script>
+    <script src="js/jujs.js"></script>
+    <script src="/app.js"></script>
 
-<script src="/app3.js"></script>
+    <script src="/app3.js"></script>
+    <script src="/jspdf.min.js"></script>
+    <script src="/jspdf.plugin.autotable.min.js"></script>
+    <script>
+                    $("#generar").click(function () {
+                        var pdf = new jsPDF();
+                        pdf.text(20, 20, "Mostrando una Tabla con JsPDF y el Plugin AutoTable");
+
+                        var columns = ["Id", "Nombre", "Email", "Pais"];
+                        var data = [
+                            [1, "Hola", "hola@gmail.com", "Mexico"],
+                            [2, "Hello", "hello@gmail.com", "Estados Unidos"],
+                            [3, "Otro", "otro@gmail.com", "Otro"]
+                        ];
+
+                        pdf.autoTable(columns, data,
+                                {margin: {top: 25}}
+                        );
+
+                        pdf.save('mipdf.pdf');
+
+                    });
+    </script>
 
 </body>
 </html>

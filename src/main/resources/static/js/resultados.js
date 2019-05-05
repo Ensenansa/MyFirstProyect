@@ -1,12 +1,8 @@
-//<tr>
-//    <td>Alfreds Futterkiste</td>
-//    <td>Germany</td>
-//</tr>
 
 
 var resultados = (function () {
 
-    var datos = new Array("Saab", "Volvo", "BMW");
+    var datos = new Array();
     var sala = "";
 
 
@@ -41,7 +37,7 @@ var resultados = (function () {
         axios.get('jugadores/datos/idsala/' + t)
                 .then(function (response) {
                     //alert(response);    
-                    grouid = response.data;
+                    grouid = response.data;                    
                     var t=response.data;
                     //alert("que es : "+t[0].nickName);
                     console.log('saved successfully'+grouid);
@@ -74,20 +70,26 @@ var resultados = (function () {
                 
     }
     
+    function getData(){
+        return datos;
+        
+    }
+    
     function recharge(){
         
         location.reload();
         
     }   
+
     
 
-    return {
-
+    return {      
         iniR: iniR,
         getIdSalaByPlayer: getIdSalaByPlayer,
         getDatos: getDatos,
         graficTble:graficTble,
-        recharge:recharge
+        recharge:recharge,
+        getData:getData
 
     };
 })();
