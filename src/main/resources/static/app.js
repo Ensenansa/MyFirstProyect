@@ -249,6 +249,7 @@ var popo = (function () {
     }
 
     return {
+        goToResult:goToResult,
         dt: dt,
         goSendResult: goSendResult,
         reload: reload,
