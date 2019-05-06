@@ -23,11 +23,11 @@ var popo = (function () {
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-/*
+
             stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
-*/
+
             stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
                 limpiar();
                 var t = JSON.parse(evenbody.body);
@@ -64,7 +64,7 @@ var popo = (function () {
             });
 
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
-                goToResult();
+                popo.goToResult();
 
 
             });
@@ -108,12 +108,12 @@ var popo = (function () {
     
         //sala = document.getElementById("idSala").innerHTML;
         //var t = parseInt(sala, 10);
-/*
+
     function sendName() {        
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         pasarVariables();
     }
-*/
+
     function dt(nickName, sala) {
         return{
             nickName: nickName,
@@ -254,7 +254,7 @@ var popo = (function () {
         reload: reload,
         loadd: loadd,
         setConnected: setConnected,
-        //sendName: sendName,
+        sendName: sendName,
         pasarVariables: pasarVariables,
         showGreeting: showGreeting,
         disconnect: disconnect,
@@ -322,7 +322,7 @@ $(function () {
     $("#disconnect").click(function () {
         disconnect();
     });
-//    $("#send").click(function () {
-  //      popo12.sendName();
-//    });
+    $("#send").click(function () {
+        popo.sendName();
+    });
 });
