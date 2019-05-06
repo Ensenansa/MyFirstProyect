@@ -2,7 +2,7 @@
 
 var prue;
 
-var popo = (function () {
+var popo12 = (function () {
 
     var stompClient = null;
     var m = null;
@@ -23,127 +23,20 @@ var popo = (function () {
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-/*
+
             stompClient.subscribe('/topic/greetings' + topic, function (evenbody) {
                 showGreeting(JSON.parse(evenbody.body).content);
             });
-*/
-            stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
-                limpiar();
-                var t = JSON.parse(evenbody.body);
-                m = t.dato;
-                mostrar(m, t.pos);
-                mostrarParejas();
-                //limpiar();
-                console.log(evenbody.body);
-            });
-            stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
 
-                limpiar();
-                //alert("Cuales sin las parejas: "+evenbody.body);
-                var t = JSON.parse(evenbody.body);
-                console.log(evenbody.body);
-                allPar(t);
-                limpiar();
-                sendPuntaje();
-                //alert(parAcert);  
-            });
-            stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
-                //alert("sIOOOO");
-                //RECORDAR SUBIRLE EL ID A LA SALA
-                preguntas.mudanza();
-                //var temp = document.getElementById("playerr").innerHTML;                
-                var sal = document.getElementById("levelGame").innerHTML;
-                //alert("que arrjoa: " + sal);
-                var tro = parseInt(sal, 10);
-
-                preguntas.get2Nivel(preguntas.getPreguntas);
-
-                necart(pu, tro + 1);
-                res();
-            });
-
-            stompClient.subscribe('/topic/result' + topic, function (evenbody) {
-                goToResult();
-
-
-            });
-        }, function (error) {
-            alert(error);
-
+            
         });
 
-    }
-    function sendPuntaje() {
-
-        var jugador = document.getElementById("playerr").innerHTML;
-        axios.post('/jugadores/puntaje/' + jugador + '/' + parAcert())
-                .then(function (response) {
-                    console.log(response.data);
-                    //alert(salalis);
-                });
-    }
-
-    function senf() {
-        return m;
-
-    }
-
-    function goSendResult() {
-        sala = document.getElementById("idSala").innerHTML;
-        var t = parseInt(sala, 10);
-        //alert("enviamos sala : "+t);
-        stompClient.send("/app/result." + t, {}, JSON.stringify(""));
-    }
-
-    function goToResult() {
-        var temp = document.getElementById("playerr").innerHTML;
-        pagina = "/resultados.html";
-        pagina += "?";
-        nomVec = temp.split(",");
-        pagina += "=" + temp;
-        location.href = pagina;
-
-    }
+    };
     
-        //sala = document.getElementById("idSala").innerHTML;
-        //var t = parseInt(sala, 10);
-/*
+    
     function sendName() {        
         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
         pasarVariables();
-    }
-*/
-    function dt(nickName, sala) {
-        return{
-            nickName: nickName,
-            sala: sala
-        }
-    }
-
-    function sendUpLevel(op, ppl) {
-        document.getElementById('levelGame').innerHTML = op;
-        //alert("Actulizando nivel, ahora es : " + op);
-        sala = document.getElementById("idSala").innerHTML;
-        //alert("EL JUGADOR ESS:1 "+ppl);
-        var playe = ppl;
-        //alert("EL JUGADOR ESS:2 "+playe);
-        var t = parseInt(sala, 10);
-        var f = dt(ppl, t);
-        //alert("enviamos sala : "+f.nickName);        
-        //alert("enviamos sala : "+f.sala);   
-        //stompClient.send("/app/level." + t, {}, JSON.stringify(t));
-        stompClient.send("/app/level." + t, {}, JSON.stringify(f));
-    }
-
-
-
-
-
-    function sendCart(ct, ctp) {
-        var n = document.getElementById("idSala").innerHTML;
-        //alert("carga n: "+n);
-        stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
     }
 
     function pasarVariables() {
@@ -155,6 +48,7 @@ var popo = (function () {
         pagina += "=" + temp;
         location.href = pagina;
     }
+
     function showGreeting(message) {
         $("#greetings").append("<tr><td>" + message + "</td></tr>");
     }
@@ -236,7 +130,7 @@ var popo = (function () {
                 });
 
         return verdad;
-    }
+    };
 
     var load = function () {
         var salal = document.getElementById("idSala").innerHTML;
@@ -246,22 +140,17 @@ var popo = (function () {
         } else {
             alert("Debes ser el anfrition para iniciar la partida");
         }
-    }
+    };
 
     return {
-        dt: dt,
-        goSendResult: goSendResult,
         reload: reload,
         loadd: loadd,
         setConnected: setConnected,
-        //sendName: sendName,
+        sendName: sendName,
         pasarVariables: pasarVariables,
         showGreeting: showGreeting,
         disconnect: disconnect,
         showGreeting: showGreeting,
-        sendCart: sendCart,
-        senf: senf,
-        sendUpLevel: sendUpLevel,
         init: function () {
 
             connect('');
@@ -317,12 +206,12 @@ $(function () {
         e.preventDefault();
     });
     $("#connect").click(function () {
-        popo.conec();
+        popo12.conec();
     });
     $("#disconnect").click(function () {
         disconnect();
     });
-//    $("#send").click(function () {
-  //      popo12.sendName();
-//    });
+    $("#send").click(function () {
+        popo12.sendName();
+    });
 });

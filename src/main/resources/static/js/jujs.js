@@ -177,6 +177,7 @@ function libertad() {
 
 
 function iniciarJuego() {
+    
     c1(c2);
     var dato = document.getElementById("juego");
 

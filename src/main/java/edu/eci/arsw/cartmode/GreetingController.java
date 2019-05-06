@@ -46,7 +46,7 @@ public class GreetingController {
     //List<Stack<String>> pilas = new CopyOnWriteArrayList<>();
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {
+    public Greeting greeting(HelloMessage message) throws Exception {        
         //Thread.sleep(1000); // simulated delay
         cart.addPlayer(message.getName());
         return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
