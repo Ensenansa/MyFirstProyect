@@ -7,38 +7,28 @@ var sala = -1;
 var mirar = (function Mirar() {
     
     function fan(){
-        cadVariables = location.search.substring(1, location.search.length);
-        arrVariables = cadVariables.split(',');
-        var t = String(arrVariables);
+        cadVariables = location.search.substring(2, location.search.length);        
+        arrVariables = cadVariables.split('&');        
+        var t = String(arrVariables[0]);
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
         mirar.getIdSalaByPlayer(AllPlayersBySala);
-        //mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
-        //mirar.getIdSalaByPlayer();
-        //mirar.getIdSalaByPlayer1();
-
-        popo.conec();
+        popo.conec(arrVariables[1]);
     }
     function fn(){
-        //alert("la otra");
         mirar.getIdSalaByPlayer1();
-        //mirar.getAnfiPlayBySala();
-
     }
-
-
-
     function fin() {
 
-        cadVariables = location.search.substring(1, location.search.length);
-        arrVariables = cadVariables.split(',');
-        var t = String(arrVariables);
+        cadVariables = location.search.substring(2, location.search.length);
+        arrVariables = cadVariables.split('&');
+        var t = String(arrVariables[0]);
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
+        document.getElementById("idSala").innerHTML = arrVariables[1];
         mirar.getIdSalaByPlayer(getAnfiPlayBySala);
-        //mirar.getIdSalaByPlayer(getIdSalaByPlayer1);
-        //mirar.getIdSalaByPlayer1();
-        popo.conec();
+        //mirar.getIdSalaByPlayer();
+        popo.conec(arrVariables[1]);
     }
     function tu() {
         var cronometro;
@@ -57,8 +47,6 @@ var mirar = (function Mirar() {
 
         var nombreUsuario = document.getElementById("playerr").innerHTML;
         var sal = sala;
-
-        //alert(nombreUsuario);
         axios.get('/jugadores/playAnfi/' + sala + '/' + nombreUsuario)
                 .then(function (response) {
                     verdad = response.data;
@@ -71,35 +59,28 @@ var mirar = (function Mirar() {
                     jugadores = response.data;
                     document.getElementById("pl").innerHTML = jugadores;
                     console.log('saved successfully');
-                    //mirar.getAnfiPlayBySala();
+                    mirar.getAnfiPlayBySala();
                 });
     }
 
     function getIdSalaByPlayer(on) {
-        axios.get('jugadores/sala/' + arrVariables)
+        axios.get('jugadores/sala/' + arrVariables[0])
                 .then(function (response) {
-                    //alert(response);    
                     grouid = response.data;
-                    console.log('saved successfully')
-
+                    console.log('saved successfully'+grouid)
                     sala = grouid;
-                    //alert("esta"+sala);
                     document.getElementById("idSala").innerHTML = grouid;
                     on();
                     mirar.AllPlayersBySala();
                 });
      }
-function getIdSalaByPlayer1() {
-        //alert("ahora12 : "+sala);                       
-            //alert("pasa"+sala);
+    function getIdSalaByPlayer1() {
             var a = parseInt(sala);
             axios.get('/jugadores/nivel/' + a)
                     .then(function (response) {
                         level = response.data;
                         var t=parseInt(level, 10)+1;
-                        //alert("nivel del inicio" + t);
                         document.getElementById("levelGame").innerHTML = t;
-                        //alert("cambiando");
                         console.log('saved successfully' + t)
                     });
 
@@ -108,7 +89,6 @@ function getIdSalaByPlayer1() {
         var juanfi;
         axios.get('jugadores/playAnfi/' + grouid)
                 .then(function (response) {
-                    //alert(response);    
                     juganfi = response.data;
                     console.log('saved successfully')
                     document.getElementById("playAf").innerHTML = juganfi.nickName;
@@ -117,19 +97,21 @@ function getIdSalaByPlayer1() {
     }
 
     function getLevelBy() {
-        //alert("dsadsa");
         sala = document.getElementById("idSala").innerHTML;
-        //alert("sala es: " + sala);
         axios.get('/jugadores/nivel/' + sala)
                 .then(function (response) {
                     level = response.data;
-                    //alert("nivel" + level);
                     document.getElementById("levelGame").innerHTML = level;
                     console.log('saved successfully' + level)
                 });
     }
+    function getNameOfPlayer(){
+        
+        
+    }
 
     return {
+        getNameOfPlayer:getNameOfPlayer,
         getIdSalaByPlayer1:getIdSalaByPlayer1,
         fin: fin,
         getIdSalaByPlayer: getIdSalaByPlayer,

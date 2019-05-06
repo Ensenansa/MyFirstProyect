@@ -7,20 +7,19 @@ var resultados = (function () {
 
 
     function iniR() {
-        cadVariables = location.search.substring(1, location.search.length);
+        cadVariables = location.search.substring(2, location.search.length);
         arrVariables = cadVariables.split(',');
         var t = String(arrVariables);
         var u = t.replace("=", "");
         document.getElementById("playAf").innerHTML = u;
         resultados.getIdSalaByPlayer(getDatos);
-        //resultados.recharge();
 
     }
 
     function getIdSalaByPlayer(on) {
         axios.get('jugadores/sala/' + arrVariables)
                 .then(function (response) {
-                    //alert(response);    
+                    
                     grouid = response.data;
                     console.log('saved successfully'+grouid)
 

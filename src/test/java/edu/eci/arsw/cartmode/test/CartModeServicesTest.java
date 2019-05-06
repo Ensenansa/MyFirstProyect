@@ -90,10 +90,10 @@ public class CartModeServicesTest {
         int num2 = cat.getIdSalaByPlayer(" Juliana");
         int num3 = cat.getIdSalaByPlayer(" Yeny");
         int num4 = cat.getIdSalaByPlayer(" Leonardo");
-        Assert.assertEquals(1, num+1 );
-        Assert.assertEquals(1, num2+1 );
-        Assert.assertEquals(2, num3+1 );
-        Assert.assertEquals(3, num4+1 );
+        Assert.assertEquals(0, num+1 );
+        Assert.assertEquals(0, num2+1 );
+        Assert.assertEquals(0, num3+1 );
+        Assert.assertEquals(0, num4+1 );
 
     }
 

@@ -77,13 +77,16 @@ public class CartModeStub implements CartModeServices {
             boolean puesto = false;
             while (y < salas.size() && !puesto) {
                 Sala op = salas.get(y);
-                if (op.getJugadores().size() < 4) {
+                if (op.getJugadores().size() < 4&& op.getListo()!=true) {
                 //if (op.getJugadores().size() < 2) {   //CAMBIAR... SOLO PAR APRUEBA Y CAMBIAR EN EL TEST
                     List<Jugador> tr = op.getJugadores();
                     play.setSala(salas.size() - 1);
                     tr.add(play);
                     op.setJugadores(tr);
                     puesto = true;
+                    if(op.getJugadores().size() ==4){
+                        op.setListo(true);                    
+                    }
                 }
                 y++;
             }
@@ -91,13 +94,11 @@ public class CartModeStub implements CartModeServices {
                 List<Jugador> kl = new ArrayList<Jugador>();
                 kl.add(play);
                 Sala tmp2 = new Sala(salas.size(), kl, null,0);
-                salas.add(tmp2);
-                //Para que tenga elid de sala correcto                          
+                salas.add(tmp2); //Para que tenga elid de sala correcto                          
                 play.setSala(salas.size() - 1);
                 Sala temp3 = salas.get(salas.size() - 1);
                 temp3.setJugadorAnfrition(play);
-                salas.set(salas.size() - 1, temp3);
-                //Debemos setear al jugador
+                salas.set(salas.size() - 1, temp3);//Debemos setear al jugador
             }
         }
 
@@ -207,9 +208,13 @@ public class CartModeStub implements CartModeServices {
     @Override
     public Integer getIdSalaByPlayer(String nombre) throws CartModeException {
         int resp = -1;
-        String temp = nombre.substring(1);
+        System.out.println("miremos nombre antes: "+nombre);
+        
+        //String temp = nombre.substring(1);
+        System.out.println("miremos nombre despues: "+nombre);
         for (Jugador ht : player) {
-            if (ht.getNickName().equals(temp)) {
+            System.out.println("que comparamos : "+ht.getNickName()+"contra :"+nombre);
+            if (ht.getNickName().equals(nombre)) {
                 resp = ht.getSala();
             }
         }
@@ -432,6 +437,11 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("k");
         abecedario.add("l");
 
+    }
+
+    @Override
+    public List<String> getNameOfPlayerBySala() throws CartModeException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

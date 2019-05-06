@@ -65,6 +65,21 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("add/{nombre}")
+    public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
+        try {
+            cat.addPlayer(nombre);
+            int resp=cat.getIdSalaByPlayer(nombre);
+            return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
+    
 
     //DATOS DEL JUGADOR
     @RequestMapping(method = RequestMethod.GET, path = "/datos")

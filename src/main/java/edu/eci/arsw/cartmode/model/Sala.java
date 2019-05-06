@@ -20,14 +20,11 @@ public class Sala {
 
     public Sala() {
     }
-    
-    
-    //public Sala(Integer id, Tablero tablero, List<Jugador> jugadores, Jugador jugadorAnfrition, Integer nivel){
+       
     public Sala(Integer id, List<Jugador> jugadores, Jugador jugadorAnfrition, Integer nivel){
         this.id=id;
         this.jugadorAnfrition=jugadorAnfrition;
-        this.jugadores=jugadores;
-        //this.tablero=tablero;
+        this.jugadores=jugadores;        
         this.listo=false;
         this.nivel=nivel;
     }

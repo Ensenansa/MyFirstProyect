@@ -35,12 +35,10 @@
                             <label for="name">Escriba su nick name</label>
                             <input type="text" id="name" class="form-control" placeholder="Your name here...">
                         </div>
-
-
                     </form>
 
                     <ul class="actions">
-                        <li><a href="javascript:pasarVariables()" id="send" class="button submit">Entrar</a></li>
+                        <li><a onclick="popo.sendName()" id="send" class="button submit">Entrar</a></li>
                     </ul>
                     <h1 class="major">Ingreso Ante Sala</h1>
                     <p>Usted esta por ingresar a una antesala, donde esperara a que otros jugadores se conecten y empezar a jugar, o por el contrario iniciar una partida nueva y esperar por otros jugadores.</p>
@@ -64,6 +62,7 @@
         <script src="/webjars/jquery/jquery.min.js"></script>
         <script src="/webjars/sockjs-client/sockjs.min.js"></script>
         <script src="/webjars/stomp-websocket/stomp.min.js"></script>          
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="js/apiclient.js"></script>        

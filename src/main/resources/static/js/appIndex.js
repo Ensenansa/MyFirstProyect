@@ -4,8 +4,6 @@ var username;
 var susers;
 var appIndex = (function () {
 
-
-
      var api = apiclient;
     class Jugador {
         constructor(nombre) {

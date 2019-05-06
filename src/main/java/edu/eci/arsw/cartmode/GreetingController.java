@@ -1,6 +1,7 @@
 package edu.eci.arsw.cartmode;
 
 import edu.eci.arsw.cartmode.model.Carta;
+import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
@@ -44,12 +45,16 @@ public class GreetingController {
     Stack<String> pila = new Stack<String>();
 
     //List<Stack<String>> pilas = new CopyOnWriteArrayList<>();
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {        
+    @MessageMapping("/usu")
+    //@SendTo("/topic/greetings")
+    public void greeting(HelloMessage message) throws Exception {
         //Thread.sleep(1000); // simulated delay
         cart.addPlayer(message.getName());
-        return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+        System.out.println("nombre del jugador: "+message.getName());
+        int resp=cart.getIdSalaByPlayer(message.getName());
+        System.out.println("que sala se asigno :"+resp);
+        //return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(Integer.toString(resp)) + "!");
+        msg.convertAndSend("/topic/usu", resp);        
     }
 
     @MessageMapping("avisar.{numsala}")
@@ -89,9 +94,8 @@ public class GreetingController {
             y++;
         }
         jugadoress = players;
-    }
-
-    //@MessageMapping("cart")
+    }  
+  
     @MessageMapping("cart.{id}")
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
         //public void CambioCarta(Carta ct) throws Exception {
@@ -149,6 +153,22 @@ public class GreetingController {
         msg.convertAndSend("/topic/cart." + id, ct);
     }
 
+    @MessageMapping("cartt.{id}")
+    public void loco(Carta ct, @DestinationVariable String id) throws Exception {
+        List<CartaJavSc> f=   cart.GenerateBaraja(1);
+        msg.convertAndSend("/topic/cartt." + id, "2");
+    }
+
+    /*
+    
+    @MessageMapping("anfi.{ad}")
+    public void iniciarPartidaAnfi(String g, @DestinationVariable String ad) throws Exception {
+        System.out.println("si llegamos perros" + g+"id: "+ad);
+        System.out.println("que resultado da : "+"/topic/anfi."+ad);
+        msg.convertAndSend("/topic/anfi." + ad, g);
+    }*/
+    
+    
     @MessageMapping("level.{idd}")
     //public void level(String id, @DestinationVariable String idd) throws Exception {
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
@@ -160,8 +180,8 @@ public class GreetingController {
 //        if (tpJu.equals(sjug.getNickName())) {           
         if (Integer.valueOf(sjug.getSala()) < 4) {
             System.out.println("ELVEANDO");
-            cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));           
-            } else {
+            cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
+        } else {
             System.out.println("sobre paso los limites de los niveles");
         }
         //} else {
@@ -178,7 +198,6 @@ public class GreetingController {
     public void level(@DestinationVariable String idd) throws Exception {
 
         System.out.println("--------------------");
-        msg.convertAndSend("/topic/result." + idd,99);
+        msg.convertAndSend("/topic/result." + idd, 99);
     }
-
 }

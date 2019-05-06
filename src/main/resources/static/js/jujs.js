@@ -39,7 +39,7 @@ var f = -1;
 function getIdSala(onTime, nombre) {
 
     //var idsala;
-    axios.get('/jugadores/sala/=' + nombre)
+    axios.get('/jugadores/sala/' + nombre)
             .then(function (response) {
                 idSala = response.data;
                 //alert(idSala);
