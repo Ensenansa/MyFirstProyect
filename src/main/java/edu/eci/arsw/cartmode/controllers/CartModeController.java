@@ -6,6 +6,7 @@
 package edu.eci.arsw.cartmode.controllers;
 
 import edu.eci.arsw.cartmode.model.Jugador;
+import edu.eci.arsw.cartmode.model.Sala;
 import edu.eci.arsw.cartmode.services.CartModeException;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.ArrayList;
@@ -68,10 +69,35 @@ public class CartModeController {
 
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
+        List<String> nombres = new ArrayList<String>();
         try {
-            cat.addPlayer(nombre);
+            if (cat.getSala().isEmpty()) {
+                cat.addPlayer(nombre);
+                Jugador temp = cat.getPlayerByName(nombre);
+                int resp = cat.getIdSalaByPlayer(nombre);
+            } else {
+                if (cat.getSalaDisponible() == -1) {
+                    cat.addPlayer(nombre);
+                    Jugador temp = cat.getPlayerByName(nombre);
+                    int resp = cat.getIdSalaByPlayer(nombre);
+                }else{
+                    List<Sala> tp=cat.getSala();
+                    String nomn= "";
+                    int idsala=cat.getSalaDisponible();
+                    List<String>nomc=cat.getNamePlayersBySala(idsala);
+                    for(String g:nomc){
+                        if(nombre.equals(g)){
+                            nomn=nombre+"0";
+                        }                    
+                    }
+                    cat.addPlayer(nomn);
+                    nombre=nomn;                
+                }
+            }
+            Jugador temp = cat.getPlayerByName(nombre);
             int resp = cat.getIdSalaByPlayer(nombre);
-            return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
+
+            return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);

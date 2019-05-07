@@ -1,11 +1,9 @@
 var cartOcupadas = new Array();
-
 var parejasHechas = new Array();
 var tempo = new Array();
 var cartOcupadas2 = new Array();
 var cartas2 = new Array();
 var cartas = new Array();
-
 var idSala;
 var intentos = 0;
 var jugada1 = "";
@@ -20,25 +18,16 @@ Array.prototype.unique = function (a) {
 }(function (a, b, c) {
     return c.indexOf(a, b + 1) < 0
 });
-
 //Array.prototype.includes(searchElement[ fromIndex ]);
-
-
 var arr = new Array();
-
 function removeItemFromArr(arr, item) {
     return arr.filter(function (e) {
         return e !== item;
     });
 }
 ;
-
 var f = -1;
-
-
 function getIdSala(onTime, nombre) {
-
-    //var idsala;
     axios.get('/jugadores/sala/' + nombre)
             .then(function (response) {
                 idSala = response.data;
@@ -47,66 +36,44 @@ function getIdSala(onTime, nombre) {
                 document.getElementById("idSala").innerHTML = idSala;
                 console.log('saved successfully' + idSala);
             });
-}
-//    getIdSala(getLevelId,nombre);
-function getLevelId(on, sala) {
+}//    getIdSala(getLevelId,nombre);
 
+function getLevelId(on, sala) {
     axios.get('/jugadores/nivel/' + sala)
             .then(function (response) {
-                f = response.data;
-                //alert(f);
-                var t = parseInt(f, 10) + 1;
-                //alert("nivel del inicio" + t);
+                f = response.data;//alert(f);
+                var t = parseInt(f, 10) + 1; //alert("nivel del inicio" + t);
                 document.getElementById("levelGame").innerHTML = t;
                 console.log('saved successfully' + t)
                 on(pu, t);
             });
 }
 
-
 function necart(pp, levell) {
     level = levell ;
-
-    //alert("quenivel se va : " + level);
-    //alert("que es nivel"+level);
     axios.get('/cartas/bara/' + level)
             .then(function (response) {
                 cartas2 = response.data;
-                //alert("nivel" + level);
-                //alert("ahora cartas2" + cartas2);
-                //pp(pintar,temporal);
                 pp(ko, pl);
                 console.log('saved successfully' + cartas2);
-
             });
 }
-function pu(pl) {
-    //alert("logituf" + cartas2.length);
-    for (var i = 0; i < cartas2.length; i++) {
-        //alert("que carta es: "+cartas2[i].dato);
-        var carta = cartas2[i].dato;
-        //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
+function pu(pl) {    //alert("logituf" + cartas2.length);
+    for (var i = 0; i < cartas2.length; i++) {        //alert("que carta es: "+cartas2[i].dato);
+        var carta = cartas2[i].dato;        //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
         var dato = document.getElementById(i.toString());
         dato.dataset.valor = carta;
-    }
-    //alert("vamos");
+    }    //alert("vamos");
     pl();
-
 }
 
 function ko() {
-    var n = document.getElementById("idSala").innerHTML;
-    //alert("carga n: "+n);
+    var n = document.getElementById("idSala").innerHTML;    //alert("carga n: "+n);
     popo.conecS("." + n);
-
 }
-
-
-function temporal() {
-    //alert("logituf"+cartas2.length);
+function temporal() {    //alert("logituf"+cartas2.length);
     for (var i = 0; i < cartas2.length; i++) {
-
-        alert("que  es: " + i.toString());
+        //alert("que  es: " + i.toString());
         var carta = cartas2[i].dato;
         //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
         var dato = document.getElementById(i.toString());
@@ -115,103 +82,57 @@ function temporal() {
         //alert("miremosq nos va mostr : "+dato.dataset.valor);
         //dato.dataset.valor = carta;
     }
-
-
 }
-
-
-
 
 function pintar() {
     alert("Dichosas cartas" + cartas2);
-
 }
 
-
 function c1(OnTime) {
-    //alert("conectandome");
-    //popo.conec();    
     OnTime(c3);
 }
 
 function c2(on) {
-    //alert("fin");  
-    //tener.fin();
     mirar.fan();
     on(c4);
-
 }
 
 function c3(on) {
-    //alert("hora");
     tiempo.hora();
     on(c5);
 }
 
 function c4(on) {
-    //alert("preguntas");
     preguntas.getPreguntas();
-
     on();
 }
 
 function c5() {
-    //alert("Sala : "+idSala);
     var nombre = document.getElementById("playerr").innerHTML;
-    //alert("cual es el nombre"+nombre);
     getIdSala(getLevelId, nombre);
-
-
 }
 
 function libertad() {
-    //alert("hola");
     var nombre = document.getElementById("playerr").innerHTML;
     var jugador = document.getElementById("levelGame").innerHTML;
-    //alert("cual es el id"+jugador);
-    //alert("cual es el nombre"+nombre);
     getIdSala(getLevelId, nombre);
-
 }
 
-
-
-function iniciarJuego() {
-    
+function iniciarJuego() {    
     c1(c2);
     var dato = document.getElementById("juego");
-
     var nombre = document.getElementById("playerr").innerHTML;
-
     dato.style.opacity = 1;
-
-    //alert(cartas2);
-
-    ///-------------//
-    //alert("cual es el nombre"+nombre);
-    //getIdSala(getLevelId,nombre);
-
-    ///-------------//
-    //cartas.sort(function() {return Math.random() - 0.5});
-
-//    for (var i = 0; i < 16; i++) {
-//        var carta = cartas[i].nombre;
-//        var dato = document.getElementById(i.toString());
-//        dato.dataset.valor = carta;
-
-//    }
 }
 ;
 
-function res() {
-    //alert("borrando");
+function res() {   
     tempo = new Array();
     parejasHechas = new Array();
 
 }
 
 function resetearJuego() {
-    //cartas.sort(function() {return Math.random() - 0.5});
     for (var i = 0; i < 16; i++) {
         var carta = cartas[i].dato;
         var dato = document.getElementById(i.toString());
@@ -237,7 +158,6 @@ function limpiar() {
     var temp = 0;
     var g;
     var cart;
-
     for (g = 0; g < cartas2.length; g++) {
         if (temp > (cartas2.length / 2) | temp > tempo.length - 1) {
             temp = 0;
@@ -274,7 +194,6 @@ function parAcert() {
 
 
 function sendPuntaje() {
-
     var jugador = document.getElementById("playerr").innerHTML;
     axios.post('/jugadores/puntaje/' + jugador + '/' + 100)
             .then(function (response) {
@@ -305,21 +224,17 @@ function prueba(dato, pos, nombre) {
     }
 }
 
-function girarCarta() {
-    //alert("vive");
+function girarCarta() {    
     var evento = window.event;
     var dato = document.getElementById("idSala").innerHTML;
     var nombre = document.getElementById("playerr").innerHTML;
     jugada2 = evento.target.dataset.valor;
     identificadorJ2 = evento.target.id;
     var tt = prueba(jugada2, identificadorJ2, nombre);
-    if (cartas2[parseInt(identificadorJ2)].seleccion != true) {
-        
+    if (cartas2[parseInt(identificadorJ2)].seleccion != true) {        
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
             cartas2[parseInt(identificadorJ1)].seleccion = false;
-                //alert("que es identij1 : "+identificadorJ1+" y que es identij2 : "+identificadorJ2);
-                //alert("que es jugada1: "+jugada1 + " que es jugada2: "+jugada2);
             if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
                 parejasHechas.push(identificadorJ1);
                 parejasHechas.push(identificadorJ2);
@@ -334,21 +249,16 @@ function girarCarta() {
                     colorCambio(self.identificadorJ1, "black", "?")
                     colorCambio(self.identificadorJ2, "black", "?")
                     vaciar();
-
                 }, 200);
-
                 colorCambio(identificadorJ2, "blue", jugada2);
             }
         } else if (jugada2 !== "valor") {
-
             colorCambio(identificadorJ2, "blue", jugada2);
-
             jugada1 = jugada2;
             identificadorJ1 = identificadorJ2;
         }
     } else {
         alert("La carta ya fue escogida");
-
     }
 }
 ;

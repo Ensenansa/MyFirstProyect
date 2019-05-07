@@ -15,8 +15,7 @@ import org.springframework.data.annotation.Id;
  * @author cesar
  */
 public class Jugador {
-    @Id
-    private Integer id;
+
     private String nickName;
     private Integer parejasAcertadas;
     private Integer puntaje;

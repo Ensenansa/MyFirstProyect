@@ -91,10 +91,10 @@ var popo = (function () {
         var temp = $("#name").val();
         axios.get('jugadores/add/' + temp)
                 .then(function (response) {
-                    grouid = response.data;                   
+                    grouid = response.data;                    
                     console.log('saved successfully' + grouid)
                     sala = grouid;
-                    pasarVariables(grouid);
+                    pasarVariables(grouid.sala,grouid.nickName);
                 });
     }
     function dt(nickName, sala) {
@@ -115,8 +115,9 @@ var popo = (function () {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
     }
-    function pasarVariables(op) {
-        var temp = $("#name").val();
+    function pasarVariables(op,nombre) {
+        //var temp = $("#name").val();
+        var temp=nombre;
         pagina = "AnteSala.html";
         pagina += "?";
         nomVec = temp.split(",");

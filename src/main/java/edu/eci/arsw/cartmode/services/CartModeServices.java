@@ -20,6 +20,9 @@ import java.util.List;
  */
 public interface CartModeServices {
     
+    public Integer getSalaDisponible()throws CartModeException;
+    
+    public List<String> getNamePlayersBySala(Integer id)throws CartModeException;
     public List<String> getNameOfPlayerBySala()throws CartModeException;
     public List<Jugador> getJugadoresByIdSala(Integer idSala)throws CartModeException;
     public Boolean getListoSala(Integer idSala)throws CartModeException;

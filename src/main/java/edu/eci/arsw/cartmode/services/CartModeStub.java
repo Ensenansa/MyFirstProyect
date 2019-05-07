@@ -104,6 +104,31 @@ public class CartModeStub implements CartModeServices {
 
     }
     
+    @Override
+    public Integer getSalaDisponible()throws CartModeException{
+        int resp=-1;
+        System.out.println("fuuu");
+        for(Sala sa:salas){
+            if(sa.getJugadores().size()<4&& sa.getListo()!=true){
+                //System.out.println("que sala pone"+sa.getId());
+                resp=sa.getId();            
+            }       
+        }
+        System.out.println("que respiuesta regresa : "+resp);
+        return resp;
+    }
+    @Override
+    public List<String> getNamePlayersBySala(Integer id)throws CartModeException{
+        List<String> resp=new ArrayList<String>();
+        Sala temp=salas.get(id);
+        List<Jugador> ju=temp.getJugadores();
+        for(Jugador tr: ju){
+            resp.add(tr.getNickName());        
+        }
+        return resp;
+    }
+    
+    
     
     @Override
     public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel)throws  CartModeException{
