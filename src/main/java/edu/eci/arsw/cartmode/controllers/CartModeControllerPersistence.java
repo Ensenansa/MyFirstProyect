@@ -24,6 +24,7 @@
 package edu.eci.arsw.cartmode.controllers;
 
 import edu.eci.arsw.cartmode.model.Jugador;
+import edu.eci.arsw.cartmode.persistence.MongoDBTest;
 import edu.eci.arsw.cartmode.services.CartModeException;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,10 +51,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/persistencia")
 public class CartModeControllerPersistence {
     
-      @Autowired
+    @Autowired
     private CartModeServices cat;
     private Map<String, List<String>> puntJugador = new HashMap<String, List<String>>();
 
+    @Autowired
+    private  MongoDBTest mgbd;
+    
+    
     /**
      *
      * @return CopyOnWriteArrayList
@@ -61,8 +67,14 @@ public class CartModeControllerPersistence {
 
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
     public void addDataBaseMongoBD(@PathVariable String nombre, @PathVariable String puntaje) throws CartModeException {
-
-        
+        mgbd.insertData(nombre, puntaje);
+    }
+    
+    
+        @GetMapping("/mostrar")
+    public ResponseEntity<?> getAllJugadoresBySala() {
+        mgbd.findAndPrintData();
+        return new ResponseEntity<>(mgbd.getRespuesta(), HttpStatus.ACCEPTED);
     }
     
 }

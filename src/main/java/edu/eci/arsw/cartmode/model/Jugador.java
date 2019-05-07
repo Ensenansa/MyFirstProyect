@@ -25,6 +25,15 @@ public class Jugador {
 
     public Jugador() {
     }
+    public Jugador(String nickName,Integer puntaje) {
+        this.nickName = nickName;
+        parejasAcertadas = null;
+        this.puntaje = puntaje;
+        preguntasCorrrectas = null;
+        preguntasIncorrectas = null;
+        sala=null;        
+    }    
+    
     public Jugador(String nickName) {
         
         this.nickName = nickName;

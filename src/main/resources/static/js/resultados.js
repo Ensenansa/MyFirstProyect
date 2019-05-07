@@ -48,6 +48,11 @@ var resultados = (function () {
     }
     
     function graficTble(){
+
+        var histn="";
+        var histp=0;
+        
+
         txt_respuestas+="<table > <tr> <th>Nombre Jugadores</th> <th>Puntaje</th></tr>";
         nombre = document.getElementById("playAf").innerHTML;
         //alert("si muestra datos : "+datos );
@@ -62,10 +67,23 @@ var resultados = (function () {
                 //alert("pegando");
                 var temp = '<tr> <td>' + datos[tt].nickName+ '</td> '+'<br>' + '<td>"' + datos[tt].puntaje+ '"</td></tr>';
                 txt_respuestas+=temp;
+                if(datos[tt].puntaje>histp){
+                    histp=datos[tt].puntaje;
+                    histn=datos[tt].nickName;
+                }
+
+
             }
         }
         txt_respuestas+="</table>";
         document.getElementById("jugadores").innerHTML = txt_respuestas;        
+                
+        axios.post('/persistencia/almacenar/'+histn+'/'+histp)
+        .then(function (response) {
+            console.log(response.data);
+            //alert(salalis);
+        });
+                        
                 
     }
     

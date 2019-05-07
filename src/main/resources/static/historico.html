@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
-    <body class="is-preload" onload="popo.lo()">
+    <body class="is-preload" onload="historicos.iniR()">
         <!-- Header -->
         <header id="header">
             <nav>
@@ -29,23 +29,9 @@
             <section id="main" class="wrapper">
                 <div class="inner">
                     <h1 class="major">Historial</h1>
+                    <div id="jugadores"></div>
                     <table>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Puntaje</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Centro comercial Moctezuma</td>
-                            <td>Mexico</td>
-                        </tr>
-                        <tr>
-                            <td>Ernst Handel</td>
-                            <td>Austria</td>
-                        </tr>
+
                     </table>
                     <form class="form-inline">
                         <div class="form-group">
@@ -55,9 +41,8 @@
 
 
                     </form>
-
                     <ul class="actions">
-                        <li><a href="" id="send" class="button submit">Consultar Historico</a></li>
+                        <li><a onclick="historicos.iniR()" id="send" class="button submit">Consultar Historico</a></li>
                     </ul>
                     
                 </div>
@@ -84,10 +69,10 @@
         <script src="assets/js/main.js"></script>
         <script src="js/apiclient.js"></script>        
         <script src="js/appIndex.js"></script>
-
+        <script src="js/historicos.js"></script>
         <script src="js/jujs.js"></script>
         <script src="/app.js"></script>
-
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     </body>
 </html>

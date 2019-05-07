@@ -62,6 +62,10 @@ var getPDF = (function pdf() {
 
         doc.save('Results.pdf');
         
+
+        
+        
+        
         
     }
     return {
