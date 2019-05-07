@@ -239,7 +239,7 @@ public class CartModeController {
             puntJugador.put(nombre, prueba);
         }
 
-        //System.out.println("que es temp : " + tempS.toString() + "y su longitud : " + tempS.size());
+        System.out.println("que es contador: " + contador);
         Jugador f = cat.getPlayerByName(nombre);
         int cont = f.getPuntaje();
         int punta = ((contador / 2) * 100);
@@ -257,7 +257,9 @@ public class CartModeController {
         }*/
         System.out.println("COON CUANTO  pyntaje QUEDA JUGADOR : " + f.getPuntaje());
         //f.setPuntaje(cont + dif); punta+cont
-        f.setPuntaje(punta+cont); 
+        int r=punta+cont;
+        System.out.println("nuevo valor del puntaje del JUGADOR : "+r);
+        f.setPuntaje(r); 
         cat.setPlayerByName(f);
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
