@@ -57,6 +57,7 @@ var tiempo = (function Tiempo() {
                 alert("Se termino");
                 detener();
                 popo.goSendResult();
+
                 
             }
             if(seg ==1 && minutos ==0){

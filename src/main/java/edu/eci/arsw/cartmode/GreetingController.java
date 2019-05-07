@@ -135,7 +135,8 @@ public class GreetingController {
 
     @MessageMapping("cartt.{id}")
     public void loco(Carta ct, @DestinationVariable String id) throws Exception {
-        List<CartaJavSc> f=   cart.GenerateBaraja(1);
+        
+        cart.statedIdSala(Integer.parseInt(id));
         msg.convertAndSend("/topic/cartt." + id, "2");
     }
     @MessageMapping("level.{idd}")

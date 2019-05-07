@@ -134,7 +134,10 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
     
-    
+    public void statedIdSala(Integer id)throws CartModeException{
+        Sala temp=salas.get(id);
+        temp.setListo(true);
+    }
     
     @Override
     public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel)throws  CartModeException{
