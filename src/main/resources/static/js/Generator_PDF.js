@@ -11,10 +11,13 @@ var getPDF = (function pdf() {
         alert("llegamos");
         t = gset.getUser();
         document.getElementById("usuario").innerHTML = "este usuario" + t;
-        alert(t);
+        //alert(t);
     }
     
-    function pd() {       
+    function pd() {     
+        var histn="";
+        var histp=0;
+        
         var animals = [];
         var datoss = new Array();
         datoss = resultados.getData();
@@ -23,6 +26,10 @@ var getPDF = (function pdf() {
         datoss.forEach(function (elemento, indice, array) {
             contador+=parseInt(elemento.puntaje);
             animals.push([elemento.nickName,elemento.puntaje]);
+            if(elemento.puntaje>histp){
+                histp=elemento.puntaje;
+                histn=elemento.nickName;
+            }
             console.log(elemento, indice);
         });
         var idSala = document.getElementById("idSala").innerHTML;
@@ -54,6 +61,8 @@ var getPDF = (function pdf() {
         );
 
         doc.save('Results.pdf');
+        
+        
     }
     return {
         pd: pd,
