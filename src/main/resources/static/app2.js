@@ -14,6 +14,7 @@ var mirar = (function Mirar() {
         document.getElementById("playerr").innerHTML = u;
         mirar.getIdSalaByPlayer(AllPlayersBySala);
         popo.conec(arrVariables[1]);
+        
     }
     function fn(){
         mirar.getIdSalaByPlayer1();
@@ -59,7 +60,7 @@ var mirar = (function Mirar() {
                     jugadores = response.data;
                     document.getElementById("pl").innerHTML = jugadores;
                     console.log('saved successfully');
-                    mirar.getAnfiPlayBySala();
+                    //mirar.getAnfiPlayBySala();
                 });
     }
 
@@ -71,6 +72,7 @@ var mirar = (function Mirar() {
                     sala = grouid;
                     document.getElementById("idSala").innerHTML = grouid;
                     on();
+                    
                     mirar.AllPlayersBySala();
                 });
      }

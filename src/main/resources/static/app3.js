@@ -30,7 +30,7 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=10;
+var seg=40;
 var minutos =0;
 //PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
@@ -171,7 +171,7 @@ var preguntas = (function Preguntas() {
         
     }
     function get2Nivel(on){
-        seg=10;
+        seg=40;
         minutos=0;
         document.getElementById('i').innerHTML = seg;
         document.getElementById('j').innerHTML = minutos;     

@@ -33,44 +33,31 @@ public class GreetingController {
     private Integer jugadorTemporal = 0;
 
     @Autowired
-    CartModeServices cart;
-
-    //valor y Posicion y  de la carta
+    CartModeServices cart; //valor y Posicion y  de la carta
     private Map<String, List<String>> valparejas = new ConcurrentHashMap<>();
-
     private Map<String, Stack<String>> cartas = new ConcurrentHashMap<>();
-
     private List<String> valoresPareja = new CopyOnWriteArrayList<>();
-
     Stack<String> pila = new Stack<String>();
 
-    //List<Stack<String>> pilas = new CopyOnWriteArrayList<>();
     @MessageMapping("/usu")
-    //@SendTo("/topic/greetings")
     public void greeting(HelloMessage message) throws Exception {
-        //Thread.sleep(1000); // simulated delay
         cart.addPlayer(message.getName());
         System.out.println("nombre del jugador: "+message.getName());
         int resp=cart.getIdSalaByPlayer(message.getName());
         System.out.println("que sala se asigno :"+resp);
-        //return new Greeting("El jugador es, " + HtmlUtils.htmlEscape(Integer.toString(resp)) + "!");
         msg.convertAndSend("/topic/usu", resp);        
     }
 
     @MessageMapping("avisar.{numsala}")
     @SendTo("/topic/avisar")
     public String avisar(@DestinationVariable String numsala) throws Exception {
-
         System.out.println("nuevo anfitrion jugando, de sala " + numsala);
-
         int idsala = Integer.parseInt(numsala);
         Sala o = new Sala();
         cart.SetStade(idsala);
         o = cart.getSalaById(idsala);
-
         cart.iniciarPartida();
         return o.toString();
-
     }
 
     @MessageMapping("iniciar")
@@ -83,13 +70,8 @@ public class GreetingController {
         int players = cart.getAllPlayerInGame();
         List<Jugador> ju = cart.nameAlPlayer();
         System.out.println("cuantos jugadores hay : " + players);
-        //for (int i = 0; i < players; i++) {
-        //  pilas.add(new Stack<String>());
-        //}
         int y = 0;
         for (Jugador h : ju) {
-
-            //cartas.put(h.getNickName(), pila.get(y));
             cartas.put(h.getNickName(), new Stack<String>());
             y++;
         }
@@ -98,7 +80,6 @@ public class GreetingController {
   
     @MessageMapping("cart.{id}")
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
-        //public void CambioCarta(Carta ct) throws Exception {
         List<String> temp = new CopyOnWriteArrayList<>();
 
         int players = cart.getAllPlayerInGame();
@@ -119,32 +100,26 @@ public class GreetingController {
             temp = valparejas.get(id);
         } else {
             valparejas.put(id, temp);
-        }
-
-        //Se implementara por Pilas
+        } //Se implementara por Pilas
         if (pila.empty()) {
             cartas.remove(ct.getNombre());
             System.out.println("entro porque esta limpio");
             pila.push(ct.getDato());
             cartas.put(ct.getNombre(), pila);
             Thread.sleep(2000);
-
         } else {
             System.out.println("entro se hizo la pareja, tam de pila " + pila.size());
             System.out.println("-------------------------");
             Carta j = new Carta(pila.pop());
             System.out.println("Que se compara, esto viene: " + ct.getDato() + "  contra lo que esta : " + j.getDato());
             if (ct.getDato().equals(j.getDato())) {
-
                 System.out.println("-------------------------");
-                //valoresPareja.add(ct.getDato());
                 temp.add(ct.getDato());
                 cartas.remove(ct.getNombre());
                 pila.clear();
                 cartas.put(ct.getNombre(), pila);
                 System.out.println("enviamos pareja");
                 System.out.println("-------------------------");
-                //ELIMNANDO Y REINSERTANDO LAS PAREJAS FORMADAS
                 valparejas.remove(id);
                 valparejas.put(id, temp);
                 msg.convertAndSend("/topic/parejas." + id, temp);
@@ -158,35 +133,19 @@ public class GreetingController {
         List<CartaJavSc> f=   cart.GenerateBaraja(1);
         msg.convertAndSend("/topic/cartt." + id, "2");
     }
-
-    /*
-    
-    @MessageMapping("anfi.{ad}")
-    public void iniciarPartidaAnfi(String g, @DestinationVariable String ad) throws Exception {
-        System.out.println("si llegamos perros" + g+"id: "+ad);
-        System.out.println("que resultado da : "+"/topic/anfi."+ad);
-        msg.convertAndSend("/topic/anfi." + ad, g);
-    }*/
-    
-    
     @MessageMapping("level.{idd}")
-    //public void level(String id, @DestinationVariable String idd) throws Exception {
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
         Boolean sies = true;
         System.out.println("elevamos...el id : " + sjug.getSala());
         System.out.println("ELVAMOS...al jugador : " + sjug.getNickName());
         Jugador jugadortemid = cart.getPlayerAnfiBySala(sjug.getSala());
         String tpJu = jugadortemid.getNickName();
-//        if (tpJu.equals(sjug.getNickName())) {           
         if (Integer.valueOf(sjug.getSala()) < 4) {
             System.out.println("ELVEANDO");
             cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
         } else {
             System.out.println("sobre paso los limites de los niveles");
         }
-        //} else {
-        //System.out.println("NO ELEVNADO");
-        //}
         start();
         System.out.println("Empezndo el borrado");
         System.out.println("--------------------");
@@ -196,7 +155,6 @@ public class GreetingController {
 
     @MessageMapping("result.{idd}")
     public void level(@DestinationVariable String idd) throws Exception {
-
         System.out.println("--------------------");
         msg.convertAndSend("/topic/result." + idd, 99);
     }

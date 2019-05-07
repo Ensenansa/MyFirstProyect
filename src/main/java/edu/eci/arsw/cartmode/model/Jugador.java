@@ -8,13 +8,15 @@ package edu.eci.arsw.cartmode.model;
 import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author cesar
  */
 public class Jugador {
-
+    @Id
+    private Integer id;
     private String nickName;
     private Integer parejasAcertadas;
     private Integer puntaje;
@@ -25,6 +27,7 @@ public class Jugador {
     public Jugador() {
     }
     public Jugador(String nickName) {
+        
         this.nickName = nickName;
         parejasAcertadas = 0;
         puntaje = 0;

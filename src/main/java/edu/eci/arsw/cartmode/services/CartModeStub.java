@@ -208,12 +208,12 @@ public class CartModeStub implements CartModeServices {
     @Override
     public Integer getIdSalaByPlayer(String nombre) throws CartModeException {
         int resp = -1;
-        System.out.println("miremos nombre antes: "+nombre);
+        //System.out.println("miremos nombre antes: "+nombre);
         
         //String temp = nombre.substring(1);
-        System.out.println("miremos nombre despues: "+nombre);
+        //System.out.println("miremos nombre despues: "+nombre);
         for (Jugador ht : player) {
-            System.out.println("que comparamos : "+ht.getNickName()+"contra :"+nombre);
+            //System.out.println("que comparamos : "+ht.getNickName()+"contra :"+nombre);
             if (ht.getNickName().equals(nombre)) {
                 resp = ht.getSala();
             }
@@ -310,12 +310,6 @@ public class CartModeStub implements CartModeServices {
 
         int t=temporal.getNivel();
         temporal.setNivel(t+1);
-        /*
-        for (Jugador sa : jugado) {
-            int valor = sa.getNivel();
-            System.out.println("CAMBIANDO" + valor);
-            sa.setNivel(valor + 1);
-        }*/
 
     }
 
