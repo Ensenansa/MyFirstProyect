@@ -67,6 +67,16 @@ public class CartModeController {
         }
     }
 
+    @GetMapping("sala/cantidad/{id}")
+    public ResponseEntity<?> getCantPlayerOfSala(@PathVariable Integer id) {
+        try {
+            return new ResponseEntity<>(cat.allPlayerOfSala(id), HttpStatus.ACCEPTED);
+        } catch (CartModeException ex) {
+            Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
         List<String> nombres = new ArrayList<String>();
@@ -88,10 +98,11 @@ public class CartModeController {
                     for(String g:nomc){
                         if(nombre.equals(g)){
                             nomn=nombre+"0";
+                            nombre=nomn;        
                         }                    
                     }
-                    cat.addPlayer(nomn);
-                    nombre=nomn;                
+                    cat.addPlayer(nombre);
+                    
                 }
             }
             Jugador temp = cat.getPlayerByName(nombre);

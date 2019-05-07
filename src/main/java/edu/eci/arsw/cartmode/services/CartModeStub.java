@@ -103,6 +103,12 @@ public class CartModeStub implements CartModeServices {
         }
 
     }
+    @Override
+    public Integer allPlayerOfSala(Integer id)throws CartModeException{        
+        Sala f=salas.get(id);                
+        return f.getJugadores().size();
+    }
+    
     
     @Override
     public Integer getSalaDisponible()throws CartModeException{

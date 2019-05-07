@@ -89,9 +89,11 @@ var popo = (function () {
     }
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
         var temp = $("#name").val();
+        //alert(temp);
         axios.get('jugadores/add/' + temp)
                 .then(function (response) {
-                    grouid = response.data;                    
+                    grouid = response.data;   
+                    alert("que regrsa edl api"+grouid.nickName);
                     console.log('saved successfully' + grouid)
                     sala = grouid;
                     pasarVariables(grouid.sala,grouid.nickName);
@@ -117,6 +119,7 @@ var popo = (function () {
     }
     function pasarVariables(op,nombre) {
         //var temp = $("#name").val();
+        //alert("cual nombre se manda: "+nombre);
         var temp=nombre;
         pagina = "AnteSala.html";
         pagina += "?";
@@ -170,10 +173,27 @@ var popo = (function () {
         pagina += "=" + jugador + "&" + n;
         location.href = pagina;
     };
-    function isAnfitrion2(dato) {
-        if (dato) {
+  function isAnfitrion3(contador) {
+        alert("ques es cont: "+contador);
+        if (contador > 2) {
             var n = document.getElementById("idSala").innerHTML;
             stompClient.send("/app/cartt." + n, {}, JSON.stringify("2"));
+       } else {
+            alert("Anfritrion, espere a que halla minimo 3  jugadores conectados.");
+        }
+    }
+
+    function isAnfitrion2(tor, dato) {
+        if (dato) {
+            var n = document.getElementById("idSala").innerHTML;
+             var t=parseInt(n, 10);
+            var contador;
+            axios.get('/jugadores/sala/cantidad/' + t)
+                    .then(function (response) {
+                        contador = response.data;
+                        console.log('saved successfully' + contador);
+                        tor(contador);
+                    });
         } else {
             alert("Debes ser anfitrion para poder iniciar la partida");
         }
@@ -189,7 +209,7 @@ var popo = (function () {
                 .then(function (response) {
                     dato = response.data;
                     console.log('saved successfully' + dato);
-                    on(dato);
+                    on(isAnfitrion3, dato);
                 });
     }
 
