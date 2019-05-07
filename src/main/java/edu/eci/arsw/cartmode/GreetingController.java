@@ -117,6 +117,15 @@ public class GreetingController {
                 temp.add(ct.getDato());
                 cartas.remove(ct.getNombre());
                 pila.clear();
+                
+                Jugador f = cart.getPlayerByName(ct.getNombre());
+                int cont = f.getPuntaje();
+               System.out.println("PUNTAJE ANTES DEL JUGADOR : "+cont);
+               
+                cont+=100;
+                System.out.println("PUNTAJE DESPUES DEL JUGADOR : "+cont);
+                f.setPuntaje(cont);
+                cart.setPlayerByName(f);
                 cartas.put(ct.getNombre(), pila);
                 System.out.println("enviamos pareja");
                 System.out.println("-------------------------");
