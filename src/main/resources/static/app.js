@@ -88,12 +88,10 @@ var popo = (function () {
         location.href = pagina;
     }
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
-        var temp = $("#name").val();
-        //alert(temp);
+        var temp = $("#name").val();        
         axios.get('jugadores/add/' + temp)
                 .then(function (response) {
-                    grouid = response.data;   
-                    alert("que regrsa edl api"+grouid.nickName);
+                    grouid = response.data;                       
                     console.log('saved successfully' + grouid)
                     sala = grouid;
                     pasarVariables(grouid.sala,grouid.nickName);
@@ -174,7 +172,7 @@ var popo = (function () {
         location.href = pagina;
     };
   function isAnfitrion3(contador) {
-        alert("ques es cont: "+contador);
+        //alert("ques es cont: "+contador);
         if (contador > 2) {
             var n = document.getElementById("idSala").innerHTML;
             stompClient.send("/app/cartt." + n, {}, JSON.stringify("2"));
