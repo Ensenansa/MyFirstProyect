@@ -5,6 +5,7 @@ import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
 import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
+import edu.eci.arsw.cartmode.persistence.MongoDBTest;
 import edu.eci.arsw.cartmode.services.CartModeServices;
 import java.util.Iterator;
 import java.util.List;
@@ -28,6 +29,10 @@ public class GreetingController {
     @Autowired
     SimpMessagingTemplate msg;
 
+    
+    @Autowired
+    private  MongoDBTest mgbd;
+        
     private Integer id = 0;
     private Integer jugadoress = 0;
     private Integer jugadorTemporal = 0;
@@ -35,6 +40,7 @@ public class GreetingController {
     @Autowired
     CartModeServices cart; //valor y Posicion y  de la carta
     private Map<String, List<String>> valparejas = new ConcurrentHashMap<>();
+    private Map<Integer, String> results = new ConcurrentHashMap<>();
     private Map<String, Stack<String>> cartas = new ConcurrentHashMap<>();
     private List<String> valoresPareja = new CopyOnWriteArrayList<>();
     Stack<String> pila = new Stack<String>();
@@ -162,6 +168,27 @@ public class GreetingController {
     @MessageMapping("result.{idd}")
     public void level(@DestinationVariable String idd) throws Exception {
         System.out.println("--------------------");
+        int punt=0;
+        List<Jugador> temps=cart.getJugadoresByIdSala((Integer.parseInt(idd)));
+        Jugador temp=new Jugador();
+        for(Jugador te:temps){
+            if(te.getPuntaje()>punt){
+                punt=te.getPuntaje();
+                temp.setNickName(te.getNickName());
+                temp.setPuntaje(te.getPuntaje());            
+            }
+        }
+        if(results.containsKey(Integer.parseInt(idd))){        
+            System.out.println("Ya fue almacenado");
+        }else{
+            results.put(Integer.parseInt(idd), temp.getNickName());
+            mgbd.insertData(temp.getNickName(),Integer.toString( temp.getPuntaje()));        
+        }
+        
+        
+        
+        //Jugador temp=cart.getPlayerAnfiBySala(Integer.parseInt(idd));
+        
         msg.convertAndSend("/topic/result." + idd, 99);
     }
 }

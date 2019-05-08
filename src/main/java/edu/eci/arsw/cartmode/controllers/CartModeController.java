@@ -40,7 +40,39 @@ public class CartModeController {
     @Autowired
     private CartModeServices cat;
     private Map<String, List<String>> puntJugador = new HashMap<String, List<String>>();
-
+    private Map<String, Integer> namePlayers = new HashMap<String, Integer>();
+    
+    private List<String> distingidores=new ArrayList<String>();
+    public  CartModeController (){
+        distingidores.add("0");
+        distingidores.add("1");
+        distingidores.add("2");
+        distingidores.add("3");
+        distingidores.add("4");
+        distingidores.add("5");
+        distingidores.add("6");
+        distingidores.add("7");
+        distingidores.add("8");
+        distingidores.add("9");
+        distingidores.add("10");
+        distingidores.add("a");
+        distingidores.add("b");
+        distingidores.add("c");
+        distingidores.add("d");
+        distingidores.add("e");
+        distingidores.add("f");
+        distingidores.add("g");
+        distingidores.add("h");
+        distingidores.add("i");
+        distingidores.add("j");
+        distingidores.add("k");
+        distingidores.add("l");
+        distingidores.add("m");
+        distingidores.add("n");
+        
+    
+    }
+    
     /**
      *
      * @return CopyOnWriteArrayList
@@ -77,9 +109,16 @@ public class CartModeController {
         }
     }
     
+    public Integer getAleatoroVal(){
+        int valorEntero = (int) Math.floor(Math.random() * distingidores.size()-1);
+        return valorEntero;
+    }
+    
+    
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
         List<String> nombres = new ArrayList<String>();
+        
         try {
             if (cat.getSala().isEmpty()) {
                 cat.addPlayer(nombre);
@@ -91,18 +130,21 @@ public class CartModeController {
                     Jugador temp = cat.getPlayerByName(nombre);
                     int resp = cat.getIdSalaByPlayer(nombre);
                 }else{
+                    int valorEntero = getAleatoroVal();
                     List<Sala> tp=cat.getSala();
                     String nomn= "";
                     int idsala=cat.getSalaDisponible();
                     List<String>nomc=cat.getNamePlayersBySala(idsala);
                     for(String g:nomc){
                         if(nombre.equals(g)){
-                            nomn=nombre+"0";
+                            while(namePlayers.containsKey(nombre+distingidores.get(valorEntero))){                            
+                                valorEntero=getAleatoroVal();
+                            }                                                       
+                            nomn=nombre+distingidores.get(valorEntero);
                             nombre=nomn;        
                         }                    
                     }
-                    cat.addPlayer(nombre);
-                    
+                    cat.addPlayer(nombre);                    
                 }
             }
             Jugador temp = cat.getPlayerByName(nombre);

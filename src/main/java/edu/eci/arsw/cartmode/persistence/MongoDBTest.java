@@ -37,7 +37,7 @@ public class MongoDBTest {
         //dbo.append("id", 123);        	
         FindIterable<Document> res=coll.find(dbo);        	
         MongoCursor<Document> docit=res.iterator();        	
-        
+        trr.clear();
         while (docit.hasNext()){	
             Document doc=docit.next();	
             System.out.println(doc.get("jugador"));	

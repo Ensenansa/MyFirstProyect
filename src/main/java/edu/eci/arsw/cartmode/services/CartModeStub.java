@@ -242,12 +242,7 @@ public class CartModeStub implements CartModeServices {
     @Override
     public Integer getIdSalaByPlayer(String nombre) throws CartModeException {
         int resp = -1;
-        //System.out.println("miremos nombre antes: "+nombre);
-        
-        //String temp = nombre.substring(1);
-        //System.out.println("miremos nombre despues: "+nombre);
-        for (Jugador ht : player) {
-            //System.out.println("que comparamos : "+ht.getNickName()+"contra :"+nombre);
+        for (Jugador ht : player) {      //System.out.println("que comparamos : "+ht.getNickName()+"contra :"+nombre);
             if (ht.getNickName().equals(nombre)) {
                 resp = ht.getSala();
             }
@@ -275,14 +270,12 @@ public class CartModeStub implements CartModeServices {
                 resp = re.getJugadorAnfrition();
             }
         }
-
         return resp;
     }
 
     @Override
     public List<List<String>> getPlayersBySala(String name) throws CartModeException {
-        List<List<String>> resp = new CopyOnWriteArrayList<>();
-        //Segundo arreglo
+        List<List<String>> resp = new CopyOnWriteArrayList<>();        //Segundo arreglo
         List<String> refin = new CopyOnWriteArrayList<>();
         for (Sala sal : salas) {
             List<Jugador> temp = sal.getJugadores();
@@ -315,7 +308,6 @@ public class CartModeStub implements CartModeServices {
 
     @Override
     public Boolean isPlayerAnfitrion(String nombre, Integer sala) throws CartModeException {
-        //System.out.println("cual nombre llega"+nombre);
         Boolean resp1 = false;
         Jugador resp = new Jugador();
         resp.setNickName("ninguno");
@@ -325,14 +317,10 @@ public class CartModeStub implements CartModeServices {
                 resp = re.getJugadorAnfrition();
             }
         }
-
         String y = resp.getNickName();
-
-        //System.out.println("que comparamos : "+y+" con "+nombre);
         if (y.equals(nombre)) {
             resp1 = true;
         }
-        //System.out.println("respuesta es: "+resp1);
         return resp1;
 
     }
@@ -436,22 +424,31 @@ public class CartModeStub implements CartModeServices {
         opcionesrespuesta.add("Imposible");
         opcionesrespuesta.add("300000");
         opcionesrespuesta.add("1");
+        opcionesrespuesta.add("Infinitas");
 
         Pregunta pregunta1 = new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta,  "2x");
         Pregunta pregunta2 = new PreguntaSeleecionMultiple(2, "¿Cuanto es la suma de los angulos internos de un triangulo?", "Matematicas", opcionesrespuesta, "180");
         Pregunta pregunta3 = new PreguntaSeleecionMultiple(3, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta,  "Imposible");
         Pregunta pregunta4 = new PreguntaSeleecionMultiple(4, "¿Cual es la velocidad de la luz en el vacio? m/s", "Matematicas", opcionesrespuesta, "300000");
-        Pregunta pregunta5 = new PreguntaSeleecionMultiple(5, "¿Cuanto es la dereviada de x?", "Matematicas", opcionesrespuesta,  "1");
+        Pregunta pregunta5 = new PreguntaSeleecionMultiple(5, "¿Cuanto es la derivada de x?", "Matematicas", opcionesrespuesta,  "1");
+        Pregunta pregunta6 = new PreguntaSeleecionMultiple(6, "¿En grados, cuanto es la mitad de una circunferencia?", "Matematicas", opcionesrespuesta,  "180");
+        Pregunta pregunta7 = new PreguntaSeleecionMultiple(7, "!Si cayeras por un risco infinito!,¿Podrias alcanzar la vel de la luz ?", "Matematicas", opcionesrespuesta,  "Imposible");
+        Pregunta pregunta8 = new PreguntaSeleecionMultiple(8, "¿Que cantidad de posibles jugadas hay en el ajedrez?", "Matematicas", opcionesrespuesta,  "Infinitas");
+        Pregunta pregunta9 = new PreguntaSeleecionMultiple(9, "¿Cuanto ama Morgan Start a su padre?", "Matematicas", opcionesrespuesta,  "300000");
+        Pregunta pregunta10 = new PreguntaSeleecionMultiple(10, "¿Existe una ecuacion para calcular numero primos?", "Matematicas", opcionesrespuesta,  "Imposible");                       
         preguntas.add(pregunta1);
         preguntas.add(pregunta2);
         preguntas.add(pregunta3);
         preguntas.add(pregunta4);
         preguntas.add(pregunta5);
-
+        preguntas.add(pregunta6);
+        preguntas.add(pregunta7);
+        preguntas.add(pregunta8);
+        preguntas.add(pregunta9);
+        preguntas.add(pregunta10);       
         //
         contador = 0;
         temporal = null;
-
         abecedario.add("a");
         abecedario.add("b");
         abecedario.add("c");
@@ -465,11 +462,6 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("k");
         abecedario.add("l");
 
-    }
-
-    @Override
-    public List<String> getNameOfPlayerBySala() throws CartModeException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
