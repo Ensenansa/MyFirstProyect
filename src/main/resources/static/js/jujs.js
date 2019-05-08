@@ -69,18 +69,14 @@ function pu(pl) {    //alert("logituf" + cartas2.length);
 
 function ko() {
     var n = document.getElementById("idSala").innerHTML;    //alert("carga n: "+n);
-    popo.conecS("." + n);
+    //popo.conecS("." + n);
 }
 function temporal() {    //alert("logituf"+cartas2.length);
     for (var i = 0; i < cartas2.length; i++) {
-        //alert("que  es: " + i.toString());
         var carta = cartas2[i].dato;
-        //alert("que es dato , otro dato"+i.toString()+"y carta"+carta);
         var dato = document.getElementById(i.toString());
         console.log(dato);
         console.log(dato.dataset.valor);
-        //alert("miremosq nos va mostr : "+dato.dataset.valor);
-        //dato.dataset.valor = carta;
     }
 }
 
@@ -129,7 +125,6 @@ function iniciarJuego() {
 function res() {   
     tempo = new Array();
     parejasHechas = new Array();
-
 }
 
 function resetearJuego() {
@@ -200,8 +195,6 @@ function sendPuntaje() {
                 console.log(responde.data);
                 //alert(salalis);
             });
-
-
 }
 //Para trabajar al otro dia, mandar las parejas a stomp y que este lo mande
 //al mostrar parejas, obviamente adicionar esos variables a la funcion de abajo
@@ -284,12 +277,10 @@ function comprobar() {
             aciertos++;
         }
     }
-
     if (aciertos == 16) {
         //document.getElementById("juego").innerHTML = "GANASTE";
     }
 }
-
 function resetearJuego() {
     cartas.sort(function () {
         return Math.random() - 0.5
@@ -300,5 +291,4 @@ function resetearJuego() {
         dato.dataset.valor = carta;
         colorCambio(i, 'black', '?');
     }
-}
-;
+};

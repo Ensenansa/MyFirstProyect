@@ -47,8 +47,7 @@
 
         </STYLE>        
     </head>
-    <body class="is-preload" onload="iniciarJuego()">
-        <!-- Header -->
+    <body class="is-preload" onload="iniciarJuego()">        <!-- Header -->
         <header id="header">
             <nav>
                 <ul>
@@ -57,27 +56,19 @@
                     <li><a href="resultados.html">Elements</a></li>
                 </ul>
             </nav>
-        </header>
-        <!-- Wrapper -->
-        <div id="wrapper">
-            <!-- Main -->
+        </header>        <!-- Wrapper -->
+        <div id="wrapper">            <!-- Main -->
             <section id="main" class="wrapper">
                 <header class="align-center">
                     <h2>Pregunta</h2>
                 </header>
                 <h3 style="text-align:center" id="enun"> </h3>
                 <form method="post" name="formulario">
-
                 </form>
-                <div   id="respuesta" style="text-align:center" >
-                    <!-- Respuesta -->
+                <div   id="respuesta" style="text-align:center" > <!-- Respuesta -->
                 </div>   
-
-
                 <div class="inner">
-
                     <div id="main-content" class="container">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <form class="form-inline">
@@ -86,84 +77,78 @@
                                         <p>Sala conectada es: </p>
                                         <h2 style="text-align:left" id="idSala" ></h3> 
                                             </form>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Los jugadores conectados son: </p>
 
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <p>Los jugadores conectados son: </p>
+                    <table width="50%" align="center" onload="apiclient.getAllUser()">
+                        <h3 style="text-align:center" id="pl" > </h3>
+                    </table>
+                    <p>El nivel es: </p>
+                    <h2 style="text-align:left" id="levelGame" ></h3>     
+                    <div id="juego">
+                        <table>
+                            <tr>
+                                <td id="0" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="1" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="2" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="3" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                            </tr>
+                            <tr>
+                                <td id="4" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="5" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="6" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="7" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                            </tr>
+                            <tr>
+                                <td id="8" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="9" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="10" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="11" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                            </tr>
+                            <tr>
+                                <td id="12" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="13" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="14" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                                <td id="15" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
 
-                                            <table width="50%" align="center" onload="apiclient.getAllUser()">
-                                                <h3 style="text-align:center" id="pl" > </h3>
-                                            </table>
-                                            <p>El nivel es: </p>
-                                            <h2 style="text-align:left" id="levelGame" ></h3>     
-                                                <div id="juego">
-                                                    <table>
-                                                        <tr>
-                                                            <td id="0" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="1" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="2" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="3" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td id="4" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="5" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="6" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="7" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td id="8" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="9" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="10" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="11" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td id="12" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="13" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="14" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                            <td id="15" class="letra" onclick="girarCarta()" data-valor="valor">?</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <br>
-                                                <div class="col-md-12">
-                                                </div>
-                                                <br>
-                                                </section>
-                                                <br>
-                                                </div> <!-- Footer -->
-                                                <footer id="footer" class="wrapper alt"  align="center">
-                                                    <p>
-                                                    <td colspan="3" align="center"><p>Tiempo restante</p>
-                                                        <span id="j">0</span>:<span id="i">0</span>
-                                                    </td>
-                                                    </p>
-                                                    </div> <!-- Footer -->
-                                                    <div class="inner">
-                                                        <ul class="menu">
-                                                            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                                                        </ul>
-                                                    </div>                                                    
-                                                </footer>
-                                                <!-- Scripts -->
-                                                <script src="assets/js/jquery.min.js"></script>
-                                                <script src="assets/js/jquery.scrollex.min.js"></script>
-                                                <script src="assets/js/jquery.scrolly.min.js"></script>
-                                                <script src="assets/js/browser.min.js"></script>
-                                                <script src="assets/js/breakpoints.min.js"></script>
-                                                <script src="/webjars/jquery/jquery.min.js"></script>
-                                                <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-                                                <script src="/webjars/stomp-websocket/stomp.min.js"></script>   
-                                                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-                                                <script src="assets/js/util.js"></script>
-                                                <script src="assets/js/main.js"></script>
-                                                <script src="js/apiclient.js"></script>        
-                                                <script src="js/appIndex.js"></script>
-
-                                                <script src="js/jujs.js"></script>
-                                                <script src="/app.js"></script>
-                                                
-                                                <script src="/app2.js"></script>
-                                                <script src="/app3.js"></script>
-                                                </body>
-                                                </html>
+                    <br>
+                    </section>
+                    <br>
+                </div> <!-- Footer -->
+                <footer id="footer" class="wrapper alt"  align="center">
+                    <p>
+                    <td colspan="3" align="center"><p>Tiempo restante</p>
+                        <span id="j">0</span>:<span id="i">0</span>
+                    </td>
+                    </p>
+                    </div> <!-- Footer -->
+                    <div class="inner">
+                        <ul class="menu">
+                            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>                                                    
+                </footer>                                                <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="/webjars/jquery/jquery.min.js"></script>
+            <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+            <script src="/webjars/stomp-websocket/stomp.min.js"></script>   
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script src="js/apiclient.js"></script>                                                       
+            <script src="js/jujs.js"></script>
+            <script src="/app.js"></script>                                                
+            <script src="/app2.js"></script>
+            <script src="/app3.js"></script>
+    </body>
+</html>

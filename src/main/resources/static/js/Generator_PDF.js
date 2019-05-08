@@ -1,9 +1,5 @@
-
-
-
 var respuestasIndividual;
 var respuestaGrupal;
-
 var t;
 var getPDF = (function pdf() {
 
@@ -16,8 +12,7 @@ var getPDF = (function pdf() {
     
     function pd() {     
         var histn="";
-        var histp=0;
-        
+        var histp=0;       
         var animals = [];
         var datoss = new Array();
         datoss = resultados.getData();
@@ -40,38 +35,23 @@ var getPDF = (function pdf() {
         doc.setFontSize(30);
         doc.setTextColor(255, 0, 0);
         doc.text(20, 20, 'GRACIAS POR JUGAR CARTMODE ');
-
         doc.setTextColor(239, 127, 26);
         doc.text(20, 50, 'Estos son sus resultados jugador: ' + jugador);
-
         doc.setTextColor(0, 0, 255);
-        doc.text(20, 70, 'Su puntaje obtenido: ' + puntJugador);
-        
+        doc.text(20, 70, 'Su puntaje obtenido: ' + puntJugador);      
         doc.setTextColor(239, 127, 26);
         doc.text(20, 90, 'Su sala de juego fue : ' + idSala);
-
          doc.setTextColor(0, 0, 255);
         doc.text(20, 110, 'El resultado grupal del  juego es: '+contador);
-
         doc.setTextColor(239, 127, 26);
         doc.text(20, 190, 'Vuelve a intentarlo.');
-
         doc.autoTable(columns, animals,
                 {margin: {top: 140}}
         );
-
         doc.save('Results.pdf');
-        
-
-        
-        
-        
-        
     }
     return {
         pd: pd,
         pdd: pdd
-
     };
 })();
-

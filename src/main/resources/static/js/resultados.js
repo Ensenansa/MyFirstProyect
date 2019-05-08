@@ -1,10 +1,7 @@
 
-
 var resultados = (function () {
-
     var datos = new Array();
     var sala = "";
-
 
     function iniR() {
         cadVariables = location.search.substring(2, location.search.length);
@@ -17,14 +14,12 @@ var resultados = (function () {
 
     function getIdSalaByPlayer(on) {
         axios.get('jugadores/sala/' + arrVariables)
-                .then(function (response) {
-                    
+                .then(function (response) {                    
                     grouid = response.data;
                     console.log('saved successfully'+grouid)
                     sala = grouid;
                     document.getElementById("idSala").innerHTML = grouid;
-                    on(grouid,graficTble );
-                    
+                    on(grouid,graficTble );                    
                 });
     }
 
@@ -41,7 +36,6 @@ var resultados = (function () {
     }
     
     function graficTble(){
-
         var histn="";
         var histp=0;        
         txt_respuestas+="<table > <tr> <th>Nombre Jugadores</th> <th>Puntaje</th></tr>";
@@ -57,19 +51,15 @@ var resultados = (function () {
             }
         }
         txt_respuestas+="</table>";
-        document.getElementById("jugadores").innerHTML = txt_respuestas;        
-                                        
+        document.getElementById("jugadores").innerHTML = txt_respuestas;                                                
     }
     
     function getData(){
-        return datos;
-        
+        return datos;        
     }
     
-    function recharge(){
-        
-        location.reload();
-        
+    function recharge(){        
+        location.reload();        
     }   
    
     return {      
@@ -79,9 +69,5 @@ var resultados = (function () {
         graficTble:graficTble,
         recharge:recharge,
         getData:getData
-
     };
 })();
-
-
-

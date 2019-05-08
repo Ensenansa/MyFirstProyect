@@ -1,9 +1,6 @@
 /* global Stomp */
-
 var prue;
-
 var popo = (function () {
-
     var jugadoresActuales = new Array();
     var stompClient = null;
     var m = null;
@@ -14,7 +11,7 @@ var popo = (function () {
     var salalis = false;
     var solucion = 1;
     var especial = -1;
-    var connect = function (topic) {
+    var connect = function (topic) {        
         var socket = new SockJS('/gs-guide-websocket');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
@@ -64,6 +61,7 @@ var popo = (function () {
             console.log(error);
         });
     }
+    
     function sendPuntaje() {
         var jugador = document.getElementById("playerr").innerHTML;
         axios.post('/jugadores/puntaje/' + jugador + '/' + parAcert())
@@ -71,14 +69,17 @@ var popo = (function () {
                     console.log(response.data);
                 });
     }
+    
     function senf() {
         return m;
     }
+    
     function goSendResult() {
         sala = document.getElementById("idSala").innerHTML;
         var t = parseInt(sala, 10);
         stompClient.send("/app/result." + t, {}, JSON.stringify(""));
     }
+    
     function goToResult() {
         var temp = document.getElementById("playerr").innerHTML;
         pagina = "/resultados.html";
@@ -87,6 +88,7 @@ var popo = (function () {
         pagina += "=" + temp;
         location.href = pagina;
     }
+    
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
         var temp = $("#name").val();        
         axios.get('jugadores/add/' + temp)
@@ -97,12 +99,14 @@ var popo = (function () {
                     pasarVariables(grouid.sala,grouid.nickName);
                 });
     }
+    
     function dt(nickName, sala) {
         return{
             nickName: nickName,
             sala: sala
         }
     }
+    
     function sendUpLevel(op, ppl) {
         document.getElementById('levelGame').innerHTML = op;
         sala = document.getElementById("idSala").innerHTML;
@@ -111,10 +115,12 @@ var popo = (function () {
         var f = dt(ppl, t);
         stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }
+    
     function sendCart(ct, ctp) {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
     }
+    
     function pasarVariables(op,nombre) {
         //var temp = $("#name").val();
         //alert("cual nombre se manda: "+nombre);
@@ -125,9 +131,11 @@ var popo = (function () {
         pagina += "=" + temp + "&" + op;
         location.href = pagina;
     }
+    
     function showGreeting(message) {
         $("#greetings").append("<tr><td>" + message + "</td></tr>");
     }
+    
     function disconnect() {
         if (stompClient !== null) {
             stompClient.disconnect();
@@ -135,6 +143,7 @@ var popo = (function () {
         setConnected(false);
         console.log("Disconnected");
     }
+    
     function setConnected(connected) {
         $("#connect").prop("disabled", connected);
         $("#disconnect").prop("disabled", !connected);
@@ -145,6 +154,7 @@ var popo = (function () {
         }
         $("#greetings").html("");
     }   
+    
     function getLisSalaAxios() {
         sala = document.getElementById("idSala").innerHTML;
         axios.get('/jugadores/sala/listo/' + sala)
@@ -152,6 +162,7 @@ var popo = (function () {
                     salalis = response.data;
                 });
     }
+    
     var loadd = function () {
         nombreUsuario = document.getElementById("playerr").innerHTML;
         sala = document.getElementById("idSala").innerHTML;
@@ -162,6 +173,7 @@ var popo = (function () {
                 });
         return verdad;
     };
+    
     var getStarted = function () {
         var n = document.getElementById("idSala").innerHTML;
         var jugador = document.getElementById("playerr").innerHTML;
@@ -171,6 +183,7 @@ var popo = (function () {
         pagina += "=" + jugador + "&" + n;
         location.href = pagina;
     };
+    
   function isAnfitrion3(contador) {
         //alert("ques es cont: "+contador);
         if (contador > 2) {
@@ -196,9 +209,11 @@ var popo = (function () {
             alert("Debes ser anfitrion para poder iniciar la partida");
         }
     }
+    
     function prueba() {
         isAnfitrion(isAnfitrion2);
     }
+    
     function isAnfitrion(on) {
         var dato = null;
         var jugador = document.getElementById("playerr").innerHTML;
@@ -210,7 +225,6 @@ var popo = (function () {
                     on(isAnfitrion3, dato);
                 });
     }
-
     return {
         getStarted: getStarted,
         prueba: prueba,
@@ -229,7 +243,7 @@ var popo = (function () {
         senf: senf,
         sendUpLevel: sendUpLevel,
         init: function () {
-            connect('');
+            //connect('');
         },
         cone: function () {
             connect('');
