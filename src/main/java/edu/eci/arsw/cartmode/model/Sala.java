@@ -17,10 +17,9 @@ public class Sala {
     private Integer id;
     private Boolean listo;
     private Integer nivel;
-
+    
     public Sala() {
-    }
-       
+    }       
     public Sala(Integer id, List<Jugador> jugadores, Jugador jugadorAnfrition, Integer nivel){
         this.id=id;
         this.jugadorAnfrition=jugadorAnfrition;
@@ -28,53 +27,38 @@ public class Sala {
         this.listo=false;
         this.nivel=nivel;
     }
-
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
-
     public Integer getNivel() {
         return nivel;
     }
-
     public void setListo(Boolean listo) {
         this.listo = listo;
     }
-
     public Boolean getListo() {
         return listo;
-    }
-    
-
+    }   
     public Integer getId() {
         return id;
     }
-
     public Jugador getJugadorAnfrition() {
         return jugadorAnfrition;
     }
-
     public List<Jugador> getJugadores() {
         return jugadores;
-    }
-    
+    }   
     public void setId(Integer id) {
         this.id = id;
     }
-
     public void setJugadorAnfrition(Jugador jugadorAnfrition) {
         this.jugadorAnfrition = jugadorAnfrition;
     }
-
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
-
-
     @Override
-    public String toString() {
-        
-        //return "Sala{"+"id="+id+", tablero="+tablero+", jugadores="+jugadores.listIterator()+",nivel="+nivel+",jugadorAnfrition="+jugadorAnfrition+", listo="+listo+"}";
+    public String toString() {      
         return "Sala{"+"id="+id+",jugadores="+jugadores.listIterator()+",nivel="+nivel+",jugadorAnfrition="+jugadorAnfrition+", listo="+listo+"}";
     }
 }

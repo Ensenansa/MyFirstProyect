@@ -17,9 +17,6 @@ public class PreguntaSeleecionMultiple extends Pregunta{
     public PreguntaSeleecionMultiple(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, String respuestaCorrecta) {
         super(id, enunciado, tema, opcionesDeRespuesta, respuestaCorrecta);
     }
-
     public PreguntaSeleecionMultiple() {
     }
-    
-    
 }

@@ -12,8 +12,7 @@ var mirar = (function Mirar() {
         var t = String(arrVariables[0]);
         var u = t.replace("=", "");
         document.getElementById("playerr").innerHTML = u;
-        mirar.getIdSalaByPlayer(AllPlayersBySala);
-        alert("loco entramos1");
+        mirar.getIdSalaByPlayer(AllPlayersBySala);        
         popo.conec(arrVariables[1]);
         
     }
@@ -29,8 +28,6 @@ var mirar = (function Mirar() {
         document.getElementById("playerr").innerHTML = u;
         document.getElementById("idSala").innerHTML = arrVariables[1];
         mirar.getIdSalaByPlayer(getAnfiPlayBySala);
-        alert("loco entramos13");
-        //mirar.getIdSalaByPlayer();
         popo.conec(arrVariables[1]);
     }
     function tu() {
@@ -40,7 +37,6 @@ var mirar = (function Mirar() {
                 function () {
                     popo.can();
                     contador_s++;
-
                     if (contador_s > 3) {
                         clearInterval(cronometro);
                     }

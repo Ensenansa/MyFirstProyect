@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.eci.arsw.cartmode.controllers;
 
 import edu.eci.arsw.cartmode.model.CartaJavSc;
@@ -28,21 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartModeCOntrolerCarts {
     
     @Autowired
-    private CartModeServices cat;
-    
-    
+    private CartModeServices cat;       
     @RequestMapping(method = RequestMethod.GET, path = "/bara/{nivel}")
     public ResponseEntity<?> getAllPlayerByLevel(@PathVariable Integer nivel) {
         try {
-            List<CartaJavSc> tempo=cat.GenerateDuplicadoBaraja(nivel); 
-            
+            List<CartaJavSc> tempo=cat.GenerateDuplicadoBaraja(nivel);             
             return new ResponseEntity<>(tempo , HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
-    
-    
 }

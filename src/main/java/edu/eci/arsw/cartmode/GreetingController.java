@@ -3,7 +3,6 @@ package edu.eci.arsw.cartmode;
 import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
-import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Sala;
 import edu.eci.arsw.cartmode.persistence.MongoDBTest;
 import edu.eci.arsw.cartmode.services.CartModeServices;
@@ -48,9 +47,7 @@ public class GreetingController {
     @MessageMapping("/usu")
     public void greeting(HelloMessage message) throws Exception {
         cart.addPlayer(message.getName());
-        System.out.println("nombre del jugador: "+message.getName());
         int resp=cart.getIdSalaByPlayer(message.getName());
-        System.out.println("que sala se asigno :"+resp);
         msg.convertAndSend("/topic/usu", resp);        
     }
 
@@ -62,20 +59,17 @@ public class GreetingController {
         Sala o = new Sala();
         cart.SetStade(idsala);
         o = cart.getSalaById(idsala);
-        cart.iniciarPartida();
+        
         return o.toString();
     }
 
     @MessageMapping("iniciar")
     public void start() throws Exception {
         cartas.clear();
-        System.out.println("tamaño valoresp ante de borrado: " + valoresPareja.size());
         valoresPareja.clear();
         valparejas.clear();
-        System.out.println("tamaño valoresp : " + valoresPareja.size());
         int players = cart.getAllPlayerInGame();
         List<Jugador> ju = cart.nameAlPlayer();
-        System.out.println("cuantos jugadores hay : " + players);
         int y = 0;
         for (Jugador h : ju) {
             cartas.put(h.getNickName(), new Stack<String>());
@@ -87,17 +81,10 @@ public class GreetingController {
     @MessageMapping("cart.{id}")
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
         List<String> temp = new CopyOnWriteArrayList<>();
-
         int players = cart.getAllPlayerInGame();
         int temporal = -1;
-        String Keytemporal = "";
-        System.out.println("que es id : " + id);
-        System.out.println("miremos la p* carta" + ct.getDato());
-        System.out.println("miremos la posicin de carta" + ct.getPos());
-        System.out.println("EL nombre de quien mando la de carta" + ct.getNombre());
-
+        String Keytemporal = "";       
         if (cartas.containsKey(ct.getNombre())) {
-            System.out.println("nombre de quien se extrae pila :" + ct.getNombre());
             pila = cartas.get(ct.getNombre());
         } else {
             System.out.println("algo ocurrio muy feo");
@@ -109,7 +96,6 @@ public class GreetingController {
         } //Se implementara por Pilas
         if (pila.empty()) {
             cartas.remove(ct.getNombre());
-            System.out.println("entro porque esta limpio");
             pila.push(ct.getDato());
             cartas.put(ct.getNombre(), pila);
             Thread.sleep(2000);
@@ -117,7 +103,6 @@ public class GreetingController {
             System.out.println("entro se hizo la pareja, tam de pila " + pila.size());
             System.out.println("-------------------------");
             Carta j = new Carta(pila.pop());
-            System.out.println("Que se compara, esto viene: " + ct.getDato() + "  contra lo que esta : " + j.getDato());
             if (ct.getDato().equals(j.getDato())) {
                 System.out.println("-------------------------");
                 temp.add(ct.getDato());
@@ -148,8 +133,6 @@ public class GreetingController {
     @MessageMapping("level.{idd}")
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
         Boolean sies = true;
-        System.out.println("elevamos...el id : " + sjug.getSala());
-        System.out.println("ELVAMOS...al jugador : " + sjug.getNickName());
         Jugador jugadortemid = cart.getPlayerAnfiBySala(sjug.getSala());
         String tpJu = jugadortemid.getNickName();
         if (Integer.valueOf(sjug.getSala()) < 4) {
@@ -160,7 +143,6 @@ public class GreetingController {
         }
         start();
         System.out.println("Empezndo el borrado");
-        System.out.println("--------------------");
         System.out.println("--------------------");
         msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
     }
@@ -184,11 +166,6 @@ public class GreetingController {
             results.put(Integer.parseInt(idd), temp.getNickName());
             mgbd.insertData(temp.getNickName(),Integer.toString( temp.getPuntaje()));        
         }
-        
-        
-        
-        //Jugador temp=cart.getPlayerAnfiBySala(Integer.parseInt(idd));
-        
         msg.convertAndSend("/topic/result." + idd, 99);
     }
 }

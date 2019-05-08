@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.eci.arsw.cartmode.controllers;
 
 import edu.eci.arsw.cartmode.model.Jugador;
@@ -31,8 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author cesar
  *
  */
-//@Service
-//@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/jugadores")
 public class CartModeController {
@@ -68,9 +62,7 @@ public class CartModeController {
         distingidores.add("k");
         distingidores.add("l");
         distingidores.add("m");
-        distingidores.add("n");
-        
-    
+        distingidores.add("n");            
     }
     
     /**
@@ -113,12 +105,10 @@ public class CartModeController {
         int valorEntero = (int) Math.floor(Math.random() * distingidores.size()-1);
         return valorEntero;
     }
-    
-    
+        
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
-        List<String> nombres = new ArrayList<String>();
-        
+        List<String> nombres = new ArrayList<String>();        
         try {
             if (cat.getSala().isEmpty()) {
                 cat.addPlayer(nombre);
@@ -149,15 +139,12 @@ public class CartModeController {
             }
             Jugador temp = cat.getPlayerByName(nombre);
             int resp = cat.getIdSalaByPlayer(nombre);
-
             return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
-    }
-
-    //DATOS DEL JUGADOR
+    }//DATOS DEL JUGADOR
     @RequestMapping(method = RequestMethod.GET, path = "/datos")
     public ResponseEntity<?> getDataJugadores() {
         try {
@@ -191,7 +178,6 @@ public class CartModeController {
     @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
     public ResponseEntity<?> getSalasIdByPlayer(@PathVariable String nombre) {
         try {
-
             return new ResponseEntity<>(cat.getIdSalaByPlayer(nombre), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -232,8 +218,7 @@ public class CartModeController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}/{nombre}")
     public ResponseEntity<?> IsAnfritionPlayerOfSala(@PathVariable Integer sala, @PathVariable String nombre) {
-        try {
-            //Mejorar esto con la funcion de callback de javascript
+        try { //Mejorar esto con la funcion de callback de javascript
             return new ResponseEntity<>(cat.isPlayerAnfitrion(nombre, sala), HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,10 +229,7 @@ public class CartModeController {
     @RequestMapping(method = RequestMethod.GET, path = "/nivel/{sala}")
     public ResponseEntity<?> getLevelOfSala(@PathVariable Integer sala) {
         try {
-
-            System.out.println("que viene de sala : " + sala);
             int t = cat.LevelOfSala(sala);
-            System.out.println("que vemos sala : " + t);
             return new ResponseEntity<>(t, HttpStatus.ACCEPTED);
         } catch (CartModeException ex) {
             Logger.getLogger(CartModeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -257,24 +239,20 @@ public class CartModeController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/puntaje/{nombre}/{puntos}")
     public ResponseEntity<?> addScore(@PathVariable String[] puntos, @PathVariable String nombre) throws CartModeException {
-
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/puntajePregunta/{nombre}/{correcto}")
     public void addScoreByPregunta(@PathVariable String correcto, @PathVariable String nombre) throws CartModeException {
         int contador = 0;
-        System.out.println("nombre" + nombre);
-        System.out.println("puntos" + correcto);
         if (correcto.equals("1")) {
-            System.out.println("pregunta correcta, subido");
             Jugador f = cat.getPlayerByName(nombre);
             int cont = f.getPuntaje();
+            int contp=f.getNumCorrrectas();
+            f.setnumCorrrectas(contp+1);
             cont += 50;
             f.setPuntaje(cont);
             cat.setPlayerByName(f);
-
         }
     }
-
 }

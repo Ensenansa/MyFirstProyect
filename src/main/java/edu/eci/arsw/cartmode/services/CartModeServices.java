@@ -8,10 +8,8 @@ package edu.eci.arsw.cartmode.services;
 import edu.eci.arsw.cartmode.model.Carta;
 import edu.eci.arsw.cartmode.model.CartaJavSc;
 import edu.eci.arsw.cartmode.model.Jugador;
-import edu.eci.arsw.cartmode.model.Nivel;
 import edu.eci.arsw.cartmode.model.Pregunta;
 import edu.eci.arsw.cartmode.model.Sala;
-import edu.eci.arsw.cartmode.model.impl.Tripla;
 import java.util.List;
 
 /**
@@ -28,7 +26,6 @@ public interface CartModeServices {
     public Boolean getListoSala(Integer idSala)throws CartModeException;
     public Sala getSalaById(Integer idlista)throws CartModeException;
     public void SetStade(Integer idlista)throws CartModeException;
-    public void printt( String ol)throws CartModeException;
     public void eraseAll()throws CartModeException;
     public List<Sala> getSala()throws CartModeException;
     public List<String> nameAllPlayer() throws CartModeException;
@@ -44,8 +41,6 @@ public interface CartModeServices {
     public Integer getIdSalaByPlayer(String nombre)throws  CartModeException;    
     public List<String> getAllPlayersBySala(Integer idSala)throws  CartModeException;    
     public List<List<String>> getPlayersBySala(String name)throws  CartModeException;    
-    public void iniciarPartida()throws  CartModeException;
-    public void detenerPartida()throws  CartModeException;    
     public List<Pregunta>getListPreguntas()throws  CartModeException;
     public Pregunta getPregunta()throws  CartModeException;    
     public Boolean isPlayerAnfitrion(String nombre, Integer sala)throws  CartModeException;    

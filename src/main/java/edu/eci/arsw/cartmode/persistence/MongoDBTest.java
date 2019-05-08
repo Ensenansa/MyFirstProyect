@@ -23,32 +23,24 @@ public class MongoDBTest {
     private MongoClientURI uri = new MongoClientURI("mongodb://Cartmode:Cartmode1@ds149875.mlab.com:49875/cartmmode");                      	
     
     public MongoDBTest(){}
-    
-    
     public List<Jugador> getRespuesta(){
         return trr;
     }
     public  void findAndPrintData(){	
-
-         MongoClient client = new MongoClient(uri);	
+        MongoClient client = new MongoClient(uri);	
         MongoDatabase db = client.getDatabase(uri.getDatabase());        	
         MongoCollection<Document> coll = db.getCollection("jugador");        	
-        BasicDBObject dbo=new BasicDBObject();	
-        //dbo.append("id", 123);        	
+        BasicDBObject dbo=new BasicDBObject();		
         FindIterable<Document> res=coll.find(dbo);        	
         MongoCursor<Document> docit=res.iterator();        	
         trr.clear();
         while (docit.hasNext()){	
             Document doc=docit.next();	
-            System.out.println(doc.get("jugador"));	
-            System.out.println(doc.get("puntaje"));	
-          //  trr.add("jugador{"+"nombre:"+doc.get("jugador")+","+"puntaje:"+doc.get("puntaje")+"}");	
           trr.add(new Jugador((String)doc.get("jugador"), Integer.parseInt((String)doc.get("puntaje"))));
         }        	
         client.close();        	
     }	
-
-     public  void insertData(String nombre,String puntaje){	
+    public  void insertData(String nombre,String puntaje){	
         MongoClient client = new MongoClient(uri);	
         MongoDatabase db = client.getDatabase(uri.getDatabase());	
         MongoCollection<Document> coll = db.getCollection("jugador");	
@@ -56,5 +48,4 @@ public class MongoDBTest {
         coll.insertOne(master);       	
         client.close();        	
     }	
-
  }

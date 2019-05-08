@@ -54,24 +54,20 @@ public class CartModeControllerPersistence {
     @Autowired
     private CartModeServices cat;
     private Map<String, List<String>> puntJugador = new HashMap<String, List<String>>();
-
     @Autowired
     private  MongoDBTest mgbd;
-    
-    
+    List<String> tr = new ArrayList<>();
     /**
      *
      * @return CopyOnWriteArrayList
      */
-    List<String> tr = new ArrayList<>();
-
+    
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
     public void addDataBaseMongoBD(@PathVariable String nombre, @PathVariable String puntaje) throws CartModeException {
         mgbd.insertData(nombre, puntaje);
     }
     
-    
-        @GetMapping("/mostrar")
+    @GetMapping("/mostrar")
     public ResponseEntity<?> getAllJugadoresBySala() {
         mgbd.findAndPrintData();
         return new ResponseEntity<>(mgbd.getRespuesta(), HttpStatus.ACCEPTED);

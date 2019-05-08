@@ -14,32 +14,26 @@ var historicos = (function () {
     function getDatos(ona) {
         var t = parseInt(sala);
          axios.get('persistencia/mostrar/')
-                .then(function (response) {
-                    //alert(response);    
+                .then(function (response) {   
                     grouid = response.data;                    
-                    var t=response.data;
-                    //alert("que es t : "+t[0]);
-                    //alert("que es : "+t[0].nickName);
+                    var t=response.data;;
                     console.log('saved successfully'+grouid);
                     datos = grouid;
-                    //alert(datos);
                     ona();
-                    //alert("esta"+sala);
                 });
     }
     
     function graficTble(){
         txt_respuestas="";
         txt_respuestas+="<table > <tr> <th>Nombre Jugadores</th> <th>Puntaje</th></tr>";
-        
-        
-        //alert("si muestra datos : "+datos );
-        var ten=datos.length;
+        var ten=datos.length;;
         var tt;
+
+        
         for(tt=0;tt<datos.length;tt++){
-                var temp = '<tr> <td>' + datos[tt].nickName+ '</td> '+'<br>' + '<td>"' + datos[tt].puntaje+ '"</td></tr>';
-                txt_respuestas+=temp;
-            
+                var t=parseInt(datos[tt].puntaje, 10);
+                var temp = '<tr> <td>' + datos[tt].nickName+ '</td> '+'<br>' + '<td>"' + t+ '"</td></tr>';
+                txt_respuestas+=temp;            
         }
         txt_respuestas+="</table>";
         document.getElementById("jugadores").innerHTML = txt_respuestas;        
