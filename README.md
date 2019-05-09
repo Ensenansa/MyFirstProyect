@@ -123,13 +123,13 @@ Proximamente
 #### - Paquetes
 ![](img/DiagramaFullClases.png)
 #### - Clases
-![](img/DiagramaClase1.1.png)
+![](img/DiagramasFull1.1.png)
 #### - Paquete Detalle 1
-![](img/DiagramaFull1.1.png)
+![](img/DiagramasF1.png)
 #### - Paquete Detalle 2
-![](img/DiagramasFull1.2.png)
+![](img/DiagramaF2.png)
 #### - Paquete Detalle 3
-![](img/DiagramasFull1.3.png)
+![](img/DiagramaF3.png)
 #### - Componente Conector
 ![](img/DiaComponenteConector.png)
 #### - Interaccion Stomp
