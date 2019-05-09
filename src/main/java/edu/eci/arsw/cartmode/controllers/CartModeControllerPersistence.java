@@ -52,16 +52,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartModeControllerPersistence {
     
     @Autowired
-    private CartModeServices cat;
-    private Map<String, List<String>> puntJugador = new HashMap<String, List<String>>();
-    @Autowired
     private  MongoDBTest mgbd;
-    List<String> tr = new ArrayList<>();
-    /**
-     *
-     * @return CopyOnWriteArrayList
-     */
-    
+
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
     public void addDataBaseMongoBD(@PathVariable String nombre, @PathVariable String puntaje) throws CartModeException {
         mgbd.insertData(nombre, puntaje);

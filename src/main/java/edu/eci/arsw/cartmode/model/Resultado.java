@@ -15,6 +15,7 @@ public class Resultado {
     private String nombreJugador;
     private String resultados;
     
+    public Resultado(){}
     public Resultado(Integer puntajeTotal,String nombreJUgador,String resultados){
         this.puntajeTotal=puntajeTotal;
         this.nombreJugador=nombreJUgador;

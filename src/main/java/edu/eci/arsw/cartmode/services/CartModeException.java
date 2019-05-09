@@ -12,7 +12,7 @@ package edu.eci.arsw.cartmode.services;
 public class CartModeException extends Exception{
     
     
-        public CartModeException(String message, Throwable cause) {
+    public CartModeException(String message, Throwable cause) {
         super(message, cause);
     }
 

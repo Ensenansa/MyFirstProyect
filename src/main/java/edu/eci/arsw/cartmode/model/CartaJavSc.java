@@ -10,7 +10,7 @@ package edu.eci.arsw.cartmode.model;
  * @author cefa-dico-asus
  */
 public class CartaJavSc {
-        private String dato;
+    private String dato;
     private boolean seleccion;
     public CartaJavSc() {
     }

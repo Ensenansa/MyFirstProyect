@@ -42,15 +42,15 @@ public class Sala {
     public Integer getId() {
         return id;
     }
+    public void setId(Integer id) {
+        this.id = id;
+    }    
     public Jugador getJugadorAnfrition() {
         return jugadorAnfrition;
     }
     public List<Jugador> getJugadores() {
         return jugadores;
     }   
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public void setJugadorAnfrition(Jugador jugadorAnfrition) {
         this.jugadorAnfrition = jugadorAnfrition;
     }

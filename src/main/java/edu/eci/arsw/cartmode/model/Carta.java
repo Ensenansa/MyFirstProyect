@@ -16,6 +16,14 @@ public class Carta {
 
     public Carta() {
     }
+    public Carta(String dato){
+        this.dato=dato;
+        this.pos=null;
+    }
+    public Carta(String dato, Integer pos){
+        this.dato=dato;
+        this.pos=pos;
+    }    
     public Integer getPos() {
         return pos;
     }
@@ -28,14 +36,6 @@ public class Carta {
     public String getNombre() {
         return nombre;
     }       
-    public Carta(String dato){
-        this.dato=dato;
-        this.pos=null;
-    }
-    public Carta(String dato, Integer pos){
-        this.dato=dato;
-        this.pos=pos;
-    }
     public String getDato() {
         return dato;
     }

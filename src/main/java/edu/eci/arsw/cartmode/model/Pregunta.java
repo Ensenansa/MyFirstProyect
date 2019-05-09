@@ -13,18 +13,15 @@ import java.util.List;
  */
 public abstract class Pregunta {
     
-    private int id;
+    private Integer id;
     private String enunciado;
     private List<String> opcionesDeRespuesta;
-    private Integer respJUgador;
     private String respuestaCorrecta;
 
-    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta,String respuestaCorrecta) {
+    public Pregunta(Integer id, String enunciado, String tema, List<String> opcionesDeRespuesta,String respuestaCorrecta) {
         this.id = id;
         this.enunciado = enunciado;
         this.opcionesDeRespuesta = opcionesDeRespuesta;
-        //this.tiempo = tiempo;
-        this.respJUgador=null;
         this.respuestaCorrecta=respuestaCorrecta;
     }
     public Pregunta() {
@@ -35,12 +32,6 @@ public abstract class Pregunta {
     public String getRespuestaCorrecta() {
         return respuestaCorrecta;
     }
-    public Integer getRespJUgador() {
-        return respJUgador;
-    }
-    public void setRespJUgador(Integer respJUgador) {
-        this.respJUgador = respJUgador;
-    }    
     public int getId() {
         return id;
     }    
@@ -58,12 +49,6 @@ public abstract class Pregunta {
     }
     public void setOpcionesDeRespuesta(List<String> opcionesDeRespuesta) {
         this.opcionesDeRespuesta = opcionesDeRespuesta;
-    }    
-    public Integer getRespuestaJugador(){
-        return respJUgador;
-    }
-    public void setRespuestaJugador(Integer ob){
-        respJUgador=ob;
     }    
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta){
         return false;

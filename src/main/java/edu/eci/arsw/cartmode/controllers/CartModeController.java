@@ -69,7 +69,7 @@ public class CartModeController {
      *
      * @return CopyOnWriteArrayList
      */
-    List<String> tr = new ArrayList<>();
+
 
     @RequestMapping(method = RequestMethod.GET, path = "/all")
     public ResponseEntity<?> getAllJugadores() {

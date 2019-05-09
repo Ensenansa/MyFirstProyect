@@ -27,22 +27,18 @@ public class GreetingController {
 
     @Autowired
     SimpMessagingTemplate msg;
-
-    
+    @Autowired
+    CartModeServices cart; //valor y Posicion y  de la carta    
     @Autowired
     private  MongoDBTest mgbd;
         
-    private Integer id = 0;
     private Integer jugadoress = 0;
-    private Integer jugadorTemporal = 0;
 
-    @Autowired
-    CartModeServices cart; //valor y Posicion y  de la carta
     private Map<String, List<String>> valparejas = new ConcurrentHashMap<>();
     private Map<Integer, String> results = new ConcurrentHashMap<>();
     private Map<String, Stack<String>> cartas = new ConcurrentHashMap<>();
     private List<String> valoresPareja = new CopyOnWriteArrayList<>();
-    Stack<String> pila = new Stack<String>();
+    private Stack<String> pila = new Stack<String>();
 
     @MessageMapping("/usu")
     public void greeting(HelloMessage message) throws Exception {
@@ -58,8 +54,7 @@ public class GreetingController {
         int idsala = Integer.parseInt(numsala);
         Sala o = new Sala();
         cart.SetStade(idsala);
-        o = cart.getSalaById(idsala);
-        
+        o = cart.getSalaById(idsala);        
         return o.toString();
     }
 
@@ -125,7 +120,7 @@ public class GreetingController {
     }
 
     @MessageMapping("cartt.{id}")
-    public void loco(Carta ct, @DestinationVariable String id) throws Exception {
+    public void IniciadorPartida(Carta ct, @DestinationVariable String id) throws Exception {
         
         cart.statedIdSala(Integer.parseInt(id));
         msg.convertAndSend("/topic/cartt." + id, "2");
@@ -148,7 +143,7 @@ public class GreetingController {
     }
 
     @MessageMapping("result.{idd}")
-    public void level(@DestinationVariable String idd) throws Exception {
+    public void saveBD(@DestinationVariable String idd) throws Exception {
         System.out.println("--------------------");
         int punt=0;
         List<Jugador> temps=cart.getJugadoresByIdSala((Integer.parseInt(idd)));
