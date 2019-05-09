@@ -287,7 +287,6 @@ public class CartModeStub implements CartModeServices {
         List<Jugador> jugado = temporal.getJugadores();
         int t = temporal.getNivel();
         temporal.setNivel(t + 1);
-
     }
 
     @Override
@@ -370,16 +369,16 @@ public class CartModeStub implements CartModeServices {
         opcionesrespuesta.add("300000");
         opcionesrespuesta.add("1");
         opcionesrespuesta.add("Infinitas");
-        Pregunta pregunta1 = new PreguntaSeleecionMultiple(1, "¿Cuanto es la dereviada de x¨2?", "Matematicas", opcionesrespuesta, "2x");
-        Pregunta pregunta2 = new PreguntaSeleecionMultiple(2, "¿Cuanto es la suma de los angulos internos de un triangulo?", "Matematicas", opcionesrespuesta, "180");
-        Pregunta pregunta3 = new PreguntaSeleecionMultiple(3, "¿Cuall es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta, "Imposible");
-        Pregunta pregunta4 = new PreguntaSeleecionMultiple(4, "¿Cual es la velocidad de la luz en el vacio? m/s", "Matematicas", opcionesrespuesta, "300000");
+        Pregunta pregunta1 = new PreguntaSeleecionMultiple(1, "¿Cuanto es la derivada de x¨2?", "Matematicas", opcionesrespuesta, "2x");
+        Pregunta pregunta2 = new PreguntaSeleecionMultiple(2, "¿Cuanto es la suma de los ángulos internos de un triangulo?", "Matematicas", opcionesrespuesta, "180");
+        Pregunta pregunta3 = new PreguntaSeleecionMultiple(3, "¿Cual es el resultado de operar 1390/0?", "Matematicas", opcionesrespuesta, "Imposible");
+        Pregunta pregunta4 = new PreguntaSeleecionMultiple(4, "¿Cual es la velocidad de la luz en el vació? m/s", "Matematicas", opcionesrespuesta, "300000");
         Pregunta pregunta5 = new PreguntaSeleecionMultiple(5, "¿Cuanto es la derivada de x?", "Matematicas", opcionesrespuesta, "1");
         Pregunta pregunta6 = new PreguntaSeleecionMultiple(6, "¿En grados, cuanto es la mitad de una circunferencia?", "Matematicas", opcionesrespuesta, "180");
-        Pregunta pregunta7 = new PreguntaSeleecionMultiple(7, "!Si cayeras por un risco infinito!,¿Podrias alcanzar la vel de la luz ?", "Matematicas", opcionesrespuesta, "Imposible");
+        Pregunta pregunta7 = new PreguntaSeleecionMultiple(7, "!¡Si cayeras por un risco infinito!, ¿Podrías alcanzar la velocidad de la luz ?", "Matematicas", opcionesrespuesta, "Imposible");
         Pregunta pregunta8 = new PreguntaSeleecionMultiple(8, "¿Que cantidad de posibles jugadas hay en el ajedrez?", "Matematicas", opcionesrespuesta, "Infinitas");
         Pregunta pregunta9 = new PreguntaSeleecionMultiple(9, "¿Cuanto ama Morgan Start a su padre?", "Matematicas", opcionesrespuesta, "300000");
-        Pregunta pregunta10 = new PreguntaSeleecionMultiple(10, "¿Existe una ecuacion para calcular numero primos?", "Matematicas", opcionesrespuesta, "Imposible");
+        Pregunta pregunta10 = new PreguntaSeleecionMultiple(10, "¿Existe una ecuación para calcular numero primos?", "Matematicas", opcionesrespuesta, "Imposible");
         preguntas.add(pregunta1);
         preguntas.add(pregunta2);
         preguntas.add(pregunta3);

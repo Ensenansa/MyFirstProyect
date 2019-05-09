@@ -129,7 +129,8 @@ public class CartModeController {
                         if(nombre.equals(g)){
                             while(namePlayers.containsKey(nombre+distingidores.get(valorEntero))){                            
                                 valorEntero=getAleatoroVal();
-                            }                                                       
+                            }                         
+                            namePlayers.put(nombre+distingidores,idsala);
                             nomn=nombre+distingidores.get(valorEntero);
                             nombre=nomn;        
                         }                    

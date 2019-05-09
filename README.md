@@ -21,7 +21,7 @@
 | Taiga | https://tree.taiga.io/project/cefarr-cartmode/timeline  |  
 | NinjaMock | https://ninjamock.com/s/V5J5CSx  | 
 | Javadoc | Generado en la ruta ./target/site/apidocs |
-| Documento de Arquitectura del Sistema | | 
+| Documento de Arquitectura del Sistema | https://docs.google.com/document/d/11F0Fp1ypW2nHEMQML_QSK1kUFcAmPWU2Cj9ENApiAfo/edit?usp=sharing | 
 ---
 ### :book: Instrucciones
 Proximamente
@@ -91,7 +91,8 @@ Proximamente
 
 ---
 
-- Proximamente
+- Pruebas con Postman
+Proximamente
 
 ![](img/)
 
@@ -120,13 +121,15 @@ Proximamente
 
 ### :triangular_ruler: Diseño de arquitectura 
 #### - Paquetes
-![](img/)
+![](img/DiagramaFullClases.png)
 #### - Clases
 ![](img/DiagramaClase1.1.png)
-#### - Clases Detalle 1
-![](img/DiagramaClases1.2.png)
-#### - Clases Detalle 2
-![](img/DiagramaClses1.3.png)
+#### - Paquete Detalle 1
+![](img/DiagramaFull1.1.png)
+#### - Paquete Detalle 2
+![](img/DiagramasFull1.2.png)
+#### - Paquete Detalle 3
+![](img/DiagramasFull1.3.png)
 #### - Componente Conector
 ![](img/DiaComponenteConector.png)
 #### - Interaccion Stomp
