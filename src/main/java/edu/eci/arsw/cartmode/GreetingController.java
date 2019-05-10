@@ -113,12 +113,16 @@ public class GreetingController {
                 System.out.println("-------------------------");
                 valparejas.remove(id);
                 valparejas.put(id, temp);
+                //msg.convertAndSend("/topic/cart." + id, ct);
                 msg.convertAndSend("/topic/parejas." + id, temp);
             }
         }
         msg.convertAndSend("/topic/cart." + id, ct);
     }
 
+    
+    
+    
     @MessageMapping("cartt.{id}")
     public void IniciadorPartida(Carta ct, @DestinationVariable String id) throws Exception {
         

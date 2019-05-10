@@ -30,8 +30,8 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=3;
-var minutos =3;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
+var seg=12;
+var minutos =0;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;

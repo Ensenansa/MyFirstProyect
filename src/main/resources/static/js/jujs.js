@@ -3,6 +3,7 @@ var parejasHechas = new Array();
 var tempo = new Array();
 var cartOcupadas2 = new Array();
 var cartas2 = new Array();
+
 var cartas = new Array();
 var idSala;
 var intentos = 0;
@@ -169,19 +170,31 @@ function limpiar() {
     }
 }
 
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
 function allPar(parejas) {
-    tempo = parejas.unique();
+    tempo=parejas;
+
+    //tempo=parejas.filter((v, i, a) => a.indexOf(v) === i); 
+    //alert("QUE SON LAS PAREJAS despues: "+tempo);
     var num = 0;
-    var g;
-    var letem = cartas.length;
-    for (g = 0; g < cartas.length; g++) {
-        var rr = tempo[num];
-        if (cartas2[parseInt(g)].dato == tempo[num]) {
-            cartas2[parseInt(g)].seleccion = true;
-            colorCambio(g, "blue", tempo[num]);
-            num = num + 1;
-        }
-    }
+    var g=0;
+    var h=0;
+    var letem = cartas2.length;
+for(var cl1 in tempo){
+	for(var cl2 in cartas2){
+		//alert("veanos clave : "+cl2+" : " +t[cl2].dato);
+		//alert("comparamps estp: "+t[cl2].dato+" contra estp: "+tempo[cl1]);
+		if(cartas2[cl2].dato==tempo[cl1]){
+			colorCambio(cl2, "blue", tempo[cl1]);
+		}
+
+
+	}
+}  
+  
 }
 function parAcert() {
     return parejasHechas;
@@ -228,14 +241,22 @@ function girarCarta() {
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
             cartas2[parseInt(identificadorJ1)].seleccion = false;
+                console.log("antes la jugada 1 ees: "+jugada1);
+                console.log(" antes la jugada 2 ees: "+jugada2);
             if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
+                tt = prueba(jugada2, identificadorJ1, nombre);
+                //alert("mirando");
+                console.log("despues la jugada 1 ees: "+jugada1);
+                console.log(" despues la jugada 2 ees: "+jugada2);
+                //popo.sendPareja(dato, tt);
+                popo.sendCart(dato, tt);
                 parejasHechas.push(identificadorJ1);
                 parejasHechas.push(identificadorJ2);
                 cartas2[parseInt(identificadorJ1)].seleccion = true;
                 cartas2[parseInt(identificadorJ2)].seleccion = true;
                 colorCambio(identificadorJ2, "blue", jugada2);
                 vaciar();
-                comprobar();
+                //comprobar();
             } else if (identificadorJ1 !== identificadorJ2) {
                 var self = this;
                 setTimeout(function () {

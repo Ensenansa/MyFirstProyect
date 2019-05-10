@@ -24,19 +24,24 @@ var popo = (function () {
             });
             stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
                 limpiar();
+                //alert("saliendo por cartas");
                 var t = JSON.parse(evenbody.body);
                 m = t.dato;
                 mostrar(m, t.pos);
                 mostrarParejas();
                 console.log(evenbody.body);
+                allPar(tempo);
             });
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
                 limpiar();
+                //alert("saliendo por parejas");
                 var t = JSON.parse(evenbody.body);
+                //alert("que regresa: "+t);
                 console.log(evenbody.body);
                 allPar(t);
                 limpiar();
                 sendPuntaje();
+                allPar(tempo);
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
                 preguntas.mudanza();
@@ -45,6 +50,7 @@ var popo = (function () {
                 preguntas.get2Nivel(preguntas.getPreguntas);
                 necart(pu, tro + 1);
                 res();
+                
             });
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
                 var temp = document.getElementById("playerr").innerHTML;
@@ -120,6 +126,11 @@ var popo = (function () {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
     }
+
+    function sendPareja(ct, ctp) {
+        var n = document.getElementById("idSala").innerHTML;
+        stompClient.send("/app/pareja." + n, {}, JSON.stringify(ctp));
+    }
     
     function pasarVariables(op,nombre) {
         //var temp = $("#name").val();
@@ -186,7 +197,7 @@ var popo = (function () {
     
   function isAnfitrion3(contador) {
         //alert("ques es cont: "+contador);
-        if (contador > 2) {
+        if (contador > 1) {
             var n = document.getElementById("idSala").innerHTML;
             stompClient.send("/app/cartt." + n, {}, JSON.stringify("2"));
        } else {
@@ -226,6 +237,7 @@ var popo = (function () {
                 });
     }
     return {
+        sendPareja:sendPareja,
         getStarted: getStarted,
         prueba: prueba,
         isAnfitrion2: isAnfitrion2,
