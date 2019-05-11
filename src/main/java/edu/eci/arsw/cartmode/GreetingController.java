@@ -78,7 +78,10 @@ public class GreetingController {
         List<String> temp = new CopyOnWriteArrayList<>();
         int players = cart.getAllPlayerInGame();
         int temporal = -1;
-        String Keytemporal = "";       
+        String Keytemporal = "";                       
+        
+        System.out.println("Quien entra: "+ ct.getNombre());
+        System.out.println("LA CARTA QUE ENTRA ES : "+ ct.getDato());
         if (cartas.containsKey(ct.getNombre())) {
             pila = cartas.get(ct.getNombre());
         } else {
@@ -110,6 +113,9 @@ public class GreetingController {
                 cart.setPlayerByName(f);
                 cartas.put(ct.getNombre(), pila);
                 System.out.println("enviamos pareja");
+                System.out.println("QUIen hizo la pareja: "+ ct.getNombre());
+
+                        
                 System.out.println("-------------------------");
                 valparejas.remove(id);
                 valparejas.put(id, temp);

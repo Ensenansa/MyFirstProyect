@@ -30,8 +30,8 @@ var tener = (function Tener() {
     };
 })();
 
-var seg=12;
-var minutos =0;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
+var seg=15;
+var minutos =1;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
@@ -141,7 +141,7 @@ var preguntas = (function Preguntas() {
     
     function get2Nivel(on){
         seg=3;
-        minutos=2;
+        minutos=1;
         document.getElementById('i').innerHTML = seg;
         document.getElementById('j').innerHTML = minutos;             
         var lelt= document.getElementById("levelGame").innerHTML;

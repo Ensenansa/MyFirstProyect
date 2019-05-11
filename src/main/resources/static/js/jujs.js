@@ -241,13 +241,9 @@ function girarCarta() {
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
             cartas2[parseInt(identificadorJ1)].seleccion = false;
-                console.log("antes la jugada 1 ees: "+jugada1);
-                console.log(" antes la jugada 2 ees: "+jugada2);
             if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
-                tt = prueba(jugada2, identificadorJ1, nombre);
+                tt = prueba(jugada1, identificadorJ1, nombre);
                 //alert("mirando");
-                console.log("despues la jugada 1 ees: "+jugada1);
-                console.log(" despues la jugada 2 ees: "+jugada2);
                 //popo.sendPareja(dato, tt);
                 popo.sendCart(dato, tt);
                 parejasHechas.push(identificadorJ1);
@@ -256,7 +252,7 @@ function girarCarta() {
                 cartas2[parseInt(identificadorJ2)].seleccion = true;
                 colorCambio(identificadorJ2, "blue", jugada2);
                 vaciar();
-                //comprobar();
+                comprobar();
             } else if (identificadorJ1 !== identificadorJ2) {
                 var self = this;
                 setTimeout(function () {
