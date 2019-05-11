@@ -31,7 +31,7 @@ var tener = (function Tener() {
 })();
 
 var seg=15;
-var minutos =1;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
+var minutos =0;//PRIMER NIVEL 2, SEGUNDO 3 Y TERCERO 2 
 var numero = null;
 var tiempo = (function Tiempo() {
     var numero = null;
@@ -109,7 +109,7 @@ var preguntas = (function Preguntas() {
     }
     
     function mudanza() {
-        var f=-1;
+        var f=0;
         respuestaCorrecta=pregunta.respuestaCorrecta;
         respuestaSeleccionada = $("input[type=radio]:checked").val();
         if(respuestaCorrecta==respuestaSeleccionada){
@@ -141,7 +141,7 @@ var preguntas = (function Preguntas() {
     
     function get2Nivel(on){
         seg=3;
-        minutos=1;
+        minutos=5;
         document.getElementById('i').innerHTML = seg;
         document.getElementById('j').innerHTML = minutos;             
         var lelt= document.getElementById("levelGame").innerHTML;
