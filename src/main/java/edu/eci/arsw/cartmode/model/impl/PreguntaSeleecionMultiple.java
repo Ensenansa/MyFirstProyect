@@ -13,10 +13,20 @@ import java.util.List;
  * @author cesar
  */
 public class PreguntaSeleecionMultiple extends Pregunta{
-    
+    /**
+     * 
+     * @param id
+     * @param enunciado
+     * @param tema
+     * @param opcionesDeRespuesta
+     * @param respuestaCorrecta 
+     */
     public PreguntaSeleecionMultiple(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, String respuestaCorrecta) {
         super(id, enunciado, tema, opcionesDeRespuesta, respuestaCorrecta);
     }
+    /**
+     * 
+     */
     public PreguntaSeleecionMultiple() {
     }
 }

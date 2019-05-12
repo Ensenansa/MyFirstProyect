@@ -27,7 +27,11 @@ public class CartModeControlePreguntas {
     
     @Autowired
     private CartModeServices cat;
-
+    
+/**
+ * 
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/all")
     public ResponseEntity<?> getAllJQuestion() {
         try {
@@ -37,6 +41,11 @@ public class CartModeControlePreguntas {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+    
+/**
+ * 
+ * @return 
+ */    
     @RequestMapping(method = RequestMethod.GET, path = "/one")
     public ResponseEntity<?> getAllOneQuestion() {
         try {

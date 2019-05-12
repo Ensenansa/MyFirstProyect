@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
  */	
 @Service
 public class MongoDBTest {	
+    
     private  List<Jugador> jugadores=new ArrayList<>();	
     private MongoClientURI uri = new MongoClientURI("mongodb://Cartmode:Cartmode1@ds149875.mlab.com:49875/cartmmode");                      	
     
@@ -26,6 +27,9 @@ public class MongoDBTest {
     public List<Jugador> getRespuesta(){
         return jugadores;
     }
+    /**
+     * 
+     */
     public  void findAndPrintData(){	
         MongoClient client = new MongoClient(uri);	
         MongoDatabase db = client.getDatabase(uri.getDatabase());        	
@@ -40,6 +44,11 @@ public class MongoDBTest {
         }        	
         client.close();        	
     }	
+    /**
+     * 
+     * @param nombre
+     * @param puntaje 
+     */
     public  void insertData(String nombre,String puntaje){	
         MongoClient client = new MongoClient(uri);	
         MongoDatabase db = client.getDatabase(uri.getDatabase());	

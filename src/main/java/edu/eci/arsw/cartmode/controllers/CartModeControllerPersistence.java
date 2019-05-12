@@ -53,12 +53,20 @@ public class CartModeControllerPersistence {
     
     @Autowired
     private  MongoDBTest mgbd;
-
+/**
+ * 
+ * @param nombre
+ * @param puntaje
+ * @throws CartModeException 
+ */
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
     public void addDataBaseMongoBD(@PathVariable String nombre, @PathVariable String puntaje) throws CartModeException {
         mgbd.insertData(nombre, puntaje);
     }
-    
+   /**
+    * 
+    * @return 
+    */ 
     @GetMapping("/mostrar")
     public ResponseEntity<?> getAllJugadoresBySala() {
         mgbd.findAndPrintData();

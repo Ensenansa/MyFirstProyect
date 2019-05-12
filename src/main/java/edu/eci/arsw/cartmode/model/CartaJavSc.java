@@ -12,24 +12,52 @@ package edu.eci.arsw.cartmode.model;
 public class CartaJavSc {
     private String dato;
     private boolean seleccion;
+    /**
+     * 
+     */
     public CartaJavSc() {
     }
+    /**
+     * 
+     * @param dato
+     * @param seleecion 
+     */
     public CartaJavSc(String dato,Boolean seleecion) {
         this.dato=dato;
         this.seleccion=seleecion;
     }
+    /**
+     * 
+     * @param seleccion 
+     */
     public void setSeleccion(boolean seleccion) {
         this.seleccion = seleccion;
     }
+    /**
+     * 
+     * @return 
+     */
     public boolean isSeleccion() {
         return seleccion;
-    }   
+    }  
+    /**
+     * 
+     * @return 
+     */
     public String getDato() {
         return dato;
     }
+    /**
+     * 
+     * @param dato 
+     */
     public void setDato(String dato) {
         this.dato = dato;
     }
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {     
         return "{" + "nombre: '" + dato +"'seleccion: "+seleccion +'}';        

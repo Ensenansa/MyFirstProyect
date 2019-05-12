@@ -9,15 +9,23 @@ package edu.eci.arsw.cartmode.services;
  *
  * @author cesar
  */
-public class CartModeException extends Exception{
-    
-    
+public class CartModeException extends Exception {
+
+    /**
+     *
+     * @param message
+     * @param cause
+     */
     public CartModeException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /**
+     *
+     * @param message
+     */
     public CartModeException(String message) {
         super(message);
     }
-    
+
 }

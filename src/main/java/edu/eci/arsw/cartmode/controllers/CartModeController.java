@@ -37,6 +37,9 @@ public class CartModeController {
     private Map<String, Integer> namePlayers = new HashMap<String, Integer>();
     
     private List<String> distingidores=new ArrayList<String>();
+    /**
+     * 
+     */
     public  CartModeController (){
         distingidores.add("0");
         distingidores.add("1");
@@ -80,7 +83,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param nombre
+ * @return 
+ */
     @GetMapping("/{nombre}")
     public ResponseEntity<?> getAllJugadoresBySala(@PathVariable String nombre) {
         try {
@@ -90,7 +97,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param id
+ * @return 
+ */
     @GetMapping("sala/cantidad/{id}")
     public ResponseEntity<?> getCantPlayerOfSala(@PathVariable Integer id) {
         try {
@@ -100,12 +111,19 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
+   /**
+    * 
+    * @return 
+    */ 
     public Integer getAleatoroVal(){
         int valorEntero = (int) Math.floor(Math.random() * distingidores.size()-1);
         return valorEntero;
     }
-        
+      /**
+       * 
+       * @param nombre
+       * @return 
+       */  
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
         List<String> nombres = new ArrayList<String>();        
@@ -146,6 +164,10 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }//DATOS DEL JUGADOR
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/datos")
     public ResponseEntity<?> getDataJugadores() {
         try {
@@ -155,7 +177,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param id
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/datos/idsala/{id}")
     public ResponseEntity<?> getDataJugadoresIdSala(@PathVariable Integer id) {
         try {
@@ -165,7 +191,10 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/sala")
     public ResponseEntity<?> getSalas() {
         try {
@@ -175,7 +204,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param nombre
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
     public ResponseEntity<?> getSalasIdByPlayer(@PathVariable String nombre) {
         try {
@@ -185,7 +218,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param id
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/sala/listo/{id}")
     public ResponseEntity<?> getListoSalas(@PathVariable String id) {
         try {
@@ -196,7 +233,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param sala
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/players/{sala}")
     public ResponseEntity<?> getPlayersBySala(@PathVariable Integer sala) {
         try {
@@ -206,7 +247,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param sala
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}")
     public ResponseEntity<?> getAnfritionPlayerBySala(@PathVariable Integer sala) {
         try {
@@ -217,6 +262,12 @@ public class CartModeController {
         }
     }
 
+    /**
+     * 
+     * @param sala
+     * @param nombre
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}/{nombre}")
     public ResponseEntity<?> IsAnfritionPlayerOfSala(@PathVariable Integer sala, @PathVariable String nombre) {
         try { //Mejorar esto con la funcion de callback de javascript
@@ -226,7 +277,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param sala
+ * @return 
+ */
     @RequestMapping(method = RequestMethod.GET, path = "/nivel/{sala}")
     public ResponseEntity<?> getLevelOfSala(@PathVariable Integer sala) {
         try {
@@ -237,12 +292,23 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-
+/**
+ * 
+ * @param puntos
+ * @param nombre
+ * @return
+ * @throws CartModeException 
+ */
     @RequestMapping(method = RequestMethod.POST, path = "/puntaje/{nombre}/{puntos}")
     public ResponseEntity<?> addScore(@PathVariable String[] puntos, @PathVariable String nombre) throws CartModeException {
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
-
+/**
+ * 
+ * @param correcto
+ * @param nombre
+ * @throws CartModeException 
+ */
     @RequestMapping(method = RequestMethod.POST, path = "/puntajePregunta/{nombre}/{correcto}")
     public void addScoreByPregunta(@PathVariable String correcto, @PathVariable String nombre) throws CartModeException {
         int contador = 0;

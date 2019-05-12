@@ -37,6 +37,10 @@ public class CartModeStub implements CartModeServices {
     public CartModeStub() {
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public List<String> nameAllPlayer() throws CartModeException {
         List<String> resp = new ArrayList<String>();
@@ -46,15 +50,28 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public List<Jugador> nameAlPlayer() throws CartModeException {
         return player;
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     public Integer getAllPlayerInGame() throws CartModeException {
         return player.size();
     }
 
+    /**
+     *
+     * @param name
+     * @throws CartModeException
+     */
     @Override
     public void addPlayer(String name) throws CartModeException {
         Jugador play = new Jugador(name);
@@ -96,12 +113,22 @@ public class CartModeStub implements CartModeServices {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Integer allPlayerOfSala(Integer id) throws CartModeException {
         Sala f = salas.get(id);
         return f.getJugadores().size();
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public Integer getSalaDisponible() throws CartModeException {
         int resp = -1;
@@ -109,10 +136,16 @@ public class CartModeStub implements CartModeServices {
             if (sa.getJugadores().size() < 4 && sa.getListo() != true) {
                 resp = sa.getId();
             }
-        }        
+        }
         return resp;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public List<String> getNamePlayersBySala(Integer id) throws CartModeException {
         List<String> resp = new ArrayList<String>();
@@ -124,11 +157,22 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param id
+     * @throws CartModeException
+     */
     public void statedIdSala(Integer id) throws CartModeException {
         Sala temp = salas.get(id);
         temp.setListo(true);
     }
 
+    /**
+     *
+     * @param nivel
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel) throws CartModeException {
         List<CartaJavSc> resp1 = new ArrayList<CartaJavSc>();
@@ -141,15 +185,27 @@ public class CartModeStub implements CartModeServices {
                 resp1.add(temp);
             }
         }
-        return resp1; 
+        return resp1;
     }
 
+    /**
+     *
+     * @param idSala
+     * @return
+     * @throws CartModeException
+     */
     public List<Jugador> getJugadoresByIdSala(Integer idSala) throws CartModeException {
         Sala t = salas.get(idSala);
         List<Jugador> tt = t.getJugadores();
         return tt;
     }
 
+    /**
+     *
+     * @param nivel
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public List<CartaJavSc> GenerateBaraja(Integer nivel) throws CartModeException {
         List<CartaJavSc> resp = new CopyOnWriteArrayList<>();
@@ -187,6 +243,12 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param puestas
+     * @param valor
+     * @return
+     */
     public boolean verValor(List<String> puestas, String valor) {
         Boolean respuesta = false;
         boolean tt = false;
@@ -199,11 +261,21 @@ public class CartModeStub implements CartModeServices {
         return tt;
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public List<Sala> getSala() throws CartModeException {
         return salas;
     }
 
+    /**
+     *
+     * @param nombre
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Integer getIdSalaByPlayer(String nombre) throws CartModeException {
         int resp = -1;
@@ -215,6 +287,12 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param idSala
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public List<String> getAllPlayersBySala(Integer idSala) throws CartModeException {
         List<String> resp = new CopyOnWriteArrayList<>();
@@ -226,6 +304,12 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param idSala
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Jugador getPlayerAnfiBySala(Integer idSala) throws CartModeException {
         Jugador resp = new Jugador();
@@ -238,6 +322,12 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public List<List<String>> getPlayersBySala(String name) throws CartModeException {
         List<List<String>> resp = new CopyOnWriteArrayList<>();        //Segundo arreglo
@@ -253,17 +343,32 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public List<Pregunta> getListPreguntas() throws CartModeException {
         return preguntas;
     }
 
+    /**
+     *
+     * @throws CartModeException
+     */
     @Override
     public void eraseAll() throws CartModeException {
         player.clear();
         salas.clear();
     }
 
+    /**
+     *
+     * @param nombre
+     * @param sala
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Boolean isPlayerAnfitrion(String nombre, Integer sala) throws CartModeException {
         Boolean resp1 = false;
@@ -278,9 +383,14 @@ public class CartModeStub implements CartModeServices {
         if (y.equals(nombre)) {
             resp1 = true;
         }
-        return resp1;       
+        return resp1;
     }
 
+    /**
+     *
+     * @param id
+     * @throws CartModeException
+     */
     @Override
     public void upLevelSalaId(Integer id) throws CartModeException {
         Sala temporal = salas.get(id);
@@ -289,6 +399,11 @@ public class CartModeStub implements CartModeServices {
         temporal.setNivel(t + 1);
     }
 
+    /**
+     *
+     * @param idlista
+     * @throws CartModeException
+     */
     @Override
     public void SetStade(Integer idlista) throws CartModeException {
         System.out.println("Si legamos:" + idlista);
@@ -296,16 +411,33 @@ public class CartModeStub implements CartModeServices {
         o.setListo(true);
     }
 
+    /**
+     *
+     * @param idlista
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Sala getSalaById(Integer idlista) throws CartModeException {
         return salas.get(idlista);
     }
 
+    /**
+     *
+     * @param idSala
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Boolean getListoSala(Integer idSala) throws CartModeException {
         return salas.get(idSala).getListo();
     }
 
+    /**
+     *
+     * @param idSala
+     * @throws CartModeException
+     */
     @Override
     public void levelOfSalaId(Integer idSala) throws CartModeException {
         for (Sala sa : salas) {  //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
@@ -320,6 +452,12 @@ public class CartModeStub implements CartModeServices {
         }
     }
 
+    /**
+     *
+     * @param idSala
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Integer LevelOfSala(Integer idSala) throws CartModeException {
         int resp = 0;
@@ -332,6 +470,12 @@ public class CartModeStub implements CartModeServices {
         return resp;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     * @throws CartModeException
+     */
     @Override
     public Jugador getPlayerByName(String name) throws CartModeException {
         Jugador temp = new Jugador();
@@ -343,12 +487,21 @@ public class CartModeStub implements CartModeServices {
         return temp;
     }
 
+    /**
+     *
+     * @param play
+     * @throws CartModeException
+     */
     public void setPlayerByName(Jugador play) throws CartModeException {
         int ind = player.indexOf(play);
         System.out.println("que improme int" + ind);
         player.set(ind, play);
     }
 
+    /**
+     *
+     * @return @throws CartModeException
+     */
     @Override
     public Pregunta getPregunta() throws CartModeException {
         Pregunta resp = new PreguntaSeleecionMultiple();

@@ -96,8 +96,15 @@ var popo = (function () {
     }
     
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
-        var temp = $("#name").val();        
-        axios.get('jugadores/add/' + temp)
+        var temp = $("#name").val();  
+        var temp3=temp.split(" ");              
+        var temp2="";
+        var i;
+        for (i=0; i<temp3.length; i++){
+            temp2 += temp3[i] ;        
+        }
+        
+        axios.get('jugadores/add/' + temp2)
                 .then(function (response) {
                     grouid = response.data;                       
                     console.log('saved successfully' + grouid)

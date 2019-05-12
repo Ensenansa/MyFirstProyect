@@ -23,7 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartModeCOntrolerCarts {
     
     @Autowired
-    private CartModeServices cat;       
+    private CartModeServices cat;     
+    /**
+     * 
+     * @param nivel
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/bara/{nivel}")
     public ResponseEntity<?> getAllPlayerByLevel(@PathVariable Integer nivel) {
         try {

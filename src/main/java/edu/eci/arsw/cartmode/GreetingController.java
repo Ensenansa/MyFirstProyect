@@ -39,7 +39,11 @@ public class GreetingController {
     private Map<String, Stack<String>> cartas = new ConcurrentHashMap<>();
     private List<String> valoresPareja = new CopyOnWriteArrayList<>();
     private Stack<String> pila = new Stack<String>();
-
+/**
+ * 
+ * @param message
+ * @throws Exception 
+ */
     @MessageMapping("/usu")
     public void greeting(HelloMessage message) throws Exception {
         cart.addPlayer(message.getName());
@@ -47,6 +51,12 @@ public class GreetingController {
         msg.convertAndSend("/topic/usu", resp);        
     }
 
+    /**
+     * 
+     * @param numsala
+     * @return
+     * @throws Exception 
+     */
     @MessageMapping("avisar.{numsala}")
     @SendTo("/topic/avisar")
     public String avisar(@DestinationVariable String numsala) throws Exception {
@@ -58,6 +68,10 @@ public class GreetingController {
         return o.toString();
     }
 
+    /**
+     * 
+     * @throws Exception 
+     */
     @MessageMapping("iniciar")
     public void start() throws Exception {
         cartas.clear();
@@ -73,6 +87,12 @@ public class GreetingController {
         jugadoress = players;
     }  
   
+    /**
+     * 
+     * @param ct
+     * @param id
+     * @throws Exception 
+     */
     @MessageMapping("cart.{id}")
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
         List<String> temp = new CopyOnWriteArrayList<>();
@@ -126,7 +146,12 @@ public class GreetingController {
         msg.convertAndSend("/topic/cart." + id, ct);
     }
 
-    
+    /**
+     * 
+     * @param ct
+     * @param id
+     * @throws Exception 
+     */
     
     
     @MessageMapping("cartt.{id}")
@@ -135,6 +160,13 @@ public class GreetingController {
         cart.statedIdSala(Integer.parseInt(id));
         msg.convertAndSend("/topic/cartt." + id, "2");
     }
+    
+    /**
+     * 
+     * @param sjug
+     * @param idd
+     * @throws Exception 
+     */
     @MessageMapping("level.{idd}")
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
         Boolean sies = true;
@@ -152,6 +184,11 @@ public class GreetingController {
         msg.convertAndSend("/topic/uplevel." + idd, sjug.getSala());
     }
 
+    /**
+     * 
+     * @param idd
+     * @throws Exception 
+     */
     @MessageMapping("result.{idd}")
     public void saveBD(@DestinationVariable String idd) throws Exception {
         System.out.println("--------------------");
