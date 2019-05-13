@@ -386,6 +386,17 @@ public class CartModeStub implements CartModeServices {
         return resp1;
     }
 
+    @Override
+    public Boolean IsAnfitrion(Integer idSala, Jugador jugador) throws CartModeException {
+        Boolean resp=false;
+        Sala fu=salas.get(idSala);
+        if(fu.getJugadorAnfrition().getNickName().equals(jugador.getNickName())){
+            resp=true;
+        }
+        return resp;
+    }
+    
+    
     /**
      *
      * @param id
@@ -557,4 +568,6 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("k");
         abecedario.add("l");
     }
+
+
 }

@@ -9,7 +9,7 @@
 ## Escuela Colombiana de Ingeniería Julio Garavito - Ingeniería de Sistemas
 #### Juego educativo, competitivo y a su vez de entretenimiento tipo seleccion de parejas que pretende poner a prueba las hablidades cognitivas de los usuarios, complementandolo con preguntas sencillas de matematicas..
 ---
-### Integrantes
+### Integrante
 - Cesar E. Lanos Camacho
 ### Profesor
 - David Saavedra
@@ -123,7 +123,7 @@ Proximamente
 #### - Paquetes
 ![](img/DiagramaFullClases.png)
 #### - Clases
-![](img/DiagramasFull1.1.png)
+![](img/DiagramaClases1.png)
 #### - Paquete Detalle 1
 ![](img/DiagramasF1.png)
 #### - Paquete Detalle 2

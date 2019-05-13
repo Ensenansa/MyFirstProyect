@@ -170,9 +170,14 @@ public class GreetingController {
     @MessageMapping("level.{idd}")
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
         Boolean sies = true;
+        System.out.println("MIREMOS QUE USUARIO LLEGA  primero: "+sjug.getNickName());
         Jugador jugadortemid = cart.getPlayerAnfiBySala(sjug.getSala());
+        Sala saljs=cart.getSalaById(Integer.parseInt(idd));
+        Boolean resp=cart.IsAnfitrion(Integer.parseInt(idd), sjug);
+        System.out.println("MIREMOS QUE USUARIO LLEGA : "+jugadortemid.getNickName());
+        System.out.println("QUE RESPUESTA NOS ARROJA: "+resp);
         String tpJu = jugadortemid.getNickName();
-        if (Integer.valueOf(sjug.getSala()) < 4) {
+        if (Integer.valueOf(sjug.getSala()) < 4 && resp) {
             System.out.println("ELVEANDO");
             cart.levelOfSalaId(Integer.valueOf(sjug.getSala()));
         } else {

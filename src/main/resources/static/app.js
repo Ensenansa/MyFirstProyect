@@ -11,7 +11,7 @@ var popo = (function () {
     var salalis = false;
     var solucion = 1;
     var especial = -1;
-    var connect = function (topic) {        
+    var connect = function (topic) {
         var socket = new SockJS('/gs-guide-websocket');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
@@ -31,6 +31,8 @@ var popo = (function () {
                 mostrarParejas();
                 console.log(evenbody.body);
                 allPar(tempo);
+                var level = document.getElementById("levelGame").innerHTML;
+                //alert("nivel por cartas: "+level);
             });
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
                 limpiar();
@@ -42,6 +44,9 @@ var popo = (function () {
                 limpiar();
                 sendPuntaje();
                 allPar(tempo);
+                comprobarParejas();
+                
+
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
                 preguntas.mudanza();
@@ -50,7 +55,7 @@ var popo = (function () {
                 preguntas.get2Nivel(preguntas.getPreguntas);
                 necart(pu, tro + 1);
                 res();
-                
+
             });
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
                 var temp = document.getElementById("playerr").innerHTML;
@@ -67,7 +72,24 @@ var popo = (function () {
             console.log(error);
         });
     }
-    
+
+    function comprobarParejas() {
+        var level = document.getElementById("levelGame").innerHTML;
+        var playe = document.getElementById("playerr").innerHTML;
+        //alert("nivel por parejas: "+level);
+        var t = parseInt(level, 10);
+        if (t == 1 && tempo.length == 8) {
+            popo.sendUpLevel(level, playe);
+
+        } else if (t == 2 && tempo.length == 12) {
+            popo.sendUpLevel(level, playe);
+
+        } else if (t == 3 && tempo.length == 10) {
+            popo.sendUpLevel(level, playe);
+        }
+    }
+
+
     function sendPuntaje() {
         var jugador = document.getElementById("playerr").innerHTML;
         axios.post('/jugadores/puntaje/' + jugador + '/' + parAcert())
@@ -75,17 +97,17 @@ var popo = (function () {
                     console.log(response.data);
                 });
     }
-    
+
     function senf() {
         return m;
     }
-    
+
     function goSendResult() {
         sala = document.getElementById("idSala").innerHTML;
         var t = parseInt(sala, 10);
         stompClient.send("/app/result." + t, {}, JSON.stringify(""));
     }
-    
+
     function goToResult() {
         var temp = document.getElementById("playerr").innerHTML;
         pagina = "/resultados.html";
@@ -94,32 +116,32 @@ var popo = (function () {
         pagina += "=" + temp;
         location.href = pagina;
     }
-    
+
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
-        var temp = $("#name").val();  
-        var temp3=temp.split(" ");              
-        var temp2="";
+        var temp = $("#name").val();
+        var temp3 = temp.split(" ");
+        var temp2 = "";
         var i;
-        for (i=0; i<temp3.length; i++){
-            temp2 += temp3[i] ;        
+        for (i = 0; i < temp3.length; i++) {
+            temp2 += temp3[i];
         }
-        
+
         axios.get('jugadores/add/' + temp2)
                 .then(function (response) {
-                    grouid = response.data;                       
+                    grouid = response.data;
                     console.log('saved successfully' + grouid)
                     sala = grouid;
-                    pasarVariables(grouid.sala,grouid.nickName);
+                    pasarVariables(grouid.sala, grouid.nickName);
                 });
     }
-    
+
     function dt(nickName, sala) {
         return{
             nickName: nickName,
             sala: sala
         }
     }
-    
+
     function sendUpLevel(op, ppl) {
         document.getElementById('levelGame').innerHTML = op;
         sala = document.getElementById("idSala").innerHTML;
@@ -128,7 +150,7 @@ var popo = (function () {
         var f = dt(ppl, t);
         stompClient.send("/app/level." + t, {}, JSON.stringify(f));
     }
-    
+
     function sendCart(ct, ctp) {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
@@ -138,22 +160,22 @@ var popo = (function () {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/pareja." + n, {}, JSON.stringify(ctp));
     }
-    
-    function pasarVariables(op,nombre) {
+
+    function pasarVariables(op, nombre) {
         //var temp = $("#name").val();
         //alert("cual nombre se manda: "+nombre);
-        var temp=nombre;
+        var temp = nombre;
         pagina = "AnteSala.html";
         pagina += "?";
         nomVec = temp.split(",");
         pagina += "=" + temp + "&" + op;
         location.href = pagina;
     }
-    
+
     function showGreeting(message) {
         $("#greetings").append("<tr><td>" + message + "</td></tr>");
     }
-    
+
     function disconnect() {
         if (stompClient !== null) {
             stompClient.disconnect();
@@ -161,7 +183,7 @@ var popo = (function () {
         setConnected(false);
         console.log("Disconnected");
     }
-    
+
     function setConnected(connected) {
         $("#connect").prop("disabled", connected);
         $("#disconnect").prop("disabled", !connected);
@@ -171,8 +193,8 @@ var popo = (function () {
             $("#conversation").hide();
         }
         $("#greetings").html("");
-    }   
-    
+    }
+
     function getLisSalaAxios() {
         sala = document.getElementById("idSala").innerHTML;
         axios.get('/jugadores/sala/listo/' + sala)
@@ -180,7 +202,7 @@ var popo = (function () {
                     salalis = response.data;
                 });
     }
-    
+
     var loadd = function () {
         nombreUsuario = document.getElementById("playerr").innerHTML;
         sala = document.getElementById("idSala").innerHTML;
@@ -191,7 +213,7 @@ var popo = (function () {
                 });
         return verdad;
     };
-    
+
     var getStarted = function () {
         var n = document.getElementById("idSala").innerHTML;
         var jugador = document.getElementById("playerr").innerHTML;
@@ -201,13 +223,13 @@ var popo = (function () {
         pagina += "=" + jugador + "&" + n;
         location.href = pagina;
     };
-    
-  function isAnfitrion3(contador) {
+
+    function isAnfitrion3(contador) {
         //alert("ques es cont: "+contador);
         if (contador > 1) {
             var n = document.getElementById("idSala").innerHTML;
             stompClient.send("/app/cartt." + n, {}, JSON.stringify("2"));
-       } else {
+        } else {
             alert("Anfritrion, espere a que halla minimo 3  jugadores conectados.");
         }
     }
@@ -215,7 +237,7 @@ var popo = (function () {
     function isAnfitrion2(tor, dato) {
         if (dato) {
             var n = document.getElementById("idSala").innerHTML;
-             var t=parseInt(n, 10);
+            var t = parseInt(n, 10);
             var contador;
             axios.get('/jugadores/sala/cantidad/' + t)
                     .then(function (response) {
@@ -227,11 +249,11 @@ var popo = (function () {
             alert("Debes ser anfitrion para poder iniciar la partida");
         }
     }
-    
+
     function prueba() {
         isAnfitrion(isAnfitrion2);
     }
-    
+
     function isAnfitrion(on) {
         var dato = null;
         var jugador = document.getElementById("playerr").innerHTML;
@@ -244,7 +266,7 @@ var popo = (function () {
                 });
     }
     return {
-        sendPareja:sendPareja,
+        sendPareja: sendPareja,
         getStarted: getStarted,
         prueba: prueba,
         isAnfitrion2: isAnfitrion2,
@@ -272,7 +294,7 @@ var popo = (function () {
         },
         conecS(dat) { //Proximamene, para conectar a una sala especifica
             connect(dat);
-        },        
+        },
         can: function () {
             reload();
         }
