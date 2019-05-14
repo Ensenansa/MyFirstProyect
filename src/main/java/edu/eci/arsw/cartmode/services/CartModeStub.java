@@ -13,6 +13,7 @@ import edu.eci.arsw.cartmode.model.Sala;
 import edu.eci.arsw.cartmode.model.impl.PreguntaSeleecionMultiple;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ import org.springframework.boot.CommandLineRunner;
  * @author 2098325
  */
 @Service
-public class CartModeStub implements CartModeServices {
-
+public class CartModeStub implements CartModeServices {  
+    
     private static final List<Jugador> player;
     private static final List<Pregunta> preguntas;
     private static final List<String> opcionesrespuesta;
@@ -520,7 +521,7 @@ public class CartModeStub implements CartModeServices {
         resp = preguntas.get(valorEntero);
         return resp;
     }
-
+    
     static {
         player = new CopyOnWriteArrayList<>();
         salas = new CopyOnWriteArrayList<>();
@@ -568,6 +569,5 @@ public class CartModeStub implements CartModeServices {
         abecedario.add("k");
         abecedario.add("l");
     }
-
 
 }

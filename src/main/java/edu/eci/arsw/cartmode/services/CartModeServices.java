@@ -220,6 +220,14 @@ public interface CartModeServices {
      * @throws CartModeException
      */
     public void levelOfSalaId(Integer idSala) throws CartModeException;
-
+    /**
+     * 
+     * @param idSala
+     * @param jugador
+     * @return
+     * @throws CartModeException 
+     */
     public Boolean IsAnfitrion(Integer idSala,Jugador jugador) throws CartModeException;
+    
+
 }

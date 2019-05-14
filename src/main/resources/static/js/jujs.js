@@ -51,7 +51,7 @@ function getLevelId(on, sala) {
 }
 
 function necart(pp, levell) {
-    level = levell ;
+    level = levell;
     axios.get('/cartas/bara/' + level)
             .then(function (response) {
                 cartas2 = response.data;
@@ -115,7 +115,7 @@ function libertad() {
     getIdSala(getLevelId, nombre);
 }
 
-function iniciarJuego() {    
+function iniciarJuego() {
     c1(c2);
     var dato = document.getElementById("juego");
     var nombre = document.getElementById("playerr").innerHTML;
@@ -123,7 +123,7 @@ function iniciarJuego() {
 }
 ;
 
-function res() {   
+function res() {
     tempo = new Array();
     parejasHechas = new Array();
 }
@@ -170,31 +170,41 @@ function limpiar() {
     }
 }
 
-function onlyUnique(value, index, self) { 
+function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
 
+function parJug(pju) {    
+    var colores = ["blue", "red", "orange","yellow"];
+    var col=0;
+    var tempo2 = pju;
+    var f;
+    for (var o = 0; o < tempo2.length; o++) {    
+        f = tempo2[o];
+        for (var u in f) {
+            for (var cl2 in cartas2) {
+                if (cartas2[cl2].dato == f[u]) {
+                    colorCambio(cl2, colores[col], f[u]);
+                }
+            }
+        }
+        col+=1;
+    }
+}
+
 function allPar(parejas) {
-    tempo=parejas;
-
-    //tempo=parejas.filter((v, i, a) => a.indexOf(v) === i); 
-    //alert("QUE SON LAS PAREJAS despues: "+tempo);
+    tempo = parejas;
     var num = 0;
-    var g=0;
-    var h=0;
+    var g = 0;
+    var h = 0;
     var letem = cartas2.length;
-for(var cl1 in tempo){
-	for(var cl2 in cartas2){
-		//alert("veanos clave : "+cl2+" : " +t[cl2].dato);
-		//alert("comparamps estp: "+t[cl2].dato+" contra estp: "+tempo[cl1]);
-		if(cartas2[cl2].dato==tempo[cl1]){
-			colorCambio(cl2, "blue", tempo[cl1]);
-		}
-
-
-	}
-}  
-  
+    for (var cl1 in tempo) {
+        for (var cl2 in cartas2) {
+            if (cartas2[cl2].dato == tempo[cl1]) {
+                colorCambio(cl2, "blue", tempo[cl1]);
+            }
+        }
+    }
 }
 function parAcert() {
     return parejasHechas;
@@ -230,29 +240,26 @@ function prueba(dato, pos, nombre) {
     }
 }
 
-function girarCarta() {    
+function girarCarta() {
     var evento = window.event;
     var dato = document.getElementById("idSala").innerHTML;
     var nombre = document.getElementById("playerr").innerHTML;
     jugada2 = evento.target.dataset.valor;
     identificadorJ2 = evento.target.id;
     var tt = prueba(jugada2, identificadorJ2, nombre);
-    if (cartas2[parseInt(identificadorJ2)].seleccion != true) {        
+    if (cartas2[parseInt(identificadorJ2)].seleccion != true) {
         popo.sendCart(dato, tt);
         if (jugada1 !== "") {
             cartas2[parseInt(identificadorJ1)].seleccion = false;
             if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas2[parseInt(identificadorJ2)].seleccion != true && cartas2[parseInt(identificadorJ1)].seleccion != true) {
                 tt = prueba(jugada1, identificadorJ1, nombre);
-                //alert("mirando");
-                //popo.sendPareja(dato, tt);
-                popo.sendCart(dato, tt);
+                popo.sendCart(dato, tt);                
                 parejasHechas.push(identificadorJ1);
                 parejasHechas.push(identificadorJ2);
                 cartas2[parseInt(identificadorJ1)].seleccion = true;
                 cartas2[parseInt(identificadorJ2)].seleccion = true;
                 colorCambio(identificadorJ2, "blue", jugada2);
                 vaciar();
-                comprobar();
             } else if (identificadorJ1 !== identificadorJ2) {
                 var self = this;
                 setTimeout(function () {
@@ -262,6 +269,7 @@ function girarCarta() {
                 }, 200);
                 colorCambio(identificadorJ2, "blue", jugada2);
             }
+            
         } else if (jugada2 !== "valor") {
             colorCambio(identificadorJ2, "blue", jugada2);
             jugada1 = jugada2;
@@ -284,28 +292,3 @@ function colorCambio(posicion, color, contenido) {
     document.getElementById(posicion.toString()).style.backgroundColor = color;
     document.getElementById(posicion.toString()).innerHTML = contenido;
 }
-
-function comprobar() {
-    var aciertos = 0;
-    mostrarParejas();
-    for (var i = 0; i < 16; i++) {
-        if (cartas2[i].seleccion == true) {
-            //alert("pasamos");
-            aciertos++;
-        }
-    }
-    if (aciertos == 16) {
-        //document.getElementById("juego").innerHTML = "GANASTE";
-    }
-}
-function resetearJuego() {
-    cartas.sort(function () {
-        return Math.random() - 0.5
-    });
-    for (var i = 0; i < 16; i++) {
-        var carta = cartas[i].dato;
-        var dato = document.getElementById(i.toString());
-        dato.dataset.valor = carta;
-        colorCambio(i, 'black', '?');
-    }
-};

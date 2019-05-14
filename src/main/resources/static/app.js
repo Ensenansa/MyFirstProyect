@@ -1,6 +1,8 @@
 /* global Stomp */
 var prue;
 var popo = (function () {
+    var g= new Array();
+    var jugcarta=new Array();
     var jugadoresActuales = new Array();
     var stompClient = null;
     var m = null;
@@ -32,6 +34,7 @@ var popo = (function () {
                 console.log(evenbody.body);
                 allPar(tempo);
                 var level = document.getElementById("levelGame").innerHTML;
+                parJug(popo.getjugcarta());
                 //alert("nivel por cartas: "+level);
             });
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
@@ -44,8 +47,10 @@ var popo = (function () {
                 limpiar();
                 sendPuntaje();
                 allPar(tempo);
+                parJug(popo.getjugcarta());
                 comprobarParejas();
                 
+
 
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
@@ -57,6 +62,16 @@ var popo = (function () {
                 res();
 
             });
+            stompClient.subscribe('/topic/cxj' + topic, function (evenbody) {
+                //alert(evenbody.body);
+                console.log(evenbody.body);
+                jugcarta = JSON.parse(evenbody.body);
+                
+                //parJug(evenbody.body);
+
+            });
+
+
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
                 var temp = document.getElementById("playerr").innerHTML;
                 var pagina = "/resultados.html";
@@ -76,7 +91,6 @@ var popo = (function () {
     function comprobarParejas() {
         var level = document.getElementById("levelGame").innerHTML;
         var playe = document.getElementById("playerr").innerHTML;
-        //alert("nivel por parejas: "+level);
         var t = parseInt(level, 10);
         if (t == 1 && tempo.length == 8) {
             popo.sendUpLevel(level, playe);
@@ -88,7 +102,6 @@ var popo = (function () {
             popo.sendUpLevel(level, playe);
         }
     }
-
 
     function sendPuntaje() {
         var jugador = document.getElementById("playerr").innerHTML;
@@ -115,6 +128,11 @@ var popo = (function () {
         nomVec = temp.split(",");
         pagina += "=" + temp;
         location.href = pagina;
+    }
+
+    function getjugcarta(){
+        return jugcarta;
+        
     }
 
     function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
@@ -154,6 +172,14 @@ var popo = (function () {
     function sendCart(ct, ctp) {
         var n = document.getElementById("idSala").innerHTML;
         stompClient.send("/app/cart." + n, {}, JSON.stringify(ctp));
+        
+        
+    }
+    function getParejas(){
+        //alert("llegamos aqui");
+        var n = document.getElementById("idSala").innerHTML;
+        stompClient.send("/app/cxj." + n, {}, );
+        
     }
 
     function sendPareja(ct, ctp) {
@@ -266,6 +292,8 @@ var popo = (function () {
                 });
     }
     return {
+        getjugcarta:getjugcarta,
+        getParejas:getParejas,
         sendPareja: sendPareja,
         getStarted: getStarted,
         prueba: prueba,
