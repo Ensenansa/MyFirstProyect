@@ -8,7 +8,7 @@ var apiclient = (function () {
     var information;
     return {
         getAllUser: function () {
-            return $.get("/jugadores");
+            return $.get("/jugadores/all");
         }
     };
 }());

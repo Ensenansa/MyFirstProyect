@@ -70,8 +70,15 @@ var popo = (function () {
                 //parJug(evenbody.body);
 
             });
-
-
+            stompClient.subscribe('/topic/otro' , function (evenbody) {
+                //alert(evenbody.body);                
+                
+                console.log(evenbody.body);
+                var jugadores= JSON.parse(evenbody.body);
+                //alert("que es ujugadores: "+jugadores);
+                //document.getElementById("pl").innerHTML = jugadores;               
+                //location.reload();
+            });
             stompClient.subscribe('/topic/result' + topic, function (evenbody) {
                 var temp = document.getElementById("playerr").innerHTML;
                 var pagina = "/resultados.html";
@@ -135,7 +142,10 @@ var popo = (function () {
         
     }
 
-    function sendName() {//stompClient.send("/app/usu", {}, JSON.stringify({'name': $("#name").val()}));
+    function sendName() {//
+        
+        
+
         var temp = $("#name").val();
         var temp3 = temp.split(" ");
         var temp2 = "";
@@ -149,6 +159,7 @@ var popo = (function () {
                     grouid = response.data;
                     console.log('saved successfully' + grouid)
                     sala = grouid;
+                    stompClient.send("/app/otro", {}, );
                     pasarVariables(grouid.sala, grouid.nickName);
                 });
     }

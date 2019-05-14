@@ -211,6 +211,12 @@ public class GreetingController {
         msg.convertAndSend("/topic/cartt." + id, "2");
     }
 
+    @MessageMapping("otro")
+    public void OtroUsuario() throws Exception {       
+        msg.convertAndSend("/topic/otro" , cart.nameAllPlayer());
+    }
+    
+    
     /**
      *
      * @param sjug
