@@ -265,7 +265,7 @@ var popo = (function () {
         //alert("ques es cont: "+contador);
         if (contador > 1) {
             var n = document.getElementById("idSala").innerHTML;
-            stompClient.send("/app/cartt." + n, {}, JSON.stringify("2"));
+            stompClient.send("/app/cartt." + n, {}, );
         } else {
             alert("Anfritrion, espere a que halla minimo 3  jugadores conectados.");
         }

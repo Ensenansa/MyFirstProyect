@@ -2,26 +2,26 @@ package edu.eci.arsw.cartmode;
 public class HelloMessage {
     private String name;
     /**
-     * 
+     * Constructor vacio para la funcion ToString
      */
     public HelloMessage() {
     }
     /**
-     * 
-     * @param name 
+     * Constructor con solo el valor del nombre
+     * @param name Nombre del jugador
      */
     public HelloMessage(String name) {
         this.name = name;
     }
     /**
-     * 
-     * @return 
+     * Retorna el String con el nombre del jugador
+     * @return name
      */
     public String getName() {
         return name;
     }
     /**
-     * 
+     * Establece un nombre para el atributo name.
      * @param name 
      */
     public void setName(String name) {
