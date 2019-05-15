@@ -159,7 +159,7 @@ var popo = (function () {
                     grouid = response.data;
                     console.log('saved successfully' + grouid)
                     sala = grouid;
-                    stompClient.send("/app/otro", {}, );
+                    //stompClient.send("/app/otro", {}, );
                     pasarVariables(grouid.sala, grouid.nickName);
                 });
     }
