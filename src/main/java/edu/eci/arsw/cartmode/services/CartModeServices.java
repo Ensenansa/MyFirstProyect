@@ -159,7 +159,7 @@ public interface CartModeServices {
      * @param id
      * @throws CartModeException
      */
-    public void upLevelSalaId(Integer id) throws CartModeException;
+    //public void upLevelSalaId(Integer id) throws CartModeException;
 
     /**
      *

@@ -38,7 +38,8 @@ public class CartModeController {
     
     private List<String> distingidores=new ArrayList<String>();
     /**
-     * 
+     * Un constructor vacio donde se cargan los valores que serviran para el 
+     * distingidor.
      */
     public  CartModeController (){
         distingidores.add("0");
@@ -69,11 +70,10 @@ public class CartModeController {
     }
     
     /**
-     *
+     * Este metodo retorna todos los jugadores que se encuentren en una sala 
+     * esoecifica.
      * @return CopyOnWriteArrayList
      */
-
-
     @RequestMapping(method = RequestMethod.GET, path = "/all")
     public ResponseEntity<?> getAllJugadores() {
         try {
@@ -84,9 +84,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param nombre
- * @return 
+ *  Retorna todos los jugadores de una sala pasando por parametro un nombre.
+ * @param nombre Nombre del jugador a buscar
+ * @return ResponseEntity<?> Con la representacion de las listas con los 
+ * jugadores de una sala dada.
  */
     @GetMapping("/{nombre}")
     public ResponseEntity<?> getAllJugadoresBySala(@PathVariable String nombre) {
@@ -98,9 +99,9 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param id
- * @return 
+ * Esta funcion me trae la cantidad de jugadores que tiene una sala.
+ * @param id El identificador de la sala a consultar.
+ * @return ResponseEntity<?> La cantidad de todos los jugadores de una sala.
  */
     @GetMapping("sala/cantidad/{id}")
     public ResponseEntity<?> getCantPlayerOfSala(@PathVariable Integer id) {
@@ -112,17 +113,18 @@ public class CartModeController {
         }
     }
    /**
-    * 
-    * @return 
+    * Retorna un valor numerico para seleccinoar un valor para el distinguidor.
+    * @return Integer Un valor que este entre el tamaño del arreglo.
     */ 
     public Integer getAleatoroVal(){
         int valorEntero = (int) Math.floor(Math.random() * distingidores.size()-1);
         return valorEntero;
     }
       /**
-       * 
-       * @param nombre
-       * @return 
+       * Esta funcion agrega un  nuevo jugador al juego.
+       * @param nombre El nombre que identificara al nuevo jugador
+       * @return ResponseEntity<?>  La representacion en String del jugador 
+       * creado.
        */  
     @GetMapping("add/{nombre}")
     public ResponseEntity<?> addNewPlayers(@PathVariable String nombre) {
@@ -165,8 +167,9 @@ public class CartModeController {
         }
     }//DATOS DEL JUGADOR
     /**
-     * 
-     * @return 
+     * Retorna toda  la informacion de todos los jugadores.
+     * @return ResponseEntity<?> La representacion en String de todos los 
+     * jugadores que estan actualmente en el juego.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/datos")
     public ResponseEntity<?> getDataJugadores() {
@@ -178,9 +181,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param id
- * @return 
+ * Retorna toda la informacin de los jugadores de una sala especifica.
+ * @param id El identificador de la sala.
+ * @return La representacion en String de todos los 
+ * jugadores que estan actualmente en una sala especifica.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/datos/idsala/{id}")
     public ResponseEntity<?> getDataJugadoresIdSala(@PathVariable Integer id) {
@@ -192,8 +196,9 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @return 
+ * Retorna todas las salas que esten en la aplicacion.
+ * @return ResponseEntity La representacion en String de todas las salas que 
+ * esten en la aplicacion.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/sala")
     public ResponseEntity<?> getSalas() {
@@ -205,9 +210,11 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param nombre
- * @return 
+ * Retorna el identificador de la sala a la cual pertenece el nombre del jugador
+ * pasado como parametro.
+ * @param nombre El nombre del jugador.
+ * @return ResponseEntity<?>   La representacion en String del identificador de 
+ * la sala.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/sala/{nombre}")
     public ResponseEntity<?> getSalasIdByPlayer(@PathVariable String nombre) {
@@ -219,9 +226,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param id
- * @return 
+ *  Retorna el valor booleano del estado de una sala que se paso como parametro.
+ * @param id  El identificador de la sala a buscar.
+ * @return ResponseEntity<?>   La representacion en String del valor del 
+ * booleano del estado de la sala consultada.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/sala/listo/{id}")
     public ResponseEntity<?> getListoSalas(@PathVariable String id) {
@@ -234,9 +242,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param sala
- * @return 
+ * Retorna todos los jugadores de una sala en especifico.
+ * @param sala l identificador de una sala.
+ * @return ResponseEntity<?>   La representacion en String de todos los 
+ * jugadores de la sala consultada.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/players/{sala}")
     public ResponseEntity<?> getPlayersBySala(@PathVariable Integer sala) {
@@ -248,9 +257,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param sala
- * @return 
+ * Retorna el jugador anfitrion de una sala especifica.
+ * @param sala El identificador de la sala.
+ * @return  ResponseEntity<?>   La representacion en String del objeto jugador
+ * que representa al jugador anfriotion de esa sala.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}")
     public ResponseEntity<?> getAnfritionPlayerBySala(@PathVariable Integer sala) {
@@ -263,10 +273,13 @@ public class CartModeController {
     }
 
     /**
-     * 
-     * @param sala
-     * @param nombre
-     * @return 
+     * Esta funcion regresa el valor booleano de saber si el jugador pasado 
+     * como parametro es o no el anfitrion del identificador de la sala pasado
+     * como parametro.
+     * @param sala  Identificador de la sala.
+     * @param nombre Identificador del jugador de la sala.
+     * @return ResponseEntity<?>   La representacion en String del valor 
+     * booleano del resultado de si el jugador es o no el anfitrion de la sala.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/playAnfi/{sala}/{nombre}")
     public ResponseEntity<?> IsAnfritionPlayerOfSala(@PathVariable Integer sala, @PathVariable String nombre) {
@@ -278,9 +291,10 @@ public class CartModeController {
         }
     }
 /**
- * 
- * @param sala
- * @return 
+ * Esta funcion aumenta el nivel de la sala.
+ * @param sala El identificador de la sala.
+ * @return ResponseEntity<?>   La representacion en String del valor del nuevo
+ * nivel de la sala.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/nivel/{sala}")
     public ResponseEntity<?> getLevelOfSala(@PathVariable Integer sala) {
@@ -292,21 +306,11 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+
 /**
- * 
- * @param puntos
- * @param nombre
- * @return
- * @throws CartModeException 
- */
-    @RequestMapping(method = RequestMethod.POST, path = "/puntaje/{nombre}/{puntos}")
-    public ResponseEntity<?> addScore(@PathVariable String[] puntos, @PathVariable String nombre) throws CartModeException {
-        return new ResponseEntity<>("", HttpStatus.ACCEPTED);
-    }
-/**
- * 
- * @param correcto
- * @param nombre
+ *  Esta funcion aumenta el puntaje por las preguntas contestadas correctamete.
+ * @param correcto Indica el estado de la respuesta.
+ * @param nombre El nombre del jugador que resolvio la pregunta.
  * @throws CartModeException 
  */
     @RequestMapping(method = RequestMethod.POST, path = "/puntajePregunta/{nombre}/{correcto}")

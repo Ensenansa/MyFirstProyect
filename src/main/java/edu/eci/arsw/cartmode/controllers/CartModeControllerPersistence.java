@@ -54,9 +54,10 @@ public class CartModeControllerPersistence {
     @Autowired
     private  MongoDBTest mgbd;
 /**
- * 
- * @param nombre
- * @param puntaje
+ * Este metodo ingresa en la base de datos el nombre del jugador y su respectivo
+ * puntaje.
+ * @param nombre Nombre del jugador.
+ * @param puntaje Puntahe de jugador.
  * @throws CartModeException 
  */
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
@@ -64,8 +65,9 @@ public class CartModeControllerPersistence {
         mgbd.insertData(nombre, puntaje);
     }
    /**
-    * 
-    * @return 
+    * Retorna todos los jugadores que se encuentren almacenados en la base de datos.
+    * @return ResponseEntity<?>  Con la representacion en String de todos 
+    * los jugadores almacenados en la base de datos.
     */ 
     @GetMapping("/mostrar")
     public ResponseEntity<?> getAllJugadoresBySala() {

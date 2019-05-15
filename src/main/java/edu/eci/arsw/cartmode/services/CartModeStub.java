@@ -362,6 +362,7 @@ public class CartModeStub implements CartModeServices {
      * @return Boolean 
      * @throws CartModeException
      */
+    
     @Override
     public Boolean isPlayerAnfitrion(String nombre, Integer sala) throws CartModeException {
         Boolean resp1 = false;
@@ -378,7 +379,15 @@ public class CartModeStub implements CartModeServices {
         }
         return resp1;
     }
-//revisar
+
+    /**
+     * Esta funcion retorna un valor booleano donde indica si el jugador pasado 
+     * como parametro es o no anfrition de la sala indicada.
+     * @param idSala Sala a consultar.
+     * @param jugador A consultar en la sala.
+     * @return Boolean Que representa si ese jugador es o no es el anfriotion.
+     * @throws CartModeException 
+     */
     @Override
     public Boolean IsAnfitrion(Integer idSala, Jugador jugador) throws CartModeException {
         Boolean resp=false;
@@ -387,14 +396,14 @@ public class CartModeStub implements CartModeServices {
             resp=true;
         }
         return resp;
-    }
-    
+    }    
     
     /**
      * Esta funcion eleva el nivel de la sala pasada como parametro.
      * @param id El id de la sala a elevar.
      * @throws CartModeException
      */
+    /**
     @Override
     public void upLevelSalaId(Integer id) throws CartModeException {
         Sala temporal = salas.get(id);
@@ -402,10 +411,10 @@ public class CartModeStub implements CartModeServices {
         int t = temporal.getNivel();
         temporal.setNivel(t + 1);
     }
-
+*/
     /**
-     *
-     * @param idlista
+     * Esta funcion cmbia el estado de la sala indicada, y la cierra  a que otros jugadores entren en ella.
+     * @param idlista El identificador de la sala.
      * @throws CartModeException
      */
     @Override
@@ -416,9 +425,9 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param idlista
-     * @return
+     * Retorna la que se le paso como parametro.
+     * @param idlista El identificAdor de la sala.
+     * @return Sala Que tiene el Id que se le paso como parametro.
      * @throws CartModeException
      */
     @Override
@@ -427,9 +436,10 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param idSala
-     * @return
+     * Retorna un valor booleano que indica si la sala esta o no lista.
+     * @param idSala Representa el id de la sala.
+     * @return Boolean El valor que representa si la sala indicada esta o no 
+     * lista. (si inicio o no partida.)
      * @throws CartModeException
      */
     @Override
@@ -438,10 +448,11 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param idSala
+     * Esta funcion eleva el nivel de la sala pasada como parametro.
+     * @param idSala El identificador de la sala que se elevara su nivel.
      * @throws CartModeException
      */
+    
     @Override
     public void levelOfSalaId(Integer idSala) throws CartModeException {
         for (Sala sa : salas) {  //System.out.println("que comparamps : "+sa.getId()+" con : "+idSala);
@@ -457,9 +468,11 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param idSala
-     * @return
+     * Retorna el nivel que tenga actualemente la sala que se pasa por 
+     * parametro.
+     * @param idSala El identificador de la sala a buscar.
+     * @return Integer Un entero que representa el nivel en el que se encuentra 
+     * la sala.
      * @throws CartModeException
      */
     @Override
@@ -475,9 +488,10 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * Regresa el jugador que se asocie al nombre pasado como parametro.
+     * @param name Nombre del jugador
+     * @return Jugador El objeto jugador que se asocie al nombre pasado como 
+     * parametro.
      * @throws CartModeException
      */
     @Override
@@ -492,10 +506,13 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param play
+     * Esta funcion remplaza al jugador que se encuentre en el arreglo de 
+     * jugadores. Por el que se pasa como parametro.
+     * @param play El Objeto jugador que reemplazara los datos del mismo jugador
+     * en la lista de jugadores.
      * @throws CartModeException
      */
+    
     public void setPlayerByName(Jugador play) throws CartModeException {
         int ind = player.indexOf(play);
         System.out.println("que improme int" + ind);
@@ -503,8 +520,10 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @return @throws CartModeException
+     * Esta funcion retorn una pregunta de la lista de preguntas.
+     * @return Pregunta El objeto pregunta que contiene una pregunta que 
+     * respondera el usuario.
+     * @throws CartModeException
      */
     @Override
     public Pregunta getPregunta() throws CartModeException {

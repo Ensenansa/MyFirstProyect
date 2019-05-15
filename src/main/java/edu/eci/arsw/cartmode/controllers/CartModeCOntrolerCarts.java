@@ -25,9 +25,10 @@ public class CartModeCOntrolerCarts {
     @Autowired
     private CartModeServices cat;     
     /**
-     * 
-     * @param nivel
-     * @return 
+     * Esta funcion retorna una baraja de cartas segun el nivel que se le pase
+     * como parametro.(va de 1 a 3).
+     * @param nivel El parametro que definira el nivel de cartas a generar.
+     * @return ResponseEntity<?> Con la representacion de las cartas.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/bara/{nivel}")
     public ResponseEntity<?> getAllPlayerByLevel(@PathVariable Integer nivel) {

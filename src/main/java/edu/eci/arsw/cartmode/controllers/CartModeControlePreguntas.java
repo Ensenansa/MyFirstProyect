@@ -29,8 +29,9 @@ public class CartModeControlePreguntas {
     private CartModeServices cat;
     
 /**
- * 
- * @return 
+ * Regresa todas las preguntas que se encuentran en el sistema.
+ * @return ResponseEntity<?> Que representa la lista de preguntas en formato 
+ * String.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/all")
     public ResponseEntity<?> getAllJQuestion() {
@@ -43,8 +44,8 @@ public class CartModeControlePreguntas {
     }
     
 /**
- * 
- * @return 
+ * Retorna una pregunta de las preguntas en el sistema.
+ * @return ResponseEntity<?> Representa la pregunta en formato toString.
  */    
     @RequestMapping(method = RequestMethod.GET, path = "/one")
     public ResponseEntity<?> getAllOneQuestion() {
