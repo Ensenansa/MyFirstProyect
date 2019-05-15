@@ -26,7 +26,6 @@ var popo = (function () {
             });
             stompClient.subscribe('/topic/cart' + topic, function (evenbody) {
                 limpiar();
-                //alert("saliendo por cartas");
                 var t = JSON.parse(evenbody.body);
                 m = t.dato;
                 mostrar(m, t.pos);
@@ -35,23 +34,17 @@ var popo = (function () {
                 allPar(tempo);
                 var level = document.getElementById("levelGame").innerHTML;
                 parJug(popo.getjugcarta());
-                //alert("nivel por cartas: "+level);
             });
             stompClient.subscribe('/topic/parejas' + topic, function (evenbody) {
                 limpiar();
-                //alert("saliendo por parejas");
                 var t = JSON.parse(evenbody.body);
-                //alert("que regresa: "+t);
                 console.log(evenbody.body);
                 allPar(t);
                 limpiar();
                 sendPuntaje();
                 allPar(tempo);
                 parJug(popo.getjugcarta());
-                comprobarParejas();
-                
-
-
+                comprobarParejas();                
             });
             stompClient.subscribe('/topic/uplevel' + topic, function (evenbody) {
                 preguntas.mudanza();
@@ -63,19 +56,12 @@ var popo = (function () {
 
             });
             stompClient.subscribe('/topic/cxj' + topic, function (evenbody) {
-                //alert(evenbody.body);
                 console.log(evenbody.body);
-                jugcarta = JSON.parse(evenbody.body);
-                
-                //parJug(evenbody.body);
-
+                jugcarta = JSON.parse(evenbody.body);                               
             });
-            stompClient.subscribe('/topic/otro' , function (evenbody) {
-                //alert(evenbody.body);                
-                
+            stompClient.subscribe('/topic/otro' , function (evenbody) {                
                 console.log(evenbody.body);
                 var jugadores= JSON.parse(evenbody.body);
-                //alert("que es ujugadores: "+jugadores);
                 //document.getElementById("pl").innerHTML = jugadores;               
                 //location.reload();
             });
@@ -143,9 +129,6 @@ var popo = (function () {
     }
 
     function sendName() {//
-        
-        
-
         var temp = $("#name").val();
         var temp3 = temp.split(" ");
         var temp2 = "";
@@ -153,13 +136,11 @@ var popo = (function () {
         for (i = 0; i < temp3.length; i++) {
             temp2 += temp3[i];
         }
-
         axios.get('jugadores/add/' + temp2)
                 .then(function (response) {
                     grouid = response.data;
                     console.log('saved successfully' + grouid)
-                    sala = grouid;
-                    //stompClient.send("/app/otro", {}, );
+                    sala = grouid;  //stompClient.send("/app/otro", {}, );
                     pasarVariables(grouid.sala, grouid.nickName);
                 });
     }
@@ -198,9 +179,7 @@ var popo = (function () {
         stompClient.send("/app/pareja." + n, {}, JSON.stringify(ctp));
     }
 
-    function pasarVariables(op, nombre) {
-        //var temp = $("#name").val();
-        //alert("cual nombre se manda: "+nombre);
+    function pasarVariables(op, nombre) {        
         var temp = nombre;
         pagina = "AnteSala.html";
         pagina += "?";

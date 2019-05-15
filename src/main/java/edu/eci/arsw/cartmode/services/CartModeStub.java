@@ -314,9 +314,9 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * Regresa una lista de listas con los nombres de la sala
+     * @param name NOmbre de jugador
+     * @return List<List<String>>
      * @throws CartModeException
      */
     @Override
@@ -335,8 +335,9 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @return @throws CartModeException
+     * Retorna la lista de preguntas ya configuradas. 
+     * @return List<Pregunta>
+     * @throws CartModeException
      */
     @Override
     public List<Pregunta> getListPreguntas() throws CartModeException {
@@ -344,7 +345,7 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
+     * Esta funcion elimina todos los usuarios y salas del juego.
      * @throws CartModeException
      */
     @Override
@@ -354,10 +355,11 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     *
-     * @param nombre
-     * @param sala
-     * @return
+     * Esta funcion indica si el usuario pasado como parametro es o no anfitrion  
+     * de la sala pasada como parametro.
+     * @param nombre NOmbre del jugador a consultar.
+     * @param sala Identificador de la sala consultada.
+     * @return Boolean 
      * @throws CartModeException
      */
     @Override
@@ -376,7 +378,7 @@ public class CartModeStub implements CartModeServices {
         }
         return resp1;
     }
-
+//revisar
     @Override
     public Boolean IsAnfitrion(Integer idSala, Jugador jugador) throws CartModeException {
         Boolean resp=false;
@@ -389,8 +391,8 @@ public class CartModeStub implements CartModeServices {
     
     
     /**
-     *
-     * @param id
+     * Esta funcion eleva el nivel de la sala pasada como parametro.
+     * @param id El id de la sala a elevar.
      * @throws CartModeException
      */
     @Override
