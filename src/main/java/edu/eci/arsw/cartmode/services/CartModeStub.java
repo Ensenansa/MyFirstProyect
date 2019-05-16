@@ -336,7 +336,8 @@ public class CartModeStub implements CartModeServices {
 
     /**
      * Retorna la lista de preguntas ya configuradas. 
-     * @return List<Pregunta>
+     * @return preguntas List<Pregunta> Que representa la lista de preguntas 
+     * del juego.
      * @throws CartModeException
      */
     @Override
@@ -399,20 +400,6 @@ public class CartModeStub implements CartModeServices {
     }    
     
     /**
-     * Esta funcion eleva el nivel de la sala pasada como parametro.
-     * @param id El id de la sala a elevar.
-     * @throws CartModeException
-     */
-    /**
-    @Override
-    public void upLevelSalaId(Integer id) throws CartModeException {
-        Sala temporal = salas.get(id);
-        List<Jugador> jugado = temporal.getJugadores();
-        int t = temporal.getNivel();
-        temporal.setNivel(t + 1);
-    }
-*/
-    /**
      * Esta funcion cmbia el estado de la sala indicada, y la cierra  a que otros jugadores entren en ella.
      * @param idlista El identificador de la sala.
      * @throws CartModeException
@@ -425,8 +412,8 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     * Retorna la que se le paso como parametro.
-     * @param idlista El identificAdor de la sala.
+     * Retorna la sala con el identificador que se le paso como parametro.
+     * @param idlista Integer El identificAdor de la sala.
      * @return Sala Que tiene el Id que se le paso como parametro.
      * @throws CartModeException
      */
@@ -475,6 +462,7 @@ public class CartModeStub implements CartModeServices {
      * la sala.
      * @throws CartModeException
      */
+    
     @Override
     public Integer LevelOfSala(Integer idSala) throws CartModeException {
         int resp = 0;
@@ -488,7 +476,7 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     * Regresa el jugador que se asocie al nombre pasado como parametro.
+     * Regresa el jugador asociado al nombre pasado como parametro.
      * @param name Nombre del jugador
      * @return Jugador El objeto jugador que se asocie al nombre pasado como 
      * parametro.

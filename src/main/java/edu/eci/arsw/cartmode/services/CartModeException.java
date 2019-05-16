@@ -12,17 +12,18 @@ package edu.eci.arsw.cartmode.services;
 public class CartModeException extends Exception {
 
     /**
-     *
-     * @param message
-     * @param cause
+     * Esta funcion lanza una excepcion con el mensaje y la causa 
+     * de la excepcion.
+     * @param message String Del mensaje a mostrar.
+     * @param cause Throwable Causa del mensaje.
      */
     public CartModeException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     *
-     * @param message
+     * Esta funcion llama a la clase padre.
+     * @param message String del mensaje a mostrar.
      */
     public CartModeException(String message) {
         super(message);

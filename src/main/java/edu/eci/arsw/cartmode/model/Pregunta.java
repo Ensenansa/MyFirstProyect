@@ -18,12 +18,13 @@ public abstract class Pregunta {
     private List<String> opcionesDeRespuesta;
     private String respuestaCorrecta;
 /**
- * 
- * @param id
- * @param enunciado
- * @param tema
- * @param opcionesDeRespuesta
- * @param respuestaCorrecta 
+ * COnstructor que recibe como parametro identificador de pregunta, eninciado, 
+ * tema, opciones de respuesta y respuesta correcta.
+ * @param id Integer que representa el identificador de la pregunta.
+ * @param enunciado String que repreesnta el enunciado de la pregunta.
+ * @param tema String que representa el tema de la pregunta.
+ * @param opcionesDeRespuesta List<String> que representa las opciones de respuesta de las preguntas.
+ * @param respuestaCorrecta String que representa la respuesta correcta de la pregutna.
  */
     public Pregunta(Integer id, String enunciado, String tema, List<String> opcionesDeRespuesta,String respuestaCorrecta) {
         this.id = id;
@@ -32,78 +33,88 @@ public abstract class Pregunta {
         this.respuestaCorrecta=respuestaCorrecta;
     }
     /**
-     * 
+     * Constructor vacio.
      */
     public Pregunta() {
     }
     /**
-     * 
-     * @param respuestaCorrecta 
+     * Establece la respuesta correcta del jugador.
+     * @param respuestaCorrecta String que representa la respesuta correcta de 
+     * la pregunta.
      */
     public void setRespuestaCorrecta(String respuestaCorrecta) {
         this.respuestaCorrecta = respuestaCorrecta;
     }
     /**
-     * 
-     * @return 
+     * Retorna la resuesta correecta de la pregunta
+     * @return respuestaCorrecta String que representa la respuesta correcta de
+     * la pregunta.
      */
     public String getRespuestaCorrecta() {
         return respuestaCorrecta;
     }
     /**
-     * 
-     * @return 
+     * Retorna el identificador de la pregunta.
+     * @return id Entero que representa el identificador de la pregunta.
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }  
     /**
-     * 
-     * @param id 
+     * Establece el identificador de la pregunta.
+     * @param id Integer que representa el identificador de la pregunta.
      */
     public void setId(int id) {
         this.id = id;
     }
     /**
-     * 
-     * @return 
+     * Retorna el enunciado de la pregunta.
+     * @return enunciado String que representa el enunciado de la pregunta.
      */
     public String getEnunciado() {
         return enunciado;
     }
     /**
-     * 
-     * @param enunciado 
+     * Establece el enunciado de la pregunta.
+     * @param enunciado String que representa el enunciado de la pregunta.
      */
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
     /**
-     * 
-     * @return 
+     * Retorna la lista de opciones de respuesta de la pregunta.
+     * @return opcionesDeRespuesta List<String> que representa las opciones
+     * de respuesta de la pregunta.
      */
     public List<String> getOpcionesDeRespuesta() {
         return opcionesDeRespuesta;
     }
     /**
-     * 
-     * @param opcionesDeRespuesta 
+     * Establece las opciones de respuesta de la pregunta.
+     * @param opcionesDeRespuesta List<String> Es la lista que representa las 
+     * opciones de respuseta de la pregunta.
      */
     public void setOpcionesDeRespuesta(List<String> opcionesDeRespuesta) {
         this.opcionesDeRespuesta = opcionesDeRespuesta;
     }  
     /**
-     * 
-     * @param respuestaJugador
-     * @param respuestaCorrecta
-     * @return 
+     * Retorna el valor booleano de comprobar si la respuesta es correcta o no.
+     * @param respuestaJugador Objeto que representa la respuesta del jugador.
+     * @param respuestaCorrecta Objeto que representa la respuesta correcta 
+     * de la pregunta.
+     * @return resp Boolean que representa si la respuesta del jugador es 
+     * correcta o no.
      */
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta){
-        return false;
+        boolean resp=false;
+        if(respuestaJugador.equals(respuestaCorrecta)){
+            resp=true;        
+        };
+        return resp;
     }
     /**
-     * 
-     * @return 
+     * Representa el objeto en string.
+     * @return String Con la representacion del objeto Pregunta.
      */
     @Override
     public String toString() {

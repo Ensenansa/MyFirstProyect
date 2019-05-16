@@ -13,50 +13,53 @@ public class CartaJavSc {
     private String dato;
     private boolean seleccion;
     /**
-     * 
+     * Constructor vacio.
      */
     public CartaJavSc() {
     }
     /**
-     * 
-     * @param dato
-     * @param seleecion 
+     * Constructor que recibe 2 parametros, dato y seleccion.
+     * @param dato String que representa el dato de la carta.
+     * @param seleecion Boolean que representa si la carta ha sido seleccionada 
+     * o no.
      */
     public CartaJavSc(String dato,Boolean seleecion) {
         this.dato=dato;
         this.seleccion=seleecion;
     }
     /**
-     * 
-     * @param seleccion 
+     * Establece el valor de seleecion de la carta
+     * @param seleccion Boolean Valor de verdad que representa si la carta 
+     * a sido selecionada o no.
      */
     public void setSeleccion(boolean seleccion) {
         this.seleccion = seleccion;
     }
     /**
-     * 
-     * @return 
+     * Retorna el valor booleano de seleccion.
+     * @return seleccion Boolean Valor booelano de si la carta a sido 
+     * seleccionada o no.
      */
     public boolean isSeleccion() {
         return seleccion;
     }  
     /**
-     * 
-     * @return 
+     * Retorna el valor del dato de la carta.
+     * @return dato String Que representa el valor del dato de la carta.
      */
     public String getDato() {
         return dato;
     }
     /**
-     * 
-     * @param dato 
+     * Establece el valor del dato de la carta.
+     * @param dato String Que representa el dato de la carta.
      */
     public void setDato(String dato) {
         this.dato = dato;
     }
     /**
-     * 
-     * @return 
+     * Representa el objeto en string.
+     * @return String Con la representacion del objeto CartaJavSc.
      */
     @Override
     public String toString() {     

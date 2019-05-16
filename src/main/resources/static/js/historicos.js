@@ -32,7 +32,7 @@ var historicos = (function () {
         
         for(tt=0;tt<datos.length;tt++){
                 var t=parseInt(datos[tt].puntaje, 10);
-                var temp = '<tr> <td>' + datos[tt].nickName+ '</td> '+'<br>' + '<td>"' + t+ '"</td></tr>';
+                var temp = '<tr> <td>' + datos[tt].nickName+ '</td> ' + '<td>"' + t+ '"</td></tr>';
                 txt_respuestas+=temp;            
         }
         txt_respuestas+="</table>";

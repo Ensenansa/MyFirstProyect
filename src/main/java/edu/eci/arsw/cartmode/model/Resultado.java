@@ -15,65 +15,67 @@ public class Resultado {
     private String nombreJugador;
     private String resultados;
     /**
-     * 
+     * Constructor vacio.
      */
     public Resultado(){}
     /**
-     * 
-     * @param puntajeTotal
-     * @param nombreJUgador
-     * @param resultados 
+     * COnstructor que recibe 3 parametros, puntaje total, nombrejugador y resultados.
+     * @param puntajeTotal Un entero que representa el puntaje total realizado
+     * por el jugador.
+     * @param nombreJUgador Es nombre del jugador.
+     * @param resultados Son los resultados del jugador.
      */
+    /**
     public Resultado(Integer puntajeTotal,String nombreJUgador,String resultados){
         this.puntajeTotal=puntajeTotal;
         this.nombreJugador=nombreJUgador;
         this.resultados=resultados;       
-    }
+    }*/
     /**
-     * 
-     * @return 
+     * Retorna el nombre del jugador.
+     * @return nombreJugador String que representa el nombre del jugador.
      */
     public String getNombreJugador() {
         return nombreJugador;
     }
     /**
-     * 
-     * @return 
+     * Retorna el puntaje total del jugador
+     * @return puntajeTotal Entero que represena el puntaje total del jugador.
      */
     public Integer getPuntajeTotal() {
         return puntajeTotal;
     }
     /**
-     * 
-     * @return 
+     * Retorna el resultado del jugador.
+     * @return resultados String que representa los resultados del jugador.
      */
     public String getResultados() {
         return resultados;
     }
     /**
-     * 
-     * @param nombreJugador 
+     * Establece el nombre del jugador.
+     * @param nombreJugador String que representa el nombre del jugador.
      */
     public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
     }
     /**
-     * 
-     * @param puntajeTotal 
+     * Estable el puntaje total del jugador.
+     * @param puntajeTotal Entero que representa el puntaje total.
      */
     public void setPuntajeTotal(Integer puntajeTotal) {
         this.puntajeTotal = puntajeTotal;
     }
     /**
-     * 
-     * @param resultados 
+     * Estable el resutlado del jugador.
+     * @param resultados String que representa los resultados del jugador.
      */
     public void setResultados(String resultados) {
         this.resultados = resultados;
     }
     /**
-     * 
-     * @return 
+     * Representa el objeto en string.
+     * @return String Con la representacion del objeto resultado.
      */
     @Override
     public String toString() {
