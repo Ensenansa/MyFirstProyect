@@ -4,7 +4,6 @@ var t;
 var getPDF = (function pdf() {
 
     function pdd() {
-        alert("llegamos");
         t = gset.getUser();
         document.getElementById("usuario").innerHTML = "este usuario" + t;
         //alert(t);

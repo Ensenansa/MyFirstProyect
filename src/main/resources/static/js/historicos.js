@@ -27,8 +27,18 @@ var historicos = (function () {
         txt_respuestas="";
         txt_respuestas+="<table > <tr> <th>Nombre Jugadores</th> <th>Puntaje</th></tr>";
         var ten=datos.length;;
-        var tt;
-
+        var tt;        
+        datos.sort(function (a, b) {
+            
+            if (a.puntaje < b.puntaje) {
+                return 1;
+            }
+            if (a.puntaje > b.puntaje) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        });
         
         for(tt=0;tt<datos.length;tt++){
                 var t=parseInt(datos[tt].puntaje, 10);
