@@ -58,7 +58,7 @@ public class CartModeControllerPersistence {
  * puntaje.
  * @param nombre Nombre del jugador.
  * @param puntaje Puntahe de jugador.
- * @throws CartModeException 
+ * @throws CartModeException  Genera una excepcion cuando ocurre un error.
  */
     @RequestMapping(method = RequestMethod.POST, path = "/almacenar/{nombre}/{puntaje}")
     public void addDataBaseMongoBD(@PathVariable String nombre, @PathVariable String puntaje) throws CartModeException {
@@ -66,7 +66,7 @@ public class CartModeControllerPersistence {
     }
    /**
     * Retorna todos los jugadores que se encuentren almacenados en la base de datos.
-    * @return ResponseEntity<?>  Con la representacion en String de todos 
+    * @return ResponseEntity Con la representacion en String de todos 
     * los jugadores almacenados en la base de datos.
     */ 
     @GetMapping("/mostrar")

@@ -10,7 +10,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 /**
  * 
- * @param config 
+ * @param config Parametro de configuracion del web Scoket.
  */
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
@@ -19,7 +19,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     }
 /**
  * 
- * @param registry 
+ * @param registry Parametro de configuracioin del stomEndponit.
  */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {

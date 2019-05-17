@@ -40,8 +40,9 @@ public class CartModeStub implements CartModeServices {
 
     /**
      * Esta funcion retorna todos los nombres de los jugadores.
-     * @return Un List<String>
-     * @throws CartModeException
+     * @return resp Retorna una lista de tipo string con todos los nombres de 
+     * los jugadores del juego.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<String> nameAllPlayer() throws CartModeException {
@@ -54,8 +55,9 @@ public class CartModeStub implements CartModeServices {
 
     /**
      *Retorna la lista con todos los jugadores del juego.
-     * @return List<Jugador>
-     * @throws CartModeException
+     * @return player Retorna una lista de tipo jugador con todos los jugadores 
+     * de  la partida.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<Jugador> nameAlPlayer() throws CartModeException {
@@ -64,8 +66,9 @@ public class CartModeStub implements CartModeServices {
 
     /**
      *Retorna la cantidad de los jugadores en el juego
-     * @return  Integer
-     * @throws CartModeException
+     * @return  Integer Retorna un entero el cual representa la cantidad 
+     * de jugadores en el juego.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     public Integer getAllPlayerInGame() throws CartModeException {
         return player.size();
@@ -74,7 +77,7 @@ public class CartModeStub implements CartModeServices {
     /**
      * Esta funcion agrega un usuario a una sala existinte o crea una nueva.
      * @param name Nombre del jugador.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public void addPlayer(String name) throws CartModeException {
@@ -120,8 +123,9 @@ public class CartModeStub implements CartModeServices {
     /**
      * Esta funcion retorna la cantidad de jugadores de una sala determinada.
      * @param id El ID de la sala indicada.
-     * @return Integer
-     * @throws CartModeException
+     * @return Integer Representa la cantidad de jugadores en una sala 
+     * especifica.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Integer allPlayerOfSala(Integer id) throws CartModeException {
@@ -132,7 +136,7 @@ public class CartModeStub implements CartModeServices {
     /**
      * Retorna el id de la sala disponible. (De no haber retorna -1)
      * @return Integer Indica el id de la sala disponible.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Integer getSalaDisponible() throws CartModeException {
@@ -148,8 +152,9 @@ public class CartModeStub implements CartModeServices {
     /**
      * Retorna el nombre de todos los jugadores de la sala indicada.
      * @param id El id de la sala buscada
-     * @return List<String> Lista de string con los nombres de los jugadores.
-     * @throws CartModeException
+     * @return resp Retorna una lista de tipo String con todos los nombres de 
+     * la sala indicada..
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<String> getNamePlayersBySala(Integer id) throws CartModeException {
@@ -165,7 +170,7 @@ public class CartModeStub implements CartModeServices {
     /**
      * Cambia el estado de una sala a no disponible.
      * @param id El id de la sala a cambiar de estado.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     public void statedIdSala(Integer id) throws CartModeException {
         Sala temp = salas.get(id);
@@ -177,8 +182,8 @@ public class CartModeStub implements CartModeServices {
      * cantidad total que necesita el tablero-
      * @param nivel Representa el nivel que sera jugado, e indica que cartas 
      * brindarle al jugador.    
-     * @return List<CartaJavSc> Una Lista con las cartas necesarias por nivel.
-     * @throws CartModeException
+     * @return resp1 Retorna una lista de tipo CartaJavSc con las cartas necesarias por nivel.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<CartaJavSc> GenerateDuplicadoBaraja(Integer nivel) throws CartModeException {
@@ -199,8 +204,9 @@ public class CartModeStub implements CartModeServices {
      * Esta funcion le brinda todos los jugadores(como objeto) de una sala 
      * especifica.
      * @param idSala El identificador de la sala.
-     * @return List<Jugador> Una lista de jugadores de una sala especifica.
-     * @throws CartModeException
+     * @return tt Retrona una lista de tipo Jugador con todos los jugadores 
+     * de la sala especificada.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     public List<Jugador> getJugadoresByIdSala(Integer idSala) throws CartModeException {
         Sala t = salas.get(idSala);
@@ -211,8 +217,9 @@ public class CartModeStub implements CartModeServices {
     /**
      * Genera la baraja de cartas deacuerdo al nivel de la carta.
      * @param nivel Nivel de la baraja generada.
-     * @return List<CartaJavSc> Una lista de cartas.
-     * @throws CartModeException
+     * @return resp Retorna una lista de tipo CartaJavSc con la baraja de cartas 
+     * deacuerdo al nivel solicitado.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<CartaJavSc> GenerateBaraja(Integer nivel) throws CartModeException {
@@ -253,8 +260,8 @@ public class CartModeStub implements CartModeServices {
 
     /**
      *  Retorna la lista de salas activas en todo el juego.
-     * @return List<Sala> Lista de salas.
-     * @throws CartModeException
+     * @return salas Retorna la lista con todas las salas del juego.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<Sala> getSala() throws CartModeException {
@@ -265,7 +272,7 @@ public class CartModeStub implements CartModeServices {
      * Retorna el identificador de la sala de un Jugador en especifico.
      * @param nombre El nombre del jugador
      * @return Integer Identificador de sala.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Integer getIdSalaByPlayer(String nombre) throws CartModeException {
@@ -281,8 +288,9 @@ public class CartModeStub implements CartModeServices {
     /**
      * Retorna los nombres de todos los juagdores por una sala especifica.
      * @param idSala El identificador de la sala.
-     * @return List<String> Una lista con nombres-.
-     * @throws CartModeException
+     * @return resp Retorna una lista de tipo String con todos los nombres de 
+     * los jugadores de una sala.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<String> getAllPlayersBySala(Integer idSala) throws CartModeException {
@@ -299,7 +307,7 @@ public class CartModeStub implements CartModeServices {
      * Retorna el anfitrion de una sala en especifico.
      * @param idSala El identificador de la sala
      * @return Jugador El jugador anfitrion de la sala.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Jugador getPlayerAnfiBySala(Integer idSala) throws CartModeException {
@@ -316,8 +324,9 @@ public class CartModeStub implements CartModeServices {
     /**
      * Regresa una lista de listas con los nombres de la sala
      * @param name NOmbre de jugador
-     * @return List<List<String>>
-     * @throws CartModeException
+     * @return resp Retorna una lista de de listas tipo string con los nombres 
+     * del juego.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<List<String>> getPlayersBySala(String name) throws CartModeException {
@@ -336,9 +345,9 @@ public class CartModeStub implements CartModeServices {
 
     /**
      * Retorna la lista de preguntas ya configuradas. 
-     * @return preguntas List<Pregunta> Que representa la lista de preguntas 
-     * del juego.
-     * @throws CartModeException
+     * @return preguntas Retorna la lista de tipo ListPregunta que representa 
+     * la lista de preguntas del juego.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public List<Pregunta> getListPreguntas() throws CartModeException {
@@ -347,7 +356,7 @@ public class CartModeStub implements CartModeServices {
 
     /**
      * Esta funcion elimina todos los usuarios y salas del juego.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public void eraseAll() throws CartModeException {
@@ -356,12 +365,13 @@ public class CartModeStub implements CartModeServices {
     }
 
     /**
-     * Esta funcion indica si el usuario pasado como parametro es o no anfitrion  
-     * de la sala pasada como parametro.
+     * Esta funcion indica si el usuario pasado como parametro es o no 
+     * anfitrion de la sala pasada como parametro.
      * @param nombre NOmbre del jugador a consultar.
      * @param sala Identificador de la sala consultada.
-     * @return Boolean 
-     * @throws CartModeException
+     * @return Boolean Retorna un valor booleano que representa si el jugador 
+     * es el anfitrion de la sala o no.
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     
     @Override
@@ -387,7 +397,7 @@ public class CartModeStub implements CartModeServices {
      * @param idSala Sala a consultar.
      * @param jugador A consultar en la sala.
      * @return Boolean Que representa si ese jugador es o no es el anfriotion.
-     * @throws CartModeException 
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Boolean IsAnfitrion(Integer idSala, Jugador jugador) throws CartModeException {
@@ -402,7 +412,7 @@ public class CartModeStub implements CartModeServices {
     /**
      * Esta funcion cmbia el estado de la sala indicada, y la cierra  a que otros jugadores entren en ella.
      * @param idlista El identificador de la sala.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public void SetStade(Integer idlista) throws CartModeException {
@@ -415,7 +425,7 @@ public class CartModeStub implements CartModeServices {
      * Retorna la sala con el identificador que se le paso como parametro.
      * @param idlista Integer El identificAdor de la sala.
      * @return Sala Que tiene el Id que se le paso como parametro.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Sala getSalaById(Integer idlista) throws CartModeException {
@@ -427,7 +437,7 @@ public class CartModeStub implements CartModeServices {
      * @param idSala Representa el id de la sala.
      * @return Boolean El valor que representa si la sala indicada esta o no 
      * lista. (si inicio o no partida.)
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Boolean getListoSala(Integer idSala) throws CartModeException {
@@ -437,7 +447,7 @@ public class CartModeStub implements CartModeServices {
     /**
      * Esta funcion eleva el nivel de la sala pasada como parametro.
      * @param idSala El identificador de la sala que se elevara su nivel.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     
     @Override
@@ -460,7 +470,7 @@ public class CartModeStub implements CartModeServices {
      * @param idSala El identificador de la sala a buscar.
      * @return Integer Un entero que representa el nivel en el que se encuentra 
      * la sala.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     
     @Override
@@ -480,7 +490,7 @@ public class CartModeStub implements CartModeServices {
      * @param name Nombre del jugador
      * @return Jugador El objeto jugador que se asocie al nombre pasado como 
      * parametro.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Jugador getPlayerByName(String name) throws CartModeException {
@@ -498,7 +508,7 @@ public class CartModeStub implements CartModeServices {
      * jugadores. Por el que se pasa como parametro.
      * @param play El Objeto jugador que reemplazara los datos del mismo jugador
      * en la lista de jugadores.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     
     public void setPlayerByName(Jugador play) throws CartModeException {
@@ -511,7 +521,7 @@ public class CartModeStub implements CartModeServices {
      * Esta funcion retorn una pregunta de la lista de preguntas.
      * @return Pregunta El objeto pregunta que contiene una pregunta que 
      * respondera el usuario.
-     * @throws CartModeException
+     * @throws CartModeException Genera una excepcion cuando ocurre un error.
      */
     @Override
     public Pregunta getPregunta() throws CartModeException {

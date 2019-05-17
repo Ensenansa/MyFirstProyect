@@ -28,8 +28,8 @@ public class MongoDBTest {
     public MongoDBTest(){}
     /**
      * Retorna la lista de jugadores ingresados a la base de datos.
-     * @return jugadores List<Jugador> Que representa los jugadores ingresados 
-     * a la base de datos.
+     * @return jugadores Retorna una lsta de tipo jugador que representa 
+     * los jugadores ingresados a la base de datos.
      */
     public List<Jugador> getRespuesta(){
         return jugadores;

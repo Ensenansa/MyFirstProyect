@@ -20,7 +20,7 @@ public class PreguntaSeleecionMultiple extends Pregunta {
      * @param id Integer que representa el identificador de la pregunta.
      * @param enunciado String que repreesnta el enunciado de la pregunta.
      * @param tema String que representa el tema de la pregunta.
-     * @param opcionesDeRespuesta List<String> que representa las opciones de
+     * @param opcionesDeRespuesta List String que representa las opciones de
      * respuesta de las preguntas.
      * @param respuestaCorrecta String que representa la respuesta correcta de
      * la pregutna.

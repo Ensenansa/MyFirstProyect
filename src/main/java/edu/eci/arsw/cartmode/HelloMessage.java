@@ -15,14 +15,14 @@ public class HelloMessage {
     }
     /**
      * Retorna el String con el nombre del jugador
-     * @return name
+     * @return name Representa el nombre del mensaje.
      */
     public String getName() {
         return name;
     }
     /**
      * Establece un nombre para el atributo name.
-     * @param name 
+     * @param name Representa el nombre del mensaje.
      */
     public void setName(String name) {
         this.name = name;

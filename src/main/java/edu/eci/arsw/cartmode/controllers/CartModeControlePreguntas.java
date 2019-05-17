@@ -30,7 +30,7 @@ public class CartModeControlePreguntas {
     
 /**
  * Regresa todas las preguntas que se encuentran en el sistema.
- * @return ResponseEntity<?> Que representa la lista de preguntas en formato 
+ * @return ResponseEntity Que representa la lista de preguntas en formato 
  * String.
  */
     @RequestMapping(method = RequestMethod.GET, path = "/all")
@@ -45,7 +45,7 @@ public class CartModeControlePreguntas {
     
 /**
  * Retorna una pregunta de las preguntas en el sistema.
- * @return ResponseEntity<?> Representa la pregunta en formato toString.
+ * @return ResponseEntity Representa la pregunta en formato toString.
  */    
     @RequestMapping(method = RequestMethod.GET, path = "/one")
     public ResponseEntity<?> getAllOneQuestion() {

@@ -48,7 +48,7 @@ public class GreetingController {
      * cual pertenece un jugador en especifico.
      *
      * @param message Repersenta el nombre del jugador.
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("/usu")
     public void greeting(HelloMessage message) throws Exception {
@@ -61,7 +61,7 @@ public class GreetingController {
      * Esta funcion permite eliminar todas las parejas hechas por los jugadores
      * en niveles anteriores.Deja vacios todos los hasmap y listas usadas.
      *
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("iniciar")
     public void start() throws Exception {
@@ -85,7 +85,7 @@ public class GreetingController {
      *
      * @param ct Representa la carta enviada por el jugador.
      * @param id Representa el id de la sala asociada.
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("cart.{id}")
     public void CambioCarta(Carta ct, @DestinationVariable String id) throws Exception {
@@ -189,7 +189,7 @@ public class GreetingController {
      * Esta funcion retorna las parejas hechas por cada jugador.
      *
      * @param id Representa la sala suscrita.
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("cxj.{id}")
     public void CartaXJugador(@DestinationVariable String id) throws Exception {
@@ -200,7 +200,7 @@ public class GreetingController {
      * Esta funcion sirve para poder iniciar una sala y que esta ya no se
      * encuentre disponible.   
      * @param id Representa la sala suscrita.
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("cartt.{id}")
     public void IniciadorPartida(@DestinationVariable String id) throws Exception {
@@ -209,7 +209,7 @@ public class GreetingController {
     }
     /**
      * Esta funcion avisa a los demas jugadores de que otro a ingresado  la sala.
-     * @throws Exception 
+     * @throws Exception  Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("otro")
     public void OtroUsuario() throws Exception {
@@ -221,7 +221,7 @@ public class GreetingController {
      * puede ser activada por el jugador anfitrion.
      * @param sjug El jugador que intenta elevar el nivel.
      * @param idd El id de la sala suscrita.
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("level.{idd}")
     public void level(Jugador sjug, @DestinationVariable String idd) throws Exception {
@@ -248,7 +248,7 @@ public class GreetingController {
     /**
      * Esta funcion regresa los resultados de todos los jugadores.
      * @param idd El id de la sala suscrita-
-     * @throws Exception
+     * @throws Exception Genera una excepcion cuando ocurre un error.
      */
     @MessageMapping("result.{idd}")
     public void saveBD(@DestinationVariable String idd) throws Exception {
