@@ -22,6 +22,9 @@
 | NinjaMock | https://ninjamock.com/s/V5J5CSx  | 
 | Javadoc | Generado en la ruta ./target/site/apidocs |
 | Documento de Arquitectura del Sistema | https://docs.google.com/document/d/11F0Fp1ypW2nHEMQML_QSK1kUFcAmPWU2Cj9ENApiAfo/edit?usp=sharing | 
+| Servidor 1 | http://34.74.211.162:8080/ | 
+| Servidor 2 | http://34.73.143.202:8080/ | 
+| Balanceador de Carga | http://35.211.240.94:8080/ | 
 ---
 ### :book: Instrucciones
 Proximamente
