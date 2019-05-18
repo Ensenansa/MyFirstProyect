@@ -105,39 +105,153 @@ puede apreciar que cada jugador tiene su propio color caracteristico.
 
 ---
 
-- Proximamente
-
-![](img/)
+## Pruebas con Postman
 
 ---
 
-- Pruebas con Postman
-Proximamente
+## CartModeCOntroller
 
-![](img/)
+- Obtener todos los nombres de los jugadores de la aplicacion.
 
----
-
-- Proximamente
-
-![](img/)
+![](img/p1.png)
 
 ---
 
+- Obtener todos los nombres de los jugadores de una sala.
 
-![](img/)
-
----
-![](img/)
-
----
-![](img/)
-
----
-![](img/)
+![](img/p2.png)
 
 
 ---
+
+- Cantidad de Jugadores en una sala especifica.
+
+![](img/p3.png)
+
+---
+
+- Añadiendo un nuevo jugador al juego.
+
+![](img/p4.png)
+
+---
+- Datos completos sobre todos los jugadores de la aplicacion.
+
+![](img/p5.png)
+
+---
+- Datos completos sobre todos los jugadores de una sala especifica de 
+la aplicacion.
+
+![](img/p6.png)
+
+---
+- Toda la informacion sobre todas las salas que esten creadas en la aplicacion.
+![](img/p7.png)
+
+---
+- Informacion sobre sala a la cual pertenece un jugador especifico.
+![](img/p8.png)
+
+---
+- Nos retorna un valor booleano y saber si la sala ya inicio o todavia esta 
+en espera.
+![](img/p9.png)
+
+---
+- Retorna todos los nombres de los jugadores de una sala especifica.
+![](img/p10.png)
+
+---
+- Nos regresa el jugador anfitrion de la sala especificada.
+![](img/p11.png)
+
+---
+- Nos regresa un valor booleano informando si el jugador pasado como 
+parametro es o no Anfitrion en su sala.
+![](img/p12.png)
+
+---
+- Nos regresa el nivel de la sala especificada.
+![](img/p13.png)
+
+---
+- Adiciona un puntaje cuando el jugador responde correctamente una pregunta.
+![](img/p14.png)
+
+---
+
+## CartMode ControllerPersistence
+
+---
+- Adicionar nuevos jugadores a la base de datos.
+![](img/p15.png)
+
+---
+- Muestra a todos los jugadores almacenados en la base de datos.
+![](img/p16.png)
+---
+
+## CartMode Controller Preguntas
+
+---
+- Nos muestra todas las preguntas del sistema.
+![](img/p17.png)
+
+---
+- Nos regresa una pregunta aleatoriamente de todas las preguntas del sistema.
+![](img/p18.png)
+
+---
+- Cant
+![](img/p19.png)
+
+---
+- Cant
+![](img/p20.png)
+
+---
+- Cant
+![](img/p21.png)
+
+---
+- Cant
+![](img/p22.png)
+
+---
+- Cant
+![](img/p23.png)
+
+---
+- Cant
+![](img/p24.png)
+
+---
+- Cant
+![](img/p25.png)
+
+---- Cant
+![](img/p26.png)
+
+---
+- Cant
+![](img/p27.png)
+
+---
+- Cant
+![](img/p28.png)
+
+---
+- Cant
+![](img/p29.png)
+
+---
+- Cant
+![](img/p30.png)
+
+---
+
+
 
 ### :triangular_ruler: Diseño de arquitectura 
 #### - Paquetes
