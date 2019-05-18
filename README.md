@@ -21,7 +21,7 @@
 | Taiga | https://tree.taiga.io/project/cefarr-cartmode/timeline  |  
 | NinjaMock | https://ninjamock.com/s/V5J5CSx  | 
 | Javadoc | Generado en la ruta ./target/site/apidocs |
-| Documento de Arquitectura del Sistema | https://docs.google.com/document/d/11F0Fp1ypW2nHEMQML_QSK1kUFcAmPWU2Cj9ENApiAfo/edit?usp=sharing | 
+| Documento de Arquitectura del Sistema | https://drive.google.com/file/d/1Q7eTkRk0ZuE1sClnu6SufcEVbkiP3maU/view?usp=sharing | 
 | Servidor 1 | http://34.74.211.162:8080/ | 
 | Servidor 2 | http://34.73.143.202:8080/ | 
 | Balanceador de Carga | http://35.211.240.94:8080/ | 
@@ -53,38 +53,55 @@ Proximamente
 
 ---
 
-- El Anfitrion es el unico que puede iniciar la partida.
+-Como se observa Cesar ingreso a la sala de juego.
+![](img/8.png)
+
+---
+- El Anfitrion no puede iniciar la partida ya que no hay suficientes jugadores conectados.
+![](img/82.png)
+
+---
+
+- Ingreso Leonado pero el jugador Anfitrion es el unico que puede iniciar la partida (Cesar).
 
 ![](img/4.png)
 
 ---
-![](img/5.png)
-
----
--Como se observa maria ingreso a la sala de juego.
-![](img/8.png)
-
--Pero no puede iniciar la partida.
----
-![](img/9.png)
+-Como se observa Leonardo y Pepita han ingresado a la sala de juego.
+![](img/81.png)
 
 ---
 
--Al iniciar la partida puede empezar a emparejar.
-
-![](img/6.png)
+-Ya se completaron los jugadores minimos, y el Anfitrion inicia la partida.
+![](img/51.png)
 
 ---
 
-- Los jugadores pueden empezar a escoger cartas.
+-Los jugadores comienzan a jugar y se evidencia el Stomp funcionando. Ademas se 
+puede apreciar que cada jugador tiene su propio color caracteristico.
+
+![](img/92.png)
+![](img/91.png)
+
+---
+
+-Otro usuario se conecta pero ya no hace parte de la sala anteriormente creada, 
+    es agregado a una nueva sala.
+
+![](img/61.png)
+
+---
+
+- Despues los jugadores pueden ver sus resultador de manera ordenada.
 
 ![](img/7.png)
 
 ---
 
-- Proximamente
+- Los jugadores o cualquier usuario podra consultar el historial de los mejores
+  puntajes en cartMode de manera ordenada.
 
-![](img/)
+![](img/99.png)
 
 ---
 
