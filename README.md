@@ -229,8 +229,6 @@ que se le pase como parametro.
 ![](img/DiagramaF2.png)
 #### - Paquete Detalle 3
 ![](img/DiagramaF3.png)
-#### - Componente Conector
-![](img/DiaComponenteConector.png)
 #### - Interaccion Stomp
 ![](img/InteraccionStomp.png)
 #### - Diagrama de Despliege
