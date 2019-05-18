@@ -59,38 +59,42 @@ jugadores conectados para que se pueda iniciar la partida.
 
 3. Paso
 
-Una vez hubo los minimos jugadores y el anfitrion halla iniciado la partida, seras
+Una vez hubo los mínimos jugadores y el anfitrión halla iniciado la partida, seras
 dirigido a la pagina de Juego, donde te aparece en el centro el tablero de cartas,
-a tu izquiera tu nombre de usuario y la sala a la cual estas conectado y los demas jugadores
-que tambien estan conectados contigo. A tu lado derecho aparecera bien grande el 
+a tu izquierda tu nombre de usuario y la sala a la cual estas conectado y los demás jugadores
+que también están conectados contigo. A tu lado derecho aparecerá bien grande el 
 tiempo para que lo tengas presente y si quieres responder la pregunta, no es 
-obligatorio, pero te podra traer puntos adicionales si la respondes correctamente.
+obligatorio, pero te podrá traer puntos adicionales si la respondes correctamente.
 
-Una vez se acabe el tiempo o las parejas de cartas para realizar, subiras de nivel 
+Una vez se acabe el tiempo o las parejas de cartas para realizar, subirás de nivel 
 inmediatamente, recuerda que solo hay 3 niveles.¿Quieres que los explique?
 Claro, cada nivel consta de :
     ## Nivel 1:
-        En el podras encontras un juego de 16 cartas normales del 1 al 8, y para encontrar
-        todas las tarjetas tendras 3 minutos y 3 segundos para encontrarlas todas.
+        En el podrás encontrar un juego de 16 cartas normales del 1 al 8, y para encontrar
+        todas las tarjetas tendrás 3 minutos y 3 segundos para encontrarlas todas.
     ## Nivel 2
-        En este podras encontrar 25 cartas esta vez con numeros y letras y numeros pero ten
-        cuidado, hay una carta trampa que no podras emparejar y solo te hara perder
-        la oportunidad de sumar puntos. Para este tendras 2 minutos y 3 segundos.
+        En este podrás encontrar 25 cartas esta vez con números y letras y números pero ten
+        cuidado, hay una carta trampa que no podrás emparejar y solo te hará perder
+        la oportunidad de sumar puntos. Para este tendrás 2 minutos y 3 segundos.
     ## Nivel 3
-        En este nivel podras encontrar 20 cartas con numeros y letras y tendras el mismo
+        En este nivel podrás encontrar 20 cartas con números y letras y tendrás el mismo
         tiempo  para encontrar todas las parejas.
 
-Despues de pasar por los 3 niveles la aplicacion te llevara a la pagina de resultados.
-Donde podras observar tu puntaje y tambien el de tus compañeros. Ademas de eso podras 
+
+Después de pasar por los 3 niveles la aplicación te llevara a la pagina de resultados.
+Donde podrás observar tu puntaje y también el de tus compañeros. Además de eso podrás 
 compartirlo con las redes sociales o si lo deseas descargar tus resultados en un formato pdf.
 
-Si fuiste el mejor puntaje en tu sala te invito a que revises el apartado de historicos, este
-lo podras encontrar en el index debajo  del apartado con la pregunta ¿Que es CartMode?.
 
-En el encontraras los mejores puntajes que se han jugado en la aplicacion, y esta ordenado de manera descendente.
+Si fuiste el mejor puntaje en tu sala te invito a que revises el apartado de históricos, este
+los podrás encontrar en el indexa debajo del apartado con la pregunta ¿Que es CartMode?.
 
-Espero te haya sido util esta infomacion y puedas aprovechar al maximo la aplicacion.
-¿Sera que seras el ganador de tu partida? o ¿De CartMode?
+
+En el encontraras los mejores puntajes que se han jugado en la aplicación, y esta ordenado de manera descendente.
+
+
+Espero te haya sido útil esta información y puedas aprovechar al máximo la aplicación.
+¿Será que seras el ganador de tu partida? o ¿De CartMode?
 
 ---
 
