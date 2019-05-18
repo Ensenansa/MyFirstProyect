@@ -203,55 +203,20 @@ parametro es o no Anfitrion en su sala.
 ![](img/p18.png)
 
 ---
-- Cant
+- Nos regresa una baraja de cartas con una configuracion deacuerdo al nivel 
+que se le pase como parametro.
+
+- Nivel 1
+
 ![](img/p19.png)
 
----
-- Cant
+- Nivel 2
 ![](img/p20.png)
 
----
-- Cant
+- NIvel 3
 ![](img/p21.png)
 
 ---
-- Cant
-![](img/p22.png)
-
----
-- Cant
-![](img/p23.png)
-
----
-- Cant
-![](img/p24.png)
-
----
-- Cant
-![](img/p25.png)
-
----- Cant
-![](img/p26.png)
-
----
-- Cant
-![](img/p27.png)
-
----
-- Cant
-![](img/p28.png)
-
----
-- Cant
-![](img/p29.png)
-
----
-- Cant
-![](img/p30.png)
-
----
-
-
 
 ### :triangular_ruler: Diseño de arquitectura 
 #### - Paquetes
@@ -267,9 +232,9 @@ parametro es o no Anfitrion en su sala.
 #### - Componente Conector
 ![](img/DiaComponenteConector.png)
 #### - Interaccion Stomp
-![](img/InteracionStomp.png)
+![](img/InteraccionStomp.png)
 #### - Diagrama de Despliege
-![](img/DIagramaDespliegue.png)
+![](img/DiagramaDespliege.png)
 
 ---
 ### :wrench: Tecnologías utilizadas
