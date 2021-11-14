@@ -83,11 +83,12 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    @RequestMapping(method = RequestMethod.GET, path = "/all/h")
+
     public ResponseEntity<?> get112445a() {
         return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
     }
     public ResponseEntity<?> g2312123() {
+
         return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
     }
     
