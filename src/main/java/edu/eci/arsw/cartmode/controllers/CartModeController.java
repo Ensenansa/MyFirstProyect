@@ -84,10 +84,10 @@ public class CartModeController {
         }
     }
     @RequestMapping(method = RequestMethod.GET, path = "/all/h")
-    public ResponseEntity<?> getHola() {
+    public ResponseEntity<?> g6565598989etHola() {
         return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
     }
-    public ResponseEntity<?> getHola3() {
+    public ResponseEntity<?> gOOOOO9987tgghh3() {
         return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
     }
     
