@@ -87,6 +87,11 @@ public class CartModeController {
     public ResponseEntity<?> getqqqqqqla() {
         return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
     }
+    public ResponseEntity<?> getHola3() {
+        return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
+    }
+    
+    
 /**
  *  Retorna todos los jugadores de una sala pasando por parametro un nombre.
  * @param nombre Nombre del jugador a buscar
