@@ -83,6 +83,10 @@ public class CartModeController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
+    @RequestMapping(method = RequestMethod.GET, path = "/all/h")
+    public ResponseEntity<?> getHola() {
+        return new ResponseEntity<>("hola mundo", HttpStatus.ACCEPTED);
+    }
 /**
  *  Retorna todos los jugadores de una sala pasando por parametro un nombre.
  * @param nombre Nombre del jugador a buscar
